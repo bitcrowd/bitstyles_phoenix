@@ -1,6 +1,8 @@
 # BitstylesPhoenix
 
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
+Currently made for version 1.0.2 of bitstyles. Future versions might still work, since 
+the common interface is just CSS classes. Feel free to drop PRs if you notice any inconsistencies with new versions.
 
 ## Requirements 
 
