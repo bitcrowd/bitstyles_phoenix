@@ -3,7 +3,7 @@ defmodule BitstylesPhoenix.Classnames do
   The very best of NPM, now for elixir.
   """
 
-  @trim_e2e_classes Application.compile_env!(:bitstyles_phoenix, :trim_e2e_classes)
+  @trim_e2e_classes Application.compile_env(:bitstyles_phoenix, :trim_e2e_classes, true)
 
   @doc """
   Concatenates lists of class names, with trimming and conditionals.
