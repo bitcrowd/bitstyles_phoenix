@@ -16,7 +16,7 @@ defmodule BitstylesPhoenix.Components.Error do
   """
   def ui_error(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      content_tag(:span, translate_error(error), class: "c-help-block")
+      content_tag(:span, translate_error(error), class: "u-fg--warning")
     end)
   end
 

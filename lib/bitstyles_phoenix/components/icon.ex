@@ -14,16 +14,16 @@ defmodule BitstylesPhoenix.Components.Icon do
   ## Examples
 
     iex> doctest_ui_component ui_icon("right")
-    ~s(<svg alt="" class="o-icon" role="presentation"><use xlink:href="#icon-right"></svg>)
+    ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-right"></svg>)
 
     iex> doctest_ui_component ui_icon("right", size: "s")
-    ~s(<svg alt="" class="o-icon o-icon--s" role="presentation"><use xlink:href="#icon-right"></svg>)
+    ~s(<svg alt="" class="a-icon a-icon--s" role="presentation"><use xlink:href="#icon-right"></svg>)
 
     iex> doctest_ui_component ui_icon("trashcan")
-    ~s(<svg alt="" class="o-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
+    ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
   """
   def ui_icon(name, opts \\ []) do
-    classname = classnames(["o-icon", {"o-icon--#{opts[:size]}", opts[:size] != nil}])
+    classname = classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}])
 
     content_tag(:svg, class: classname, alt: "", role: "presentation") do
       tag(:use, "xlink:href": "#icon-#{name}")

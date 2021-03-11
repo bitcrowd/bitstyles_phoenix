@@ -61,7 +61,7 @@ defmodule BitstylesPhoenix.Components.Form do
       <input accept="application/pdf" id="file" name="user[file]" type="file">)
 
       iex> ui_input(f, :search_term, type: :search, hidden_label: true)
-      ~s(<label for="search_term" class="o-visually-hidden">Search</label>
+      ~s(<label for="search_term" class="u-sr-only">Search</label>
       <input id="search_term" name="search_term" type="search">)
 
   """
@@ -99,7 +99,7 @@ defmodule BitstylesPhoenix.Components.Form do
       <textarea id="user_stringified_metadata" name="user[stringified_metadata]" rows="10" style="height: auto;"></textarea>)
 
       iex> ui_textarea(f, :address, hidden_label: true)
-      ~s(<label for="user_address" class="o-visually-hidden">Metadata</label>
+      ~s(<label for="user_address" class="u-sr-only">Metadata</label>
       <textarea id="user_address" name="user[address]"></textarea>)
 
   """
@@ -125,7 +125,7 @@ defmodule BitstylesPhoenix.Components.Form do
     <select class="e2e-filters-week-week" id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
 
     iex> ui_select(f, :week, 1..2, label: "Week", hidden_label: true)
-    ~s(<label for="filters_week" class="o-visually-hidden">Week</label>
+    ~s(<label for="filters_week" class="u-sr-only">Week</label>
     <select id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
 
   """
@@ -184,7 +184,7 @@ defmodule BitstylesPhoenix.Components.Form do
 
   defp get_label_opts(opts) do
     case opts[:hidden_label] do
-      true -> opts |> Keyword.put(:class, classnames(["o-visually-hidden"]))
+      true -> opts |> Keyword.put(:class, classnames(["u-sr-only"]))
       false -> opts
       nil -> opts
     end
