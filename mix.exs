@@ -10,7 +10,7 @@ defmodule BitstylesPhoenix.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "A collection of Elixir phoenix helpers for bitstyles",
-      licenses: ~w[ISC],
+      package: package(),
       source_url: "https://github.com/bitcrowd/bitstyles_phoenix"
     ]
   end
@@ -30,6 +30,18 @@ defmodule BitstylesPhoenix.MixProject do
   defp deps do
     [
       {:phoenix_html, "~> 2.14.3"}
+    ]
+  end
+
+  defp package() do
+    [
+      # This option is only needed when you don't want to use the OTP application name
+      name: "bitstyles_phoenix",
+      licenses: ~w[ISC],
+      links: %{
+        "GitHub" => "https://github.com/bitcrowd/bitstyles_phoenix",
+        "bitstyles" => "https://github.com/bitcrowd/bitstyles"
+      }
     ]
   end
 end
