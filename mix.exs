@@ -8,7 +8,10 @@ defmodule BitstylesPhoenix.MixProject do
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: "A collection of Elixir phoenix helpers for bitstyles",
+      licenses: ~w[ISC],
+      source_url: "https://github.com/bitcrowd/bitstyles_phoenix"
     ]
   end
 
