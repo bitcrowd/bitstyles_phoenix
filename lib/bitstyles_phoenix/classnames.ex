@@ -4,12 +4,12 @@ defmodule BitstylesPhoenix.Classnames do
   """
 
   @trim_e2e_classes Application.compile_env!(:bitstyles_phoenix, :trim_e2e_classes)
-  IO.inspect(@trim_e2e_classes)
 
   @doc """
   Concatenates lists of class names, with trimming and conditionals.
 
-  e2e- classes can optionnaly be trimmed at compile time.
+  `e2e-` classes are trimmed at compile time. This can be disabled for
+  test environments via `trim_e2e_classes`.
 
   ## Examples
 
@@ -53,7 +53,8 @@ defmodule BitstylesPhoenix.Classnames do
   @doc """
   Extended classnames.
 
-  Evaluates lists of class names at compile time, removing any `e2e-` classes.
+  `e2e-` classes are trimmed at compile time. This can be disabled for
+  test environments via `trim_e2e_classes`.
 
   Conveniently accepts a (whitespace-separated) string or a list. If the list contains any
   conditional expressions, they are evaluated at runtime.
