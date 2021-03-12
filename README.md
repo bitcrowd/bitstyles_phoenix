@@ -39,6 +39,13 @@ To make use of the various `ui_*` helpers in the project, just add a use stateme
 
 ```
 
+## Configuration
+
+If you want to stop bitstyles_phoenix from removing e2e classes (e.g. in e2e tests) use this config:
+
+```
+config :bitstyles_phoenix, :trim_e2e_classes, true
+```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
