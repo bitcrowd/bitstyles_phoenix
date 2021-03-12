@@ -43,7 +43,7 @@ To make use of the various `ui_*` helpers in the project, just add a use stateme
 
 If you want to stop bitstyles_phoenix from removing e2e classes (e.g. in e2e tests) use this config:
 
-```
+``` elixir
 config :bitstyles_phoenix, :trim_e2e_classes, true
 ```
 
