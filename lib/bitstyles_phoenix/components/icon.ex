@@ -1,5 +1,5 @@
 defmodule BitstylesPhoenix.Components.Icon do
-  use Phoenix.HTML
+  import Phoenix.HTML.Tag, only: [content_tag: 3, tag: 2]
   import BitstylesPhoenix.Classnames
 
   @moduledoc """
