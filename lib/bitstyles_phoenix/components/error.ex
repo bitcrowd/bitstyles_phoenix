@@ -9,7 +9,7 @@ defmodule BitstylesPhoenix.Components.Error do
                    {__MODULE__, :no_translation, []}
                  )
 
-  use Phoenix.HTML
+  import Phoenix.HTML.Tag, only: [content_tag: 3]
 
   @doc """
   Generates tag for inlined form input errors.

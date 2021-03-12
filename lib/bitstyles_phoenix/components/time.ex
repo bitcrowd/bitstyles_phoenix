@@ -1,5 +1,5 @@
 defmodule BitstylesPhoenix.Components.Time do
-  use Phoenix.HTML
+  import Phoenix.HTML, only: [sigil_E: 2]
 
   @moduledoc """
   Time-related UI components

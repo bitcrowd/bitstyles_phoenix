@@ -1,5 +1,7 @@
 defmodule BitstylesPhoenix.Components.Button do
   use Phoenix.HTML
+  import Phoenix.HTML.Link, only: [link: 2]
+  import Phoenix.HTML.Tag, only: [content_tag: 3]
   import BitstylesPhoenix.Classnames
 
   @moduledoc """

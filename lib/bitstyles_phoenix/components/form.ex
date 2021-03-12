@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Components.Form do
-  use Phoenix.HTML
   import BitstylesPhoenix.Classnames
   alias BitstylesPhoenix.Components.Error
+  alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
   Form-related UI components.
@@ -135,9 +135,9 @@ defmodule BitstylesPhoenix.Components.Form do
     input_opts = get_input_opts(opts)
 
     error = Error.ui_error(form, field)
-    input = Phoenix.HTML.Form.select(form, field, options, input_opts)
+    input = PhxForm.select(form, field, options, input_opts)
 
-    [label(form, field, label_text, label_opts), input, error]
+    [PhxForm.label(form, field, label_text, label_opts), input, error]
   end
 
   defp unwrapped_input(form, field, opts) do
@@ -149,7 +149,7 @@ defmodule BitstylesPhoenix.Components.Form do
     error = Error.ui_error(form, field)
     input = render_input(type, form, field, input_opts)
 
-    [label(form, field, label_text, label_opts), input, error]
+    [PhxForm.label(form, field, label_text, label_opts), input, error]
   end
 
   defp wrapped_input(form, field, opts) do
@@ -161,7 +161,7 @@ defmodule BitstylesPhoenix.Components.Form do
     input = render_input(type, form, field, input_opts)
 
     label_tag =
-      Phoenix.HTML.Form.label do
+      PhxForm.label do
         [input, label_text]
       end
 
@@ -171,15 +171,15 @@ defmodule BitstylesPhoenix.Components.Form do
   defp render_input(:radio_button, form, field, opts) do
     value = opts[:value]
     opts = opts |> Keyword.drop([:value])
-    Phoenix.HTML.Form.radio_button(form, field, value, opts)
+    PhxForm.radio_button(form, field, value, opts)
   end
 
   defp render_input(type, form, field, opts) do
-    apply(Phoenix.HTML.Form, type, [form, field, opts])
+    apply(PhxForm, type, [form, field, opts])
   end
 
   defp get_label(opts, field) do
-    opts[:label] || humanize(field)
+    opts[:label] || PhxForm.humanize(field)
   end
 
   defp get_label_opts(opts) do
