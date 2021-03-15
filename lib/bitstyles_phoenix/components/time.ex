@@ -13,10 +13,10 @@ defmodule BitstylesPhoenix.Components.Time do
 
   ## Examples
 
-      iex> doctest_ui_component ui_time("15:17", "2020-11-10 14:17:32Z")
+      iex> safe_to_string ui_time("15:17", "2020-11-10 14:17:32Z")
       ~s(<time datetime="2020-11-10 14:17:32Z" title="2020-11-10 14:17:32Z">15:17</time>)
 
-      iex> doctest_ui_component ui_time("2020-11-18", "2020-11-18 14:23:14Z")
+      iex> safe_to_string ui_time("2020-11-18", "2020-11-18 14:23:14Z")
       ~s(<time datetime="2020-11-18 14:23:14Z" title="2020-11-18 14:23:14Z">2020-11-18</time>)
 
   """
