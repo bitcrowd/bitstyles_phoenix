@@ -1,5 +1,10 @@
 # BitstylesPhoenix
 
+[![Hex pm](http://img.shields.io/hexpm/v/bitstyles_phoenix.svg?style=flat)](https://hex.pm/packages/bitstyles_phoenix)
+[![Hex docs](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/bitstyles_phoenix)
+[![License](https://img.shields.io/hexpm/l/bitstyles_phoenix?style=flat)](LICENSE)
+[![CircleCI](https://circleci.com/gh/bitcrowd/bitstyles_phoenix.svg?style=shield)](https://circleci.com/gh/bitcrowd/bitstyles_phoenix)
+
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
 Currently made for version 1.0.2 of bitstyles. Future versions might still work, since 
 the common interface is just CSS classes. Feel free to drop PRs if you notice any inconsistencies with new versions.
