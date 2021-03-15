@@ -21,9 +21,13 @@ defmodule BitstylesPhoenix.Components.Icon do
 
     iex> safe_to_string ui_icon("trashcan")
     ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
+
+    iex> safe_to_string ui_icon("trashcan", class: "foo bar")
+    ~s(<svg alt="" class="a-icon foo bar" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
   """
   def ui_icon(name, opts \\ []) do
-    classname = classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}])
+    classname =
+      classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}, opts[:class]])
 
     content_tag(:svg, class: classname, alt: "", role: "presentation") do
       tag(:use, "xlink:href": "#icon-#{name}")

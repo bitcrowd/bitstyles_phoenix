@@ -25,8 +25,14 @@ defmodule BitstylesPhoenix.Classnames do
       iex> classnames("  foo    ")
       "foo"
 
+      iex> classnames("  foo bar  ")
+      "foo bar"
+
       iex> classnames(["foo", "bar"])
       "foo bar"
+
+      iex> classnames(["foo", "bar baz"])
+      "foo bar baz"
 
       iex> classnames(:foo)
       "foo"
@@ -37,8 +43,8 @@ defmodule BitstylesPhoenix.Classnames do
       iex> classnames({"foo", 1 == 2})
       ""
 
-      iex> classnames(["  foo    ", {"bar", 1 == 2}, :baz])
-      "foo baz"
+      iex> classnames(["  foo  boing  ", {"bar", 1 == 2}, :baz])
+      "foo boing baz"
   """
   def classnames(arg) do
     arg
