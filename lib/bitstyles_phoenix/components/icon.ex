@@ -13,13 +13,13 @@ defmodule BitstylesPhoenix.Components.Icon do
 
   ## Examples
 
-    iex> doctest_ui_component ui_icon("right")
+    iex> safe_to_string ui_icon("right")
     ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-right"></svg>)
 
-    iex> doctest_ui_component ui_icon("right", size: "s")
+    iex> safe_to_string ui_icon("right", size: "s")
     ~s(<svg alt="" class="a-icon a-icon--s" role="presentation"><use xlink:href="#icon-right"></svg>)
 
-    iex> doctest_ui_component ui_icon("trashcan")
+    iex> safe_to_string ui_icon("trashcan")
     ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
   """
   def ui_icon(name, opts \\ []) do

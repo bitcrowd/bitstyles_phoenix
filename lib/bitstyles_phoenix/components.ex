@@ -5,6 +5,7 @@ defmodule BitstylesPhoenix.Components do
       import BitstylesPhoenix.Components.Time
       import BitstylesPhoenix.Components.Form
       import BitstylesPhoenix.Components.Icon
+      import BitstylesPhoenix.Components.Error
     end
   end
 end

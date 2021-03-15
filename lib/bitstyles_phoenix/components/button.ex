@@ -19,19 +19,19 @@ defmodule BitstylesPhoenix.Components.Button do
 
   ## Examples
 
-      iex> doctest_ui_component ui_button("Save", type: "submit")
+      iex> safe_to_string ui_button("Save", type: "submit")
       ~s(<button class="a-button" type="submit">Save</button>)
 
-      iex> doctest_ui_component ui_button("Save", type: "submit", variant: "primary")
+      iex> safe_to_string ui_button("Save", type: "submit", variant: "primary")
       ~s(<button class="a-button a-button--primary" type="submit">Save</button>)
 
-      iex> doctest_ui_component ui_button("Click me", variant: "clear", type: "reset")
+      iex> safe_to_string ui_button("Click me", variant: "clear", type: "reset")
       ~s(<button class="a-button a-button--clear" type="reset">Click me</button>)
 
-      iex> doctest_ui_component ui_button("Show", to: "/admin/admin_accounts/id", data: [confirm: "Are you sure?"])
+      iex> safe_to_string ui_button("Show", to: "/admin/admin_accounts/id", data: [confirm: "Are you sure?"])
       ~s(<a class="a-button" data-confirm="Are you sure?" href="/admin/admin_accounts/id">Show</a>)
 
-      iex> doctest_ui_component ui_button("Click me", variant: "clear", type: "submit", data: [confirm: "Are you sure?"])
+      iex> safe_to_string ui_button("Click me", variant: "clear", type: "submit", data: [confirm: "Are you sure?"])
       ~s(<button class="a-button a-button--clear" data-confirm="Are you sure?" type="submit">Click me</button>)
   """
   def ui_button(opts, do: contents) do
