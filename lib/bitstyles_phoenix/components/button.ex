@@ -9,7 +9,8 @@ defmodule BitstylesPhoenix.Components.Button do
   """
 
   @doc ~S"""
-  Renders anchor or button elements that look like a button — using the `a-button` classes. It accepts similar parameters to `Phoenix.HTML.Link/2`, with the following additional notes:
+  Renders anchor or button elements that look like a button — using the `a-button` classes. It accepts similar parameters to
+  `Phoenix.HTML.Link.button/2`, with the following additional notes:
 
   `opts[:to]` — if there’s a `to` parameter, you’ll get an anchor element, otherwise a button element.
   `opts[:variant]` — specifies which visual variant of button you want, from those available in the CSS classes e.g. `primary`, `danger`
