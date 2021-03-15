@@ -23,6 +23,9 @@ defmodule BitstylesPhoenix.Components.Button do
       iex> safe_to_string ui_button("Save", type: "submit")
       ~s(<button class="a-button" type="submit">Save</button>)
 
+      iex> safe_to_string ui_button("Save", type: "submit", class: "foo bar")
+      ~s(<button class="a-button foo bar" type="submit">Save</button>)
+
       iex> safe_to_string ui_button("Save", type: "submit", variant: "primary")
       ~s(<button class="a-button a-button--primary" type="submit">Save</button>)
 
@@ -57,7 +60,8 @@ defmodule BitstylesPhoenix.Components.Button do
       classnames([
         opts[:e2e_classname],
         "a-button",
-        {"a-button--#{opts[:variant]}", opts[:variant] != nil}
+        {"a-button--#{opts[:variant]}", opts[:variant] != nil},
+        opts[:class]
       ])
     )
     |> Keyword.drop([:variant, :e2e_classname])
