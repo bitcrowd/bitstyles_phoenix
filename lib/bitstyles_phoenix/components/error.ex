@@ -27,11 +27,14 @@ defmodule BitstylesPhoenix.Components.Error do
   @doc """
   Generates tag for custom errors.
 
-  When errors are given in tuples {error, count} they are given to the `translate_errors` callback.
+  When errors are given in tuples {error, error_opts} they are given to the `translate_errors` callback.
 
   ## Examples
 
       iex> safe_to_string ui_error_tag("Foo error")
+      ~s(<span class="u-fg--warning">Foo error</span>)
+
+      iex> safe_to_string ui_error_tag({"Foo error", count: 1})
       ~s(<span class="u-fg--warning">Foo error</span>)
 
       iex> safe_to_string ui_error_tag("Foo error", phx_feedback_for: "foo")
@@ -54,7 +57,7 @@ defmodule BitstylesPhoenix.Components.Error do
     apply(mod, translate_fn, args ++ [error])
   end
 
-  def no_translation(error) do
+  def no_translation({error, _}) do
     error
   end
 end
