@@ -3,12 +3,6 @@ defmodule BitstylesPhoenix.Components.Error do
   Conveniences for translating and building error messages.
   """
 
-  @translate_mfa Application.get_env(
-                   :bitstyles_phoenix,
-                   :translate_errors,
-                   {__MODULE__, :no_translation, []}
-                 )
-
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
   alias Phoenix.HTML.Form, as: PhxForm
@@ -53,7 +47,13 @@ defmodule BitstylesPhoenix.Components.Error do
   end
 
   defp translate_error(error) do
-    {mod, translate_fn, args} = @translate_mfa
+    {mod, translate_fn, args} =
+      Application.get_env(
+        :bitstyles_phoenix,
+        :translate_errors,
+        {__MODULE__, :no_translation, []}
+      )
+
     apply(mod, translate_fn, args ++ [error])
   end
 
