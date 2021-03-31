@@ -11,7 +11,12 @@ defmodule BitstylesPhoenix.MixProject do
       deps: deps(),
       description: "A collection of Elixir phoenix helpers for bitstyles",
       package: package(),
-      source_url: "https://github.com/bitcrowd/bitstyles_phoenix"
+      source_url: "https://github.com/bitcrowd/bitstyles_phoenix",
+      docs: [
+        main: "BitstylesPhoenix",
+        logo: "priv/logo.svg",
+        extras: ["README.md", "LICENSE.txt"]
+      ]
     ]
   end
 

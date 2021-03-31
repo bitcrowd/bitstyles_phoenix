@@ -2,7 +2,7 @@
 
 [![Hex pm](http://img.shields.io/hexpm/v/bitstyles_phoenix.svg?style=flat)](https://hex.pm/packages/bitstyles_phoenix)
 [![Hex docs](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/bitstyles_phoenix)
-[![License](https://img.shields.io/hexpm/l/bitstyles_phoenix?style=flat)](LICENSE)
+[![License](https://img.shields.io/hexpm/l/bitstyles_phoenix?style=flat)](./LICENSE.txt)
 [![CircleCI](https://circleci.com/gh/bitcrowd/bitstyles_phoenix.svg?style=shield)](https://circleci.com/gh/bitcrowd/bitstyles_phoenix)
 
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
@@ -42,6 +42,10 @@ To make use of the various `ui_*` helpers in the project, just add a use stateme
   end
 
 ```
+
+## Getting started
+
+Check out the top level `BitstylesPhoenix` module for usage examples, for the `ui_*` helpers.
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
