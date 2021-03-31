@@ -28,10 +28,6 @@ defmodule BitstylesPhoenix do
     ui_button("Button", variant: [:ui, :danger])
   """)
 
-  showcase("UI Danger", """
-    ui_button("Button", variant: [:ui, :danger])
-  """)
-
   showcase_section("Errors", "Components.Error.ui_error_tag/1")
 
   showcase("Inline errors", """
