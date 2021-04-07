@@ -120,13 +120,13 @@ defmodule BitstylesPhoenix.Components.Form do
 
   ## Examples
 
-    iex> ui_select(f, :week, 1..2, label: "Week", e2e_classname: "e2e-filters-week-week")
-    ~s(<label for="filters_week">Week</label>
-    <select class="e2e-filters-week-week" id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
+      iex> ui_select(f, :week, 1..2, label: "Week", e2e_classname: "e2e-filters-week-week")
+      ~s(<label for="filters_week">Week</label>
+      <select class="e2e-filters-week-week" id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
 
-    iex> ui_select(f, :week, 1..2, label: "Week", hidden_label: true)
-    ~s(<label for="filters_week" class="u-sr-only">Week</label>
-    <select id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
+      iex> ui_select(f, :week, 1..2, label: "Week", hidden_label: true)
+      ~s(<label for="filters_week" class="u-sr-only">Week</label>
+      <select id="filters_week" name="filters[week]"><option value="1">1</option><option value="2">2</option></select>)
 
   """
   def ui_select(form, field, options, opts \\ []) do

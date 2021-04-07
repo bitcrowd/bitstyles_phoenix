@@ -13,17 +13,17 @@ defmodule BitstylesPhoenix.Components.Icon do
 
   ## Examples
 
-    iex> safe_to_string ui_icon("right")
-    ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-right"></svg>)
+      iex> safe_to_string ui_icon("right")
+      ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-right"></svg>)
 
-    iex> safe_to_string ui_icon("right", size: "s")
-    ~s(<svg alt="" class="a-icon a-icon--s" role="presentation"><use xlink:href="#icon-right"></svg>)
+      iex> safe_to_string ui_icon("right", size: "s")
+      ~s(<svg alt="" class="a-icon a-icon--s" role="presentation"><use xlink:href="#icon-right"></svg>)
 
-    iex> safe_to_string ui_icon("trashcan")
-    ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
+      iex> safe_to_string ui_icon("trashcan")
+      ~s(<svg alt="" class="a-icon" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
 
-    iex> safe_to_string ui_icon("trashcan", class: "foo bar")
-    ~s(<svg alt="" class="a-icon foo bar" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
+      iex> safe_to_string ui_icon("trashcan", class: "foo bar")
+      ~s(<svg alt="" class="a-icon foo bar" role="presentation"><use xlink:href="#icon-trashcan"></svg>)
   """
   def ui_icon(name, opts \\ []) do
     classname =
