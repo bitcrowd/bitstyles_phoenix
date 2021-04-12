@@ -33,4 +33,18 @@ defmodule BitstylesPhoenix do
   showcase("Inline errors", """
     ui_error_tag("Some error")
   """)
+
+  showcase_section("Icons", "Components.Icon.ui_icon/2")
+
+  showcase("Icon", """
+    ui_icon("trashcan")
+  """)
+
+  showcase("Icon size: l", """
+    ui_icon("trashcan", size: 'l')
+  """)
+
+  showcase("Icon size: l, width: 40", """
+    ui_icon("trashcan", size: 'l', width: 40)
+  """)
 end
