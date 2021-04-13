@@ -33,9 +33,17 @@ defmodule BitstylesPhoenix.Components.Icon do
   def ui_icon(name, opts \\ []) do
     classname =
       classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}, opts[:class]])
+
     opts = opts |> put_default_width()
 
-    content_tag(:svg, class: classname, "aria-hidden": "true", focusable: "false", xmlns: "http://www.w3.org/2000/svg", width: opts[:width], height: opts[:width]) do
+    content_tag(:svg,
+      class: classname,
+      "aria-hidden": "true",
+      focusable: "false",
+      xmlns: "http://www.w3.org/2000/svg",
+      width: opts[:width],
+      height: opts[:width]
+    ) do
       tag(:use, "xlink:href": "#icon-#{name}")
     end
   end
