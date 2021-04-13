@@ -37,7 +37,7 @@ defmodule BitstylesPhoenix.Components.Flash do
       classnames(["u-padding-l--y a-flash", {"a-flash--#{opts[:variant]}", opts[:variant] != nil}])
 
     content_tag(:div, class: classname, "aria-live": "polite") do
-      content_tag(:div, contents,  class: "a-content u-flex u-items-center u-font--medium")
+      content_tag(:div, contents, class: "a-content u-flex u-items-center u-font--medium")
     end
   end
 end
