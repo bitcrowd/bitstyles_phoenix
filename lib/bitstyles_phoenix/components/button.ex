@@ -14,6 +14,8 @@ defmodule BitstylesPhoenix.Components.Button do
 
   All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
 
+  See the [bitstyles button docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-buttons-buttons--page) for available button variants.
+
   ## Examples
 
       iex> safe_to_string ui_button("Save", type: "submit")

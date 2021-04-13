@@ -46,6 +46,10 @@ defmodule BitstylesPhoenix.Components.Form do
   `opts[:label]` — Override the default text to be used in the `<label>`
   `opts[:hidden_label]` — The label element will be visually hidden, but still present in the DOM
 
+  See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--fieldset) for examples of inputs, selects, textareas, labels etc. in use.
+
+  See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-data-forms--login-form) for examples of form layouts.
+
   ## Examples
 
       iex> ui_input(f, :field)
@@ -88,6 +92,8 @@ defmodule BitstylesPhoenix.Components.Form do
   `opts[:e2e_classname]` — A classname that will be applied to the input for testing purposes, only on integration env
   `opts[:label]` — Override the default text to be used in the `<label>`
 
+  See the [bitstyles textarea docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--textarea-and-label) for examples of textareas and labels in use.
+
   ## Examples
 
       iex> ui_textarea(f, :address)
@@ -117,6 +123,8 @@ defmodule BitstylesPhoenix.Components.Form do
   `options` — the options to be rendered in this select element
   `opts[:e2e_classname]` — A classname that will be applied to the input for testing purposes, only on integration env
   `opts[:label]` — Override the default text to be used in the `<label>`
+
+  See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of textareas and labels in use.
 
   ## Examples
 
