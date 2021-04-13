@@ -24,7 +24,7 @@ defmodule BitstylesPhoenix.Components.Icon do
       iex> safe_to_string ui_icon("trashcan")
       ~s(<svg aria-hidden="true" class="a-icon" focusable="false" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#icon-trashcan"></svg>)
 
-      iex> safe_to_string ui_icon("trashcan", width: 20)
+      iex> safe_to_string ui_icon("trashcan", width: "20", height: "20")
       ~s(<svg aria-hidden="true" class="a-icon" focusable="false" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#icon-trashcan"></svg>)
 
       iex> safe_to_string ui_icon("trashcan", class: "foo bar")

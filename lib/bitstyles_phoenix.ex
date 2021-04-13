@@ -41,10 +41,10 @@ defmodule BitstylesPhoenix do
   """)
 
   showcase("Icon size: l", """
-    ui_icon("trashcan", size: 'l')
+    ui_icon("trashcan", size: "l")
   """)
 
   showcase("Icon size: l, width: 40", """
-    ui_icon("trashcan", size: 'l', width: 40)
+    ui_icon("trashcan", size: "l", width: "40", height: "40")
   """)
 end
