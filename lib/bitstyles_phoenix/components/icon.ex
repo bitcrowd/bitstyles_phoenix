@@ -13,6 +13,8 @@ defmodule BitstylesPhoenix.Components.Icon do
 
   `opts[:size]` - Specify the icon size to use. Available sizes are specified in CSS, and default to `s`, `m`, `l`, `xl`. If you do not specify a size, the icon will fit into a `1em` square.
 
+  See the [bitstyles icon docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-icon--icon) for examples of icon usage, and available icons in the bitstyles icon set.
+
   ## Examples
 
       iex> safe_to_string ui_icon("right")
