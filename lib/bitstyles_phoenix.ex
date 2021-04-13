@@ -34,6 +34,24 @@ defmodule BitstylesPhoenix do
     ui_error_tag("Some error")
   """)
 
+  showcase_section("Flash", "Components.Flash.ui_flash/2")
+
+  showcase("Brand-1", """
+    ui_flash("Something you may be interested to hear", variant: "brand-1")
+  """)
+
+  showcase("Positive", """
+    ui_flash("Changes succesfully saved", variant: "positive")
+  """)
+
+  showcase("Warning", """
+    ui_flash("Login not successful, please try that again", variant: "warning")
+  """)
+
+  showcase("Danger", """
+    ui_flash("An error occured, please contact an admin", variant: "danger")
+  """)
+
   showcase_section("Icons", "Components.Icon.ui_icon/2")
 
   showcase("Icon", """
