@@ -34,23 +34,26 @@ defmodule BitstylesPhoenix.Components.Icon do
     classname =
       classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}, opts[:class]])
 
-    opts = opts
-        |> put_defaults()
-        |> Keyword.put(:class, classname)
-        |> Keyword.merge("aria-hidden": "true",
-                                         focusable: "false",
-                                          xmlns: "http://www.w3.org/2000/svg")
+    opts =
+      opts
+      |> put_defaults()
+      |> Keyword.put(:class, classname)
+      |> Keyword.merge(
+        "aria-hidden": "true",
+        focusable: "false",
+        xmlns: "http://www.w3.org/2000/svg"
+      )
+      |> Keyword.drop([:size])
 
     content_tag(:svg, opts) do
       tag(:use, "xlink:href": "#icon-#{name}")
     end
   end
 
- @default_size 16
+  @default_size 16
   defp put_defaults(opts) do
-      opts 
-      |> Keyword.put_new(:width, @default_size)
-      |> Keyword.put_new(:height, @default_size)
-   end
+    opts
+    |> Keyword.put_new(:width, @default_size)
+    |> Keyword.put_new(:height, @default_size)
   end
 end
