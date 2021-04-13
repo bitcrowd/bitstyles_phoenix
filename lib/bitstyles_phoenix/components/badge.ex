@@ -55,5 +55,4 @@ defmodule BitstylesPhoenix.Components.Badge do
 
   defp variant_classes(variants) when is_list(variants),
     do: Enum.map(variants, &"a-badge--#{&1}")
-
 end

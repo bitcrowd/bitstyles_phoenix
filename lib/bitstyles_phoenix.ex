@@ -71,4 +71,22 @@ defmodule BitstylesPhoenix do
   showcase("Icon size: l, width: 40", """
     ui_icon("trashcan", size: "l", width: "40", height: "40")
   """)
+
+  showcase_section("Badge", "Components.Badge.ui_badge/2")
+
+  showcase("Gray", """
+    ui_badge("Published")
+  """)
+
+  showcase("Brand-1", """
+    ui_badge("Published", variant: "brand-1")
+  """)
+
+  showcase("Brand-2", """
+    ui_badge("Published", variant: "brand-2")
+  """)
+
+  showcase("Danger", """
+    ui_badge("Published", variant: "danger")
+  """)
 end
