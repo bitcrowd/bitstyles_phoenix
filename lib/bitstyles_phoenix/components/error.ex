@@ -23,6 +23,8 @@ defmodule BitstylesPhoenix.Components.Error do
 
   When errors are given in tuples {error, error_opts} they are given to the `translate_errors` callback.
 
+  The error will be rendered with the warning color, as specified in [bitstyles colors](https://bitcrowd.github.io/bitstyles/?path=/docs/utilities-fg--warning).
+
   ## Examples
 
       iex> safe_to_string ui_error_tag("Foo error")
