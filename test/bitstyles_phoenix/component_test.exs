@@ -8,4 +8,5 @@ defmodule BitstylesPhoenix.ComponentTest do
   doctest BitstylesPhoenix.Components.Flash
   doctest BitstylesPhoenix.Components.Icon
   doctest BitstylesPhoenix.Components.Time
+  doctest BitstylesPhoenix.Components.Badge
 end

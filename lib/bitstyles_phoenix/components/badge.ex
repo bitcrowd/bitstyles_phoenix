@@ -23,12 +23,23 @@ defmodule BitstylesPhoenix.Components.Badge do
       iex> safe_to_string ui_badge("published", variant: "brand-2")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--brand-2">published</span>)
 
-      iex> safe_to_string ui_badge("published", variant: "danger")
+      iex> safe_to_string ui_badge("edited", variant: "danger")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--danger">edited</span>)
+
+      iex> safe_to_string(ui_badge do
+      ...>   "published"
+      ...> end)
+      ~s(<span class="a-badge u-h6 u-font--medium a-badge--gray">published</span>)
+
+      iex> safe_to_string(ui_badge(variant: "danger") do
+      ...>   "published"
+      ...> end)
+      ~s(<span class="a-badge u-h6 u-font--medium a-badge--danger">published</span>)
   """
-  def ui_badge(opts, do: contents) do
-    ui_badge(contents, opts)
-  end
+
+  def ui_badge(do: contents), do: ui_badge(contents, [])
+  def ui_badge(label), do: ui_badge(label, [])
+  def ui_badge(opts, do: contents), do: ui_badge(contents, opts)
 
   def ui_badge(label, opts) do
     opts = opts |> put_default_variant() |> put_default_badge_class()
@@ -44,6 +55,7 @@ defmodule BitstylesPhoenix.Components.Badge do
         [opts[:e2e_classname], "a-badge u-h6 u-font--medium"] ++ variant_classes(opts[:variant])
       )
     )
+    |> Keyword.delete(:variant)
   end
 
   defp put_default_variant(opts) do
