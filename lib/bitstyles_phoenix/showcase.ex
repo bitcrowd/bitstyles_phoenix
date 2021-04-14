@@ -25,9 +25,9 @@ defmodule BitstylesPhoenix.Showcase do
   defmacro showcase(name, code) do
     docs = """
     ### #{name}
-
-        #{String.trim(code)}
-
+    ```
+    #{code}
+    ```
     #{sandbox(code)}
 
     """

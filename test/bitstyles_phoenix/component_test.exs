@@ -4,7 +4,8 @@ defmodule BitstylesPhoenix.ComponentTest do
   use BitstylesPhoenix.Components
 
   doctest BitstylesPhoenix.Components.Button
+  doctest BitstylesPhoenix.Components.Error
+  doctest BitstylesPhoenix.Components.Flash
   doctest BitstylesPhoenix.Components.Icon
   doctest BitstylesPhoenix.Components.Time
-  doctest BitstylesPhoenix.Components.Error
 end
