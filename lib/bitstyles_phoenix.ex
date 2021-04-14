@@ -52,7 +52,7 @@ defmodule BitstylesPhoenix do
   ui_flash("An error occured, please contact an admin", variant: "danger")
   """)
 
-  showcase("Danger", """
+  showcase("Block", """
   ui_flash(variant: "danger") do
     "An error occured, please contact an admin"
   end
@@ -61,14 +61,38 @@ defmodule BitstylesPhoenix do
   showcase_section("Icons", "Components.Icon.ui_icon/2")
 
   showcase("Icon", """
-    ui_icon("trashcan")
+  ui_icon("trashcan")
   """)
 
   showcase("Icon size: l", """
-    ui_icon("trashcan", size: "l")
+  ui_icon("trashcan", size: "l")
   """)
 
   showcase("Icon size: l, width: 40", """
-    ui_icon("trashcan", size: "l", width: "40", height: "40")
+  ui_icon("trashcan", size: "l", width: "40", height: "40")
+  """)
+
+  showcase_section("Badge", "Components.Badge.ui_badge/2")
+
+  showcase("Gray", """
+  ui_badge("Published")
+  """)
+
+  showcase("Brand-1", """
+  ui_badge("Published", variant: "brand-1")
+  """)
+
+  showcase("Brand-2", """
+  ui_badge("Published", variant: "brand-2")
+  """)
+
+  showcase("Danger", """
+  ui_badge("Deleted", variant: "danger")
+  """)
+
+  showcase("Block", """
+  ui_badge(variant: "danger") do
+    "Deleted"
+  end
   """)
 end
