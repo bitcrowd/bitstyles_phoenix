@@ -15,7 +15,7 @@ defmodule BitstylesPhoenix.MixProject do
       docs: [
         main: "BitstylesPhoenix",
         logo: "priv/logo.svg",
-        extras: ["README.md", "LICENSE.txt"]
+        extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"]
       ]
     ]
   end
