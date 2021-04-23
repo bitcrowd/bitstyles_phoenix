@@ -1,8 +1,13 @@
-defmodule BitstylesPhoenix.Components.Button do
+defmodule BitstylesPhoenix.Button do
+  import BitstylesPhoenix.Showcase
   use Phoenix.HTML
   import Phoenix.HTML.Link, only: [link: 2]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
   import BitstylesPhoenix.Classnames
+
+  @moduledoc """
+  The Button component.
+  """
 
   @doc ~s"""
   Renders anchor or button elements that look like a button — using the `a-button` classes. It accepts similar parameters to
@@ -15,30 +20,45 @@ defmodule BitstylesPhoenix.Components.Button do
   All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
 
   See the [bitstyles button docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-buttons-buttons--page) for available button variants.
+  """
 
-  ## Examples
-
+  story("Default submit button", """
       iex> safe_to_string ui_button("Save", type: "submit")
       ~s(<button class="a-button" type="submit">Save</button>)
+  """)
 
+  story("Default submit button with custom classes", """
       iex> safe_to_string ui_button("Save", type: "submit", class: "foo bar")
       ~s(<button class="a-button foo bar" type="submit">Save</button>)
+  """)
 
+  story("UI button", """
       iex> safe_to_string ui_button("Save", type: "submit", variant: :ui)
       ~s(<button class="a-button a-button--ui" type="submit">Save</button>)
+  """)
 
-      iex> safe_to_string ui_button("Save", type: "submit", variant: [:ui, :danger], class: "foo")
-      ~s(<button class="a-button a-button--ui a-button--danger foo" type="submit">Save</button>)
+  story("Dangerous button", """
+      iex> safe_to_string ui_button("Save", type: "submit", variant: :danger)
+      ~s(<button class="a-button a-button--danger" type="submit">Save</button>)
+  """)
 
-      iex> safe_to_string ui_button("Click me", variant: "danger", type: "reset")
-      ~s(<button class="a-button a-button--danger" type="reset">Click me</button>)
+  story("Combine variants", """
+      iex> safe_to_string ui_button("Save", type: "submit", variant: [:ui, :danger])
+      ~s(<button class="a-button a-button--ui a-button--danger" type="submit">Save</button>)
+  """)
 
+  story("Pass along attributes to Phoenix helpers", """
       iex> safe_to_string ui_button("Show", to: "/admin/admin_accounts/id", data: [confirm: "Are you sure?"])
       ~s(<a class="a-button" data-confirm="Are you sure?" href="/admin/admin_accounts/id">Show</a>)
+  """)
 
-      iex> safe_to_string ui_button("Click me", variant: "ui", type: "submit", data: [confirm: "Are you sure?"])
-      ~s(<button class="a-button a-button--ui" data-confirm="Are you sure?" type="submit">Click me</button>)
-  """
+  story("Button with block content", """
+      iex> safe_to_string(ui_button(to: "/foo") do
+      ...>   "Save"
+      ...> end)
+      ~s(<a class="a-button" href="/foo">Save</a>)
+  """)
+
   def ui_button(opts, do: contents) do
     ui_button(contents, opts)
   end

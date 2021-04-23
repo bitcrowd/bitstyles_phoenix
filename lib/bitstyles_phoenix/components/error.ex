@@ -1,11 +1,11 @@
-defmodule BitstylesPhoenix.Components.Error do
-  @moduledoc """
-  Conveniences for translating and building error messages.
-  """
-
+defmodule BitstylesPhoenix.Error do
+  import BitstylesPhoenix.Showcase
   import Phoenix.HTML.Tag, only: [content_tag: 3]
-
   alias Phoenix.HTML.Form, as: PhxForm
+
+  @moduledoc """
+  Component for showing UI errors.
+  """
 
   @doc """
   Generates tag for inlined form input errors.
@@ -24,18 +24,23 @@ defmodule BitstylesPhoenix.Components.Error do
   When errors are given in tuples {error, error_opts} they are given to the `translate_errors` callback.
 
   The error will be rendered with the warning color, as specified in [bitstyles colors](https://bitcrowd.github.io/bitstyles/?path=/docs/utilities-fg--warning).
+  """
 
-  ## Examples
-
+  story("An error tag", """
       iex> safe_to_string ui_error_tag("Foo error")
       ~s(<span class="u-fg--warning">Foo error</span>)
+  """)
 
+  story("An error tag with a gettext tuple (processed by the default callback)", """
       iex> safe_to_string ui_error_tag({"Foo error", count: 1})
       ~s(<span class="u-fg--warning">Foo error</span>)
+  """)
 
+  story("An error tag with options", """
       iex> safe_to_string ui_error_tag("Foo error", phx_feedback_for: "foo")
       ~s(<span class="u-fg--warning" phx-feedback-for="foo">Foo error</span>)
-  """
+  """)
+
   def ui_error_tag(error) do
     ui_error_tag(error, [])
   end

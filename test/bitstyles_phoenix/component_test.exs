@@ -3,10 +3,10 @@ defmodule BitstylesPhoenix.ComponentTest do
   import Phoenix.HTML, only: [safe_to_string: 1]
   use BitstylesPhoenix.Components
 
-  doctest BitstylesPhoenix.Components.Button
-  doctest BitstylesPhoenix.Components.Error
-  doctest BitstylesPhoenix.Components.Flash
-  doctest BitstylesPhoenix.Components.Icon
-  doctest BitstylesPhoenix.Components.Time
-  doctest BitstylesPhoenix.Components.Badge
+  doctest BitstylesPhoenix.Badge
+  doctest BitstylesPhoenix.Button
+  doctest BitstylesPhoenix.Error
+  doctest BitstylesPhoenix.Flash
+  doctest BitstylesPhoenix.Icon
+  doctest BitstylesPhoenix.Time
 end

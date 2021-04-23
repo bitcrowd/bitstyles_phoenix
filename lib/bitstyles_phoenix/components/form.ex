@@ -1,6 +1,6 @@
-defmodule BitstylesPhoenix.Components.Form do
+defmodule BitstylesPhoenix.Form do
   import BitstylesPhoenix.Classnames
-  alias BitstylesPhoenix.Components.Error
+  alias BitstylesPhoenix.Error
   alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
