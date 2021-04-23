@@ -13,7 +13,7 @@ defmodule BitstylesPhoenix.MixProject do
       package: package(),
       source_url: "https://github.com/bitcrowd/bitstyles_phoenix",
       docs: [
-        main: "BitstylesPhoenix",
+        main: "readme",
         logo: "priv/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"]
       ]

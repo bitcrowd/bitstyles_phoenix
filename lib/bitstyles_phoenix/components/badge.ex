@@ -1,7 +1,12 @@
-defmodule BitstylesPhoenix.Components.Badge do
+defmodule BitstylesPhoenix.Badge do
   use Phoenix.HTML
   import Phoenix.HTML.Tag, only: [content_tag: 3]
   import BitstylesPhoenix.Classnames
+  import BitstylesPhoenix.Showcase
+
+  @moduledoc """
+  The Badge component.
+  """
 
   @doc ~s"""
   Renders an inline badge UI component — this could be any small text that you want highlighted, such as an item count or state indicator.
@@ -11,31 +16,46 @@ defmodule BitstylesPhoenix.Components.Badge do
   `opts[:e2e_classname]` — A classname that will be applied to the element for testing purposes, only on integration env
 
   See [bitstyles badge docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-badge--badge) for examples, and for the default variants available.
+  """
 
-  ## Examples
-
+  story("Default badge", """
       iex> safe_to_string ui_badge("published")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--gray">published</span>)
+  """)
 
+  story("Default badge with options", """
+      iex> safe_to_string ui_badge("published", class: "foo bar")
+      ~s(<span class="a-badge u-h6 u-font--medium a-badge--gray foo bar">published</span>)
+  """)
+
+  story("Brand 1 badge", """
       iex> safe_to_string ui_badge("published", variant: "brand-1")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--brand-1">published</span>)
+  """)
 
+  story("Brand 2 badge", """
       iex> safe_to_string ui_badge("published", variant: "brand-2")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--brand-2">published</span>)
+  """)
 
+  story("Dangerous badge", """
       iex> safe_to_string ui_badge("edited", variant: "danger")
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--danger">edited</span>)
+  """)
 
+  story("Default badge as a block", """
       iex> safe_to_string(ui_badge do
       ...>   "published"
       ...> end)
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--gray">published</span>)
+  """)
 
+  story("Badge as a block", """
       iex> safe_to_string(ui_badge(variant: "danger") do
       ...>   "published"
       ...> end)
       ~s(<span class="a-badge u-h6 u-font--medium a-badge--danger">published</span>)
-  """
+  """)
 
   def ui_badge(do: contents), do: ui_badge(contents, [])
   def ui_badge(label), do: ui_badge(label, [])
@@ -52,7 +72,8 @@ defmodule BitstylesPhoenix.Components.Badge do
     |> Keyword.put(
       :class,
       classnames(
-        [opts[:e2e_classname], "a-badge u-h6 u-font--medium"] ++ variant_classes(opts[:variant])
+        [opts[:e2e_classname], "a-badge u-h6 u-font--medium"] ++
+          variant_classes(opts[:variant]) ++ [opts[:class]]
       )
     )
     |> Keyword.delete(:variant)
