@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.3.0
+
 ### Changes
 * Examples and showcases are now inlined and doctested, to assure they won't break and to be more scalable for more components.
 * Restructured top level module doc
