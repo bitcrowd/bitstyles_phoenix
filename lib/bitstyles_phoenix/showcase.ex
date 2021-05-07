@@ -4,7 +4,7 @@ defmodule BitstylesPhoenix.Showcase do
 
   @doctest_entries ["iex>", "...>"]
 
-  defmacro story(name, example) do
+  defmacro story(name, example, opts \\ []) do
     code =
       example
       |> String.split("\n")
@@ -15,17 +15,34 @@ defmodule BitstylesPhoenix.Showcase do
     storydoc = """
     ## #{name}
 
-    #{sandbox(code)}
+    #{sandbox(code, opts)}
 
     #{example}
     """
+
+    extra_html = Keyword.get(opts, :extra_html)
+
+    storydoc =
+      if extra_html && Keyword.get(opts, :show_extra_html, true) do
+        storydoc <>
+          """
+          *Requires additional content on the page:*
+
+          ```
+          #{extra_html}
+          ```
+          """
+      else
+        storydoc
+      end
 
     quote do
       @doc @doc <> unquote(storydoc)
     end
   end
 
-  defp sandbox(code) do
+  defp sandbox(code, opts) do
+    extra_html = Keyword.get(opts, :extra_html, "")
     dist = Application.get_env(:bitstyles_phoenix, :bitstyles_dist)
     {result, _} = Code.eval_string(code)
 
@@ -33,9 +50,9 @@ defmodule BitstylesPhoenix.Showcase do
       safe_to_string(
         content_tag(:iframe, "",
           srcdoc:
-            ~s(<html style="background-color: transparent;"><head><link rel="stylesheet" href="#{
+            ~s(<html style="background-color: transparent;"><head><style>@media (prefers-color-scheme: dark\){body{color: #fff;}}</style><link rel="stylesheet" href="#{
               dist
-            }"></head><body>#{result}</body></html>),
+            }/build/bitstyles.css"></head><body>#{extra_html |> String.replace("\n", "")}#{result}</body></html>),
           # https://stackoverflow.com/questions/819416/adjust-width-and-height-of-iframe-to-fit-with-content-in-it
           onload:
             "javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+\"px\";}(this));",
