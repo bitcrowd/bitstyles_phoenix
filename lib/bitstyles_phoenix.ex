@@ -52,6 +52,12 @@ defmodule BitstylesPhoenix do
     ui_flash("An error occured, please contact an admin", variant: "danger")
   """)
 
+  showcase("Do", """
+    ui_flash(variant: "danger") do
+      content_tag(:span, "test")
+    end
+  """)
+
   showcase_section("Icons", "Components.Icon.ui_icon/2")
 
   showcase("Icon", """

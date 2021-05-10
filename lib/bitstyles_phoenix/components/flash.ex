@@ -26,7 +26,6 @@ defmodule BitstylesPhoenix.Components.Flash do
 
       iex> safe_to_string ui_flash("Saved successfully", variant: "danger")
       ~s(<div aria-live="polite" class="u-padding-l--y a-flash a-flash--danger"><div class="a-content u-flex u-items-center u-font--medium">Saved successfully</div></div>)
-
   """
   def ui_flash(opts, do: contents) do
     ui_flash(contents, opts)
