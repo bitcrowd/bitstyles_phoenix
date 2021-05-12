@@ -14,6 +14,7 @@ defmodule BitstylesPhoenix.MixProject do
       source_url: "https://github.com/bitcrowd/bitstyles_phoenix",
       docs: [
         main: "readme",
+        assets: "assets",
         logo: "priv/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"]
       ]
