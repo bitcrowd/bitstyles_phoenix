@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v0.4.0
+
+### Added 
+* `BitstylesPhoenix.UseSVG.ui_svg/2` to display inline svg references with `<use>` tags and support for external SVGs.
+* Make `BitstylesPhoenix.Icon.ui_icon/2` use `ui_svg` internally to support the `external` option.
+
+### Fixes
+* Fix icons in docs for `BitstylesPhoenix.Icon.ui_icon/2`.
+
 ## v0.3.0
 
 ### Changes
