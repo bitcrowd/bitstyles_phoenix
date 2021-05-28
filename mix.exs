@@ -1,6 +1,17 @@
 defmodule BitstylesPhoenix.MixProject do
   use Mix.Project
 
+  @components [
+    BitstylesPhoenix.Badge,
+    BitstylesPhoenix.Button,
+    BitstylesPhoenix.Error,
+    BitstylesPhoenix.Flash,
+    BitstylesPhoenix.Form,
+    BitstylesPhoenix.Icon,
+    BitstylesPhoenix.Time,
+    BitstylesPhoenix.UseSVG
+  ]
+
   def project do
     [
       app: :bitstyles_phoenix,
@@ -13,10 +24,16 @@ defmodule BitstylesPhoenix.MixProject do
       package: package(),
       source_url: "https://github.com/bitcrowd/bitstyles_phoenix",
       docs: [
-        main: "readme",
+        main: "BitstylesPhoenix",
         assets: "assets",
         logo: "priv/logo.svg",
-        extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"]
+        extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
+        groups_for_modules: [
+          Components: @components,
+          Helpers: [
+            BitstylesPhoenix.Classnames
+          ]
+        ]
       ]
     ]
   end
@@ -51,4 +68,6 @@ defmodule BitstylesPhoenix.MixProject do
       }
     ]
   end
+
+  def bitstyles_phoenix_components, do: @components
 end

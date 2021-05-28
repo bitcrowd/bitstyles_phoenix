@@ -1,4 +1,6 @@
 defmodule BitstylesPhoenix.Showcase do
+  @moduledoc false
+
   import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
