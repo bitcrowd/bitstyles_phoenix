@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Added
+* Better documentation for form helpers
+
+### Breaking/Bugfix
+* Do not forward options from form helpers to each `label` anymore, but instead pass options through `label_opts`.
+* Drop `hidden` and `reset` input types for `ui_input`.
+
 ## v0.4.0
 
 ### Added 
