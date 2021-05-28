@@ -1,5 +1,6 @@
 defmodule BitstylesPhoenix.Error do
   import BitstylesPhoenix.Showcase
+  import Phoenix.HTML, only: [sigil_E: 2]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
   alias Phoenix.HTML.Form, as: PhxForm
 
@@ -12,10 +13,48 @@ defmodule BitstylesPhoenix.Error do
 
   Uses the `translate_errors` callback to translate field errors.
   """
+
+  story("A single error", """
+      iex> safe_to_string ui_errors(@error_form, :single)
+      ~s(<span class="u-fg--warning" phx-feedback-for="user_single">is too short</span>)
+  """)
+
+  story("Multiple errors", """
+      iex> safe_to_string ui_errors(@error_form, :multiple)
+      ~s(<ul>
+        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li>
+        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">not fun</span></li>
+      </ul>
+      )
+  """)
+
+  def ui_errors(form, field) do
+    errors = Keyword.get_values(form.errors, field)
+
+    case errors do
+      [] ->
+        ""
+
+      [error] ->
+        ui_error(form, field, error)
+
+      errors ->
+        ~E"""
+        <ul><%= for error <- errors do %>
+          <li><%= ui_error(form, field, error) %></li><% end %>
+        </ul>
+        """
+    end
+  end
+
+  @doc false
+  @deprecated "Use ui_errors/2 instead"
   def ui_error(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      ui_error_tag(error, phx_feedback_for: PhxForm.input_id(form, field))
-    end)
+    ui_errors(form, field)
+  end
+
+  defp ui_error(form, field, error) do
+    ui_error_tag(error, phx_feedback_for: PhxForm.input_id(form, field))
   end
 
   @doc """
