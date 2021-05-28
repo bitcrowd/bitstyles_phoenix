@@ -1,13 +1,13 @@
 defmodule BitstylesPhoenix.Components do
+  @moduledoc """
+  Shortcut usage macro to import all components at once, see `BitstylesPhoenix`.
+  """
+
   defmacro __using__(_) do
-    quote do
-      import BitstylesPhoenix.Badge
-      import BitstylesPhoenix.Button
-      import BitstylesPhoenix.Error
-      import BitstylesPhoenix.Flash
-      import BitstylesPhoenix.Form
-      import BitstylesPhoenix.Icon
-      import BitstylesPhoenix.Time
+    for c <- BitstylesPhoenix.MixProject.bitstyles_phoenix_components() do
+      quote do
+        import unquote(c)
+      end
     end
   end
 end

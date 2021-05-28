@@ -8,20 +8,29 @@ defmodule BitstylesPhoenix do
 
   ## Usage
 
-  Use by either `use BitstylesPhoenix.Componets` or importing the components individually.
+  Use by either `BitstylesPhoenix.Components` or importing the components individually.
 
-  With both methods you get `ui_*` helpers from the components usable in your views.
+  ```elixir
+    use BitstylesPhoenix.Components
 
-  ## Components
+    # or
+
+    import BitstylesPhoenix.Button
+  ```
+
+  Then call the `ui_*` helpers from the components usable in your views.
+
+  ```elixir
+  ui_button("Save", type: "submit")
+  # => <button class="a-button" type="submit">Save</button>
+  ```
 
   Checkout the components for examples and showcases.
 
-  - `BitstylesPhoenix.Badge`
-  - `BitstylesPhoenix.Button`
-  - `BitstylesPhoenix.Error`
-  - `BitstylesPhoenix.Flash`
-  - `BitstylesPhoenix.Form`
-  - `BitstylesPhoenix.Icon`
-  - `BitstylesPhoenix.Time`
+  #{
+    BitstylesPhoenix.MixProject.bitstyles_phoenix_components()
+    |> Enum.map(&"- `#{Module.split(&1) |> Enum.join(".")}`")
+    |> Enum.join("\n")
+  }
   """
 end

@@ -51,12 +51,6 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/bitstyles_phoenix](https://hexdocs.pm/bitstyles_phoenix).
 
-To live update the documentation when you change the `lib` folder you can do:
-```sh
-mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
-```
-
-
 ## Configuration
 
 ```elixir
@@ -64,4 +58,11 @@ mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 config :bitstyles_phoenix,
   trim_e2e_classes: true # In case you want to disable the trimming in certain environments
   translate_errors: {ExampleWeb.ErrorHelper, :translate_errors, []} # In case you want to translate errors via gettext etc.
+```
+
+## Developing bitstyles_phoenix
+
+To live update the documentation when you change the `lib` folder you can do:
+```sh
+mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 ```
