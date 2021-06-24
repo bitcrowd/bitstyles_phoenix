@@ -7,7 +7,6 @@ defmodule BitstylesPhoenix.ComponentsTest do
 
   doctest BitstylesPhoenix.Badge
   doctest BitstylesPhoenix.Button
-  doctest BitstylesPhoenix.Error
   doctest BitstylesPhoenix.Flash
   doctest BitstylesPhoenix.Icon
   doctest BitstylesPhoenix.Time
