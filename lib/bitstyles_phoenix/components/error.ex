@@ -21,7 +21,7 @@ defmodule BitstylesPhoenix.Error do
 
   story("Multiple errors", """
       iex> safe_to_string ui_errors(@error_form, :multiple)
-      ~s(<ul>
+      ~s(<ul class="u-padding-l-left u-fg--warning">
         <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li>
         <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">not fun</span></li>
       </ul>
@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Error do
 
       errors ->
         ~E"""
-        <ul><%= for error <- errors do %>
+        <ul class="u-padding-l-left u-fg--warning"><%= for error <- errors do %>
           <li><%= ui_error(form, field, error) %></li><% end %>
         </ul>
         """
