@@ -12,7 +12,7 @@
 * Do not forward options from form helpers to each `label` anymore, but instead pass options through `label_opts`.
 * Drop `hidden` and `reset` input types for `ui_input`.
 
-### Depreactions
+### Deprecations
 * deprecated `ui_error/2` in favour of the new `ui_errors/2`
 
 ## v0.4.0
