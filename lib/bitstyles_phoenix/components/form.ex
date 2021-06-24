@@ -63,7 +63,7 @@ defmodule BitstylesPhoenix.Form do
 
   story("Text field with multiple errors", """
       iex> safe_to_string ui_input(@error_form, :email)
-      ~s(<label for="user_email">Email</label><input id="user_email" maxlength="255" name="user[email]" type="text"><ul>
+      ~s(<label for="user_email">Email</label><input id="user_email" maxlength="255" name="user[email]" type="text"><ul class=\"u-padding-l-left u-fg--warning\">
         <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_email\">is invalid</span></li>
         <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_email\">must end with @bitcrowd.net</span></li>
       </ul>
