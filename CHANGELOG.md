@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.5.0
+
 ### Added
 * Better documentation for form helpers
 
