@@ -30,8 +30,8 @@ defmodule BitstylesPhoenix.UseSVG do
   story(
     "A referenced SVG (external)",
     """
-        iex> safe_to_string ui_svg("logo", external: "assets/icons.svg")
-        ~s(<svg xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/icons.svg#logo"></svg>)
+        iex> safe_to_string ui_svg("icon-bin", external: "assets/icons.svg")
+        ~s(<svg xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/icons.svg#icon-bin"></svg>)
     """,
     background: "white"
   )
