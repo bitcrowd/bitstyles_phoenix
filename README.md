@@ -20,7 +20,7 @@ The package can be installed by adding `bitstyles_phoenix` to your list of depen
 ```elixir
 def deps do
   [
-    {:bitstyles_phoenix, "~> 0.5.0"}
+    {:bitstyles_phoenix, "~> 0.5.1"}
   ]
 end
 ```
@@ -63,6 +63,7 @@ config :bitstyles_phoenix,
 ## Developing bitstyles_phoenix
 
 To live update the documentation when you change the `lib` folder you can do:
+
 ```sh
 mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 ```
