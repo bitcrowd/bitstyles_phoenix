@@ -4,7 +4,7 @@ defmodule BitstylesPhoenix.Components do
   """
 
   defmacro __using__(_) do
-    for c <- BitstylesPhoenix.MixProject.bitstyles_phoenix_components() do
+    for c <- BitstylesPhoenix.components() do
       quote do
         import unquote(c)
       end
