@@ -68,6 +68,4 @@ defmodule BitstylesPhoenix.MixProject do
       }
     ]
   end
-
-  def bitstyles_phoenix_components, do: @components
 end
