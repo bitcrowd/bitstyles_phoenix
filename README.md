@@ -6,7 +6,7 @@
 [![CircleCI](https://circleci.com/gh/bitcrowd/bitstyles_phoenix.svg?style=shield)](https://circleci.com/gh/bitcrowd/bitstyles_phoenix)
 
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
-Currently made for version 1.0.6 of bitstyles. Future versions might still work, since
+Currently made for version 1.5.0 of bitstyles. Future versions might still work, since
 the common interface is just CSS classes. Feel free to drop PRs if you notice any inconsistencies with new versions.
 
 ## Requirements
@@ -20,7 +20,7 @@ The package can be installed by adding `bitstyles_phoenix` to your list of depen
 ```elixir
 def deps do
   [
-    {:bitstyles_phoenix, "~> 0.5.1"}
+    {:bitstyles_phoenix, "~> 0.6.0"}
   ]
 end
 ```
