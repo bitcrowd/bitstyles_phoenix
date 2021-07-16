@@ -4,6 +4,10 @@
 
 ## v0.6.0
 
+### Changed
+
+- Updated dependencies
+
 ### Breaking
 
 - Update to bitstyles 1.5.0 (Update flash component padding)
