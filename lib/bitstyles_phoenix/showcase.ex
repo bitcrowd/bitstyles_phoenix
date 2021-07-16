@@ -52,11 +52,7 @@ defmodule BitstylesPhoenix.Showcase do
       safe_to_string(
         content_tag(:iframe, "",
           srcdoc:
-            ~s(<html style="background-color: transparent;"><head><style>@media (prefers-color-scheme: dark\){body{color: #fff;}}</style><link rel="stylesheet" href="#{
-              dist
-            }/build/bitstyles.css"></head><body>#{
-              Enum.join([extra_html, result]) |> String.replace("\n", "")
-            }</body></html>),
+            ~s(<html style="background-color: transparent;"><head><style>@media (prefers-color-scheme: dark\){body{color: #fff;}}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result]) |> String.replace("\n", "")}</body></html>),
           # https://stackoverflow.com/questions/819416/adjust-width-and-height-of-iframe-to-fit-with-content-in-it
           onload:
             "javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+\"px\";}(this));",

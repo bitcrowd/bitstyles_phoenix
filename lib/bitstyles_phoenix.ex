@@ -38,11 +38,7 @@ defmodule BitstylesPhoenix do
 
   Checkout the components for examples and showcases.
 
-  #{
-    @components
-    |> Enum.map(&"- `#{Module.split(&1) |> Enum.join(".")}`")
-    |> Enum.join("\n")
-  }
+  #{@components |> Enum.map(&"- `#{Module.split(&1) |> Enum.join(".")}`") |> Enum.join("\n")}
   """
 
   @doc false
