@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.7.0
+
+- Added for `link_fn` option in `button_ui` to support LiveView's `live_path`/`live_redirect`
+
 ## v0.6.0
 
 ### Changed
