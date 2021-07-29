@@ -14,7 +14,13 @@ defmodule BitstylesPhoenix.Button do
   `Phoenix.HTML.Link.button/2`, with the following additional notes:
 
   `opts[:to]` — if there’s a `to` parameter, you’ll get an anchor element, otherwise a button element.
+    
+  `opts[:link_fn]` — Overrides the function used to generate the anchor element, when `opts[:to]` is provided.
+      By default, the anchor element will be generated with `Phoenix.HTML.Link.link/2`. 
+      `link_fn` must be a function of arity 2, accepting a text and opts as argument.
+
   `opts[:variant]` — specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
+
   `opts[:e2e_classname]` — A classname that will be applied to the element for testing purposes, only on integration env
 
   All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
@@ -59,6 +65,14 @@ defmodule BitstylesPhoenix.Button do
       ~s(<a class="a-button" href="/foo">Save</a>)
   """)
 
+  story("Button with a custom link function", """
+      iex> defmodule CustomLink do
+      ...>   def link(text, opts), do: Phoenix.HTML.Tag.content_tag(:a, text, href: opts[:to])
+      ...> end
+      iex> safe_to_string ui_button("Show", to: "/foo", link_fn: &CustomLink.link/2)
+      ~s(<a href=\"/foo\">Show</a>)
+  """)
+
   def ui_button(opts, do: contents) do
     ui_button(contents, opts)
   end
@@ -67,7 +81,8 @@ defmodule BitstylesPhoenix.Button do
     opts = opts |> put_default_button_class()
 
     if opts[:to] do
-      link(label, opts)
+      link_fn = Keyword.get(opts, :link_fn, &link/2)
+      link_fn.(label, opts)
     else
       opts = opts |> put_default_type()
       content_tag(:button, label, opts)
