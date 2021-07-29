@@ -4,7 +4,7 @@
 
 ## v0.7.0
 
-- Added `link_fn` option in `button_ui` to support LiveView's `live_patch`/`live_redirect`
+- Added `link_fn` option in `ui_button` to support LiveView's `live_patch`/`live_redirect`
 
 ## v0.6.0
 
