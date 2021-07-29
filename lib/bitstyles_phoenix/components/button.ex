@@ -16,8 +16,10 @@ defmodule BitstylesPhoenix.Button do
   `opts[:to]` — if there’s a `to` parameter, you’ll get an anchor element, otherwise a button element.
     
   `opts[:link_fn]` — Overrides the function used to generate the anchor element, when `opts[:to]` is provided.
-      By default, the anchor element will be generated with `Phoenix.HTML.Link.link/2`. 
-      `link_fn` must be a function of arity 2, accepting a text and opts as argument.
+    By default, the anchor element will be generated with `Phoenix.HTML.Link.link/2`. 
+    `link_fn` must be a function of arity 2, accepting a text and opts as argument.
+    For example, one could pass Phoenix LiveView's [`live_redirect/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#live_redirect/2)
+    or [`live_patch/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#live_patch/2).
 
   `opts[:variant]` — specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
 
@@ -67,10 +69,10 @@ defmodule BitstylesPhoenix.Button do
 
   story("Button with a custom link function", """
       iex> defmodule CustomLink do
-      ...>   def link(text, opts), do: Phoenix.HTML.Tag.content_tag(:a, text, href: opts[:to])
+      ...>   def link(text, opts), do: Phoenix.HTML.Tag.content_tag(:a, text, href: opts[:to], class: opts[:class])
       ...> end
       iex> safe_to_string ui_button("Show", to: "/foo", link_fn: &CustomLink.link/2)
-      ~s(<a href=\"/foo\">Show</a>)
+      ~s(<a class="a-button" href=\"/foo\">Show</a>)
   """)
 
   def ui_button(opts, do: contents) do
@@ -81,7 +83,7 @@ defmodule BitstylesPhoenix.Button do
     opts = opts |> put_default_button_class()
 
     if opts[:to] do
-      link_fn = Keyword.get(opts, :link_fn, &link/2)
+      {link_fn, opts} = Keyword.pop(opts, :link_fn, &link/2)
       link_fn.(label, opts)
     else
       opts = opts |> put_default_type()
