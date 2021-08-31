@@ -58,14 +58,14 @@ defmodule BitstylesPhoenix.Form do
 
   story("Text field with error", """
       iex> safe_to_string ui_input(@error_form, :name)
-      ~s(<label for="user_name">Name</label><input id="user_name" maxlength="255" name="user[name]" type="text"><span class="u-fg--warning" phx-feedback-for="user_name">is too short</span>)
+      ~s(<label for="user_name">Name</label><input id="user_name" maxlength="255" name="user[name]" type="text"><span class="u-fg-warning" phx-feedback-for="user_name">is too short</span>)
   """)
 
   story("Text field with multiple errors", """
       iex> safe_to_string ui_input(@error_form, :email)
-      ~s(<label for="user_email">Email</label><input id="user_email" maxlength="255" name="user[email]" type="text"><ul class=\"u-padding-l-left u-fg--warning\">
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_email\">is invalid</span></li>
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_email\">must end with @bitcrowd.net</span></li>
+      ~s(<label for="user_email">Email</label><input id="user_email" maxlength="255" name="user[email]" type="text"><ul class=\"u-padding-l-left u-fg-warning\">
+        <li><span class=\"u-fg-warning\" phx-feedback-for=\"user_email\">is invalid</span></li>
+        <li><span class=\"u-fg-warning\" phx-feedback-for=\"user_email\">must end with @bitcrowd.net</span></li>
       </ul>
       )
   """)
