@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## v0.8.0
+
+### Changed
+
+- Updated `phoenix_html` dependency to `~> 3`. See [its changelog](https://github.com/phoenixframework/phoenix_html/blob/master/CHANGELOG.md) for backwards incompatible changes.
 
 ## v0.7.0
 
