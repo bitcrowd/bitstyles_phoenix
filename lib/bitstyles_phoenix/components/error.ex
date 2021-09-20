@@ -16,14 +16,14 @@ defmodule BitstylesPhoenix.Error do
 
   story("A single error", """
       iex> safe_to_string ui_errors(@error_form, :single)
-      ~s(<span class="u-fg--warning" phx-feedback-for="user_single">is too short</span>)
+      ~s(<span class="u-fg-warning" phx-feedback-for="user_single">is too short</span>)
   """)
 
   story("Multiple errors", """
       iex> safe_to_string ui_errors(@error_form, :multiple)
-      ~s(<ul class=\"u-padding-l-left u-fg--warning\">
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li>
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">not fun</span></li>
+      ~s(<ul class=\"u-padding-l-left u-fg-warning\">
+        <li><span class=\"u-fg-warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li>
+        <li><span class=\"u-fg-warning\" phx-feedback-for=\"user_multiple\">not fun</span></li>
       </ul>
       )
   """)
@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Error do
 
       errors ->
         ~E"""
-        <ul class="u-padding-l-left u-fg--warning"><%= for error <- errors do %>
+        <ul class="u-padding-l-left u-fg-warning"><%= for error <- errors do %>
           <li><%= ui_error(form, field, error) %></li><% end %>
         </ul>
         """
@@ -67,17 +67,17 @@ defmodule BitstylesPhoenix.Error do
 
   story("An error tag", """
       iex> safe_to_string ui_error_tag("Foo error")
-      ~s(<span class="u-fg--warning">Foo error</span>)
+      ~s(<span class="u-fg-warning">Foo error</span>)
   """)
 
   story("An error tag with a gettext tuple (processed by the default callback)", """
       iex> safe_to_string ui_error_tag({"Foo error", count: 1})
-      ~s(<span class="u-fg--warning">Foo error</span>)
+      ~s(<span class="u-fg-warning">Foo error</span>)
   """)
 
   story("An error tag with options", """
       iex> safe_to_string ui_error_tag("Foo error", phx_feedback_for: "foo")
-      ~s(<span class="u-fg--warning" phx-feedback-for="foo">Foo error</span>)
+      ~s(<span class="u-fg-warning" phx-feedback-for="foo">Foo error</span>)
   """)
 
   def ui_error_tag(error) do
@@ -89,7 +89,7 @@ defmodule BitstylesPhoenix.Error do
   end
 
   def ui_error_tag(error, opts) do
-    content_tag(:span, error, Keyword.merge(opts, class: "u-fg--warning"))
+    content_tag(:span, error, Keyword.merge(opts, class: "u-fg-warning"))
   end
 
   defp translate_error(error) do
