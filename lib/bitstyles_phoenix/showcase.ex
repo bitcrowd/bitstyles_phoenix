@@ -9,6 +9,7 @@ defmodule BitstylesPhoenix.Showcase do
   defmacro story(name, example, opts \\ []) do
     code =
       example
+      |> to_string()
       |> String.split("\n")
       |> Enum.map(&String.trim/1)
       |> Enum.reject(fn line -> Enum.any?(@doctest_entries, &String.starts_with?(line, &1)) end)
