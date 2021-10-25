@@ -77,7 +77,7 @@ defmodule BitstylesPhoenix.Form do
 
   story("Text field with options", """
       iex> safe_to_string ui_input @user_form, :totp, label: "Authentication code", placeholder: "6-digit code", required: true, value: "", inputmode: "numeric", pattern: "[0-9]*", autocomplete: "one-time-code", maxlength: 6, label_opts: [class: "extra"]
-      ~s(<label class="extra" for="user_totp">Authentication code</label><input autocomplete="one-time-code" id="user_totp" inputmode="numeric" maxlength="6" name="user[totp]" pattern="[0-9]*" placeholder="6-digit code" type="text" value="" required>)
+      ~s(<label class="extra" for="user_totp">Authentication code</label><input autocomplete="one-time-code" id="user_totp" inputmode="numeric" maxlength="6" name="user[totp]" pattern="[0-9]*" placeholder="6-digit code" required type="text" value="">)
   """)
 
   story("Email field with label", """
@@ -87,7 +87,7 @@ defmodule BitstylesPhoenix.Form do
 
   story("Search field with placholder", """
       iex> safe_to_string ui_input(@user_form, :email_or_name, type: :search, placeholder: "Search by email or name", autofocus: true)
-      ~s(<label for="user_email_or_name">Email or name</label><input id="user_email_or_name" name="user[email_or_name]" placeholder="Search by email or name" type="search" autofocus>)
+      ~s(<label for="user_email_or_name">Email or name</label><input autofocus id="user_email_or_name" name="user[email_or_name]" placeholder="Search by email or name" type="search">)
   """)
 
   story("File field for pdfs", """

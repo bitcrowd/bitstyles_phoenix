@@ -1,6 +1,6 @@
 import Config
 
-config :bitstyles_phoenix, :trim_e2e_classes, true
+config :bitstyles_phoenix, :trim_e2e_classes, enabled: true
 
 config :bitstyles_phoenix,
        :bitstyles_dist,

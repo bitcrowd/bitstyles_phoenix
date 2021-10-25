@@ -1,7 +1,5 @@
 defmodule BitstylesPhoenix.Flash do
-  import Phoenix.LiveView.Helpers
-  import BitstylesPhoenix.Classnames
-  import BitstylesPhoenix.Showcase
+  use BitstylesPhoenix.Component
 
   @moduledoc """
   Component for building flash messages.
@@ -12,68 +10,110 @@ defmodule BitstylesPhoenix.Flash do
 
   See [https://bitcrowd.github.io/bitstyles/?path=/docs/ui-flashes--flash-brand-1](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-flashes--flash-brand-1)
 
-  - *variant* - specifies which visual variant of flash you want, from those available in CSS. Defaults include: `brand-1`, `warning`, `info`, `danger`
-
+  - `variant` - specifies which visual variant of flash you want, from those available in CSS. Defaults include: `brand-1`, `warning`, `info`, `danger`
+  - `class` - set CSS classes on the wrapper div
+  - `content_class` - set CSS classes on the content div
   """
 
   story("Flash brand 1", '''
       iex> assigns = %{}
-      iex> ~H"""
-      ...> <.ui_flash variant="brand-1">Something you may be interested to hear</.ui_flash>
-      ...> """ |> h2s()
-      ~s(<div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
+      iex> render(~H"""
+      ...>   <.ui_flash variant="brand-1">
+      ...>     Something you may be interested to hear
+      ...>   </.ui_flash>
+      ...> """)
+      """
+      <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
         <div class="a-content u-flex u-items-center u-font--medium">
           Something you may be interested to hear
         </div>
-      </div>)
+      </div>
+      """
   ''')
 
-  # story("Flash success", """
-  #     iex> safe_to_string ui_flash("Saved successfully", variant: "positive")
-  #     ~s(<div aria-live="polite" class="u-padding-l-y a-flash a-flash--positive"><div class="a-content u-flex u-items-center u-font--medium">Saved successfully</div></div>)
-  # """)
+  story("Flash success", '''
+      iex> assigns = %{}
+      iex> render(~H"""
+      ...>   <.ui_flash variant="positive">
+      ...>     Saved successfully
+      ...>   </.ui_flash>
+      ...> """)
+      """
+      <div aria-live="polite" class="u-padding-l-y a-flash a-flash--positive">
+        <div class="a-content u-flex u-items-center u-font--medium">
+          Saved successfully
+        </div>
+      </div>
+      """
+  ''')
 
-  # story("Flash warning", """
-  #     iex> safe_to_string ui_flash("Saved successfully", variant: "warning")
-  #     ~s(<div aria-live="polite" class="u-padding-l-y a-flash a-flash--warning"><div class="a-content u-flex u-items-center u-font--medium">Saved successfully</div></div>)
-  # """)
+  story("Flash warning", '''
+      iex> assigns = %{}
+      iex> render(~H"""
+      ...>   <.ui_flash variant="warning">
+      ...>     Saved with errors
+      ...>   </.ui_flash>
+      ...> """)
+      """
+      <div aria-live="polite" class="u-padding-l-y a-flash a-flash--warning">
+        <div class="a-content u-flex u-items-center u-font--medium">
+          Saved with errors
+        </div>
+      </div>
+      """
+  ''')
 
-  # story("Flash danger", """
-  #     iex> safe_to_string ui_flash("Saved successfully", variant: "danger")
-  #     ~s(<div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger"><div class="a-content u-flex u-items-center u-font--medium">Saved successfully</div></div>)
-  # """)
+  story("Flash danger", '''
+      iex> assigns = %{}
+      iex> render(~H"""
+      ...>   <.ui_flash variant="danger">
+      ...>     Saving failed
+      ...>   </.ui_flash>
+      ...> """)
+      """
+      <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger">
+        <div class="a-content u-flex u-items-center u-font--medium">
+          Saving failed
+        </div>
+      </div>
+      """
+  ''')
 
-  # story("Flash with a block", """
-  #     iex> safe_to_string(ui_flash(variant: "danger") do
-  #     ...>   "Saved successfully"
-  #     ...> end)
-  #     ~s(<div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger"><div class="a-content u-flex u-items-center u-font--medium">Saved successfully</div></div>)
-  # """)
+  story("Custom attributes and classes", '''
+      iex> assigns = %{}
+      iex> render(~H"""
+      ...>   <.ui_flash variant="brand-1" data-foo="bar" class="extra-class" content_class="extra-inner-class">
+      ...>     Saving failed
+      ...>   </.ui_flash>
+      ...> """)
+      """
+      <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1 extra-class" data-foo="bar">
+        <div class="a-content u-flex u-items-center u-font--medium extra-inner-class">
+          Saving failed
+        </div>
+      </div>
+      """
+  ''')
 
   def ui_flash(assigns) do
     variant = assigns[:variant]
 
-    classname =
+    class =
       classnames([
         "u-padding-l-y a-flash",
         {"a-flash--#{variant}", variant != nil},
         assigns[:class]
       ])
 
-    inner_classname =
-      classnames(["a-content u-flex u-items-center u-font--medium", assigns[:inner_class]])
+    content_class =
+      classnames(["a-content u-flex u-items-center u-font--medium", assigns[:content_class]])
 
-    extra = assigns_to_attributes(assigns, [:class, :inner_class, :variant])
-
-    assigns =
-      assigns
-      |> Phoenix.LiveView.assign(:classname, classname)
-      |> Phoenix.LiveView.assign(:inner_classname, inner_classname)
-      |> Phoenix.LiveView.assign(:extra, extra)
+    extra = assigns_to_attributes(assigns, [:class, :content_class, :variant])
+    assigns = assign(assigns, class: class, content_class: content_class, extra: extra)
 
     ~H"""
-    <div aria-live="polite" class={@classname} {@extra}>
-      <div class={inner_classname}>
+    <div aria-live="polite" class={@class} {@extra}>
+      <div class={@content_class}>
         <%= render_slot(@inner_block) %>
       </div>
     </div>
