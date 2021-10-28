@@ -1,9 +1,6 @@
 defmodule BitstylesPhoenix.FormTest do
-  use ExUnit.Case
+  use BitstylesPhoenix.ComponentCase
 
-  import BitstylesPhoenix.Form
-
-  import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Form
 
   @user_form form_for(:user, "/")

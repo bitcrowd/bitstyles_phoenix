@@ -43,4 +43,12 @@ defmodule BitstylesPhoenix do
 
   @doc false
   def components(), do: @components
+
+  defmacro __using__(_) do
+    for c <- @components do
+      quote do
+        import unquote(c)
+      end
+    end
+  end
 end

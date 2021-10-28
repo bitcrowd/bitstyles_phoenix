@@ -1,8 +1,6 @@
 defmodule BitstylesPhoenix.ErrorTest do
-  use ExUnit.Case
+  use BitstylesPhoenix.ComponentCase
 
-  import BitstylesPhoenix.Error
-  import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Form
 
   @error_form form_for(:user, "/",

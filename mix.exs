@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.MixProject do
     [
       {:jason, "~> 1.0"},
       {:phoenix_live_view, "~> 0.17.0"},
-      {:floki, "~> 0.32.0"},
+      {:floki, "~> 0.32.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end

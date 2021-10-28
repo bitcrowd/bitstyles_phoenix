@@ -1,7 +1,6 @@
 defmodule BitstylesPhoenix.Error do
   import BitstylesPhoenix.Showcase
-  import Phoenix.HTML, only: [sigil_E: 2]
-  import Phoenix.HTML.Tag, only: [content_tag: 3]
+  import Phoenix.HTML.Tag, only: [content_tag: 3, content_tag: 2]
   alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
@@ -21,11 +20,7 @@ defmodule BitstylesPhoenix.Error do
 
   story("Multiple errors", """
       iex> safe_to_string ui_errors(@error_form, :multiple)
-      ~s(<ul class=\"u-padding-l-left u-fg--warning\">
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li>
-        <li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">not fun</span></li>
-      </ul>
-      )
+      ~s(<ul class=\"u-padding-l-left u-fg--warning\"><li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">is simply bad</span></li><li><span class=\"u-fg--warning\" phx-feedback-for=\"user_multiple\">not fun</span></li></ul>)
   """)
 
   def ui_errors(form, field) do
@@ -39,11 +34,11 @@ defmodule BitstylesPhoenix.Error do
         ui_error(form, field, error)
 
       errors ->
-        ~E"""
-        <ul class="u-padding-l-left u-fg--warning"><%= for error <- errors do %>
-          <li><%= ui_error(form, field, error) %></li><% end %>
-        </ul>
-        """
+        content_tag(
+          :ul,
+          Enum.map(errors, fn error -> content_tag(:li, ui_error(form, field, error)) end),
+          class: "u-padding-l-left u-fg--warning"
+        )
     end
   end
 
