@@ -1,4 +1,4 @@
-defmodule BitstylesPhoenix.Badge do
+defmodule BitstylesPhoenix.Component.Badge do
   use BitstylesPhoenix.Component
 
   @moduledoc """

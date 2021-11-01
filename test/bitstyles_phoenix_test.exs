@@ -1,5 +1,5 @@
 defmodule BitstylesPhoenixTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   use BitstylesPhoenix
 
   describe "short-cut imports" do

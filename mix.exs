@@ -1,17 +1,6 @@
 defmodule BitstylesPhoenix.MixProject do
   use Mix.Project
 
-  @components [
-    BitstylesPhoenix.Badge,
-    BitstylesPhoenix.Button,
-    BitstylesPhoenix.Error,
-    BitstylesPhoenix.Flash,
-    BitstylesPhoenix.Form,
-    BitstylesPhoenix.Icon,
-    BitstylesPhoenix.Time,
-    BitstylesPhoenix.UseSVG
-  ]
-
   def project do
     [
       app: :bitstyles_phoenix,
@@ -28,11 +17,9 @@ defmodule BitstylesPhoenix.MixProject do
         assets: "assets",
         logo: "priv/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
-        groups_for_modules: [
-          Components: @components,
-          Helpers: [
-            BitstylesPhoenix.Classnames
-          ]
+        nest_modules_by_prefix: [
+          BitstylesPhoenix.Component,
+          BitstylesPhoenix.Helper
         ]
       ]
     ]

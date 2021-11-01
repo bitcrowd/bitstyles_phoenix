@@ -1,4 +1,4 @@
-defmodule BitstylesPhoenix.UseSVG do
+defmodule BitstylesPhoenix.Helper.UseSVG do
   import Phoenix.HTML.Tag, only: [content_tag: 3, tag: 2]
   import BitstylesPhoenix.Showcase
 

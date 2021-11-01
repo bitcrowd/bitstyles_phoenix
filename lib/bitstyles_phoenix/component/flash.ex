@@ -1,4 +1,4 @@
-defmodule BitstylesPhoenix.Flash do
+defmodule BitstylesPhoenix.Component.Flash do
   use BitstylesPhoenix.Component
 
   @moduledoc """

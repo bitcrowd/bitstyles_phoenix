@@ -1,9 +1,9 @@
-defmodule BitstylesPhoenix.Button do
-  import BitstylesPhoenix.Showcase
+defmodule BitstylesPhoenix.Helper.Button do
   use Phoenix.HTML
   import Phoenix.HTML.Link, only: [link: 2]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
-  import BitstylesPhoenix.Classnames
+  import BitstylesPhoenix.Helper.Classnames
+  import BitstylesPhoenix.Showcase
 
   @moduledoc """
   Helpers to create buttons and links.

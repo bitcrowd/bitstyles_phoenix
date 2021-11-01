@@ -1,15 +1,4 @@
 defmodule BitstylesPhoenix do
-  @components [
-    BitstylesPhoenix.Badge,
-    BitstylesPhoenix.Button,
-    BitstylesPhoenix.Error,
-    BitstylesPhoenix.Flash,
-    BitstylesPhoenix.Form,
-    BitstylesPhoenix.Icon,
-    BitstylesPhoenix.Time,
-    BitstylesPhoenix.UseSVG
-  ]
-
   @moduledoc """
   Documentation for BitstylesPhoenix.
 
@@ -19,36 +8,37 @@ defmodule BitstylesPhoenix do
 
   ## Usage
 
-  Use by either `BitstylesPhoenix.Components` or importing the components individually.
+  Use by either `use BitstylesPhoenix` or importing the components and helpers individually.
 
   ```elixir
-    use BitstylesPhoenix.Components
+    use BitstylesPhoenix
 
     # or
 
-    import BitstylesPhoenix.Button
+    import BitstylesPhoenix.Helper.Button
   ```
 
-  Then call the `ui_*` helpers from the components usable in your views.
+  Then use the components and helpers in your `*.heex` templates.
 
   ```elixir
   ui_button("Save", type: "submit")
   # => <button class="a-button" type="submit">Save</button>
   ```
 
-  Checkout the components for examples and showcases.
-
-  #{@components |> Enum.map(&"- `#{Module.split(&1) |> Enum.join(".")}`") |> Enum.join("\n")}
+  Checkout the components and helpers for examples and showcases.
   """
 
-  @doc false
-  def components(), do: @components
-
   defmacro __using__(_) do
-    for c <- @components do
-      quote do
-        import unquote(c)
-      end
+    quote do
+      import BitstylesPhoenix.Component.Badge
+      import BitstylesPhoenix.Component.Flash
+      import BitstylesPhoenix.Component.Icon
+      import BitstylesPhoenix.Component.Error
+      import BitstylesPhoenix.Component.Form
+
+      import BitstylesPhoenix.Helper.Button
+      import BitstylesPhoenix.Helper.Classnames
+      import BitstylesPhoenix.Helper.UseSVG
     end
   end
 end

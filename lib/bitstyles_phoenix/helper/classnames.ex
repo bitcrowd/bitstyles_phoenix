@@ -1,4 +1,4 @@
-defmodule BitstylesPhoenix.Classnames do
+defmodule BitstylesPhoenix.Helper.Classnames do
   @moduledoc """
   The very best of NPM, now for elixir.
   """
@@ -17,10 +17,10 @@ defmodule BitstylesPhoenix.Classnames do
       "foo"
 
       iex> classnames("e2e-out")
-      ""
+      false
 
       iex> classnames(nil)
-      ""
+      false
 
       iex> classnames("  foo    ")
       "foo"
@@ -41,7 +41,7 @@ defmodule BitstylesPhoenix.Classnames do
       "foo"
 
       iex> classnames({"foo", 1 == 2})
-      ""
+      false
 
       iex> classnames(["  foo  boing  ", {"bar", 1 == 2}, :baz])
       "foo boing baz"
@@ -54,47 +54,20 @@ defmodule BitstylesPhoenix.Classnames do
     |> Enum.reject(&remove_class?/1)
     |> Enum.uniq()
     |> Enum.join(" ")
-  end
-
-  @doc """
-  Extended classnames.
-
-  `e2e-` classes are trimmed at compile time. This can be disabled for
-  test environments via `trim_e2e_classes`.
-
-  Conveniently accepts a (whitespace-separated) string or a list. If the list contains any
-  conditional expressions, they are evaluated at runtime.
-  """
-  defmacro xclassnames(arg) do
-    classes =
-      arg
-      |> List.wrap()
-      |> Enum.flat_map(&safe_split/1)
-      |> Enum.reject(&remove_class?/1)
-
-    if Enum.any?(classes, &Kernel.is_tuple/1) do
-      quote do
-        classnames(unquote(classes))
-      end
-    else
-      classes = classnames(classes)
-
-      quote do
-        unquote(classes)
-      end
+    |> case do
+      "" -> false
+      classnames -> classnames
     end
   end
 
   defp normalize(nil), do: ""
   defp normalize({class, true}), do: classnames(class)
   defp normalize({_class, false}), do: ""
+  defp normalize({_class, nil}), do: ""
   defp normalize(class) when is_binary(class), do: String.trim(class)
   defp normalize(class) when is_atom(class), do: class |> to_string() |> String.trim()
 
   defp split(class), do: String.split(class, " ")
-
-  defp safe_split(class) when is_binary(class), do: String.split(class, " ")
-  defp safe_split(value), do: value
 
   defp remove_class?(""), do: true
 

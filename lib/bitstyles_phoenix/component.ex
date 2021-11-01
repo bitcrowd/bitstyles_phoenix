@@ -3,10 +3,10 @@ defmodule BitstylesPhoenix.Component do
 
   defmacro __using__(_) do
     quote do
-      import BitstylesPhoenix.Classnames
-      import BitstylesPhoenix.Showcase
       import Phoenix.LiveView.Helpers
-      import Phoenix.LiveView, only: [assign: 2]
+      import Phoenix.LiveView, only: [assign: 2, assign: 3, assign_new: 3]
+      import BitstylesPhoenix.Helper.Classnames
+      import BitstylesPhoenix.Showcase
     end
   end
 end

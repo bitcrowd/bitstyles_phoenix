@@ -1,7 +1,7 @@
-defmodule BitstylesPhoenix.Icon do
-  import BitstylesPhoenix.Classnames
+defmodule BitstylesPhoenix.Component.Icon do
   import BitstylesPhoenix.Showcase
-  alias BitstylesPhoenix.UseSVG
+  import BitstylesPhoenix.Helper.Classnames
+  alias BitstylesPhoenix.Helper.UseSVG
 
   @moduledoc """
   An SVG icon system, that expects the icons to be present on the page, rendered as SVG `<symbol>`s.
