@@ -8,12 +8,16 @@ defmodule BitstylesPhoenix.Component.Form do
   @moduledoc """
   Components for rendering input elements.
 
-  All helpers accept the following attribute
+  ## Common attributes
 
-  - `form` - The form to render the input form (See `Phoenix.HTML.Form.form_for` or LiveView `form` component)
-  - `field` - The name of the field for the input
+  All helpers in this module accept the following attributes.
+
+  - `form` *(required)* - The form to render the input form.
+  - `field` *(required)* - The name of the field for the input.
   - `label` - The text to be used as label. Defaults to `Phoenix.HTML.Form.humanize/1`.
   - `label_opts` - The options passed to the label element generated with `Phoenix.HTML.Form.label/4`.
+
+  See `Phoenix.HTML.Form.form_for/4` or LiveView `form` component for details on how to render a form.
   """
 
   @input_mapping %{
@@ -31,6 +35,7 @@ defmodule BitstylesPhoenix.Component.Form do
     time: :time_input,
     url: :url_input
   }
+
   @wrapper_assigns_keys [:field, :form, :label, :label_opts, :hidden_label]
 
   @type_doc_table @input_mapping
@@ -39,22 +44,25 @@ defmodule BitstylesPhoenix.Component.Form do
                   end)
 
   @doc """
-  Renders all types of `<input>` element, with the associated `<label>`s, and any errors for that field. Defaults to `type="text"`, and `maxlength="255"`.
-  As with the various `text_input`, `number_input` helpers in `Phoenix.HTML.Form`, this expects the form & field as first parameters.
+  Renders various types of `<input>` element, with the associated `<label>`s, and any errors for that field.
 
-  ## Options
-  - `:type` - the type of the input (see table below for available types)
-  - `:hidden_label` -
+  ## Attributes
+
+  - `:type` - The type of the input (see table below for available types). Defaults to `type="text"`.
+  - `:hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to the underlying input helpers from `Phoenix.HTML.Form`.
-    For reference which input helper is used check out the following mapping
+  - All other attributes will be passed in as input options to the underlying input
+    helpers from `Phoenix.HTML.Form` (see table below for used helpers).
+    Defaults to `maxlength="255"` for `email`, `text` and `password` type.
+    Set maxlength to `false` to prevent setting maxlength.
+
+  For reference which input helper is used check out the following mapping:
 
   | type | Helper |
   | :--: | ------ |
   #{@type_doc_table}
 
   See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--fieldset) for examples of inputs, selects, textareas, labels etc. in use.
-
   See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-data-forms--login-form) for examples of form layouts.
   """
 
@@ -122,6 +130,19 @@ defmodule BitstylesPhoenix.Component.Form do
         Name
       </label>
       <input id="user_name" maxlength="255" name="user[name]" type="text"/>
+      """
+  ''')
+
+  story("Text field with label (without maxlength)", '''
+      iex> assigns=%{form: @user_form}
+      ...> render ~H"""
+      ...> <.ui_input form={@form} field={:name} maxlength={false}/>
+      ...> """
+      """
+      <label for="user_name">
+        Name
+      </label>
+      <input id="user_name" name="user[name]" type="text"/>
       """
   ''')
 
@@ -259,7 +280,12 @@ defmodule BitstylesPhoenix.Component.Form do
 
   @doc ~S"""
   Renders `<textarea>` elements, with the associated `<label>`s, and any errors for that field.
-  This is a shortcut for `ui_input/3` with `type: :textarea`, accepting the same options as above.
+
+  ## Attributes
+
+  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - All options from above (see top level module doc).
+  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.textarea/3`.
 
   See the [bitstyles textarea docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--textarea-and-label) for examples of textareas and labels in use.
   """
@@ -347,11 +373,14 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   @doc ~S"""
-  Renders `<select>` elements, with the associated `<label>`s, and any errors for that field. Uses the `select` form helper in `Phoenix.HTML.Form`.
+  Renders a `<select>` element, with a `<label>` and any errors for that field.
 
-  ## Options
+  ## Attributes
+
+  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - `:options` - The options passed to `Phoenix.HTML.Form.select/4`.
   - All options from above (see top level module doc).
-  - All other options will be passed to the underlying Phoenix form helper
+  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.select/4`.
 
   See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of textareas and labels in use.
   """
@@ -402,7 +431,7 @@ defmodule BitstylesPhoenix.Component.Form do
       ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_opts={[class: "extra"]}/>
       ...> """
       """
-      <label class=\"extra\" for="user_preference">
+      <label class="extra" for="user_preference">
         What do you like best?
       </label>
       <select id="user_preference" name="user[preference]">
@@ -436,7 +465,12 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   @doc """
-  Custom unwrapped inputs
+  Component for rendering custom inputs together with a label and errors.
+
+  ## Attributes
+
+  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - All options from above (see top level module doc).
   """
 
   story("Custom inputs", '''
@@ -481,7 +515,11 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   @doc """
-  Custom wrapped inputs
+  Component for rendering custom wrapped inputs in a label and with errors.
+
+  ## Attributes
+
+  - All options from above (see top level module doc).
   """
 
   story("Custom wrapped inputs", '''
