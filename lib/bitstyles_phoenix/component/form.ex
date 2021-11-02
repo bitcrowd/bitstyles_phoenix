@@ -6,22 +6,20 @@ defmodule BitstylesPhoenix.Component.Form do
   alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
-  Form-related UI components.
-  The various form helpers here follow the interface provided by HTML — inputs, selects, and textareas.
+  Components for rendering input elements.
 
-  All helpers accept the following options:
+  All helpers accept the following attribute
 
-  ## Options
-  - `:label` — Override the default text to be used in the `<label>`
-  - `:label_opts` — The options passed to the label element
-  - `:hidden_label` — The label element will be visually hidden, but still present in the DOM
+  - `form` - The form to render the input form (See `Phoenix.HTML.Form.form_for` or LiveView `form` component)
+  - `field` - The name of the field for the input
+  - `label` - The text to be used as label. Defaults to `Phoenix.HTML.Form.humanize/1`.
+  - `label_opts` - The options passed to the label element generated with `Phoenix.HTML.Form.label/4`.
   """
 
   @input_mapping %{
     color: :color_input,
     checkbox: :checkbox,
     date: :date_input,
-    datetime: :datetime_input,
     email: :email_input,
     file: :file_input,
     number: :number_input,
@@ -33,17 +31,27 @@ defmodule BitstylesPhoenix.Component.Form do
     time: :time_input,
     url: :url_input
   }
-  @wrapper_assigns_keys [:field, :form, :label, :label_class, :hidden_label]
+  @wrapper_assigns_keys [:field, :form, :label, :label_opts, :hidden_label]
+
+  @type_doc_table @input_mapping
+                  |> Enum.map(fn {type, helper} ->
+                    "| `:#{type}` | `Phoenix.HTML.Form.#{helper}/3` |\n"
+                  end)
 
   @doc """
   Renders all types of `<input>` element, with the associated `<label>`s, and any errors for that field. Defaults to `type="text"`, and `maxlength="255"`.
   As with the various `text_input`, `number_input` helpers in `Phoenix.HTML.Form`, this expects the form & field as first parameters.
 
   ## Options
-  - `:type` - the type of the input
-  #{@input_mapping |> Map.keys() |> Enum.map(&("  - `" <> to_string(&1) <> "`\n"))}
+  - `:type` - the type of the input (see table below for available types)
+  - `:hidden_label` -
   - All options from above (see top level module doc).
-  - All other options will be passed to the underlying Phoenix form helper
+  - All other attributes will be passed in as input options to the underlying input helpers from `Phoenix.HTML.Form`.
+    For reference which input helper is used check out the following mapping
+
+  | type | Helper |
+  | :--: | ------ |
+  #{@type_doc_table}
 
   See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--fieldset) for examples of inputs, selects, textareas, labels etc. in use.
 
@@ -124,7 +132,7 @@ defmodule BitstylesPhoenix.Component.Form do
       ...>   form={@form}
       ...>   field={:totp}
       ...>   label="Authentication code"
-      ...>   label_class="extra"
+      ...>   label_opts={[class: "extra"]}
       ...>   placeholder="6-digit code"
       ...>   required={true}
       ...>   value=""
@@ -202,7 +210,7 @@ defmodule BitstylesPhoenix.Component.Form do
   story("Checkbox with label class", '''
       iex> assigns=%{form: @user_form}
       ...> render ~H"""
-      ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_class="extra"/>
+      ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_opts={[class: "extra"]}/>
       ...> """
       """
       <label class="extra" for="user_accept">
@@ -277,7 +285,7 @@ defmodule BitstylesPhoenix.Component.Form do
       ...>   form={@form}
       ...>   field={:metadata}
       ...>   label="Metadata"
-      ...>   label_class="extra"
+      ...>   label_opts={[class: "extra"]}
       ...>   value="Value here"
       ...>   rows={10}
       ...> />
@@ -391,7 +399,7 @@ defmodule BitstylesPhoenix.Component.Form do
   story("Select box with options", '''
       iex> assigns=%{form: @user_form, options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
       ...> render ~H"""
-      ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_class="extra"/>
+      ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_opts={[class: "extra"]}/>
       ...> """
       """
       <label class=\"extra\" for="user_preference">
@@ -454,10 +462,16 @@ defmodule BitstylesPhoenix.Component.Form do
   def ui_unwrapped_input(assigns) do
     label_text = Map.get_lazy(assigns, :label, fn -> default_label(assigns.field) end)
 
-    label =
-      PhxForm.label(assigns.form, assigns.field, label_text,
-        class: classnames([assigns[:label_class], {"u-sr-only", assigns[:hidden_label]}])
+    label_opts = assigns |> Map.get(:label_opts, [])
+
+    label_opts =
+      Keyword.put(
+        label_opts,
+        :class,
+        classnames([label_opts[:class], {"u-sr-only", assigns[:hidden_label]}])
       )
+
+    label = PhxForm.label(assigns.form, assigns.field, label_text, label_opts)
 
     assigns = assign(assigns, :label, label)
 
@@ -486,10 +500,13 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   def ui_wrapped_input(assigns) do
-    assigns = assign_new(assigns, :label, fn -> default_label(assigns.field) end)
+    assigns =
+      assigns
+      |> assign_new(:label, fn -> default_label(assigns.field) end)
+      |> assign_new(:label_opts, fn -> [] end)
 
     ~H"""
-    <%= PhxForm.label @form, @field, class: assigns[:label_class] do %>
+    <%= PhxForm.label @form, @field, @label_opts do %>
       <%= render_slot(@inner_block) %>
       <%= @label %>
     <% end %>
