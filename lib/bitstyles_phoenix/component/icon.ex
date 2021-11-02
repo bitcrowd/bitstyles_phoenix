@@ -1,7 +1,6 @@
 defmodule BitstylesPhoenix.Component.Icon do
-  import BitstylesPhoenix.Showcase
-  import BitstylesPhoenix.Helper.Classnames
-  alias BitstylesPhoenix.Helper.UseSVG
+  use BitstylesPhoenix.Component
+  import BitstylesPhoenix.Component.UseSVG
 
   @moduledoc """
   An SVG icon system, that expects the icons to be present on the page, rendered as SVG `<symbol>`s.
@@ -22,10 +21,18 @@ defmodule BitstylesPhoenix.Component.Icon do
 
   story(
     "An icon (from inline svg)",
-    """
-        iex> safe_to_string ui_icon("inline-arrow")
-        ~s(<svg aria-hidden="true" class="a-icon" focusable="false" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#icon-inline-arrow"></svg>)
-    """,
+    '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_icon name="inline-arrow"/>
+      ...> """
+      """
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+        <use xlink:href="#icon-inline-arrow">
+        </use>
+      </svg>
+      """
+    ''',
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-inline-arrow" viewBox="0 0 100 100">
@@ -35,37 +42,52 @@ defmodule BitstylesPhoenix.Component.Icon do
     """
   )
 
-  story(
-    "An icon with a size",
-    """
-        iex> safe_to_string ui_icon("hamburger", size: "s", external: "assets/icons.svg")
-        ~s(<svg aria-hidden="true" class="a-icon a-icon--s" focusable="false" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/icons.svg#icon-hamburger"></svg>)
-    """
-  )
+  story("An icon with a size", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_icon name="hamburger" file="assets/icons.svg" size="xl"/>
+      ...> """
+      """
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
+        <use xlink:href="assets/icons.svg#icon-hamburger">
+        </use>
+      </svg>
+      """
+  ''')
 
-  story(
-    "An icon with extra options",
+  story("An icon with extra options", '''
+    iex> assigns = %{}
+    ...> render ~H"""
+    ...> <.ui_icon name="bin" file="assets/icons.svg" class="foo bar"/>
+    ...> """
     """
-        iex> safe_to_string ui_icon("bin", class: "foo bar", external: "assets/icons.svg")
-        ~s(<svg aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/icons.svg#icon-bin"></svg>)
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
+      <use xlink:href="assets/icons.svg#icon-bin">
+      </use>
+    </svg>
     """
-  )
+  ''')
 
-  def ui_icon(name, opts \\ []) do
-    classname =
-      classnames(["a-icon", {"a-icon--#{opts[:size]}", opts[:size] != nil}, opts[:class]])
+  def ui_icon(assigns) do
+    icon = "icon-#{assigns.name}"
 
-    opts =
-      opts
-      |> put_defaults()
-      |> Keyword.put(:class, classname)
-      |> Keyword.merge(
-        "aria-hidden": "true",
-        focusable: "false"
-      )
-      |> Keyword.drop([:size])
+    class =
+      classnames([
+        "a-icon",
+        {"a-icon--#{assigns[:size]}", assigns[:size] != nil},
+        assigns[:class]
+      ])
 
-    UseSVG.ui_svg("icon-#{name}", opts)
+    extra =
+      assigns
+      |> assigns_to_attributes([:class, :name, :size])
+      |> put_defaults
+
+    assigns = assign(assigns, extra: extra, class: class, icon: icon)
+
+    ~H"""
+    <.ui_svg use={@icon} class={@class} aria-hidden="true" focusable="false" {@extra} />
+    """
   end
 
   @default_size 16

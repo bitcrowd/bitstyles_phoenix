@@ -33,12 +33,12 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Badge
       import BitstylesPhoenix.Component.Flash
       import BitstylesPhoenix.Component.Icon
+      import BitstylesPhoenix.Component.UseSVG
       import BitstylesPhoenix.Component.Error
       import BitstylesPhoenix.Component.Form
 
       import BitstylesPhoenix.Helper.Button
       import BitstylesPhoenix.Helper.Classnames
-      import BitstylesPhoenix.Helper.UseSVG
     end
   end
 end

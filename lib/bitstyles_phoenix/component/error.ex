@@ -1,6 +1,5 @@
 defmodule BitstylesPhoenix.Component.Error do
   use BitstylesPhoenix.Component
-  import BitstylesPhoenix.Showcase
   alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
