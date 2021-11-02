@@ -8,6 +8,8 @@ defmodule BitstylesPhoenix.Component.Badge do
   @doc ~s"""
   Renders an inline badge UI component — this could be any small text that you want highlighted, such as an item count or state indicator.
 
+  ## Attributes
+
   - `variant` — specifies which visual variant of the badge you want, from those available in the CSS classes e.g. `brand-1`, `danger`
   - `class` - extra classes to set on the badge
 

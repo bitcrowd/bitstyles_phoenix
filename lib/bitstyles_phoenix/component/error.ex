@@ -9,7 +9,16 @@ defmodule BitstylesPhoenix.Component.Error do
 
   @doc """
   Render errors from a Phoenix.HTML.Form.
-  Uses the `translate_errors` MFA to translate field errors.
+
+  ## Attributes
+
+  - `form` *(required)* - The form to render the input form.
+  - `field` *(required)* - The name of the field for the input.
+  - All other attributes are passed to the outer most existing tag if there is one.
+
+  See also `BitstylesPhoenix.Component.Form`.
+
+  Uses the `translate_errors` MFA from the config to translate field errors (e.g. with `gettext`).
   """
 
   story("A single error", '''
@@ -78,7 +87,14 @@ defmodule BitstylesPhoenix.Component.Error do
 
   @doc """
   Generates tag for custom errors.
-  Errors are handed to the `translate_errors` MFA.
+
+  ## Attributes
+
+  - `error` *(required)* - The error to render (expected to be a tuple with `{message :: String.t(), opts :: keyword()}`).
+  - All other attributes are passed to the outer `span` tag.
+
+  Uses the `translate_errors` MFA from the config to translate field errors (e.g. with `gettext`).
+
   The error will be rendered with the warning color, as
   specified in [bitstyles colors](https://bitcrowd.github.io/bitstyles/?path=/docs/utilities-fg--warning).
   """

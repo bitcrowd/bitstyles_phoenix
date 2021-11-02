@@ -48,8 +48,8 @@ defmodule BitstylesPhoenix.Component.Form do
 
   ## Attributes
 
-  - `:type` - The type of the input (see table below for available types). Defaults to `type="text"`.
-  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - `type` - The type of the input (see table below for available types). Defaults to `type="text"`.
+  - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
   - All other attributes will be passed in as input options to the underlying input
     helpers from `Phoenix.HTML.Form` (see table below for used helpers).
@@ -283,7 +283,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   ## Attributes
 
-  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
   - All other attributes will be passed in as input options to `Phoenix.HTML.Form.textarea/3`.
 
@@ -377,8 +377,8 @@ defmodule BitstylesPhoenix.Component.Form do
 
   ## Attributes
 
-  - `:hidden_label` - Only show the label for screen readers if set to `true`.
-  - `:options` - The options passed to `Phoenix.HTML.Form.select/4`.
+  - `hidden_label` - Only show the label for screen readers if set to `true`.
+  - `options` - The options passed to `Phoenix.HTML.Form.select/4`.
   - All options from above (see top level module doc).
   - All other attributes will be passed in as input options to `Phoenix.HTML.Form.select/4`.
 
@@ -469,7 +469,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   ## Attributes
 
-  - `:hidden_label` - Only show the label for screen readers if set to `true`.
+  - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
   """
 
