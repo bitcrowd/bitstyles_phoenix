@@ -13,7 +13,10 @@ defmodule BitstylesPhoenix.Component.Error do
 
   - `form` *(required)* - The form to render the input form.
   - `field` *(required)* - The name of the field for the input.
-  - All other attributes are passed to the outer most existing tag if there is one.
+  - `class` - Extra classes to pass to the wrapping `ul` if there are mutliple errors.
+     See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `error_class` - Extra classes to pass to the error component.
+     See `BitstylesPhoenix.Helper.classnames/1` for usage.
 
   See also `BitstylesPhoenix.Component.Form`.
 
@@ -61,22 +64,27 @@ defmodule BitstylesPhoenix.Component.Error do
         ~H""
 
       [error] ->
-        assigns = assign(assigns, :error, error)
+        assigns = assign(assigns, error: error)
 
         ~H"""
-          <.ui_error error={error} phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)} />
+          <.ui_error
+            error={error}
+            phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)}
+            class={assigns[:error_class]} />
         """
 
       errors ->
-        extra = assigns_to_attributes(assigns, [:class, :form, :field])
         class = classnames(["u-padding-l-left u-fg--warning", assigns[:class]])
-        assigns = assign(assigns, class: class, extra: extra)
+        assigns = assign(assigns, class: class)
 
         ~H"""
-          <ul class={@class} {extra}>
+          <ul class={@class}>
             <%= for error <- errors do %>
               <li>
-                <.ui_error error={error} phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)} />
+                <.ui_error
+                  error={error}
+                  phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)}
+                  class={assigns[:error_class]} />
               </li>
             <% end %>
           </ul>

@@ -6,12 +6,13 @@ defmodule BitstylesPhoenix.Component.Badge do
   """
 
   @doc ~s"""
-  Renders an inline badge UI component — this could be any small text that you want highlighted, such as an item count or state indicator.
+  Render a badge to highlighted small texts, such as an item count or state indicator.
 
   ## Attributes
 
-  - `variant` — specifies which visual variant of the badge you want, from those available in the CSS classes e.g. `brand-1`, `danger`
-  - `class` - extra classes to set on the badge
+  - `variant` — Variant of the badge you want, from those available in the CSS classes e.g. `brand-1`, `danger`
+  - `class` - Extra classes to pass to the badge. See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed to the `span` tag.
 
   See [bitstyles badge docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-badge--badge) for examples, and for the default variants available.
   """

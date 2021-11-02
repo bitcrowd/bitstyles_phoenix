@@ -9,12 +9,16 @@ defmodule BitstylesPhoenix.Component.Icon do
   @doc ~S"""
   Renders an icon element.
 
-  Accepts the name of the icon to render. This must be present in the SVG that renders all the icons in the top of the body e.g. as a `<symbol>` containing one filled path.
+  This uses `BitstylesPhoenix.Component.UseSVG` to render an icon either inlined in the page or
+  referenced in an external SVG file. Icons are assumed to have an id prefixed with `icon-` followed
+  by the name of the icon, which is used to reference the icon.
 
-  Options:
-  `:size` - Specify the icon size to use. Available sizes are specified in CSS, and default to `s`, `m`, `l`, `xl`. If you do not specify a size, the icon will fit into a `1em` square.
+  ## Attributes
 
-  All other options are passed to the `Phoenix.HTML.Tag.content_tag/3` through `BitstylesPhoenix.UseSVG.ui_svg/2` of the outer `<svg>` element.
+  - `name` *(required)* - The name of the icon. Assumes icons are prefixed with `icon-`.
+  - `size` - Specify the icon size to use. Available sizes are specified in CSS, and default to `s`, `m`, `l`, `xl`. If you do not specify a size, the icon will fit into a `1em` square.
+  - `file` - To be set if icons should be loaded from an external resource (see `BitstylesPhoenix.Component.UseSVG.ui_svg/1`).
+  - `class` - Extra classes to pass to the svg. See `BitstylesPhoenix.Helper.classnames/1` for usage.
 
   See the [bitstyles icon docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-icon--icon) for examples of icon usage, and available icons in the bitstyles icon set.
   """
@@ -22,16 +26,16 @@ defmodule BitstylesPhoenix.Component.Icon do
   story(
     "An icon (from inline svg)",
     '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_icon name="inline-arrow"/>
-      ...> """
-      """
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-        <use xlink:href="#icon-inline-arrow">
-        </use>
-      </svg>
-      """
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon name="inline-arrow"/>
+        ...> """
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+          <use xlink:href="#icon-inline-arrow">
+          </use>
+        </svg>
+        """
     ''',
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -56,16 +60,16 @@ defmodule BitstylesPhoenix.Component.Icon do
   ''')
 
   story("An icon with extra options", '''
-    iex> assigns = %{}
-    ...> render ~H"""
-    ...> <.ui_icon name="bin" file="assets/icons.svg" class="foo bar"/>
-    ...> """
-    """
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
-      <use xlink:href="assets/icons.svg#icon-bin">
-      </use>
-    </svg>
-    """
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_icon name="bin" file="assets/icons.svg" class="foo bar"/>
+      ...> """
+      """
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
+        <use xlink:href="assets/icons.svg#icon-bin">
+        </use>
+      </svg>
+      """
   ''')
 
   def ui_icon(assigns) do

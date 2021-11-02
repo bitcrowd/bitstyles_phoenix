@@ -6,13 +6,20 @@ defmodule BitstylesPhoenix.Component.Flash do
   """
 
   @doc ~s"""
-  Inform the user of a global or important event, such as may happen after a page reload. There are several variants, which use color, iconography, and html attributes to indicate severity.
+  Render a flash message.
+
+  Inform the user of a global or important event, such as may happen after a page reload.
+  There are several variants, which use color, iconography, and html attributes to indicate severity.
+
+  ## Attributes
+
+  - `variant` - specifies which visual variant of flash you want, from those available in CSS.
+    Defaults include: `brand-1`, `warning`, `info`, `danger`
+  - `class` - Set CSS classes on the outer div.
+  - `content_class` - Set CSS classes on the content div.
+  - All other attributes are passed to the outer `div` tag.
 
   See [https://bitcrowd.github.io/bitstyles/?path=/docs/ui-flashes--flash-brand-1](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-flashes--flash-brand-1)
-
-  - `variant` - specifies which visual variant of flash you want, from those available in CSS. Defaults include: `brand-1`, `warning`, `info`, `danger`
-  - `class` - set CSS classes on the wrapper div
-  - `content_class` - set CSS classes on the content div
   """
 
   story("Flash brand 1", '''
