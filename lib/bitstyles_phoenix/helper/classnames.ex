@@ -1,4 +1,6 @@
 defmodule BitstylesPhoenix.Helper.Classnames do
+  alias BitstylesPhoenix.Bitstyles
+
   @moduledoc """
   The very best of NPM, now for elixir.
   """
@@ -46,17 +48,26 @@ defmodule BitstylesPhoenix.Helper.Classnames do
       iex> classnames(["  foo  boing  ", {"bar", 1 == 2}, :baz])
       "foo boing baz"
   """
-  def classnames(arg) do
+  def classnames(arg, opts \\ [backwards_compatible: true]) do
     arg
     |> List.wrap()
     |> Enum.map(&normalize/1)
     |> Enum.flat_map(&split/1)
     |> Enum.reject(&remove_class?/1)
     |> Enum.uniq()
+    |> Enum.map(&bitstyles_version(&1, opts))
     |> Enum.join(" ")
     |> case do
       "" -> false
       classnames -> classnames
+    end
+  end
+
+  defp bitstyles_version(name, opts) do
+    if Keyword.get(opts, :backwards_compatible) do
+      Bitstyles.classname(name)
+    else
+      name
     end
   end
 

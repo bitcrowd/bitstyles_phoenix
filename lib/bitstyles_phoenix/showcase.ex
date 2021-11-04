@@ -46,8 +46,8 @@ defmodule BitstylesPhoenix.Showcase do
 
   defp sandbox(code, opts) do
     extra_html = Keyword.get(opts, :extra_html, "")
-    dist = Application.get_env(:bitstyles_phoenix, :bitstyles_dist)
     {result, _} = Code.eval_string(code)
+    dist = BitstylesPhoenix.Bitstyles.cdn_url()
 
     if dist do
       safe_to_string(

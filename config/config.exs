@@ -1,9 +1,8 @@
 import Config
 
-config :bitstyles_phoenix, :trim_e2e_classes, enabled: true
-
 config :bitstyles_phoenix,
-       :bitstyles_dist,
-       "https://cdn.jsdelivr.net/npm/bitstyles@1.5.0"
+  trim_e2e_classes: [enabled: true],
+  bitstyles_default_version: "2.0.0",
+  bitstyles_cdn: "https://cdn.jsdelivr.net/npm/bitstyles"
 
 config :phoenix, :json_library, Jason
