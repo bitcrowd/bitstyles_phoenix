@@ -38,7 +38,7 @@ Below is a list of changes that happened besides the componentization:
 
 - All components now accept extra attributes that are passed on to the outermost parent attribute.
 - Config option to configure `classnames/1` prefixes to remove other prefixes than `e2e-` instead (e.g. `test-`).
-- Backwards compatibility option for different versions of `bitstyles` (see `bitst`)
+- Backwards compatibility option for different versions of `bitstyles` (see `bitstyles_version` config option)
 
 ### Changed 
 
