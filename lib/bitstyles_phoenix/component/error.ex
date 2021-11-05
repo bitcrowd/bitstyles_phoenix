@@ -151,6 +151,7 @@ defmodule BitstylesPhoenix.Component.Error do
     apply(mod, translate_fn, args ++ [error])
   end
 
+  @doc false
   def no_translation({error, _}) do
     error
   end
