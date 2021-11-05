@@ -20,7 +20,7 @@ defmodule BitstylesPhoenix.Helper.Button do
     For example, one could pass Phoenix LiveView's [`live_redirect/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#live_redirect/2)
     or [`live_patch/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#live_patch/2).
   - `variant` - specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
-  - `class` - Add custom classes in addition to the bitstyles button classes.
+  - `class` - Extra classes to pass to the badge. See `BitstylesPhoenix.Helper.classnames/1` for usage.
 
   All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
 
