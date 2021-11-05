@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent develpments in Phoenix and LiveView.
+
 ### Breaking
 
 All `ui_*` component helpers are now instead [HEEx function components](https://hexdocs.pm/phoenix/views.html#html-components). They will expect the options and arguments
@@ -9,7 +11,7 @@ now through component attributes. The only exception is `ui_button`, which still
 In order to migrate to the new components update to Phoenix 1.6.0 and LiveView 1.17.0 and change all templates from
 `*.html.eex` to `*.html.heex` to be able to use the new component syntax. After that you can change your previous `ui_*` helpers to use the new syntax:
 
-`<%= ui_badge("foo", variant: "warning")` => `<.ui_badge variant: "warning">foo</.ui_badge>`
+`<%= ui_badge("foo", variant: "warning") %>` => `<.ui_badge variant: "warning">foo</.ui_badge>`
 
 If you have contexts, where you do not want to use `heex` templates yet, you can call the functions via `Phoenix.LiveView.Helpers.component/2`.
 
@@ -23,13 +25,13 @@ Below is a list of changes that happened besides the componentization:
 - Removed `xclassnames/1`. Use `classnames/1` from the same module instead. 
 - Removed `BitstylesPhoenix.Components` module. Instead of `use BitstylesPhoenix.Components` do `use BitstylesPhoenix`.
 - Removed all `e2e_classname` options. Use `class` instead, which will trim the e2e classes by default (like before).
-- Changed `trim_e2e_classes` config. In order to migrate change 
+- Changed `trim_e2e_classes` config. In order to migrate change the following
   ```
-    config :bitstyles_phoenix, :trim_e2e_classes, false
+  config :bitstyles_phoenix, :trim_e2e_classes, false
   ```
-  to
+  =>
   ```
-    config :bitstyles_phoenix, :trim_e2e_classes, [enabled: false]
+  config :bitstyles_phoenix, :trim_e2e_classes, [enabled: false]
   ```
 
 ### Added 
