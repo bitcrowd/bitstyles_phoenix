@@ -23,6 +23,7 @@ Below is a list of changes that happened besides the componentization:
 - `ui_input` dropped `textarea` input type (use `ui_textarea` instead)
 - Removed `ui_time/2` without replacement for now
 - Removed `xclassnames/1`. Use `classnames/1` from the same module instead. 
+- `classnames/1` now returns `false` instead of empty string when there is no class set.
 - Removed `BitstylesPhoenix.Components` module. Instead of `use BitstylesPhoenix.Components` do `use BitstylesPhoenix`.
 - Removed all `e2e_classname` options. Use `class` instead, which will trim the e2e classes by default (like before).
 - Changed `trim_e2e_classes` config. In order to migrate change the following

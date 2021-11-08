@@ -78,6 +78,12 @@ defmodule BitstylesPhoenix do
   config :bitstyles_phoenix,
     trim_e2e_classes: [enabled: true, prefix: "test-"]
   ```
+
+  Since this configuration is set on compile time you might have to recompile
+  `bitstyles_phoenix` for your environment after making changes:
+
+  `mix deps.clean bitstyles_phoenix`
+
   """
 
   defmacro __using__(_) do

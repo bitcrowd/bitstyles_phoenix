@@ -59,6 +59,6 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def version do
-    Application.get_env(:bitstyles_phoenix, :bitstyles_verison, @default_version)
+    Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
   end
 end
