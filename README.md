@@ -6,8 +6,6 @@
 [![CircleCI](https://circleci.com/gh/bitcrowd/bitstyles_phoenix.svg?style=shield)](https://circleci.com/gh/bitcrowd/bitstyles_phoenix)
 
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
-Currently made for version 1.5.0 of bitstyles. Future versions might still work, since
-the common interface is just CSS classes. Feel free to drop PRs if you notice any inconsistencies with new versions.
 
 ## Requirements
 
@@ -53,12 +51,7 @@ be found at [https://hexdocs.pm/bitstyles_phoenix](https://hexdocs.pm/bitstyles_
 
 ## Configuration
 
-```elixir
-
-config :bitstyles_phoenix,
-  trim_e2e_classes: true # In case you want to disable the trimming in certain environments
-  translate_errors: {ExampleWeb.ErrorHelper, :translate_errors, []} # In case you want to translate errors via gettext etc.
-```
+Check out the top level `BitstylesPhoenix` module for configuration examples and documentation.
 
 ## Developing bitstyles_phoenix
 

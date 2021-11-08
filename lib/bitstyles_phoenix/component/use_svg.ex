@@ -1,19 +1,24 @@
-defmodule BitstylesPhoenix.UseSVG do
-  import Phoenix.HTML.Tag, only: [content_tag: 3, tag: 2]
-  import BitstylesPhoenix.Showcase
+defmodule BitstylesPhoenix.Component.UseSVG do
+  use BitstylesPhoenix.Component
 
   @doc ~S"""
   Renders an SVG tag with a `use` reference.
-
-  Accepts the name of the svg to render and passes all other options to `Phoenix.HTML.Tag.content_tag/3`.
   """
 
   story(
-    "A referenced SVG (inline)",
-    """
-        iex> safe_to_string ui_svg("logo")
-        ~s(<svg xmlns="http://www.w3.org/2000/svg"><use xlink:href="#logo"></svg>)
-    """,
+    "A referenced SVG (inlined on the page)",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_svg use="logo"/>
+        ...> """
+        """
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="#logo">
+          </use>
+        </svg>
+        """
+    ''',
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="logo" viewBox="0 0 100 100">
@@ -28,20 +33,34 @@ defmodule BitstylesPhoenix.UseSVG do
   )
 
   story(
-    "A referenced SVG (external)",
-    """
-        iex> safe_to_string ui_svg("icon-bin", external: "assets/icons.svg")
-        ~s(<svg xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/icons.svg#icon-bin"></svg>)
-    """,
+    "A referenced SVG (external file)",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_svg use="icon-bin" file="assets/icons.svg"/>
+        ...> """
+        """
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="assets/icons.svg#icon-bin">
+          </use>
+        </svg>
+        """
+    ''',
     background: "white"
   )
 
-  def ui_svg(name, opts \\ []) do
-    opts = Keyword.put_new(opts, :xmlns, "http://www.w3.org/2000/svg")
-    {external, opts} = Keyword.pop(opts, :external, "")
+  def ui_svg(assigns) do
+    extra =
+      assigns
+      |> assigns_to_attributes([:file, :use])
+      |> Keyword.put_new(:xmlns, "http://www.w3.org/2000/svg")
 
-    content_tag(:svg, opts) do
-      tag(:use, "xlink:href": "#{external}##{name}")
-    end
+    assigns = assign(assigns, href: "#{assigns[:file]}##{assigns.use}", extra: extra)
+
+    ~H"""
+    <svg {@extra}>
+      <use xlink:href={@href} />
+    </svg>
+    """
   end
 end

@@ -1,5 +1,52 @@
 # Changelog
 
+## Unreleased
+
+This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent develpments in Phoenix and LiveView.
+
+### Breaking
+
+All `ui_*` component helpers are now instead [HEEx function components](https://hexdocs.pm/phoenix/views.html#html-components). They will expect the options and arguments
+now through component attributes. The only exception is `ui_button`, which still delegate to the link_helper given via `link_fn`. 
+In order to migrate to the new components update to Phoenix 1.6.0 and LiveView 1.17.0 and change all templates from
+`*.html.eex` to `*.html.heex` to be able to use the new component syntax. After that you can change your previous `ui_*` helpers to use the new syntax:
+
+`<%= ui_badge("foo", variant: "warning") %>` => `<.ui_badge variant: "warning">foo</.ui_badge>`
+
+If you have contexts, where you do not want to use `heex` templates yet, you can call the functions via `Phoenix.LiveView.Helpers.component/2`.
+
+Below is a list of changes that happened besides the componentization:
+
+- Renamed `ui_error_tag` to `ui_error` 
+- `ui_input` dropped `datetime` input type (was not working anyways) 
+- `ui_input` dropped `radio` input type (use `ui_unwrapped_input` with `radio_button` instead) 
+- `ui_input` dropped `textarea` input type (use `ui_textarea` instead)
+- Removed `ui_time/2` without replacement for now
+- Removed `xclassnames/1`. Use `classnames/1` from the same module instead. 
+- `classnames/1` now returns `false` instead of empty string when there is no class set.
+- Removed `BitstylesPhoenix.Components` module. Instead of `use BitstylesPhoenix.Components` do `use BitstylesPhoenix`.
+- Removed all `e2e_classname` options. Use `class` instead, which will trim the e2e classes by default (like before).
+- Changed `trim_e2e_classes` config. In order to migrate change the following
+  ```
+  config :bitstyles_phoenix, :trim_e2e_classes, false
+  ```
+  =>
+  ```
+  config :bitstyles_phoenix, :trim_e2e_classes, [enabled: false]
+  ```
+
+### Added 
+
+- All components now accept extra attributes that are passed on to the outermost parent attribute.
+- Config option to configure `classnames/1` prefixes to remove other prefixes than `e2e-` instead (e.g. `test-`).
+- Backwards compatibility option for different versions of `bitstyles` (see `bitstyles_version` config option)
+
+### Changed 
+
+- Added dependency to `phoenix_live_view` >= 1.17.0 (for using `sigil_H/1` and new component syntax)
+- Doctest now use `floki` to prettify the output HTML, so docs will be a nicer read.
+- `classnames/1` is now imported by default with `use BitstylesPhoenix`
+
 ## v0.8.0
 
 ### Changed
