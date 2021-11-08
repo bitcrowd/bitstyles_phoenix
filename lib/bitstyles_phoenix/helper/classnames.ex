@@ -1,12 +1,11 @@
 defmodule BitstylesPhoenix.Helper.Classnames do
   alias BitstylesPhoenix.Bitstyles
 
+  @default_prefix "e2e-"
+
   @moduledoc """
   The very best of NPM, now for elixir.
   """
-
-  @trim_e2e_classes Application.compile_env(:bitstyles_phoenix, :trim_e2e_classes)
-  @trim_e2e_prefix Keyword.get(@trim_e2e_classes, :prefix, "e2e-")
 
   @doc """
   Concatenates lists of class names, with trimming and conditionals.
@@ -84,9 +83,10 @@ defmodule BitstylesPhoenix.Helper.Classnames do
 
   defp remove_class?(""), do: true
 
-  if @trim_e2e_classes[:enabled] do
-    defp remove_class?(class) when is_binary(class),
-      do: String.starts_with?(class, @trim_e2e_prefix)
+  defp remove_class?(class) when is_binary(class) do
+    config = Application.get_env(:bitstyles_phoenix, :trim_e2e_classes, [])
+    prefix = Keyword.get(config, :prefix, @default_prefix)
+    Keyword.get(config, :enabled, true) && String.starts_with?(class, prefix)
   end
 
   defp remove_class?(_value), do: false

@@ -1,16 +1,11 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version Application.compile_env!(:bitstyles_phoenix, :bitstyles_default_version)
+  @default_version "2.0.0"
+  @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
-    case Application.get_env(:bitstyles_phoenix, :bitstyles_cdn) do
-      nil ->
-        nil
-
-      cdn ->
-        "#{cdn}@#{@default_version}"
-    end
+    "#{@cdn_url}@#{@default_version}"
   end
 
   @doc """

@@ -1,6 +1,4 @@
 defmodule BitstylesPhoenix do
-  @default_version Application.compile_env!(:bitstyles_phoenix, :bitstyles_default_version)
-
   @moduledoc """
   Documentation for BitstylesPhoenix.
 
@@ -40,7 +38,7 @@ defmodule BitstylesPhoenix do
 
   ### Bitstyles version
 
-  BitstylesPhoenix will generate classes #{@default_version} of bitstyles.
+  BitstylesPhoenix will generate classes #{BitstylesPhoenix.Bitstyles.version()} of bitstyles.
   You can set older versions with a configuration:
 
   ```elixir
@@ -78,12 +76,6 @@ defmodule BitstylesPhoenix do
   config :bitstyles_phoenix,
     trim_e2e_classes: [enabled: true, prefix: "test-"]
   ```
-
-  Since this configuration is set on compile time you might have to recompile
-  `bitstyles_phoenix` for your environment after making changes:
-
-  `mix deps.clean bitstyles_phoenix`
-
   """
 
   defmacro __using__(_) do
