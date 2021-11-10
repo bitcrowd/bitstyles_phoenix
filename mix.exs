@@ -17,8 +17,16 @@ defmodule BitstylesPhoenix.MixProject do
         assets: "assets",
         logo: "priv/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
+        groups_for_modules: [
+          Helpers: ~r/Helper/,
+          Components: ~r/Component/,
+          "Live components": ~r/Live/,
+          "Alpine components": ~r/Alpine/
+        ],
         nest_modules_by_prefix: [
           BitstylesPhoenix.Component,
+          BitstylesPhoenix.Alpine3,
+          BitstylesPhoenix.Live,
           BitstylesPhoenix.Helper
         ]
       ]

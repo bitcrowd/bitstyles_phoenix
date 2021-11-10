@@ -3,7 +3,7 @@ defmodule BitstylesPhoenix.ComponentCase do
 
   using do
     quote do
-      use BitstylesPhoenix
+      use BitstylesPhoenix, mode: :none
       import Phoenix.LiveView.Helpers, only: [sigil_H: 2]
       import Phoenix.HTML, only: [safe_to_string: 1]
 

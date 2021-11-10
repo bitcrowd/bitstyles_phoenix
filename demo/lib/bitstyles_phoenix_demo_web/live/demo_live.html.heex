@@ -1,0 +1,20 @@
+<.ui_dropdown>
+<:button label="Test" />
+<:option>
+<%= ui_button "Funky", to: "#", variant: :menu %>
+</:option>
+<:option>
+<%= ui_button "Flurky", to: "#", variant: :menu %>
+</:option>
+</.ui_dropdown>
+
+<.ui_dropdown>
+  <:button label="Test with id"/>
+  <:menu id="a-dropdown" />
+  <:option>
+    <%= ui_button "Funky", to: "#", variant: :menu %>
+  </:option>
+  <:option>
+    <%= ui_button "Flurky", to: "#", variant: :menu %>
+  </:option>
+</.ui_dropdown>

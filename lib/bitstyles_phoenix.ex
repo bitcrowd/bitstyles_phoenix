@@ -96,17 +96,43 @@ defmodule BitstylesPhoenix do
   ```
   """
 
-  defmacro __using__(_) do
-    quote do
-      import BitstylesPhoenix.Component.Badge
-      import BitstylesPhoenix.Component.Flash
-      import BitstylesPhoenix.Component.Icon
-      import BitstylesPhoenix.Component.UseSVG
-      import BitstylesPhoenix.Component.Error
-      import BitstylesPhoenix.Component.Form
+  defmacro __using__(opts) do
+    default =
+      quote do
+        import BitstylesPhoenix.Component.Badge
+        import BitstylesPhoenix.Component.Flash
+        import BitstylesPhoenix.Component.Icon
+        import BitstylesPhoenix.Component.UseSVG
+        import BitstylesPhoenix.Component.Error
+        import BitstylesPhoenix.Component.Form
 
-      import BitstylesPhoenix.Helper.Button
-      import BitstylesPhoenix.Helper.Classnames
-    end
+        import BitstylesPhoenix.Helper.Button
+        import BitstylesPhoenix.Helper.Classnames
+      end
+
+    typed =
+      opts
+      |> Keyword.get(:mode, :live)
+      |> case do
+        :raw ->
+          quote do
+            import BitstylesPhoenix.Component.Dropdown
+          end
+
+        :alpine3 ->
+          quote do
+            import BitstylesPhoenix.Alpine3.Dropdown
+          end
+
+        :live ->
+          quote do
+            import BitstylesPhoenix.Live.Dropdown
+          end
+
+        :none ->
+          nil
+      end
+
+    [default, typed] |> Enum.filter(& &1)
   end
 end
