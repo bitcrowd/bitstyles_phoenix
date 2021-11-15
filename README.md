@@ -30,7 +30,7 @@ To make use of the various `ui_*` helpers in the project, just add a use stateme
     quote do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
-      use BitstylesPhoenix.Components
+      use BitstylesPhoenix
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
