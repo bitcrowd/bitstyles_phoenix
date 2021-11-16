@@ -8,7 +8,8 @@
 import Config
 
 config :bitstyles_phoenix,
-  translate_errors: {BitstylesPhoenixDemoWeb.ErrorHelpers, :translate_error, []}
+  translate_errors: {BitstylesPhoenixDemoWeb.ErrorHelpers, :translate_error, []},
+  icon_file: {BitstylesPhoenixDemoWeb.Endpoint, :static_path, ["/assets/images/icons.svg"]}
 
 config :bitstyles_phoenix_demo, BitstylesPhoenixDemoWeb.Gettext,
   default_locale: "en",
