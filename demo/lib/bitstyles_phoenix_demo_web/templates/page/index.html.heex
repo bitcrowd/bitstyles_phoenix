@@ -1,0 +1,15 @@
+<div class="a-content">
+  <.ui_flash variant="positive">Test</.ui_flash>
+
+  <.ui_icon name="home" file={Routes.static_path(@conn, "/assets/images/icons.svg")} />
+
+  <.form let={f} for={@changeset} class="e2e-form">
+    <.ui_input form={f} field={:name} required />
+  </.form>
+
+  <%= Gettext.with_locale("de", fn -> %>
+    <.form let={f} for={@changeset} class="e2e-form-de">
+      <.ui_input form={f} field={:name} required />
+    </.form>
+  <% end) %>
+</div>
