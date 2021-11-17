@@ -24,7 +24,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_dropdown icon_file="assets/icons.svg">
+        ...> <.ui_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:option>
         ...>     <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
@@ -41,7 +41,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               Select me
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-              <use xlink:href="assets/icons.svg#icon-caret-down">
+              <use xlink:href="#icon-caret-down">
               </use>
             </svg>
           </button>
