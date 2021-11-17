@@ -18,6 +18,7 @@ defmodule BitstylesPhoenix.Component.Icon do
   - `name` *(required)* - The name of the icon. Assumes icons are prefixed with `icon-`.
   - `size` - Specify the icon size to use. Available sizes are specified in CSS, and default to `s`, `m`, `l`, `xl`. If you do not specify a size, the icon will fit into a `1em` square.
   - `file` - To be set if icons should be loaded from an external resource (see `BitstylesPhoenix.Component.UseSVG.ui_svg/1`).
+    This can also be configured to a default `icon_file`, see `BitstylesPhoenix` for config options. With the configuration present, inline icons can still be rendered with `file={nil}`.
   - `class` - Extra classes to pass to the svg. See `BitstylesPhoenix.Helper.classnames/1` for usage.
 
   See the [bitstyles icon docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-icon--icon) for examples of icon usage, and available icons in the bitstyles icon set.
@@ -99,5 +100,22 @@ defmodule BitstylesPhoenix.Component.Icon do
     opts
     |> Keyword.put_new(:width, @default_size)
     |> Keyword.put_new(:height, @default_size)
+    |> put_icon_file(Application.get_env(:bitstyles_phoenix, :icon_file, :inline))
+  end
+
+  defp put_icon_file(opts, :inline), do: opts
+
+  defp put_icon_file(opts, file) when is_binary(file) do
+    Keyword.put_new(opts, :file, file)
+  end
+
+  defp put_icon_file(opts, {module, function, arguments}) do
+    file = apply(module, function, arguments)
+    put_icon_file(opts, file)
+  end
+
+  defp put_icon_file(opts, {module, function}) do
+    file = apply(module, function)
+    put_icon_file(opts, file)
   end
 end

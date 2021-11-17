@@ -56,8 +56,26 @@ defmodule BitstylesPhoenix do
 
   ```elixir
   config :bitstyles_phoenix,
-    translate_errors: {ExampleWeb.ErrorHelper, :translate_errors, []}
+    translate_errors: {ExampleWeb.ErrorHelpers, :translate_error, []}
   ```
+
+  ### Icon file
+
+  In order for the bitstyles icons to properly render they can either be rendered inline in the document or served as an SVG file
+  and configured with the phoenix static_path helpers. The configured icon file path can be either a string or a MF/MFA.
+
+  Example:
+  ```
+  config :bitstyles_phoenix,
+    icon_file: {MyappWeb.Endpoint, :static_path, ["/assets/images/icons.svg"]}
+  ```
+
+  In order for the above example to work, one has to serve the bitstyles icon file under that static path.
+  This can be done either via a webpack file-loader, postcss or simply by copying the files into the `priv/static` dir of
+  your phoenix app.
+
+  Check out the [demo project](#{Mix.Project.config()[:source_url]}/tree/main/demo) folder in the sources
+  for an example configuration.
 
   ### Trim `e2e-` classnames
 
