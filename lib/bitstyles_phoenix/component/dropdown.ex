@@ -24,7 +24,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_dropdown>
+        ...> <.ui_dropdown icon_file="assets/icons.svg">
         ...>   <:button label="Select me"/>
         ...>   <:option>
         ...>     <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
@@ -59,7 +59,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </ul>
         </div>
         """
-    '''
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-caret-down" viewBox="0 0 100 100">
+        <path d="M6.64,34.23a5.57,5.57,0,0,1,7.87-7.89L49.92,61.91,85.49,26.34a5.57,5.57,0,0,1,7.87,7.89L53.94,73.66a5.58,5.58,0,0,1-7.88,0Z" fill-rule="evenodd"/>
+      </symbol>
+    </svg>
+    """
   )
 
   story(
@@ -105,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px">
-        ...>   <.ui_dropdown>
+        ...>   <.ui_dropdown icon_file="assets/icons.svg">
         ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me"/>
         ...>     <:menu style="display: none" id="dropdown-1"/>
         ...>     <:option class="foo">
@@ -195,7 +202,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       )
 
     class = classnames(["u-relative", assigns[:class]])
-    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :option])
+    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file])
 
     assigns =
       assigns
@@ -208,7 +215,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         <button type="button" class={@button_class} {@button_extra}>
           <%= if @button_label do %>
             <span class="a-button__label"><%= @button_label %></span>
-            <.ui_icon name="caret-down" class="a-button__icon" size="m"/>
+            <.ui_icon name="caret-down" class="a-button__icon" size="m" file={assigns[:icon_file]}/>
           <% else %>
             <%= render_slot(@button) %>
           <% end %>
