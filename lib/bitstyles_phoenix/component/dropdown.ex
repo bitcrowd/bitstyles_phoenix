@@ -70,6 +70,152 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   story(
+    "Dropdown with menu variant top",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
+        ...>   <div class="u-flex-grow-1"></div>
+        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant={:top}>
+        ...>     <:button label="Select me"/>
+        ...>     <:menu />
+        ...>     <:option>
+        ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
+        ...>     </:option>
+        ...>     <:option>
+        ...>       <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
+        ...>     </:option>
+        ...>   </.ui_dropdown>
+        ...> </div>
+        ...> """
+        """
+        <div style="min-height: 150px;" class="u-flex u-flex-col">
+          <div class="u-flex-grow-1">
+          </div>
+          <div class="u-relative">
+            <button type="button" class="a-button a-button--ui u-h6">
+              <span class="a-button__label">
+                Select me
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+                <use xlink:href="assets/icons.svg#icon-caret-down">
+                </use>
+              </svg>
+            </button>
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--top">
+              <li>
+                <a class="a-button a-button--menu u-h6" href="#">
+                  Option 1
+                </a>
+              </li>
+              <li>
+                <a class="a-button a-button--menu u-h6" href="#">
+                  Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        """
+    '''
+  )
+
+  story(
+    "Dropdown with menu variant right",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_dropdown icon_file="assets/icons.svg" variant="right">
+        ...>   <:button label="Select me"/>
+        ...>   <:menu />
+        ...>   <:option>
+        ...>     <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
+        ...>   </:option>
+        ...>   <:option>
+        ...>     <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
+        ...>   </:option>
+        ...> </.ui_dropdown>
+        ...> """
+        """
+        <div class="u-relative u-flex u-justify-end">
+          <button type="button" class="a-button a-button--ui u-h6">
+            <span class="a-button__label">
+              Select me
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+              <use xlink:href="assets/icons.svg#icon-caret-down">
+              </use>
+            </svg>
+          </button>
+          <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--right">
+            <li>
+              <a class="a-button a-button--menu u-h6" href="#">
+                Option 1
+              </a>
+            </li>
+            <li>
+              <a class="a-button a-button--menu u-h6" href="#">
+                Option 2
+              </a>
+            </li>
+          </ul>
+        </div>
+        """
+    '''
+  )
+
+  story(
+    "Dropdown with menu variant top right",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
+        ...>   <div class="u-flex-grow-1"></div>
+        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant={[:top, :right]}>
+        ...>     <:button label="Select me"/>
+        ...>     <:menu />
+        ...>     <:option>
+        ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
+        ...>     </:option>
+        ...>     <:option>
+        ...>       <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
+        ...>     </:option>
+        ...>   </.ui_dropdown>
+        ...> </div>
+        ...> """
+        """
+        <div style="min-height: 150px;" class="u-flex u-flex-col">
+          <div class="u-flex-grow-1">
+          </div>
+          <div class="u-relative u-flex u-justify-end">
+            <button type="button" class="a-button a-button--ui u-h6">
+              <span class="a-button__label">
+                Select me
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+                <use xlink:href="assets/icons.svg#icon-caret-down">
+                </use>
+              </svg>
+            </button>
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--top a-dropdown--right">
+              <li>
+                <a class="a-button a-button--menu u-h6" href="#">
+                  Option 1
+                </a>
+              </li>
+              <li>
+                <a class="a-button a-button--menu u-h6" href="#">
+                  Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        """
+    '''
+  )
+
+  story(
     "Custom button content",
     '''
         iex> assigns = %{}
@@ -107,12 +253,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   story(
-    "Drop down with default button and custom options on the menu and some JS",
+    "Drop down with some JS and full-width variant",
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <div style="min-height: 200px">
-        ...>   <.ui_dropdown icon_file="assets/icons.svg">
+        ...> <div style="min-height: 200px; width: 500px;">
+        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant="full-width">
         ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me"/>
         ...>     <:menu style="display: none" id="dropdown-1"/>
         ...>     <:option class="foo">
@@ -129,7 +275,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> </div>
         ...> """
         """
-        <div style="min-height: 200px">
+        <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">
             <button type="button" class="a-button a-button--ui u-h6" aria-controls="dropdown-1" onclick=\"toggle(&#39;dropdown-1&#39;)\">
               <span class="a-button__label">
@@ -140,7 +286,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" id="dropdown-1" style="display: none">
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--full-width" id="dropdown-1" style="display: none">
               <li class="foo">
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -177,8 +323,6 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     """
   )
 
-  @menu_class "a-dropdown u-overflow--y a-list-reset u-margin-s-top"
-
   def ui_dropdown(assigns) do
     button_assigns =
       assigns_from_single_slot(assigns, :button,
@@ -195,14 +339,21 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     menu_assigns =
       assigns_from_single_slot(assigns, :menu,
         exclude: [:class],
-        default: [menu_class: @menu_class, menu_extra: %{}],
+        default: [menu_class: menu_class(assigns[:variant]), menu_extra: %{}],
         with: fn menu, extra ->
-          [menu_extra: extra, menu_class: classnames([@menu_class, menu[:class]])]
+          [menu_extra: extra, menu_class: menu_class(assigns[:variant], menu[:class])]
         end
       )
 
-    class = classnames(["u-relative", assigns[:class]])
-    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file])
+    class =
+      classnames([
+        "u-relative",
+        assigns[:class],
+        {"u-flex u-justify-end", variant_right?(assigns[:variant])}
+      ])
+
+    extra =
+      assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file, :variant])
 
     assigns =
       assigns
@@ -230,4 +381,22 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       </div>
     """
   end
+
+  @menu_classes ~w(a-dropdown u-overflow--y a-list-reset u-margin-s-top)
+  defp menu_class(variant, class \\ nil) do
+    classnames(@menu_classes ++ variant_classes(variant) ++ [class])
+  end
+
+  defp variant_classes(nil), do: []
+
+  defp variant_classes(variant) when is_binary(variant) or is_atom(variant),
+    do: variant_classes([variant])
+
+  defp variant_classes(variants) when is_list(variants),
+    do: Enum.map(variants, &"a-dropdown--#{&1}")
+
+  defp variant_right?(:right), do: true
+  defp variant_right?("right"), do: true
+  defp variant_right?(variant) when is_list(variant), do: Enum.any?(variant, &variant_right?/1)
+  defp variant_right?(_), do: false
 end
