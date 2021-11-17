@@ -34,6 +34,7 @@ defmodule BitstylesPhoenix.Live.Dropdown do
         phx-click={JS.toggle(to: "##{@menu_id}",
                              in: {"is-transitioning", "is-off-screen", "is-on-screen"},
                              out: {"is-transitioning", "is-on-screen", "is-off-screen"})}
+        aria-controls={@menu_id}
         {@button_extra}
         >
         <%= render_slot(@button) %>
