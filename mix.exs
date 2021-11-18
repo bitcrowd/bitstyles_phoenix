@@ -16,7 +16,7 @@ defmodule BitstylesPhoenix.MixProject do
         main: "BitstylesPhoenix",
         assets: "assets",
         logo: "priv/logo.svg",
-        extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
+        extras: ["CHANGELOG.md", "LICENSE.txt"],
         groups_for_modules: [
           Helpers: ~r/Helper/,
           Components: ~r/Component/,

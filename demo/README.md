@@ -9,3 +9,10 @@ To start your Demo server:
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+# Run integration tests
+
+``` elixir
+mix test
+```
+

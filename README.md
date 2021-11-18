@@ -60,3 +60,5 @@ To live update the documentation when you change the `lib` folder you can do:
 ```sh
 mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 ```
+
+For running the demo app & integration tests check out the [demo README](demo/README.md).

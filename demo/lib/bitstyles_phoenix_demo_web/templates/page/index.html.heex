@@ -19,4 +19,9 @@
       <.ui_input form={f} field={:name} required />
     </.form>
   <% end) %>
+
+  <.ui_dropdown>
+    <:button label="Menu" />
+    <:option><%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu %></:option>
+  </.ui_dropdown>
 </div>

@@ -355,9 +355,11 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     extra =
       assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file, :variant])
 
+    icon_assigns = if file = assigns[:icon_file], do: %{file: file}, else: %{}
+
     assigns =
       assigns
-      |> assign(extra: extra, class: class)
+      |> assign(extra: extra, class: class, icon_assigns: icon_assigns)
       |> assign(button_assigns)
       |> assign(menu_assigns)
 
@@ -366,7 +368,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         <button type="button" class={@button_class} {@button_extra}>
           <%= if @button_label do %>
             <span class="a-button__label"><%= @button_label %></span>
-            <.ui_icon name="caret-down" class="a-button__icon" size="m" file={assigns[:icon_file]}/>
+            <.ui_icon name="caret-down" class="a-button__icon" size="m" {@icon_assigns}/>
           <% else %>
             <%= render_slot(@button) %>
           <% end %>
