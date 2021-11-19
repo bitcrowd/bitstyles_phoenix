@@ -102,7 +102,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--top">
+            <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top u-margin-s-bottom">
               <li>
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -147,7 +147,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </use>
             </svg>
           </button>
-          <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--right">
+          <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--right u-margin-s-top">
             <li>
               <a class="a-button a-button--menu u-h6" href="#">
                 Option 1
@@ -197,7 +197,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--top a-dropdown--right">
+            <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--right u-margin-s-bottom">
               <li>
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -286,7 +286,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top a-dropdown--full-width" id="dropdown-1" style="display: none">
+            <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
               <li class="foo">
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -349,7 +349,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       classnames([
         "u-relative",
         assigns[:class],
-        {"u-flex u-justify-end", variant_right?(assigns[:variant])}
+        {"u-flex u-justify-end", variant?(:right, assigns[:variant])}
       ])
 
     extra =
@@ -384,9 +384,13 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     """
   end
 
-  @menu_classes ~w(a-dropdown u-overflow--y a-list-reset u-margin-s-top)
+  @menu_classes ~w(a-dropdown u-overflow--y a-list-reset)
   defp menu_class(variant, class \\ nil) do
-    classnames(@menu_classes ++ variant_classes(variant) ++ [class])
+    classnames(@menu_classes ++ variant_classes(variant) ++ [margin(variant), class])
+  end
+
+  defp margin(variant) do
+    if variant?(:top, variant), do: "u-margin-s-bottom", else: "u-margin-s-top"
   end
 
   defp variant_classes(nil), do: []
@@ -397,8 +401,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   defp variant_classes(variants) when is_list(variants),
     do: Enum.map(variants, &"a-dropdown--#{&1}")
 
-  defp variant_right?(:right), do: true
-  defp variant_right?("right"), do: true
-  defp variant_right?(variant) when is_list(variant), do: Enum.any?(variant, &variant_right?/1)
-  defp variant_right?(_), do: false
+  defp variant?(variant, list) when is_list(list), do: Enum.any?(list, &variant?(variant, &1))
+  defp variant?(variant, variant) when is_atom(variant), do: true
+  defp variant?(expected, actual) when is_binary(actual), do: to_string(expected) == actual
+  defp variant?(_, _), do: false
 end
