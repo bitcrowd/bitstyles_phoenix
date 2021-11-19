@@ -3,6 +3,7 @@
   "description": "bitstyles_phoenix demo app assets",
   "license": "ISC",
   "dependencies": {
+    "alpinejs": "^3.5.1",
     "bitstyles": "^2.0.0"
   }
 }
