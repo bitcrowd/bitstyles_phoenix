@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix do
 
     typed =
       opts
-      |> Keyword.get(:mode, :live)
+      |> Keyword.get(:js_mode, :live)
       |> case do
         :raw ->
           quote do

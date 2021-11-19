@@ -76,7 +76,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> render ~H"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
         ...>   <div class="u-flex-grow-1"></div>
-        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant={:top}>
+        ...>   <.ui_dropdown variant={:top}>
         ...>     <:button label="Select me"/>
         ...>     <:menu />
         ...>     <:option>
@@ -98,7 +98,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 Select me
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-                <use xlink:href="assets/icons.svg#icon-caret-down">
+                <use xlink:href="#icon-caret-down">
                 </use>
               </svg>
             </button>
@@ -117,7 +117,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </div>
         </div>
         """
-    '''
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-caret-down" viewBox="0 0 100 100">
+        <path d="M6.64,34.23a5.57,5.57,0,0,1,7.87-7.89L49.92,61.91,85.49,26.34a5.57,5.57,0,0,1,7.87,7.89L53.94,73.66a5.58,5.58,0,0,1-7.88,0Z" fill-rule="evenodd"/>
+      </symbol>
+    </svg>
+    """
   )
 
   story(
@@ -125,7 +132,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_dropdown icon_file="assets/icons.svg" variant="right">
+        ...> <.ui_dropdown variant="right">
         ...>   <:button label="Select me"/>
         ...>   <:menu />
         ...>   <:option>
@@ -143,7 +150,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               Select me
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-              <use xlink:href="assets/icons.svg#icon-caret-down">
+              <use xlink:href="#icon-caret-down">
               </use>
             </svg>
           </button>
@@ -161,7 +168,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </ul>
         </div>
         """
-    '''
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-caret-down" viewBox="0 0 100 100">
+        <path d="M6.64,34.23a5.57,5.57,0,0,1,7.87-7.89L49.92,61.91,85.49,26.34a5.57,5.57,0,0,1,7.87,7.89L53.94,73.66a5.58,5.58,0,0,1-7.88,0Z" fill-rule="evenodd"/>
+      </symbol>
+    </svg>
+    """
   )
 
   story(
@@ -171,7 +185,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> render ~H"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
         ...>   <div class="u-flex-grow-1"></div>
-        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant={[:top, :right]}>
+        ...>   <.ui_dropdown variant={[:top, :right]}>
         ...>     <:button label="Select me"/>
         ...>     <:menu />
         ...>     <:option>
@@ -193,7 +207,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 Select me
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-                <use xlink:href="assets/icons.svg#icon-caret-down">
+                <use xlink:href="#icon-caret-down">
                 </use>
               </svg>
             </button>
@@ -212,7 +226,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </div>
         </div>
         """
-    '''
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-caret-down" viewBox="0 0 100 100">
+        <path d="M6.64,34.23a5.57,5.57,0,0,1,7.87-7.89L49.92,61.91,85.49,26.34a5.57,5.57,0,0,1,7.87,7.89L53.94,73.66a5.58,5.58,0,0,1-7.88,0Z" fill-rule="evenodd"/>
+      </symbol>
+    </svg>
+    """
   )
 
   story(
@@ -253,7 +274,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   story(
-    "Drop down with some JS and full-width variant",
+    "Drop down with some JS and full-width variant and icon file",
     '''
         iex> assigns = %{}
         ...> render ~H"""
