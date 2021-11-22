@@ -41,6 +41,9 @@ Below is a list of changes that happened besides the componentization:
 - Config option to configure `classnames/1` prefixes to remove other prefixes than `e2e-` instead (e.g. `test-`).
 - Backwards compatibility option for different versions of `bitstyles` (see `bitstyles_version` config option)
 - The `BitstylesPhoenix.Icon` components `file` attribute can now get a default value via `icon_file` application config.
+- `js_mode` option for `BitstylesPhoenix` use macro (see top level documentation)
+- `ui_dropdown` in Raw, Live and Alpine3 commands
+- Integration tests and example configuration with the `demo` app
 
 ### Changed 
 
