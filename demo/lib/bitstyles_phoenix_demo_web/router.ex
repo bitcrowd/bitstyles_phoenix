@@ -14,5 +14,6 @@ defmodule BitstylesPhoenixDemoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/live", DemoLive
   end
 end

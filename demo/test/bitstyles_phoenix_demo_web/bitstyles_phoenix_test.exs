@@ -27,4 +27,27 @@ defmodule BitstylesPhoenixWebDemo.BitstylesPhoenixTest do
       assert height > 0
     end)
   end
+
+  feature "alpine & live dropdowns", %{session: session} do
+    session
+    |> visit("/")
+    |> refute_has(Query.css(".e2e-dropdown-option"))
+    |> click(Query.css(".e2e-dropdown-button"))
+    |> assert_has(Query.css(".e2e-dropdown-option"))
+    |> click(Query.css(".e2e-dropdown-option"))
+    |> assert_text("Live test")
+    |> refute_has(Query.css(".e2e-dropdown-option"))
+    |> click(Query.css(".e2e-dropdown-button"))
+    |> assert_has(Query.css(".e2e-dropdown-option"))
+    |> click(Query.css(".e2e-dropdown-button-id"))
+
+    # Wait out CSS transitions
+    :timer.sleep(500)
+
+    session
+    |> assert_has(Query.css(".e2e-dropdown-option-id"))
+    |> refute_has(Query.css(".e2e-dropdown-option"))
+    |> click(Query.css(".e2e-dropdown-option-id"))
+    |> assert_text("Alpine test")
+  end
 end

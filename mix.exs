@@ -17,13 +17,25 @@ defmodule BitstylesPhoenix.MixProject do
         assets: "assets",
         logo: "priv/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
+        groups_for_modules: [
+          Helpers: ~r/Helper/,
+          Components: ~r/Component/,
+          "Live components": ~r/Live/,
+          "Alpine components": ~r/Alpine/
+        ],
         nest_modules_by_prefix: [
           BitstylesPhoenix.Component,
+          BitstylesPhoenix.Alpine3,
+          BitstylesPhoenix.Live,
           BitstylesPhoenix.Helper
-        ]
+        ],
+        before_closing_head_tag: &custom_css/1
       ]
     ]
   end
+
+  def custom_css(:html), do: "<link rel=\"stylesheet\" href=\"assets/custom.css\">"
+  def custom_css(_), do: ""
 
   # Run "mix help compile.app" to learn about applications.
   def application do

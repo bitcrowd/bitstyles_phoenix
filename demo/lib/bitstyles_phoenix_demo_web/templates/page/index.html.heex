@@ -5,6 +5,7 @@
 </svg>
 
 <div class="a-content">
+  <h1>Alpine test</h1>
   <.ui_flash variant="positive">Test</.ui_flash>
 
   <.ui_icon name="home" class="e2e-external-svg-icon"/>
@@ -19,4 +20,11 @@
       <.ui_input form={f} field={:name} required />
     </.form>
   <% end) %>
+
+  <.ui_dropdown>
+    <:button label="Menu" class="e2e-dropdown-button" />
+    <:option>
+      <%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu, class: "e2e-dropdown-option" %>
+      </:option>
+  </.ui_dropdown>
 </div>
