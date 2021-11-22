@@ -32,7 +32,7 @@ defmodule BitstylesPhoenix.Component do
             value -> value
           end
         else
-          raise "please specify at most one #{slot_name} slot"
+          raise "please specify #{slot_name} slot"
         end
 
       _ ->
