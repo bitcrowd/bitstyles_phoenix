@@ -30,6 +30,19 @@ defmodule BitstylesPhoenix do
   # => <button class="a-button" type="submit">Save</button>
   ```
 
+  Some components require additional JS to work as intended. Either you implement the JS yourself
+  and use the `raw` components, or the `live` or `alpine3` ones. By default, the implementation
+  with `LiveView` JS commands is imported
+
+  ```
+    use BitstylesPhoenix, js_mode: :live # JS Commands
+    use BitstylesPhoenix, js_mode: :alpine3 # Apline 3 attributes
+    use BitstylesPhoenix, js_mode: :raw # No JS (implement yourself)
+  ```
+
+  For the Alpine versions to work, [alpine.js](https://alpinejs.dev/) should be present on the page.
+  The [JS commands](https://hexdocs.pm/phoenix_live_view/bindings.html#js-commands) version will only work within connected LiveViews.
+
   Checkout the components and helpers for examples and showcases.
 
   ## Configuration

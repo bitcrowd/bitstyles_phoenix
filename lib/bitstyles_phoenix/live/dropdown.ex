@@ -7,7 +7,9 @@ defmodule BitstylesPhoenix.Live.Dropdown do
   import Phoenix.LiveView.Utils, only: [random_id: 0]
 
   @doc """
-  Renders a dropdown component with a button, a menu and options.
+  Renders a dropdown component with a button, a menu and options with JS commands.
+
+  Supports all attributes and slots from `BitstylesPhoenix.Component.Dropdown.ui_dropdown`.
   """
 
   def ui_dropdown(assigns) do

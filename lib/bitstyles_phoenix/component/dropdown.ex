@@ -17,6 +17,37 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   The dropdown options can be passed in as slots, which will be passed down to the menu items.
   You can use `ui_button` with variant `menu` to render links that are prepared for the dropdown menu.
+
+  ## Attributes
+
+  - `class` - Extra classes to pass to the outer `div`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `variant` - The dropdown variant (top, right, full-width).
+    Can be provided as an atom, a string, a list of atoms or a list of strings.
+  - `icon_file` - The external SVG file with icons to be passed on to
+    `BitstylesPhoenix.Component.Icon.ui_icon/1` for the dropdown icon.
+    Only needed if SVG icons are not provided inline and if
+    not rendering custom button content.
+  - All other attributes are passed on to the outer `div`
+
+  This component will not render any inner content except slots.
+
+  ## Attributes - menu slot
+
+  - `class` - Extra classes to pass to the `ul` dropdown menu
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed on to the outer `div`
+
+  This slot will not render any inner content.
+
+  ## Attributes - button slot
+
+  - `class` - Extra classes to pass to the dropdown `button`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `label` - The button for the label. If set, will not render
+    custom button content.
+
+  This slot will render it's inner content when no button label is set.
   """
 
   story(

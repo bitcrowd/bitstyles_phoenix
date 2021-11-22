@@ -4,7 +4,13 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   alias BitstylesPhoenix.Component.Dropdown, as: RawDropdown
 
   @doc """
-  Renders a dropdown component with a button, a menu and options.
+  Renders a dropdown component with a button, a menu and options with Alpine3.
+
+  Supports all attributes and slots from `BitstylesPhoenix.Component.Dropdown.ui_dropdown`.
+
+  ## Attributes
+  - `x_name` - The name of the boolean x-data property for alpine to store the menu state.
+    Defaults to `dropdownOpen`.
   """
 
   story(
