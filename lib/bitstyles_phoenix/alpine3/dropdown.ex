@@ -19,7 +19,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px">
-        ...>   <.ui_dropdown>
+        ...>   <.ui_js_dropdown>
         ...>     <:button label="Select me"/>
         ...>     <:option>
         ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
@@ -27,7 +27,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     <:option>
         ...>       <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
         ...>     </:option>
-        ...>   </.ui_dropdown>
+        ...>   </.ui_js_dropdown>
         ...> </div>
         ...> """
         """
@@ -74,7 +74,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px">
-        ...>   <.ui_dropdown x_name="myOwnDropDown" icon_file="assets/icons.svg">
+        ...>   <.ui_js_dropdown x_name="myOwnDropDown" icon_file="assets/icons.svg">
         ...>     <:button label="Select me"/>
         ...>     <:option>
         ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
@@ -82,7 +82,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     <:option>
         ...>       <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
         ...>     </:option>
-        ...>   </.ui_dropdown>
+        ...>   </.ui_js_dropdown>
         ...> </div>
         ...> """
         """
@@ -118,7 +118,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
     """
   )
 
-  def ui_dropdown(assigns) do
+  def ui_js_dropdown(assigns) do
     button_assigns = assigns_from_single_slot(assigns, :button, with: :button_extra)
 
     menu_assigns =

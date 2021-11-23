@@ -21,10 +21,10 @@
     </.form>
   <% end) %>
 
-  <.ui_dropdown>
+  <.ui_js_dropdown>
     <:button label="Menu" class="e2e-dropdown-button" />
     <:option>
       <%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu, class: "e2e-dropdown-option" %>
       </:option>
-  </.ui_dropdown>
+  </.ui_js_dropdown>
 </div>

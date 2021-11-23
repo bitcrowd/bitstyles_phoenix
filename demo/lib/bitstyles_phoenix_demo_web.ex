@@ -21,7 +21,7 @@ defmodule BitstylesPhoenixDemoWeb do
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
-      use BitstylesPhoenix, js_mode: :alpine3
+      use BitstylesPhoenix.Alpine3
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
@@ -33,7 +33,7 @@ defmodule BitstylesPhoenixDemoWeb do
       use Phoenix.LiveView,
         layout: {BitstylesPhoenixDemoWeb.LayoutView, "live.html"}
 
-      use BitstylesPhoenix
+      use BitstylesPhoenix.Live
 
       unquote(view_helpers())
     end
@@ -43,7 +43,7 @@ defmodule BitstylesPhoenixDemoWeb do
     quote do
       use Phoenix.LiveComponent
 
-      use BitstylesPhoenix
+      use BitstylesPhoenix.Live
 
       unquote(view_helpers())
     end
@@ -70,6 +70,8 @@ defmodule BitstylesPhoenixDemoWeb do
     quote do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      use BitstylesPhoenix
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
       import Phoenix.LiveView.Helpers
 
