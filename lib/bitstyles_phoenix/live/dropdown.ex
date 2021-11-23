@@ -12,7 +12,7 @@ defmodule BitstylesPhoenix.Live.Dropdown do
   Supports all attributes and slots from `BitstylesPhoenix.Component.Dropdown.ui_dropdown`.
   """
 
-  def ui_dropdown(assigns) do
+  def ui_js_dropdown(assigns) do
     extra = assigns_to_attributes(assigns, [:menu, :button])
 
     button_assigns = assigns_from_single_slot(assigns, :button, with: :button_extra)

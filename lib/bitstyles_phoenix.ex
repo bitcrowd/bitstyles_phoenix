@@ -31,13 +31,10 @@ defmodule BitstylesPhoenix do
   ```
 
   Some components require additional JS to work as intended. Either you implement the JS yourself
-  and use the `raw` components, or the `live` or `alpine3` ones. By default, the implementation
-  with `LiveView` JS commands is imported
-
+  and use the ui components directly, or the `Live` or `Alpine3` ones.
   ```
-    use BitstylesPhoenix, js_mode: :live # JS Commands
-    use BitstylesPhoenix, js_mode: :alpine3 # Apline 3 attributes
-    use BitstylesPhoenix, js_mode: :raw # No JS (implement yourself)
+    use BitstylesPhoenix.Live    # import all `BitstylesPhoenix.Live` components
+    use BitstylesPhoenix.Alpine3 # import all `BitstylesPhoenix.Alpine3` components
   ```
 
   For the Alpine versions to work, [alpine.js](https://alpinejs.dev/) should be present on the page.
@@ -109,43 +106,18 @@ defmodule BitstylesPhoenix do
   ```
   """
 
-  defmacro __using__(opts) do
-    default =
-      quote do
-        import BitstylesPhoenix.Component.Badge
-        import BitstylesPhoenix.Component.Flash
-        import BitstylesPhoenix.Component.Icon
-        import BitstylesPhoenix.Component.UseSVG
-        import BitstylesPhoenix.Component.Error
-        import BitstylesPhoenix.Component.Form
+  defmacro __using__(_) do
+    quote do
+      import BitstylesPhoenix.Component.Badge
+      import BitstylesPhoenix.Component.Flash
+      import BitstylesPhoenix.Component.Icon
+      import BitstylesPhoenix.Component.UseSVG
+      import BitstylesPhoenix.Component.Error
+      import BitstylesPhoenix.Component.Form
+      import BitstylesPhoenix.Component.Dropdown
 
-        import BitstylesPhoenix.Helper.Button
-        import BitstylesPhoenix.Helper.Classnames
-      end
-
-    typed =
-      opts
-      |> Keyword.get(:js_mode, :live)
-      |> case do
-        :raw ->
-          quote do
-            import BitstylesPhoenix.Component.Dropdown
-          end
-
-        :alpine3 ->
-          quote do
-            import BitstylesPhoenix.Alpine3.Dropdown
-          end
-
-        :live ->
-          quote do
-            import BitstylesPhoenix.Live.Dropdown
-          end
-
-        :none ->
-          nil
-      end
-
-    [default, typed] |> Enum.filter(& &1)
+      import BitstylesPhoenix.Helper.Button
+      import BitstylesPhoenix.Helper.Classnames
+    end
   end
 end
