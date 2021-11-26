@@ -115,6 +115,7 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Error
       import BitstylesPhoenix.Component.Form
       import BitstylesPhoenix.Component.Dropdown
+      import BitstylesPhoenix.Component.Sidebar
 
       import BitstylesPhoenix.Helper.Button
       import BitstylesPhoenix.Helper.Classnames
