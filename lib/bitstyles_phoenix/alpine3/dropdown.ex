@@ -33,7 +33,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         """
         <div style="min-height: 200px">
           <div class="u-relative" x-data="{ dropdownOpen: false }">
-            <button type="button" class="a-button a-button--ui u-h6" @click="dropdownOpen = true">
+            <button @click="dropdownOpen = true" class="a-button a-button--ui" type="button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -88,7 +88,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         """
         <div style="min-height: 200px">
           <div class="u-relative" x-data="{ myOwnDropDown: false }">
-            <button type="button" class="a-button a-button--ui u-h6" @click="myOwnDropDown = true">
+            <button @click="myOwnDropDown = true" class="a-button a-button--ui" type="button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -119,19 +119,17 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   )
 
   def ui_js_dropdown(assigns) do
-    button_assigns = assigns_from_single_slot(assigns, :button, with: :button_extra)
+    {_button, button_extra} = assigns_from_single_slot(assigns, :button)
 
-    menu_assigns =
-      assigns_from_single_slot(assigns, :menu, with: :menu_extra, default: [menu_extra: %{}])
+    {_menu, menu_extra} =
+      assigns_from_single_slot(assigns, :menu, with: :menu_extra, optional: true)
 
     extra = assigns_to_attributes(assigns, [:menu, :button, :x_name])
 
     assigns =
       assigns
-      |> assign(extra: extra)
+      |> assign(extra: extra, button_extra: button_extra, menu_extra: menu_extra)
       |> assign_new(:x_name, fn -> "dropdownOpen" end)
-      |> assign(button_assigns)
-      |> assign(menu_assigns)
 
     ~H"""
     <RawDropdown.ui_dropdown x-data={"{ #{@x_name}: false }"} {@extra}>

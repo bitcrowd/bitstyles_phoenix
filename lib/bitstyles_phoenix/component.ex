@@ -17,25 +17,16 @@ defmodule BitstylesPhoenix.Component do
           {:exclude, [atom()]} | {:default, fun() | term()} | {:with, fun() | atom()}
   @spec assigns_from_single_slot(assigns :: map(), slot_name :: atom(), [
           assigns_from_single_slot_option
-        ]) :: map()
+        ]) :: keyword()
   def assigns_from_single_slot(assigns, slot_name, opts \\ []) do
     case assigns[slot_name] do
       [slot] ->
         extra = assigns_to_attributes(slot, Keyword.get(opts, :exclude, []))
-
-        opts
-        |> Keyword.fetch!(:with)
-        |> case do
-          value when is_atom(value) -> [{value, extra}]
-          with_fn when is_function(with_fn, 2) -> with_fn.(slot, extra)
-        end
+        {slot, extra}
 
       nil ->
-        if Keyword.has_key?(opts, :default) do
-          case Keyword.get(opts, :default) do
-            value when is_function(value) -> value.()
-            value -> value
-          end
+        if Keyword.has_key?(opts, :optional) do
+          {nil, []}
         else
           raise "please specify #{slot_name} slot"
         end

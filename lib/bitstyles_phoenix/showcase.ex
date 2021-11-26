@@ -39,30 +39,79 @@ defmodule BitstylesPhoenix.Showcase do
         storydoc
       end
 
-    quote do
-      @doc @doc <> unquote(storydoc)
+    if Keyword.get(opts, :module, false) do
+      quote do
+        @moduledoc @moduledoc <> unquote(storydoc)
+      end
+    else
+      quote do
+        @doc @doc <> unquote(storydoc)
+      end
     end
   end
 
+  @default_iframe_style """
+    height:1px; \
+    border:none; \
+    overflow:hidden; \
+    padding-left: 1em; \
+  """
+
   defp sandbox(code, opts) do
     extra_html = Keyword.get(opts, :extra_html, "")
+    transparent = Keyword.get(opts, :transparent, true)
     {result, _} = Code.eval_string(code)
     dist = BitstylesPhoenix.Bitstyles.cdn_url()
 
+    style =
+      if transparent do
+        """
+        html{ \
+          background-color: transparent !important; \
+        } \
+        \
+        @media (prefers-color-scheme: dark) { \
+          body {color: #fff; } \
+        } \
+        """
+      else
+        ""
+      end
+
+    iframe_opts =
+      [
+        srcdoc:
+          ~s(<html><head><style>#{style}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result]) |> String.replace("\n", "")}</body></html>),
+        style: "",
+        allowtransparency: if(transparent, do: "true", else: "false")
+      ]
+      |> Keyword.merge(style_opts(opts))
+
     if dist do
-      safe_to_string(
-        content_tag(:iframe, "",
-          srcdoc:
-            ~s(<html style="background-color: transparent;"><head><style>@media (prefers-color-scheme: dark\){body{color: #fff;}}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result]) |> String.replace("\n", "")}</body></html>),
-          # https://stackoverflow.com/questions/819416/adjust-width-and-height-of-iframe-to-fit-with-content-in-it
-          onload:
-            "javascript:(function(o){o.style.height=(o.contentWindow.document.body.scrollHeight + 25)+\"px\";}(this));",
-          style: "height:1px;width:100%;border:none;overflow:hidden;margin-left: 1em",
-          allowtransparency: "true"
-        )
-      )
+      safe_to_string(content_tag(:iframe, "", iframe_opts))
     else
       ""
+    end
+  end
+
+  defp style_opts(opts) do
+    width = Keyword.get(opts, :width, "auto")
+
+    Keyword.get(opts, :height)
+    |> case do
+      nil ->
+        [
+          style: "#{@default_iframe_style}width: #{width}",
+          # https://stackoverflow.com/questions/819416/adjust-width-and-height-of-iframe-to-fit-with-content-in-it
+          onload: """
+            javascript:(function(o) { \
+              o.style.height=(o.contentWindow.document.body.scrollHeight + 25)+"px"; \
+            }(this)); \
+          """
+        ]
+
+      height ->
+        [style: "#{@default_iframe_style}height: #{height}; width: #{width};"]
     end
   end
 end

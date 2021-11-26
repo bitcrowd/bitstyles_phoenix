@@ -15,20 +15,19 @@ defmodule BitstylesPhoenix.Live.Dropdown do
   def ui_js_dropdown(assigns) do
     extra = assigns_to_attributes(assigns, [:menu, :button])
 
-    button_assigns = assigns_from_single_slot(assigns, :button, with: :button_extra)
+    {_, button_extra} = assigns_from_single_slot(assigns, :button)
 
-    menu_assigns =
-      assigns_from_single_slot(assigns, :menu,
-        with: fn slot, extra -> get_menu_assigns(slot.id, extra) end,
-        exclude: [:id],
-        default: &get_menu_assigns/0
-      )
+    {_, menu_extra} = assigns_from_single_slot(assigns, :menu, optional: true)
+
+    menu_extra = Keyword.put_new(menu_extra, :id, random_id())
 
     assigns =
-      assigns
-      |> assign(extra: extra)
-      |> assign(button_assigns)
-      |> assign(menu_assigns)
+      assign(assigns,
+        extra: extra,
+        button_extra: button_extra,
+        menu_extra: menu_extra,
+        menu_id: menu_extra[:id]
+      )
 
     ~H"""
     <RawDropdown.ui_dropdown {@extra}>
@@ -42,7 +41,6 @@ defmodule BitstylesPhoenix.Live.Dropdown do
         <%= render_slot(@button) %>
       </:button>
       <:menu
-        id={@menu_id}
         style="display: none"
         phx-click-away={JS.hide(to: "##{@menu_id}",transition: {"is-transitioning", "is-on-screen", "is-off-screen"})}
         {@menu_extra}
@@ -50,10 +48,4 @@ defmodule BitstylesPhoenix.Live.Dropdown do
     </RawDropdown.ui_dropdown>
     """
   end
-
-  defp get_menu_assigns(), do: get_menu_assigns(random_id(), %{})
-
-  defp get_menu_assigns(nil, extra), do: get_menu_assigns(random_id(), extra)
-
-  defp get_menu_assigns(id, extra), do: [menu_id: id, menu_extra: extra]
 end

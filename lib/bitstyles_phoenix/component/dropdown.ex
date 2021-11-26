@@ -2,6 +2,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   use BitstylesPhoenix.Component
 
   import BitstylesPhoenix.Component.Icon
+  import BitstylesPhoenix.Helper.Button
 
   @moduledoc """
   The dropdown component without any JS.
@@ -67,7 +68,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative">
-          <button type="button" class="a-button a-button--ui u-h6">
+          <button class="a-button a-button--ui" type="button">
             <span class="a-button__label">
               Select me
             </span>
@@ -124,7 +125,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative">
-            <button type="button" class="a-button a-button--ui u-h6">
+            <button class="a-button a-button--ui" type="button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -176,7 +177,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative u-flex u-justify-end">
-          <button type="button" class="a-button a-button--ui u-h6">
+          <button class="a-button a-button--ui" type="button">
             <span class="a-button__label">
               Select me
             </span>
@@ -200,6 +201,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         </div>
         """
     ''',
+    width: "100%",
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-down" viewBox="0 0 100 100">
@@ -233,7 +235,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative u-flex u-justify-end">
-            <button type="button" class="a-button a-button--ui u-h6">
+            <button class="a-button a-button--ui" type="button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -258,6 +260,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         </div>
         """
     ''',
+    width: "100%",
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-down" viewBox="0 0 100 100">
@@ -284,7 +287,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative">
-          <button type="button" class="a-button a-button--ui u-h6 foo">
+          <button class="a-button a-button--ui foo" type="button">
             Custom button content
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top">
@@ -329,7 +332,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         """
         <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">
-            <button type="button" class="a-button a-button--ui u-h6" aria-controls="dropdown-1" onclick=\"toggle(&#39;dropdown-1&#39;)\">
+            <button aria-controls="dropdown-1" class="a-button a-button--ui" onclick=\"toggle(&#39;dropdown-1&#39;)\" type="button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -376,26 +379,20 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   def ui_dropdown(assigns) do
-    button_assigns =
-      assigns_from_single_slot(assigns, :button,
-        exclude: [:class, :label],
-        with: fn button, extra ->
-          [
-            button_extra: extra,
-            button_label: button[:label],
-            button_class: classnames(["a-button a-button--ui u-h6", button[:class]])
-          ]
-        end
-      )
+    {button, button_extra} = assigns_from_single_slot(assigns, :button, exclude: [:label])
 
-    menu_assigns =
-      assigns_from_single_slot(assigns, :menu,
-        exclude: [:class],
-        default: [menu_class: menu_class(assigns[:variant]), menu_extra: %{}],
-        with: fn menu, extra ->
-          [menu_extra: extra, menu_class: menu_class(assigns[:variant], menu[:class])]
-        end
-      )
+    button_assigns = [
+      button_extra: Keyword.put_new(button_extra, :variant, :ui),
+      button_label: button[:label]
+    ]
+
+    {menu, menu_extra} =
+      assigns_from_single_slot(assigns, :menu, exclude: [:class], optional: true)
+
+    menu_assigns = [
+      menu_extra: menu_extra,
+      menu_class: menu_class(assigns[:variant], menu && menu[:class])
+    ]
 
     class =
       classnames([
@@ -407,7 +404,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     extra =
       assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file, :variant])
 
-    icon_assigns = if file = assigns[:icon_file], do: %{file: file}, else: %{}
+    icon_assigns = if file = assigns[:icon_file], do: [file: file], else: []
 
     assigns =
       assigns
@@ -417,14 +414,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
     ~H"""
       <div class={@class} {@extra}>
-        <button type="button" class={@button_class} {@button_extra}>
+        <%= ui_button(@button_extra) do %>
           <%= if @button_label do %>
             <span class="a-button__label"><%= @button_label %></span>
             <.ui_icon name="caret-down" class="a-button__icon" size="m" {@icon_assigns}/>
           <% else %>
             <%= render_slot(@button) %>
           <% end %>
-        </button>
+        <% end %>
         <ul class={@menu_class} {@menu_extra}>
           <%= for option <- @option do %>
             <li {assigns_to_attributes(option)}>
@@ -437,7 +434,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   end
 
   @menu_classes ~w(a-dropdown u-overflow--y a-list-reset)
-  defp menu_class(variant, class \\ nil) do
+  defp menu_class(variant, class) do
     classnames(@menu_classes ++ variant_classes(variant) ++ [margin(variant), class])
   end
 
