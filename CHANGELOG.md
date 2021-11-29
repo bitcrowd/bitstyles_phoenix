@@ -47,6 +47,7 @@ Below is a list of changes that happened besides the componentization:
 
 ### Changed 
 
+- `use_svg` now also sets the `href` (see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlink:href dreprecation)
 - Added dependency to `phoenix_live_view` >= 1.17.0 (for using `sigil_H/1` and new component syntax)
 - Doctest now use `floki` to prettify the output HTML, so docs will be a nicer read.
 - `classnames/1` is now imported by default with `use BitstylesPhoenix`

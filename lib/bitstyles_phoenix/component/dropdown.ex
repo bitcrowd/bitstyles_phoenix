@@ -73,7 +73,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               Select me
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-              <use xlink:href="#icon-caret-down">
+              <use href="#icon-caret-down" xlink:href="#icon-caret-down">
               </use>
             </svg>
           </button>
@@ -130,7 +130,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 Select me
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-                <use xlink:href="#icon-caret-down">
+                <use href="#icon-caret-down" xlink:href="#icon-caret-down">
                 </use>
               </svg>
             </button>
@@ -182,7 +182,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               Select me
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-              <use xlink:href="#icon-caret-down">
+              <use href="#icon-caret-down" xlink:href="#icon-caret-down">
               </use>
             </svg>
           </button>
@@ -240,7 +240,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 Select me
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-                <use xlink:href="#icon-caret-down">
+                <use href="#icon-caret-down" xlink:href="#icon-caret-down">
                 </use>
               </svg>
             </button>
@@ -337,7 +337,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 Select me
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-                <use xlink:href="assets/icons.svg#icon-caret-down">
+                <use href="assets/icons.svg#icon-caret-down" xlink:href="assets/icons.svg#icon-caret-down">
                 </use>
               </svg>
             </button>
