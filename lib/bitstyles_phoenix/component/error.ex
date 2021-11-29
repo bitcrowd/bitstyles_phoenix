@@ -41,7 +41,7 @@ defmodule BitstylesPhoenix.Component.Error do
       ...> <.ui_errors form={@form} field={:multiple} />
       ...> """
       """
-      <ul class="u-padding-l-left u-fg--warning">
+      <ul class="u-padding-xl-left">
         <li>
           <span class="u-fg--warning" phx-feedback-for="user[multiple]">
             is simply bad
@@ -74,7 +74,7 @@ defmodule BitstylesPhoenix.Component.Error do
         """
 
       errors ->
-        class = classnames(["u-padding-l-left u-fg--warning", assigns[:class]])
+        class = classnames(["u-padding-xl-left", assigns[:class]])
         assigns = assign(assigns, class: class)
 
         ~H"""
