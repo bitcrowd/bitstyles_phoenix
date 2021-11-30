@@ -24,7 +24,8 @@ defmodule BitstylesPhoenix.Helper.Button do
   - `variant` - specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
   - `class` - Extra classes to pass to the badge. See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `icon` - An icon name as string or a tuple with `{icon_name, icon_opts}` which is passed to `BitstylesPhoenix.Component.Icon.ui_icon/1` as
-    attributes.
+    attributes. Additionally it is possible to pass `after: true` to the icon_opts, to make the icon appear after the button label instead of in
+    front of it.
 
   All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
 
