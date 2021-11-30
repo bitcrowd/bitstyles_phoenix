@@ -33,7 +33,7 @@ defmodule BitstylesPhoenix.Component.Icon do
         ...> """
         """
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-          <use href="#icon-inline-arrow" xlink:href="#icon-inline-arrow">
+          <use xlink:href="#icon-inline-arrow">
           </use>
         </svg>
         """
@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.Component.Icon do
       ...> """
       """
       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
-        <use href="assets/icons.svg#icon-hamburger" xlink:href="assets/icons.svg#icon-hamburger">
+        <use xlink:href="assets/icons.svg#icon-hamburger">
         </use>
       </svg>
       """
@@ -67,7 +67,7 @@ defmodule BitstylesPhoenix.Component.Icon do
       ...> """
       """
       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
-        <use href="assets/icons.svg#icon-bin" xlink:href="assets/icons.svg#icon-bin">
+        <use xlink:href="assets/icons.svg#icon-bin">
         </use>
       </svg>
       """

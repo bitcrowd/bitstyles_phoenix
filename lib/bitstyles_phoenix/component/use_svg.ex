@@ -14,7 +14,7 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> """
         """
         <svg xmlns="http://www.w3.org/2000/svg">
-          <use href="#arrow" xlink:href="#arrow">
+          <use xlink:href="#arrow">
           </use>
         </svg>
         """
@@ -37,7 +37,7 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> """
         """
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 280">
-          <use href="assets/logo.svg#logo" xlink:href="assets/logo.svg#logo">
+          <use xlink:href="assets/logo.svg#logo">
           </use>
         </svg>
         """
@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> """
         """
         <svg xmlns="http://www.w3.org/2000/svg">
-          <use href="assets/icons.svg#icon-bin" xlink:href="assets/icons.svg#icon-bin">
+          <use xlink:href="assets/icons.svg#icon-bin">
           </use>
         </svg>
         """
@@ -72,7 +72,7 @@ defmodule BitstylesPhoenix.Component.UseSVG do
 
     ~H"""
     <svg {@extra}>
-      <use href={@href} xlink:href={@href} />
+      <use xlink:href={@href} />
     </svg>
     """
   end
