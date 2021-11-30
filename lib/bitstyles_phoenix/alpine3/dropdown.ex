@@ -74,8 +74,8 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px">
-        ...>   <.ui_js_dropdown x_name="myOwnDropDown" icon_file="assets/icons.svg">
-        ...>     <:button label="Select me"/>
+        ...>   <.ui_js_dropdown x_name="myOwnDropDown">
+        ...>     <:button label="Select me" icon_file="assets/icons.svg"/>
         ...>     <:option>
         ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
         ...>     </:option>

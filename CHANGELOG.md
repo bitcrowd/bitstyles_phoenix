@@ -44,6 +44,8 @@ Below is a list of changes that happened besides the componentization:
 - `ui_dropdown` and `ui_js_dropdown` (Live/Alpine3) components
 - `BitstylesPhoenix.Live` and `BitstylesPhoenix.Alpine3` for quick imports of the live and alpine3 components
 - Integration tests and example configuration with the `demo` app
+- Added `ui_icon_button/2` & `ui_icon_button/3`.
+- Added `icon` option to `ui_button`.
 
 ### Changed 
 

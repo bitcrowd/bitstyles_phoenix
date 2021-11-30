@@ -1,7 +1,6 @@
 defmodule BitstylesPhoenix.Component.Dropdown do
   use BitstylesPhoenix.Component
 
-  import BitstylesPhoenix.Component.Icon
   import BitstylesPhoenix.Helper.Button
 
   @moduledoc """
@@ -25,10 +24,6 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `variant` - The dropdown variant (top, right, full-width).
     Can be provided as an atom, a string, a list of atoms or a list of strings.
-  - `icon_file` - The external SVG file with icons to be passed on to
-    `BitstylesPhoenix.Component.Icon.ui_icon/1` for the dropdown icon.
-    Only needed if SVG icons are not provided inline and if
-    not rendering custom button content.
   - All other attributes are passed on to the outer `div`
 
   This component will not render any inner content except slots.
@@ -47,6 +42,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `label` - The button for the label. If set, will not render
     custom button content.
+  - `icon_file` - The external SVG file with icons to be passed on to
+    `BitstylesPhoenix.Component.Icon.ui_icon/1` for the dropdown icon.
+    Only needed if SVG icons are not provided inline and if
+    not rendering custom button content.
 
   This slot will render it's inner content when no button label is set.
   """
@@ -313,8 +312,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px; width: 500px;">
-        ...>   <.ui_dropdown icon_file="assets/icons.svg" variant="full-width">
-        ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me"/>
+        ...>   <.ui_dropdown variant="full-width">
+        ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me" icon_file="assets/icons.svg" />
         ...>     <:menu style="display: none" id="dropdown-1"/>
         ...>     <:option class="foo">
         ...>       <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
@@ -379,20 +378,16 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   def ui_dropdown(assigns) do
-    {button, button_extra} = assigns_from_single_slot(assigns, :button, exclude: [:label])
+    {button, button_extra} =
+      assigns_from_single_slot(assigns, :button, exclude: [:label, :icon_file])
 
-    button_assigns = [
-      button_extra: Keyword.put_new(button_extra, :variant, :ui),
-      button_label: button[:label]
-    ]
+    button_extra =
+      button_extra
+      |> Keyword.put_new(:variant, :ui)
+      |> maybe_put_icon(button[:label], button[:icon_file])
 
     {menu, menu_extra} =
       assigns_from_single_slot(assigns, :menu, exclude: [:class], optional: true)
-
-    menu_assigns = [
-      menu_extra: menu_extra,
-      menu_class: menu_class(assigns[:variant], menu && menu[:class])
-    ]
 
     class =
       classnames([
@@ -401,23 +396,24 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         {"u-flex u-justify-end", variant?(:right, assigns[:variant])}
       ])
 
-    extra =
-      assigns_to_attributes(assigns, [:class, :menu, :button, :option, :icon_file, :variant])
-
-    icon_assigns = if file = assigns[:icon_file], do: [file: file], else: []
+    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :option, :variant])
 
     assigns =
-      assigns
-      |> assign(extra: extra, class: class, icon_assigns: icon_assigns)
-      |> assign(button_assigns)
-      |> assign(menu_assigns)
+      assign(
+        assigns,
+        extra: extra,
+        class: class,
+        button_label: button[:label],
+        button_extra: button_extra,
+        menu_extra: menu_extra,
+        menu_class: menu_class(assigns[:variant], menu && menu[:class])
+      )
 
     ~H"""
       <div class={@class} {@extra}>
         <%= ui_button(@button_extra) do %>
           <%= if @button_label do %>
-            <span class="a-button__label"><%= @button_label %></span>
-            <.ui_icon name="caret-down" class="a-button__icon" size="m" {@icon_assigns}/>
+            <%= @button_label %>
           <% else %>
             <%= render_slot(@button) %>
           <% end %>
@@ -432,6 +428,13 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       </div>
     """
   end
+
+  defp maybe_put_icon(button_extra, button_label, icon_file) when not is_nil(button_label) do
+    icon = {"caret-down", [file: icon_file, size: "m", after: true]}
+    Keyword.put_new(button_extra, :icon, icon)
+  end
+
+  defp maybe_put_icon(button_extra, _, _), do: button_extra
 
   @menu_classes ~w(a-dropdown u-overflow--y a-list-reset)
   defp menu_class(variant, class) do
