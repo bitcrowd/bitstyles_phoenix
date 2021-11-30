@@ -50,6 +50,8 @@ Below is a list of changes that happened besides the componentization:
 - Added dependency to `phoenix_live_view` >= 1.17.0 (for using `sigil_H/1` and new component syntax)
 - Doctest now use `floki` to prettify the output HTML, so docs will be a nicer read.
 - `classnames/1` is now imported by default with `use BitstylesPhoenix`
+- Updated to bitstyles `v3.0.0` 
+- `ui_errors` now uses larger padding
 
 ## v0.8.0
 
