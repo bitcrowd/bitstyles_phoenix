@@ -11,6 +11,15 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   ## Attributes
   - `x_name` - The name of the boolean x-data property for alpine to store the menu state.
     Defaults to `dropdownOpen`.
+
+  ## Prevent page-flickering
+
+  The dropdown sets the `x-cloak` property on the menu to avoid flickering on initial page load.
+  To make this work, you need to add the following snippet to your stylesheets:
+
+     [x-cloak] { display: none !important; }
+
+  See https://alpinejs.dev/directives/cloak for more information on `x-cloak`.
   """
 
   story(
@@ -42,7 +51,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="dropdownOpen = false" x-show="dropdownOpen">
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="dropdownOpen = false" x-cloak="x-cloak" x-show="dropdownOpen">
               <li>
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -97,7 +106,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="myOwnDropDown = false" x-show="myOwnDropDown">
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="myOwnDropDown = false" x-cloak="x-cloak" x-show="myOwnDropDown">
               <li>
                 <a class="a-button a-button--menu u-h6" href="#">
                   Option 1
@@ -134,7 +143,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
     ~H"""
     <RawDropdown.ui_dropdown x-data={"{ #{@x_name}: false }"} {@extra}>
       <:button @click={"#{@x_name} = true"} {@button_extra}><%= render_slot(@button) %></:button>
-      <:menu x-show={@x_name} @click.away={"#{@x_name} = false"} {@menu_extra} />
+      <:menu x-cloak x-show={@x_name} @click.away={"#{@x_name} = false"} {@menu_extra} />
     </RawDropdown.ui_dropdown>
     """
   end
