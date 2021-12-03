@@ -1,6 +1,16 @@
 # Changelog
 
-## Unreleased
+## v1.1.0
+
+## Added 
+
+- Support for 3.1.0 of bitstyles
+
+## Changed
+
+- Switched to esbuild plugin sass setup
+
+## v1.0.0
 
 This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent develpments in Phoenix and LiveView.
 

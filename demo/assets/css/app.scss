@@ -1,1 +1,5 @@
-@import "../node_modules/bitstyles/scss/bitstyles.scss";
+@use "~bitstyles/scss/bitstyles/settings/_typography" with (
+  $webfont-base-url: '../node_modules/bitstyles/assets/fonts/'
+);
+
+@use "~bitstyles/scss/bitstyles";

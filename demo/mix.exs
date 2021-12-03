@@ -36,14 +36,12 @@ defmodule BitstylesPhoenixDemo.MixProject do
       {:bitstyles_phoenix, path: '..'},
       {:faker, "~> 0.17"},
       {:ecto, "~> 3.7.1"},
-      {:dart_sass, "~> 0.3", runtime: Mix.env() == :dev},
       {:phoenix, "~> 1.6.2"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.17.0"},
       {:floki, ">= 0.30.0", only: :test},
-      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
@@ -69,18 +67,8 @@ defmodule BitstylesPhoenixDemo.MixProject do
         "assets.compile",
         "test"
       ],
-      bitstyles: [
-        "cmd mkdir -p priv/static/assets",
-        "cmd cp -R assets/node_modules/bitstyles/assets/* priv/static/assets"
-      ],
-      "bitstyles.watch": [
-        "bitstyles",
-        "cmd fswatch -o assets/node_modules | xargs -n1 -I {} mix bitstyles"
-      ],
       "assets.compile": [
-        "esbuild default --minify",
-        "sass default --no-source-map --style=compressed",
-        "bitstyles"
+        "cmd --cd assets node build.js --deploy"
       ],
       "assets.deploy": [
         "assets.compile",
