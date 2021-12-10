@@ -23,6 +23,7 @@ defmodule BitstylesPhoenix.Component.Form do
     color: :color_input,
     checkbox: :checkbox,
     date: :date_input,
+    datetime: :datetime_local_input,
     email: :email_input,
     file: :file_input,
     number: :number_input,
