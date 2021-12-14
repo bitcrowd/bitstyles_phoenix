@@ -35,7 +35,7 @@ Below is a list of changes that happened besides the componentization:
   config :bitstyles_phoenix, :trim_e2e_classes, [enabled: false]
   ```
 
-### Added 
+### Added
 
 - All components now accept extra attributes that are passed on to the outermost parent attribute.
 - Config option to configure `classnames/1` prefixes to remove other prefixes than `e2e-` instead (e.g. `test-`).
@@ -46,6 +46,7 @@ Below is a list of changes that happened besides the componentization:
 - Integration tests and example configuration with the `demo` app
 - Added `ui_icon_button/2` & `ui_icon_button/3`.
 - Added `icon` option to `ui_button`.
+- Added support for `:datetime` type in `ui_input`, rendered as Browser-native datetime input element
 
 ### Changed 
 
