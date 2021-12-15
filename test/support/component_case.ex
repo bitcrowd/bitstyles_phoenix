@@ -1,15 +1,18 @@
 defmodule BitstylesPhoenix.ComponentCase do
   use ExUnit.CaseTemplate
 
+  @moduledoc false
+
   using do
     quote do
       use BitstylesPhoenix, js_mode: :none
+      alias Phoenix.HTML.Safe
       import Phoenix.LiveView.Helpers, only: [sigil_H: 2]
       import Phoenix.HTML, only: [safe_to_string: 1]
 
       defp render(template = %Phoenix.LiveView.Rendered{}) do
         template
-        |> Phoenix.HTML.Safe.to_iodata()
+        |> Safe.to_iodata()
         |> IO.iodata_to_binary()
         |> prettify_html()
       end

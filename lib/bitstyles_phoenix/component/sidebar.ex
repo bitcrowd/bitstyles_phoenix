@@ -296,7 +296,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     ])
   end
 
-  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
+  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex " <>
+                         "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
     extra = assigns_to_attributes(assigns, [:item, :class])
     class = classnames([@sidebar_nav_classes, assigns[:class]])

@@ -1,10 +1,14 @@
 defmodule BitstylesPhoenix.Live.Sidebar do
   use BitstylesPhoenix.Component
 
-  alias Phoenix.LiveView.JS
   alias BitstylesPhoenix.Component.Sidebar, as: RawSidebar
+  alias Phoenix.LiveView.JS
   import BitstylesPhoenix.Helper.Button
   import Phoenix.LiveView.Utils, only: [random_id: 0]
+
+  @moduledoc """
+  Components for rendering a sidebar layout powered by LiveView commands.
+  """
 
   @doc """
   Renders a sidebar layout with LiveView commands.

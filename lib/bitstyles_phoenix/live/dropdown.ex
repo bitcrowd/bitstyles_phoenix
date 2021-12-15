@@ -6,6 +6,10 @@ defmodule BitstylesPhoenix.Live.Dropdown do
 
   import Phoenix.LiveView.Utils, only: [random_id: 0]
 
+  @moduledoc """
+  Components for rendering a drowdowns powered by LiveView commands.
+  """
+
   @doc """
   Renders a dropdown component with a button, a menu and options with JS commands.
 
