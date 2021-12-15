@@ -1,12 +1,6 @@
 defmodule BitstylesPhoenixDemoWeb.DemoLive do
   use BitstylesPhoenixDemoWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    socket
-
-    {:ok, socket}
-  end
-
   def handle_event("put_flash", _, socket) do
     socket =
       socket
