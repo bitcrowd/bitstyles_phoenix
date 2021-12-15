@@ -8,6 +8,7 @@ defmodule BitstylesPhoenix.Alpine3 do
   defmacro __using__(_) do
     quote do
       import BitstylesPhoenix.Alpine3.Dropdown
+      import BitstylesPhoenix.Alpine3.Sidebar
     end
   end
 end

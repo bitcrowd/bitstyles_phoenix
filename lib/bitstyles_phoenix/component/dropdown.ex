@@ -430,7 +430,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   end
 
   defp maybe_put_icon(button_extra, button_label, icon_file) when not is_nil(button_label) do
-    icon = {"caret-down", [file: icon_file, size: "m", after: true]}
+    icon =
+      {"caret-down",
+       [file: icon_file, size: "m", after: true] |> Enum.reject(&(elem(&1, 1) == nil))}
+
     Keyword.put_new(button_extra, :icon, icon)
   end
 

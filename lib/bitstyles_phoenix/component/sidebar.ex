@@ -235,7 +235,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         optional: true
       )
 
-    {_, main_extra} = assigns_from_single_slot(assigns, :main, optional: true)
+    {main, main_extra} =
+      assigns_from_single_slot(assigns, :main, exclude: [:class], optional: true)
 
     extra =
       assigns_to_attributes(assigns, [
@@ -255,6 +256,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         large_extra: large_extra,
         small_extra: small_extra,
         main_extra: main_extra,
+        main_class: classnames(["u-flex-grow-1 u-overflow--y", main && main[:class]]),
         large_class: sidebar_classnames(large_sidebar, sidebar, @large_classes),
         small_class: sidebar_classnames(small_sidebar, sidebar, @small_classes)
       )
@@ -273,7 +275,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
             </div>
           </nav>
         </header>
-        <main class="u-flex-grow-1 u-overflow--y" {@main_extra}>
+        <main class={@main_class} {@main_extra}>
           <%= render_slot(assigns[:main] || @inner_block) %>
         </main>
       </div>

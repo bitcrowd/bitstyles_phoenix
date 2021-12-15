@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>       <:item><%= ui_button "Menu item #2", to: "#", class: "u-flex-grow-1", variant: "nav" %></:item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
-        ...>   <:main let={s} class="a-content">
+        ...>   <:main let={s} class="a-content u-margin-s-top">
         ...>     <div class="flex">
         ...>       <.ui_js_sidebar_open sidebar={s} class="u-margin-s-right"/>
         ...>       Main Content
@@ -107,7 +107,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y a-content">
+          <main class="u-flex-grow-1 u-overflow--y a-content u-margin-s-top">
             <div class="flex">
               <button :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
@@ -164,15 +164,19 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
   """
 
   def ui_js_sidebar_layout(assigns) do
+    {_, small_extra} = assigns_from_single_slot(assigns, :small_sidebar, optional: true)
+    {_, main_extra} = assigns_from_single_slot(assigns, :main, optional: true)
+
     extra = assigns_to_attributes(assigns, [:x_data, :small_sidebar])
-    assigns = assign(assigns, extra: extra, x_data: Map.get(assigns, :x_data, "sidebarOpen"))
-
-    {_, small_extra} = assigns_from_single_slot(assigns, :small_sidebar)
-    {_, main_extra} = assigns_from_single_slot(assigns, :main)
-
     small_extra = Keyword.put_new_lazy(small_extra, :id, &random_id/0)
 
-    assigns = assign(assigns, small_extra: small_extra, extra: extra, main_extra: main_extra)
+    assigns =
+      assign(assigns,
+        small_extra: small_extra,
+        extra: extra,
+        main_extra: main_extra,
+        x_data: Map.get(assigns, :x_data, "sidebarOpen")
+      )
 
     ~H"""
     <RawSidebar.ui_sidebar_layout x-data={"{ #{@x_data}: false }"} {@extra} >
@@ -187,7 +191,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         x-transition:leave-start="is-on-screen"
         x-transition:leave-end="is-off-screen"
         {@small_extra}>
-        <%= render_block(@small_sidebar, {@x_data, @small_extra[:id]}) %>
+        <%= assigns[:small_sidebar] && render_block(assigns[:small_sidebar], {@x_data, @small_extra[:id]}) %>
       </:small_sidebar>
       <:main {main_extra}>
         <%= render_block(assigns[:main] || @inner_block, {@x_data, @small_extra[:id]}) %>
