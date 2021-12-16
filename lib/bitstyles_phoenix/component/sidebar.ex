@@ -138,6 +138,50 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed on to the outer `div`
 
+  The sidebar comes with 4 slots:
+    - `large_sidebar` - Content that is only shown on large screens in the sidebar
+    - `small_sidebar` - Content that is only shown on small screens in the sidebar
+    - `sidebar_content` - Content that is shown on all screens in the sidebar
+    - `main` - The main content of the page (next to the sidebar)
+
+  Instead of the `main` slot you can also just use the inner content of the sidebar, but the slot
+  is valuable if you want to provide extra attributes on the `main` tag.
+  The `large_siebar` and `small_sidebar` slots are displayed before the `sidebar_content` in the layout,
+  since typically they host the logo/header/brand name, while the main navigation is hosted in the
+  `sidebar_content` slot and shown on all screens. The reason for this separation is that the sidebar
+  in the small screen is meant to start out hidden and only be shown when needed and therefore needs
+  control buttons to close it again (ususally at the top of the screen).
+  If you have different requirements you can simply omit the `sidebar_content` block and render the
+  shared content twice yourself.
+
+  # Attributes - small_sidebar slot
+
+  - `class` - Extra classes to pass to the div containing the small sidebar
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `fg` - The forground color class for the text. Defaults to `gray-30` resulting in `fg-gray-30`.
+  - `bg` - The background color class for the sidebar. Defaults to `gray-80` resulting in `fg-gray-80`.
+  - All other attributes are passed on to the small sidebar `div`
+
+  # Attributes - large_sidebar slot
+
+  - `class` - Extra classes to pass to the div containing the large sidebar
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `fg` - The forground color class for the text. Defaults to `gray-30` resulting in `fg-gray-30`.
+  - `bg` - The background color class for the sidebar. Defaults to `gray-80` resulting in `fg-gray-80`.
+  - All other attributes are passed on to the large sidebar `div`
+
+  # Attributes - sidebar_content slot
+
+  - `class` - Extra classes to pass to the div containing the large and small sidebar
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed on to the large and small sidebar `div`s
+
+  # Attributes - main slot
+
+  - `class` - Extra classes to pass to the `main` tag.
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed on to the main tag.
+
   """
 
   story(
@@ -296,6 +340,24 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     ])
   end
 
+  @doc """
+  A navigation menu for usage in the sidebar.
+
+  ## Attributes
+
+  - `class` - Extra classes to pass to the outer `ul`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed on to the outer `ul`
+
+  You can provide items inside of this navigation wih the `item` slot.
+  The slot is meant to be used with `ui_button` to add links here like showcased in the
+  top level module documentation.
+
+  ## Attributes item slot
+
+  - `class` - Extra classes to pass to the `li`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  """
   @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex " <>
                          "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
@@ -314,6 +376,20 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     </ul>
     """
   end
+
+  @doc """
+  A navigation section with a bottom or top border.
+  See top level module doc for an example.
+
+  ## Attributes
+
+  - `class` - Extra classes to pass to the outer `div`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - `border` - Either `:top` or `:bottom` (optional)
+  - `border_color` - The border color, defaults to `gray-70` resulting in
+     `u-border-gray-70-top` for a `:top` border.
+  - All other attributes are passed on to the outer `div`
+  """
 
   @sidebar_section_classes "u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col"
   @sidebar_section_default_border_color "gray-70"
