@@ -4,7 +4,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   alias BitstylesPhoenix.Component.Dropdown, as: RawDropdown
 
   @moduledoc """
-  Components for rendering a drowdowns powered by Alpine 3.
+  Components for rendering a dropdown menu powered by Alpine 3.
   """
 
   @doc """
