@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenixDemoWeb.DemoLive do
   use BitstylesPhoenixDemoWeb, :live_view
 
-  def handle_event("put_flash", _, socket) do
+  def handle_event("show-flash", _, socket) do
     socket =
       socket
       |> put_flash(:info, "Welcome to the Demo !!!")
