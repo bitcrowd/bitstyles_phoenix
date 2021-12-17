@@ -28,7 +28,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   This component will not render any inner content except slots.
 
-  ## Attributes - menu slot
+  ## Attributes - `menu` slot
 
   - `class` - Extra classes to pass to the `ul` dropdown menu
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
@@ -36,7 +36,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   This slot will not render any inner content.
 
-  ## Attributes - button slot
+  ## Attributes - `button` slot
 
   - `class` - Extra classes to pass to the dropdown `button`
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
@@ -430,7 +430,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   end
 
   defp maybe_put_icon(button_extra, button_label, icon_file) when not is_nil(button_label) do
-    icon = {"caret-down", [file: icon_file, size: "m", after: true]}
+    icon =
+      {"caret-down",
+       [file: icon_file, size: "m", after: true] |> Enum.reject(&(elem(&1, 1) == nil))}
+
     Keyword.put_new(button_extra, :icon, icon)
   end
 

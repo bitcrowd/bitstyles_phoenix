@@ -1,6 +1,10 @@
 defmodule BitstylesPhoenix.Component.UseSVG do
   use BitstylesPhoenix.Component
 
+  @moduledoc """
+  Components for rendering SVGs.
+  """
+
   @doc ~S"""
   Renders an SVG tag with a `use` reference.
   """

@@ -1,5 +1,47 @@
-<main class="container">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
-</main>
+<.ui_js_sidebar_layout>
+  <:large_sidebar>
+    <a href="/" class="u-padding-l">
+      <img src={Routes.static_path(@conn, "/assets/images/logo.svg")} aria-hidden="true" width="100"/>
+      <span class="u-sr-only">bitcrowd </span>
+    </a>
+  </:large_sidebar>
+  <:small_sidebar let={s}>
+    <div class="u-flex">
+      <a href="/" class="u-flex-grow-1 u-padding-l">
+        <img src={Routes.static_path(@conn, "/assets/images/logo.svg")} aria-hidden="true" width="100"/>
+        <span class="u-sr-only">bitcrowd</span>
+      </a>
+      <div>
+        <.ui_js_sidebar_close sidebar={s} class="e2e-sidebar-close"/>
+      </div>
+    </div>
+  </:small_sidebar>
+
+  <:sidebar_content>
+    <.ui_sidebar_nav>
+      <:item><%= ui_button "Alpine 3", to: Routes.page_path(@conn, :index), class: "u-flex-grow-1 e2e-sidebar-alpine", variant: "nav" %></:item>
+      <:item><%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), class: "u-flex-grow-1 e2e-sidebar-live", variant: "nav" %></:item>
+    </.ui_sidebar_nav>
+  </:sidebar_content>
+  <:main let={s}>
+    <.ui_js_sidebar_open sidebar={s} class="u-margin-s e2e-sidebar-open"/>
+    <%= if content = get_flash(@conn, :info) do %>
+      <.ui_flash variant="positive">
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <%= if content = get_flash(@conn, :warning) do %>
+      <.ui_flash variant="warning">
+        <.ui_icon name="exclamation" class="u-flex-shrink-0 u-margin-m-right" />
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <%= if content = get_flash(@conn, :error) do %>
+      <.ui_flash variant="danger">
+        <.ui_icon name="exclamation" class="u-flex-shrink-0 u-margin-m-right" />
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <%= @inner_content %>
+  </:main>
+</.ui_js_sidebar_layout>

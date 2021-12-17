@@ -1,11 +1,48 @@
-<main class="container">
-  <p class="alert alert-info" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+<LiveSidebar.ui_js_sidebar_layout>
+  <:large_sidebar>
+    <a href="/" class="u-padding-l">
+      <img src={Routes.static_path(@socket, "/assets/images/logo.svg")} aria-hidden="true" width="100"/>
+      <span class="u-sr-only">bitcrowd </span>
+    </a>
+  </:large_sidebar>
+  <:small_sidebar let={s}>
+    <div class="u-flex">
+      <a href="/" class="u-flex-grow-1 u-padding-l">
+        <img src={Routes.static_path(@socket, "/assets/images/logo.svg")} aria-hidden="true" width="100"/>
+        <span class="u-sr-only">bitcrowd</span>
+      </a>
+      <div>
+        <LiveSidebar.ui_js_sidebar_close sidebar={s} class="e2e-sidebar-close"/>
+      </div>
+    </div>
+  </:small_sidebar>
 
-  <p class="alert alert-danger" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+  <:sidebar_content>
+    <.ui_sidebar_nav>
+      <:item><%= ui_button "Alpine 3", to: Routes.page_path(@socket, :index), class: "u-flex-grow-1 e2e-sidebar-alpine", variant: "nav" %></:item>
+      <:item><%= ui_button "Live", to: Routes.live_path(@socket, BitstylesPhoenixDemoWeb.DemoLive), class: "u-flex-grow-1 e2e-sidebar-live", variant: "nav", link_fn: &live_redirect/2 %></:item>
+    </.ui_sidebar_nav>
+  </:sidebar_content>
 
-  <%= @inner_content %>
-</main>
+  <:main let={s}>
+    <%= if content = live_flash(@flash, :info) do %>
+      <.ui_flash variant="positive" phx-click="lv:clear-flash" phx-value-key="info">
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <%= if content = live_flash(@flash, :warning) do %>
+      <.ui_flash variant="warning" phx-click="lv:clear-flash" phx-value-key="warning">
+        <.ui_icon name="exclamation" class= "u-flex-shrink-0 u-margin-m-right" />
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <%= if content = live_flash(@flash, :error) do %>
+      <.ui_flash variant="danger" phx-click="lv:clear-flash" phx-value-key="error">
+        <.ui_icon name="exclamation" class= "u-flex-shrink-0 u-margin-m-right" />
+        <%= content %>
+      </.ui_flash>
+    <% end %>
+    <LiveSidebar.ui_js_sidebar_open sidebar={s} class="u-margin-s e2e-sidebar-open"/>
+    <%= @inner_content %>
+  </:main>
+</LiveSidebar.ui_js_sidebar_layout>

@@ -9,6 +9,7 @@ defmodule BitstylesPhoenix.Live do
   defmacro __using__(_) do
     quote do
       import BitstylesPhoenix.Live.Dropdown
+      import BitstylesPhoenix.Live.Sidebar
     end
   end
 end

@@ -56,8 +56,7 @@ defmodule BitstylesPhoenix.Helper.Classnames do
     |> Enum.flat_map(&split/1)
     |> Enum.reject(&remove_class?/1)
     |> Enum.uniq()
-    |> Enum.map(&bitstyles_version(&1, opts))
-    |> Enum.join(" ")
+    |> Enum.map_join(" ", &bitstyles_version(&1, opts))
     |> case do
       "" -> false
       classnames -> classnames

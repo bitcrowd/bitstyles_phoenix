@@ -6,6 +6,10 @@ defmodule BitstylesPhoenix.Live.Dropdown do
 
   import Phoenix.LiveView.Utils, only: [random_id: 0]
 
+  @moduledoc """
+  Components for rendering a drowdowns powered by LiveView commands.
+  """
+
   @doc """
   Renders a dropdown component with a button, a menu and options with JS commands.
 
@@ -19,7 +23,7 @@ defmodule BitstylesPhoenix.Live.Dropdown do
 
     {_, menu_extra} = assigns_from_single_slot(assigns, :menu, optional: true)
 
-    menu_extra = Keyword.put_new(menu_extra, :id, random_id())
+    menu_extra = Keyword.put_new_lazy(menu_extra, :id, &random_id/0)
 
     assigns =
       assign(assigns,

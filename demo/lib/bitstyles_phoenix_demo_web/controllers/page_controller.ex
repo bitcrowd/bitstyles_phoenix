@@ -7,6 +7,10 @@ defmodule BitstylesPhoenixDemoWeb.PageController do
       Thing.changeset()
       |> Map.put(:action, "update")
 
-    render(conn, "index.html", changeset: changeset)
+    conn
+    |> put_flash(:info, "Welcome to the Demo !!!")
+    |> put_flash(:warning, "Let's pretend we have a warning.")
+    |> put_flash(:error, "Let's pretend we have an error.")
+    |> render("index.html", changeset: changeset)
   end
 end
