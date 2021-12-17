@@ -28,7 +28,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   This component will not render any inner content except slots.
 
-  ## Attributes - menu slot
+  ## Attributes - `menu` slot
 
   - `class` - Extra classes to pass to the `ul` dropdown menu
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
@@ -36,7 +36,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   This slot will not render any inner content.
 
-  ## Attributes - button slot
+  ## Attributes - `button` slot
 
   - `class` - Extra classes to pass to the dropdown `button`
     See `BitstylesPhoenix.Helper.classnames/1` for usage.

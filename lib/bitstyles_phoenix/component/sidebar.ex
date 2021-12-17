@@ -154,7 +154,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   If you have different requirements you can simply omit the `sidebar_content` block and render the
   shared content twice yourself.
 
-  # Attributes - small_sidebar slot
+  # Attributes - `small_sidebar` slot
 
   - `class` - Extra classes to pass to the div containing the small sidebar
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
@@ -162,7 +162,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   - `bg` - The background color class for the sidebar. Defaults to `gray-80` resulting in `fg-gray-80`.
   - All other attributes are passed on to the small sidebar `div`
 
-  # Attributes - large_sidebar slot
+  # Attributes - `large_sidebar` slot
 
   - `class` - Extra classes to pass to the div containing the large sidebar
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
@@ -170,18 +170,19 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   - `bg` - The background color class for the sidebar. Defaults to `gray-80` resulting in `fg-gray-80`.
   - All other attributes are passed on to the large sidebar `div`
 
-  # Attributes - sidebar_content slot
+  # Attributes - `sidebar_content` slot
 
   - `class` - Extra classes to pass to the div containing the large and small sidebar
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed on to the large and small sidebar `div`s
 
-  # Attributes - main slot
+  # Attributes - `main` slot
 
   - `class` - Extra classes to pass to the `main` tag.
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed on to the main tag.
 
+  See the [bitstyles sidebar docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-navigation-sidebar--sidebar) for more examples.
   """
 
   story(

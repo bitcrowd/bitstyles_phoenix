@@ -144,11 +144,11 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
   @doc """
   Renders a sidebar layout with Alpine3.
 
-  Supports all attributes and slots from `BitstylesPhoenix.Component.Dropdown.ui_sidebar`.
+  Supports all attributes and slots from `BitstylesPhoenix.Component.Sidebar.ui_sidebar_layout/1`.
 
   ## Attributes
   - `x_name` - The name of the boolean x-data property for alpine to store the menu state.
-    Defaults to `sidebarOpen`.
+    Defaults to `"sidebarOpen"`.
 
   The `small_sidebar` and `main`/`inner` blocks will additionally provide a block argument
   with the sidebar context for `ui_js_sidebar_open/1` and `ui_js_sidebar_close/1`.
@@ -205,7 +205,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
   For examles see `ui_js_sidebar_layout/1`.
 
   ## Attributes
-  - `label` - A screen reader label for the icon. Defaults to `Close`.
+  - `label` - A screen reader label for the icon. Defaults to `"Close"`.
   - `sidebar` - The reference to the sidebar it controls. This is a tuple with the sidebar's `x_name` and the sidebars `id`.
     The `ui_js_sidebar_layout/1` can provide this as a block argument in the small sidebar block.
   """
@@ -234,7 +234,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
   For examles see `ui_js_sidebar_layout/1`.
 
   ## Attributes
-  - `label` - A screen reader label for the icon. Defaults to `Open sidebar`.
+  - `label` - A screen reader label for the icon. Defaults to `"Open sidebar"`.
   - `sidebar` - The reference to the sidebar it controls. This is a tuple with the sidebar's `x_name` and the sidebars `id`.
     The `ui_js_sidebar_layout/1` can provide this as a block argument in the main or inner block.
   """

@@ -13,11 +13,12 @@ defmodule BitstylesPhoenix.Live.Sidebar do
   @doc """
   Renders a sidebar layout with LiveView commands.
 
-  Supports all attributes and slots from `BitstylesPhoenix.Component.Dropdown.ui_sidebar`.
+  Supports all attributes and slots from `BitstylesPhoenix.Component.Sidebar.ui_sidebar_layout/1`.
 
   The `small_sidebar` and `main`/`inner` blocks will additionally provide a block argument
   with the sidebar context for `ui_js_sidebar_open/1` and `ui_js_sidebar_close/1`.
 
+  For examles see `BitstylesPhoenix.Component.Sidebar.ui_sidebar_layout/1`.
   """
 
   def ui_js_sidebar_layout(assigns) do
@@ -46,11 +47,10 @@ defmodule BitstylesPhoenix.Live.Sidebar do
 
   @doc """
   A sidebar close icon to be rendered on the open sidebar for closing the sidebar.
-  For examles see `ui_js_sidebar_layout/1`.
 
   ## Attributes
-  - `label` - A screen reader label for the icon. Defaults to `Close`.
-  - `sidebar` - The reference to the sidebar it controls. This is a tuple with the sidebar's `x_name` and the sidebars `id`.
+  - `label` - A screen reader label for the icon. Defaults to `"Close"`.
+  - `sidebar` - The reference to the sidebar it controls. This will be the sidebar `id`.
     The `ui_js_sidebar_layout/1` can provide this as a block argument in the small sidebar block.
   """
   def ui_js_sidebar_close(assigns) do
@@ -75,11 +75,10 @@ defmodule BitstylesPhoenix.Live.Sidebar do
 
   @doc """
   A sidebar open icon to be rendered on the main content for opening the sidebar.
-  For examles see `ui_js_sidebar_layout/1`.
 
   ## Attributes
-  - `label` - A screen reader label for the icon. Defaults to `Open sidebar`.
-  - `sidebar` - The reference to the sidebar it controls. This is a tuple with the sidebar's `x_name` and the sidebars `id`.
+  - `label` - A screen reader label for the icon. Defaults to `"Open sidebar"`.
+  - `sidebar` - The reference to the sidebar it controls. This will be the sidebar `id`.
     The `ui_js_sidebar_layout/1` can provide this as a block argument in the main or inner block.
   """
   def ui_js_sidebar_open(assigns) do
