@@ -15,7 +15,15 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
   - `icon_file` - The external SVG file with icons to be passed on to
     `BitstylesPhoenix.Component.Icon.ui_icon/1` for the breadcrumb icon.
     Only needed if SVG icons are not provided inline on the HTML.
+  - `class` - Extra classes to pass to the `ul` tag.
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed to the `nav` tag.
+
+  ## Attributes - `item` slot
+
+  - `class` - Extra classes to pass to the `li` tag.
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed to the `li` tag.
 
   See [bitstyles breadcrumbs docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-navigation-breadcrumbs--breadcrumbs) for examples.
   """
