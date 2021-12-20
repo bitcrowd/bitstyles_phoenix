@@ -117,6 +117,7 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Dropdown
       import BitstylesPhoenix.Component.Sidebar
       import BitstylesPhoenix.Component.Breadcrumbs
+      import BitstylesPhoenix.Component.DescriptionList
 
       import BitstylesPhoenix.Helper.Button
       import BitstylesPhoenix.Helper.Classnames
