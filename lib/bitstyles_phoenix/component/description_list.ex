@@ -1,4 +1,4 @@
-defmodule BitstylesPhoenix.Component.DescriptonList do
+defmodule BitstylesPhoenix.Component.DescriptionList do
   use BitstylesPhoenix.Component
 
   @moduledoc """
