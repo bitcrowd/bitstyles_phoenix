@@ -7,7 +7,7 @@ This version breaks with the existing API quite a lot 🔥, since we changed the
 ### Breaking
 
 All `ui_*` component helpers are now instead [HEEx function components](https://hexdocs.pm/phoenix/views.html#html-components). They will expect the options and arguments
-now through component attributes. The only exception is `ui_button`, which still delegate to the link_helper given via `link_fn`. 
+now through component attributes. The only exception is `ui_button`, which still delegate to the link_helper given via `link_fn`, but is also available as component. 
 In order to migrate to the new components update to Phoenix 1.6.0 and LiveView 1.17.0 and change all templates from
 `*.html.eex` to `*.html.heex` to be able to use the new component syntax. After that you can change your previous `ui_*` helpers to use the new syntax:
 
@@ -44,7 +44,8 @@ Below is a list of changes that happened besides the componentization:
 - `ui_dropdown` and `ui_js_dropdown` (Live/Alpine3) components
 - `BitstylesPhoenix.Live` and `BitstylesPhoenix.Alpine3` for quick imports of the live and alpine3 components
 - Integration tests and example configuration with the `demo` app
-- Added `ui_icon_button/2` & `ui_icon_button/3`.
+- Added `ui_icon_button/2` & `ui_icon_button/3` as helpers.
+- Added various new components: `Button`, `Tabs`, `Breadcrumbs`, `Sidebar`, `Dropdown`, ...
 - Added `icon` option to `ui_button`.
 - Added support for `:datetime` type in `ui_input`, rendered as Browser-native datetime input element
 

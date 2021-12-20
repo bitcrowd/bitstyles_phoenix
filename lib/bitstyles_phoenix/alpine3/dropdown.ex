@@ -34,10 +34,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> <.ui_js_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:option>
-        ...>     <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
+        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
         ...>   </:option>
         ...>   <:option>
-        ...>     <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
+        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
         ...>   </:option>
         ...> </.ui_js_dropdown>
         ...> """
@@ -86,10 +86,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> <.ui_js_dropdown x_name="myOwnDropDown">
         ...>   <:button label="Select me" icon_file="assets/icons.svg"/>
         ...>   <:option>
-        ...>     <%= ui_button "Option 1", to: "#", variant: "menu", class: "u-h6" %>
+        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
         ...>   </:option>
         ...>   <:option>
-        ...>     <%= ui_button "Option 2", to: "#", variant: "menu", class: "u-h6" %>
+        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
         ...>   </:option>
         ...> </.ui_js_dropdown>
         ...> """
