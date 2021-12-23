@@ -34,6 +34,7 @@ defmodule BitstylesPhoenixDemo.MixProject do
   defp deps do
     [
       {:bitstyles_phoenix, path: '..'},
+      {:faker, "~> 0.17"},
       {:ecto, "~> 3.7.1"},
       {:dart_sass, "~> 0.3", runtime: Mix.env() == :dev},
       {:phoenix, "~> 1.6.2"},
