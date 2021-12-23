@@ -1,25 +1,39 @@
-<h1>Live test</h1>
-<p><%= ui_button "Flash messages", "phx-click": "show-flash" %></p>
-<.ui_js_dropdown>
-  <:button label="Test" class="e2e-dropdown-button" />
-  <:option>
-    <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option" %>
-  </:option>
-  <:option>
-    <%= ui_button "Flurky", to: "#", variant: :menu %>
-  </:option>
-</.ui_js_dropdown>
-<div style="min-height: 300px"></div>
-<.ui_js_dropdown variant={[:top]}>
-  <:button class="e2e-dropdown-button-id">
-    <.ui_icon name="caret-up" class="a-button__icon" />
-    <span class="a-button__label">Test with ID and custom button content</span>
-  </:button>
-  <:menu id="a-dropdown"/>
-  <:option>
-    <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option-id" %>
-  </:option>
-  <:option>
-    <%= ui_button "Flurky", to: "#", variant: :menu %>
-  </:option>
-</.ui_js_dropdown>
+<article>
+  <header class="u-bg--gray-5 u-padding-l-top u-margin-l-bottom">
+    <.ui_content>
+      <.ui_page_title>
+        Live test
+        <:action>
+          <%= ui_button "Flash messages", "phx-click": "show-flash" %>
+        </:action>
+        <:action>
+          <.ui_js_dropdown variant="right">
+            <:button label="Test" class="e2e-dropdown-button" />
+            <:option>
+              <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option" %>
+            </:option>
+            <:option>
+              <%= ui_button "Flurky", to: "#", variant: :menu %>
+            </:option>
+          </.ui_js_dropdown>
+        </:action>
+      </.ui_page_title>
+    </.ui_content>
+  </header>
+  <.ui_content>
+    <p><%= Faker.Lorem.paragraph() %></p>
+    <.ui_js_dropdown variant={[:top]}>
+      <:button class="e2e-dropdown-button-id">
+        <.ui_icon name="caret-up" class="a-button__icon" />
+        <span class="a-button__label">Test with ID and custom button content</span>
+      </:button>
+      <:menu id="a-dropdown"/>
+      <:option>
+        <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option-id" %>
+      </:option>
+      <:option>
+        <%= ui_button "Flurky", to: "#", variant: :menu %>
+      </:option>
+    </.ui_js_dropdown>
+  </.ui_content>
+</article>

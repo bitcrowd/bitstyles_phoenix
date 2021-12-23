@@ -25,18 +25,18 @@
   <:main let={s}>
     <.ui_js_sidebar_open sidebar={s} class="u-margin-s e2e-sidebar-open"/>
     <%= if content = get_flash(@conn, :info) do %>
-      <.ui_flash variant="positive">
+      <.ui_flash variant={[:positive, :full]}>
         <%= content %>
       </.ui_flash>
     <% end %>
     <%= if content = get_flash(@conn, :warning) do %>
-      <.ui_flash variant="warning">
+      <.ui_flash variant={[:warning, :full]}>
         <.ui_icon name="exclamation" class="u-flex-shrink-0 u-margin-m-right" />
         <%= content %>
       </.ui_flash>
     <% end %>
     <%= if content = get_flash(@conn, :error) do %>
-      <.ui_flash variant="danger">
+      <.ui_flash variant={[:danger, :full]}>
         <.ui_icon name="exclamation" class="u-flex-shrink-0 u-margin-m-right" />
         <%= content %>
       </.ui_flash>

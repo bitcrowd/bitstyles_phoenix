@@ -40,7 +40,13 @@
         <%= content %>
       </.ui_flash>
     <% end %>
-    <LiveSidebar.ui_js_sidebar_open sidebar={s} class="u-margin-s e2e-sidebar-open"/>
+    <div class="u-flex u-padding-s u-hidden@l">
+      <LiveSidebar.ui_js_sidebar_open sidebar={s} class="e2e-sidebar-open u-margin-m-right"/>
+      <a href="/" class="u-flex-grow-1 ">
+        <img src={Routes.static_path(@socket, "/assets/images/logo.svg")} aria-hidden="true" width="60"/>
+        <span class="u-sr-only">bitcrowd</span>
+      </a>
+    </div>
     <%= @inner_content %>
   </:main>
 </LiveSidebar.ui_js_sidebar_layout>
