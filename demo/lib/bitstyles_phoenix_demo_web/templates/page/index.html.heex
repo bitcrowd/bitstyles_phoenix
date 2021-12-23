@@ -4,26 +4,24 @@
   </symbol>
 </svg>
 
-<div class="a-content">
-  <h1>Alpine test</h1>
+<h1>Alpine test</h1>
 
-  <.ui_icon name="home" class="e2e-external-svg-icon"/>
-  <.ui_icon name="foo" file={nil} class="e2e-inline-svg-icon"/>
+<.ui_icon name="home" class="e2e-external-svg-icon"/>
+<.ui_icon name="foo" file={nil} class="e2e-inline-svg-icon"/>
 
-  <.form let={f} for={@changeset} class="e2e-form">
+<.form let={f} for={@changeset} class="e2e-form">
+<.ui_input form={f} field={:name} required />
+</.form>
+
+<%= Gettext.with_locale("de", fn -> %>
+<.form let={f} for={@changeset} class="e2e-form-de">
     <.ui_input form={f} field={:name} required />
-  </.form>
+</.form>
+<% end) %>
 
-  <%= Gettext.with_locale("de", fn -> %>
-    <.form let={f} for={@changeset} class="e2e-form-de">
-      <.ui_input form={f} field={:name} required />
-    </.form>
-  <% end) %>
-
-  <.ui_js_dropdown>
-    <:button label="Menu" class="e2e-dropdown-button" />
-    <:option>
-      <%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu, class: "e2e-dropdown-option" %>
-      </:option>
-  </.ui_js_dropdown>
-</div>
+<.ui_js_dropdown>
+<:button label="Menu" class="e2e-dropdown-button" />
+<:option>
+    <%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu, class: "e2e-dropdown-option" %>
+    </:option>
+</.ui_js_dropdown>
