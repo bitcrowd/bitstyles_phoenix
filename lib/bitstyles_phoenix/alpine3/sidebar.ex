@@ -40,11 +40,11 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></:item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
-        ...>   <:main let={s} class="a-content u-margin-s-top">
-        ...>     <div class="flex">
+        ...>   <:main let={s} class="u-margin-s-top">
+        ...>     <.ui_content class="flex">
         ...>       <.ui_js_sidebar_open sidebar={s} class="u-margin-s-right"/>
         ...>       Main Content
-        ...>     </div>
+        ...>     </.ui_content>
         ...>   </:main>
         ...> </.ui_js_sidebar_layout>
         ...> """
@@ -107,8 +107,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y a-content u-margin-s-top">
-            <div class="flex">
+          <main class="u-flex-grow-1 u-overflow--y u-margin-s-top">
+            <div class="a-content flex">
               <button :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-hamburger">

@@ -45,7 +45,7 @@ Below is a list of changes that happened besides the componentization:
 - `BitstylesPhoenix.Live` and `BitstylesPhoenix.Alpine3` for quick imports of the live and alpine3 components
 - Integration tests and example configuration with the `demo` app
 - Added `ui_icon_button/2` & `ui_icon_button/3` as helpers.
-- Added various new components: `Button`, `Tabs`, `Breadcrumbs`, `Sidebar`, `Dropdown`, ...
+- Added various new components: `Button`, `Tabs`, `Breadcrumbs`, `Sidebar`, `Dropdown`, `Content` ...
 - Added `icon` option to `ui_button`.
 - Added support for `:datetime` type in `ui_input`, rendered as Browser-native datetime input element
 
