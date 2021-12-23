@@ -17,8 +17,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       Menu
         ...>     </.ui_sidebar_section>
         ...>     <.ui_sidebar_nav>
-        ...>       <:item><%= ui_button "Menu item #1", to: "#", class: "u-flex-grow-1", variant: "nav" %></:item>
-        ...>       <:item><%= ui_button "Menu item #2", to: "#", class: "u-flex-grow-1", variant: "nav" %></:item>
+        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></:item>
+        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></:item>
         ...>     </.ui_sidebar_nav>
         ...>     <.ui_sidebar_section border="top">
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
@@ -28,7 +28,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>           </div>
         ...>           <span class="a-button__label">Jane Dobermann</span>
         ...>         </:button>
-        ...>         <:option><%= ui_button "Logout", to: "#", variant: "menu" %></:option>
+        ...>         <:option><.ui_button to="#" variant="menu">Logout</.ui_button></:option>
         ...>       </.ui_dropdown>
         ...>     </.ui_sidebar_section>
         ...>   </:sidebar_content>

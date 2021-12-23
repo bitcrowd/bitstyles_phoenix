@@ -36,8 +36,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>   </:small_sidebar>
         ...>   <:sidebar_content>
         ...>     <.ui_sidebar_nav>
-        ...>       <:item><%= ui_button "Menu item #1", to: "#", class: "u-flex-grow-1", variant: "nav" %></:item>
-        ...>       <:item><%= ui_button "Menu item #2", to: "#", class: "u-flex-grow-1", variant: "nav" %></:item>
+        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></:item>
+        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></:item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
         ...>   <:main let={s} class="a-content u-margin-s-top">

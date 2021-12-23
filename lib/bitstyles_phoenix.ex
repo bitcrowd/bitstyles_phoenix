@@ -109,15 +109,17 @@ defmodule BitstylesPhoenix do
   defmacro __using__(_) do
     quote do
       import BitstylesPhoenix.Component.Badge
-      import BitstylesPhoenix.Component.Flash
-      import BitstylesPhoenix.Component.Icon
-      import BitstylesPhoenix.Component.UseSVG
-      import BitstylesPhoenix.Component.Error
-      import BitstylesPhoenix.Component.Form
-      import BitstylesPhoenix.Component.Dropdown
-      import BitstylesPhoenix.Component.Sidebar
       import BitstylesPhoenix.Component.Breadcrumbs
+      import BitstylesPhoenix.Component.Button
       import BitstylesPhoenix.Component.DescriptionList
+      import BitstylesPhoenix.Component.Dropdown
+      import BitstylesPhoenix.Component.Error
+      import BitstylesPhoenix.Component.Flash
+      import BitstylesPhoenix.Component.Form
+      import BitstylesPhoenix.Component.Icon
+      import BitstylesPhoenix.Component.Sidebar
+      import BitstylesPhoenix.Component.Tabs
+      import BitstylesPhoenix.Component.UseSVG
 
       import BitstylesPhoenix.Helper.Button
       import BitstylesPhoenix.Helper.Classnames
