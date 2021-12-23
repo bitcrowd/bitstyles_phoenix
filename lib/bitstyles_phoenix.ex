@@ -117,6 +117,7 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Error
       import BitstylesPhoenix.Component.Flash
       import BitstylesPhoenix.Component.Form
+      import BitstylesPhoenix.Component.Heading
       import BitstylesPhoenix.Component.Icon
       import BitstylesPhoenix.Component.Sidebar
       import BitstylesPhoenix.Component.Tabs
