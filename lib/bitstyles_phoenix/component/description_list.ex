@@ -11,8 +11,8 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dl>
-        ...>   <:item label="Length">8</:item>
-        ...>   <:item label="Inserted at">2007-01-02</:item>
+        ...>   <.ui_dl_item label="Length">8</.ui_dl_item>
+        ...>   <.ui_dl_item label="Inserted at">2007-01-02</.ui_dl_item>
         ...> </.ui_dl>
         ...> """
         """
@@ -46,15 +46,15 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dl class="extra" data-foo="baz">
-        ...>   <:item label="Length" class="u-fg--brand-2">8</:item>
-        ...>   <:item>
+        ...>   <.ui_dl_item label="Length" class="u-fg--brand-2">8</.ui_dl_item>
+        ...>   <.ui_dl_item>
         ...>     <.ui_dt class="u-fg--brand-1" data-foo="bar">Some</.ui_dt>
         ...>     <.ui_dd class="u-fg--brand-1" data-foo="bar">Tag</.ui_dd>
-        ...>   </:item>
-        ...>   <:item>
+        ...>   </.ui_dl_item>
+        ...>   <.ui_dl_item>
         ...>     <.ui_dt><pre>Tag</pre></.ui_dt>
         ...>     <.ui_dd>Value</.ui_dd>
-        ...>   </:item>
+        ...>   </.ui_dl_item>
         ...> </.ui_dl>
         ...> """
         """
@@ -93,7 +93,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
   )
 
   @doc ~s"""
-  Render a description list with items.
+  Render a description list.
 
   ## Attributes
 
@@ -101,42 +101,49 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed to the `dl` tag.
 
-  ## Attributes - `item` slot
-
-  - `label` - If set renders two tags `ui_dt/1` with the contents of the attribute and `ui_dd/1` with the inner contents of the slot.
-    If you need to set more custom content on the `ui_dt/1` you can omit this attribute, and provide `ui_dt/1` and `ui_dd/1` yourself
-    in the inner conten.
-  - `class` - Extra classes to pass to the `li` tag.
-    See `BitstylesPhoenix.Helper.classnames/1` for usage.
-  - All other attributes are passed to the `li` tag.
-
   See [bitstyles description list docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-data-description-list--description-list) for examples.
   """
 
   def ui_dl(assigns) do
-    extra = assigns_to_attributes(assigns, [:item, :class])
+    extra = assigns_to_attributes(assigns, [:class])
     assigns = assign(assigns, extra: extra)
 
     ~H"""
       <dl class={classnames(["a-dl", assigns[:class]])} {@extra}>
-        <%= for item <- @item do %>
-          <div
-            class={classnames(["a-dl__item u-grid@m u-grid-cols-3 u-gap-m u-padding-m-y u-padding-m@m", item[:class]])}
-            {assigns_to_attributes(item, [:class, :label])}>
-            <%= if item[:label] do %>
-              <.ui_dt><%= item[:label] %></.ui_dt>
-              <.ui_dd><%= render_slot(item) %></.ui_dd>
-            <% else %>
-              <%= render_slot(item) %>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render_slot(@inner_block) %>
       </dl>
     """
   end
 
   @doc ~s"""
-  Render a dt tag for usage with `ui_dl/1`.
+  Render a description list item.
+
+  ## Attributes
+
+  - `label` - If set renders two tags `ui_dt/1` with the contents of the attribute and `ui_dd/1` with the inner contents of the slot.
+    If you need to set more custom content on the `ui_dt/1` you can omit this attribute, and provide `ui_dt/1` and `ui_dd/1` yourself
+    in the inner conten.
+  - `class` - Extra classes to pass to the `div` tag. See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  - All other attributes are passed to the `div` tag.
+  """
+  def ui_dl_item(assigns) do
+    extra = assigns_to_attributes(assigns, [:class, :label])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+      <div class={classnames(["a-dl__item u-grid@m u-grid-cols-3 u-gap-m u-padding-m-y u-padding-m@m", assigns[:class]])} {@extra}>
+        <%= if assigns[:label] do %>
+          <.ui_dt><%= @label %></.ui_dt>
+          <.ui_dd><%= render_slot(@inner_block) %></.ui_dd>
+        <% else %>
+          <%= render_slot(@inner_block) %>
+        <% end %>
+      </div>
+    """
+  end
+
+  @doc ~s"""
+  Render a dt tag for usage with `ui_dl_item/1`.
 
   ## Attributes
 
@@ -157,7 +164,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
   end
 
   @doc ~s"""
-  Render a dd tag for usage with `ui_dl/1`.
+  Render a dd tag for usage with `ui_dl_item/1`.
 
   ## Attributes
 
