@@ -11,7 +11,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dl>
-        ...>   <.ui_dl_item label="Length">8</.ui_dl_item>
+        ...>   <.ui_dl_item label="Length" value="8" />
         ...>   <.ui_dl_item label="Inserted at">2007-01-02</.ui_dl_item>
         ...> </.ui_dl>
         ...> """
@@ -120,21 +120,22 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
 
   ## Attributes
 
-  - `label` - If set renders two tags `ui_dt/1` with the contents of the attribute and `ui_dd/1` with the inner contents of the slot.
+  - `label` - If set renders two tags `ui_dt/1` with the contents of the attribute and `ui_dd/1` with the inner contents of the component.
     If you need to set more custom content on the `ui_dt/1` you can omit this attribute, and provide `ui_dt/1` and `ui_dd/1` yourself
     in the inner conten.
+  - `value` - If `label` is set, a `value` can be specified instead of using the inner content of the component.
   - `class` - Extra classes to pass to the `div` tag. See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed to the `div` tag.
   """
   def ui_dl_item(assigns) do
-    extra = assigns_to_attributes(assigns, [:class, :label])
+    extra = assigns_to_attributes(assigns, [:class, :label, :value])
     assigns = assign(assigns, extra: extra)
 
     ~H"""
       <div class={classnames(["a-dl__item u-grid@m u-grid-cols-3 u-gap-m u-padding-m-y u-padding-m@m", assigns[:class]])} {@extra}>
         <%= if assigns[:label] do %>
           <.ui_dt><%= @label %></.ui_dt>
-          <.ui_dd><%= render_slot(@inner_block) %></.ui_dd>
+          <.ui_dd><%= assigns[:value] || render_slot(@inner_block) %></.ui_dd>
         <% else %>
           <%= render_slot(@inner_block) %>
         <% end %>
