@@ -19,6 +19,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
 
   ## Attributes - `tab` slot
   - `ref` - Sets the `active` attribute for the tab button if the parent `active` attribute matches it's value.
+  - `show` - If the tab should be rendered. Defaults to `true`.
   - `button_opts` - Options passed down to `ui_tab_button/1` as attributes.
   - All other attributes are passed to `ui_tab`
 
@@ -34,6 +35,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab>Foo</:tab>
         ...>   <:tab>Bar</:tab>
         ...>   <:tab>Baz</:tab>
+        ...>   <:tab show={false}>Hidden</:tab>
         ...> </.ui_tabs>
         ...> """
         """
@@ -140,14 +142,16 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ~H"""
     <ul class={@class} role="tablist" {@extra}>
       <%= for tab <- @tab do %>
-        <li
-          class={classnames(["u-margin-s-right", tab[:class]])}
-          {assigns_to_attributes(tab, [:ref, :button_opts])}
-        >
-          <.ui_tab_button {button_options(tab, assigns[:active])}>
-            <%= render_slot(tab) %>
-          </.ui_tab_button>
-        </li>
+        <%= if Map.get(tab, :show, true) do %>
+          <li
+            class={classnames(["u-margin-s-right", tab[:class]])}
+            {assigns_to_attributes(tab, [:ref, :button_opts, :show])}
+          >
+            <.ui_tab_button {button_options(tab, assigns[:active])}>
+              <%= render_slot(tab) %>
+            </.ui_tab_button>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     """
