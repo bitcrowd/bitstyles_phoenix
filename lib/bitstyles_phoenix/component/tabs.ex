@@ -20,8 +20,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
   ## Attributes - `tab` slot
   - `ref` - Sets the `active` attribute for the tab button if the parent `active` attribute matches it's value.
   - `show` - If the tab should be rendered. Defaults to `true`.
-  - `button_opts` - Options passed down to `ui_tab_button/1` as attributes.
-  - All other attributes are passed to `ui_tab`
+  - All other attributes are passed to `ui_tab_button/1`
 
   See [bitstyles badge docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-badge--badge) for examples, and for the default variants available.
   """
@@ -103,7 +102,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...> <.ui_tabs active={:foo}>
         ...>   <:tab ref={:foo}>Foo</:tab>
         ...>   <:tab ref={:bar}>Bar</:tab>
-        ...>   <:tab ref={:baz} button_opts={[class: "extra"]}>Baz</:tab>
+        ...>   <:tab ref={:baz} class="extra" to="#">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
         """
@@ -119,9 +118,9 @@ defmodule BitstylesPhoenix.Component.Tabs do
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button aria-selected="false" class="a-button a-button--tab extra" type="button">
+            <a aria-selected="false" class="a-button a-button--tab extra" href="#">
               Baz
-            </button>
+            </a>
           </li>
         </ul>
         """
@@ -144,8 +143,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
       <%= for tab <- @tab do %>
         <%= if Map.get(tab, :show, true) do %>
           <li
-            class={classnames(["u-margin-s-right", tab[:class]])}
-            {assigns_to_attributes(tab, [:ref, :button_opts, :show])}
+            class={classnames(["u-margin-s-right"])}
           >
             <.ui_tab_button {button_options(tab, assigns[:active])}>
               <%= render_slot(tab) %>
@@ -158,7 +156,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
   end
 
   defp button_options(tab, active) do
-    Map.get(tab, :button_opts, [])
+    assigns_to_attributes(tab, [:ref, :show])
     |> maybe_add_active(tab[:ref], active)
   end
 
