@@ -4,7 +4,7 @@ defmodule BitstylesPhoenix.MixProject do
   def project do
     [
       app: :bitstyles_phoenix,
-      version: "1.0.0-rc3",
+      version: "1.0.0-rc4",
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,

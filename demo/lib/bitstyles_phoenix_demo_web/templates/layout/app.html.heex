@@ -18,8 +18,8 @@
   </:small_sidebar>
   <:sidebar_content>
     <.ui_sidebar_nav>
-      <:item><%= ui_button "Alpine 3", to: Routes.page_path(@conn, :index), class: "u-flex-grow-1 e2e-sidebar-alpine", variant: "nav" %></:item>
-      <:item><%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), class: "u-flex-grow-1 e2e-sidebar-live", variant: "nav" %></:item>
+      <.ui_sidebar_nav_item><%= ui_button "Alpine 3", to: Routes.page_path(@conn, :index), class: "u-flex-grow-1 e2e-sidebar-alpine", variant: "nav" %></.ui_sidebar_nav_item>
+      <.ui_sidebar_nav_item><%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), class: "u-flex-grow-1 e2e-sidebar-live", variant: "nav" %></.ui_sidebar_nav_item>
     </.ui_sidebar_nav>
   </:sidebar_content>
   <:main let={s}>

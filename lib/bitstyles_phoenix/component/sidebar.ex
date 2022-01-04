@@ -17,8 +17,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       Menu
         ...>     </.ui_sidebar_section>
         ...>     <.ui_sidebar_nav>
-        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></:item>
-        ...>       <:item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></:item>
+        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>     <.ui_sidebar_section border="top">
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
@@ -350,31 +350,42 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed on to the outer `ul`
 
-  You can provide items inside of this navigation wih the `item` slot.
-  The slot is meant to be used with `ui_button` to add links here like showcased in the
-  top level module documentation.
-
-  ## Attributes item slot
-
-  - `class` - Extra classes to pass to the `li`
-    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+  You can add items `ui_sidebar_nav_item/1` to add items to the navigation.
   """
   @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex " <>
                          "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
-    extra = assigns_to_attributes(assigns, [:item, :class])
+    extra = assigns_to_attributes(assigns, [:class])
     class = classnames([@sidebar_nav_classes, assigns[:class]])
     assigns = assign(assigns, extra: extra, class: class)
 
     ~H"""
     <ul class={@class} {extra}>
-      <%= for item <- @item do %>
-        <li class={classnames(["u-margin-xs-bottom u-flex", item[:class]])}
-            {assigns_to_attributes(item, [:class])}>
-          <%= render_slot(item) %>
-        </li>
-      <% end %>
+      <%= render_slot(@inner_block) %>
     </ul>
+    """
+  end
+
+  @doc """
+  A navigation menu item for usage in `ui_sidebar_nav/1`.
+
+  ## Attributes
+
+  - `class` - Extra classes to pass to the `li`
+    See `BitstylesPhoenix.Helper.classnames/1` for usage.
+
+  The component is meant to be used with `ui_button` to add links here like showcased in the
+  top level module documentation.
+  """
+  def ui_sidebar_nav_item(assigns) do
+    extra = assigns_to_attributes(assigns, [:class])
+    class = classnames(["u-margin-xs-bottom u-flex", assigns[:class]])
+    assigns = assign(assigns, extra: extra, class: class)
+
+    ~H"""
+    <li class={@class} {@extra}>
+      <%= render_slot(@inner_block) %>
+    </li>
     """
   end
 
