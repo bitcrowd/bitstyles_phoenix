@@ -21,7 +21,7 @@ defmodule BitstylesPhoenix.Live.Dropdown do
 
     {_, button_extra} = assigns_from_single_slot(assigns, :button)
 
-    {_, menu_extra} = assigns_from_single_slot(assigns, :menu, optional: true)
+    {_, menu_extra} = assigns_from_single_slot(assigns, :menu)
 
     menu_extra = Keyword.put_new_lazy(menu_extra, :id, &random_id/0)
 
@@ -48,7 +48,9 @@ defmodule BitstylesPhoenix.Live.Dropdown do
         style="display: none"
         phx-click-away={JS.hide(to: "##{@menu_id}",transition: {"is-transitioning", "is-on-screen", "is-off-screen"})}
         {@menu_extra}
-        />
+        >
+        <%= render_slot(@menu) %>
+      </:menu>
     </RawDropdown.ui_dropdown>
     """
   end
