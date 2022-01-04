@@ -19,6 +19,7 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   ## Attributes - `action` slots
   - `class` - Set CSS classes on the surrounding `li`.
+  - `show` - If the action should be rendered. Defaults to `true`.
   - All other attributes are passed to the outer `li` tag.
 
   See [the page header docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-content-page-header--page-header)
@@ -62,6 +63,9 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   </:action>
         ...>   <:action>
         ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>   </:action>
+        ...>   <:action show={false}>
+        ...>     <.ui_button variant="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_page_title>
         ...> """
@@ -142,6 +146,7 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   ## Attributes - `action` slots
   - `class` - Set CSS classes on the surrounding `li`.
+  - `show` - If the action should be rendered. Defaults to `true`.
   - All other attributes are passed to the outer `li` tag.
   """
 
@@ -204,6 +209,9 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   </:action>
         ...>   <:action>
         ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>   </:action>
+        ...>   <:action show={false}>
+        ...>     <.ui_button variant="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_section_title>
         ...> """
@@ -270,9 +278,11 @@ defmodule BitstylesPhoenix.Component.Heading do
     ~H"""
     <ul class="a-list-reset u-flex u-flex-wrap">
       <%= for action <- @action do %>
-        <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class])}>
-          <%= render_slot(action) %>
-        </li>
+        <%= if Map.get(action, :show, true) do %>
+          <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
+            <%= render_slot(action) %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     """
