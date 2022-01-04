@@ -33,12 +33,14 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> render ~H"""
         ...> <.ui_js_dropdown>
         ...>   <:button label="Select me"/>
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>   </:option>
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>   </:option>
+        ...>   <:menu>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 1
+        ...>     </.ui_dropdown_option>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 2
+        ...>     </.ui_dropdown_option>
+        ...>   </:menu>
         ...> </.ui_js_dropdown>
         ...> """
         """
@@ -85,12 +87,14 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> render ~H"""
         ...> <.ui_js_dropdown x_name="myOwnDropDown">
         ...>   <:button label="Select me" icon_file="assets/icons.svg"/>
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>   </:option>
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>   </:option>
+        ...>   <:menu>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 1
+        ...>     </.ui_dropdown_option>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 2
+        ...>     </.ui_dropdown_option>
+        ...>   </:menu>
         ...> </.ui_js_dropdown>
         ...> """
         """
@@ -128,8 +132,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   def ui_js_dropdown(assigns) do
     {_button, button_extra} = assigns_from_single_slot(assigns, :button)
 
-    {_menu, menu_extra} =
-      assigns_from_single_slot(assigns, :menu, with: :menu_extra, optional: true)
+    {_menu, menu_extra} = assigns_from_single_slot(assigns, :menu, with: :menu_extra)
 
     extra = assigns_to_attributes(assigns, [:menu, :button, :x_name])
 
@@ -151,7 +154,9 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         x-transition:leave="is-transitioning"
         x-transition:leave-start="is-on-screen"
         x-transition:leave-end="is-off-screen"
-        {@menu_extra} />
+        {@menu_extra}>
+        <%= render_slot(@menu) %>
+      </:menu>
     </RawDropdown.ui_dropdown>
     """
   end

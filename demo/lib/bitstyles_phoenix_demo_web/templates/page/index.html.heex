@@ -24,9 +24,11 @@
   <% end) %>
 
   <.ui_js_dropdown>
-  <:button label="Menu" class="e2e-dropdown-button" />
-  <:option>
-      <%= ui_button "Live", to: Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive), variant: :menu, class: "e2e-dropdown-option" %>
-      </:option>
+    <:button label="Menu" class="e2e-dropdown-button" />
+    <:menu>
+      <.ui_dropdown_option to={Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive)} class="e2e-dropdown-option">
+        Live
+      </.ui_dropdown_option>
+    </:menu>
   </.ui_js_dropdown>
 </.ui_content>

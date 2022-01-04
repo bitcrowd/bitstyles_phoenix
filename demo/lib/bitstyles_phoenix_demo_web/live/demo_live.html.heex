@@ -9,12 +9,14 @@
         <:action>
           <.ui_js_dropdown variant="right">
             <:button label="Test" class="e2e-dropdown-button" />
-            <:option>
-              <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option" %>
-            </:option>
-            <:option>
-              <%= ui_button "Flurky", to: "#", variant: :menu %>
-            </:option>
+            <:menu>
+              <.ui_dropdown_option to={Routes.page_path(@socket, :index)} class="e2e-dropdown-option">
+                Funky
+              </.ui_dropdown_option>
+              <.ui_dropdown_option>
+                Flurky
+              </.ui_dropdown_option>
+            </:menu>
           </.ui_js_dropdown>
         </:action>
       </.ui_page_title>
@@ -27,13 +29,14 @@
         <.ui_icon name="caret-up" class="a-button__icon" />
         <span class="a-button__label">Test with ID and custom button content</span>
       </:button>
-      <:menu id="a-dropdown"/>
-      <:option>
-        <%= ui_button "Funky", to: Routes.page_path(@socket, :index), variant: :menu, class: "e2e-dropdown-option-id" %>
-      </:option>
-      <:option>
-        <%= ui_button "Flurky", to: "#", variant: :menu %>
-      </:option>
+      <:menu id="a-dropdown">
+        <.ui_dropdown_option to={Routes.page_path(@socket, :index)} class="e2e-dropdown-option-id">
+          Funky
+        </.ui_dropdown_option>
+        <.ui_dropdown_option>
+          Flurky
+        </.ui_dropdown_option>
+      </:menu>
     </.ui_js_dropdown>
   </.ui_content>
 </article>

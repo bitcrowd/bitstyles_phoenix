@@ -8,15 +8,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   """
 
   @doc """
-  Renders a dropdown component with a button, a menu and options.
+  Renders a dropdown component with a button and a menu.
 
   *In order for this component to work you have to provide extra JS like shown in the examples.*
 
   The dropdown supports a default button that can either render with a label and a icon or with completly custom content.
-  It also supports an optional menu slot, to add attributes on the menu (the content of the menu is not rendered).
-
-  The dropdown options can be passed in as slots, which will be passed down to the menu items.
-  You can use `ui_button` with variant `menu` to render links that are prepared for the dropdown menu.
+  The dropdown options can be passed to the menu slot as inner content. Options can be rendered with `ui_dropdown_option/1`.
 
   ## Attributes
 
@@ -32,9 +29,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   - `class` - Extra classes to pass to the `ul` dropdown menu
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
-  - All other attributes are passed on to the outer `div`
+  - All other attributes are passed on to the outer `ul`
 
-  This slot will not render any inner content.
+  This slot will render any inner content as the menu. Children are expected to be `<li>`.
 
   ## Attributes - `button` slot
 
@@ -57,12 +54,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> render ~H"""
         ...> <.ui_dropdown>
         ...>   <:button label="Select me"/>
-        ...>   <:option>
-        ...>     <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>   </:option>
-        ...>   <:option>
-        ...>     <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>   </:option>
+        ...>   <:menu>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 1
+        ...>     </.ui_dropdown_option>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 2
+        ...>     </.ui_dropdown_option>
+        ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
         """
@@ -109,13 +108,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   <div class="u-flex-grow-1"></div>
         ...>   <.ui_dropdown variant={:top}>
         ...>     <:button label="Select me"/>
-        ...>     <:menu />
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>     </:option>
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>     </:option>
+        ...>     <:menu>
+        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>         Option 1
+        ...>       </.ui_dropdown_option>
+        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>         Option 2
+        ...>       </.ui_dropdown_option>
+        ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
@@ -165,13 +165,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> render ~H"""
         ...> <.ui_dropdown variant="right">
         ...>   <:button label="Select me"/>
-        ...>   <:menu />
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>   </:option>
-        ...>   <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>   </:option>
+        ...>   <:menu>
+        ...>     <.ui_dropdown_option to="#">
+        ...>       Option 1
+        ...>     </.ui_dropdown_option>
+        ...>     <.ui_dropdown_option to="#">
+        ...>       Option 2
+        ...>     </.ui_dropdown_option>
+        ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
         """
@@ -187,12 +188,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--right u-margin-s-top">
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a class="a-button a-button--menu" href="#">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a class="a-button a-button--menu" href="#">
                 Option 2
               </a>
             </li>
@@ -219,13 +220,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   <div class="u-flex-grow-1"></div>
         ...>   <.ui_dropdown variant={[:top, :right]}>
         ...>     <:button label="Select me"/>
-        ...>     <:menu />
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>     </:option>
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>     </:option>
+        ...>     <:menu>
+        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>         Option 1
+        ...>       </.ui_dropdown_option>
+        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>         Option 2
+        ...>       </.ui_dropdown_option>
+        ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
@@ -276,12 +278,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> render ~H"""
         ...> <.ui_dropdown>
         ...>   <:button class="foo">Custom button content</:button>
-        ...>   <:option>
-        ...>     <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>   </:option>
-        ...>   <:option>
-        ...>     <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>   </:option>
+        ...>   <:menu>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 1
+        ...>     </.ui_dropdown_option>
+        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>       Option 2
+        ...>     </.ui_dropdown_option>
+        ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
         """
@@ -314,17 +318,18 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> <div style="min-height: 200px; width: 500px;">
         ...>   <.ui_dropdown variant="full-width">
         ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me" icon_file="assets/icons.svg" />
-        ...>     <:menu style="display: none" id="dropdown-1"/>
-        ...>     <:option class="foo">
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 1</.ui_button>
-        ...>     </:option>
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 2</.ui_button>
-        ...>     </:option>
-        ...>     <:option role="separator"></:option>
-        ...>     <:option>
-        ...>       <.ui_button to="#" variant="menu" class="u-h6">Option 3</.ui_button>
-        ...>     </:option>
+        ...>     <:menu style="display: none" id="dropdown-1">
+        ...>       <.ui_dropdown_option to="#" class="foo">
+        ...>         Option 1
+        ...>       </.ui_dropdown_option>
+        ...>       <.ui_dropdown_option to="#">
+        ...>         Option 2
+        ...>       </.ui_dropdown_option>
+        ...>       <li role="separator"></li>
+        ...>       <.ui_dropdown_option to="#">
+        ...>         Option 3
+        ...>       </.ui_dropdown_option>
+        ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
@@ -341,20 +346,20 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </svg>
             </button>
             <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
-              <li class="foo">
-                <a class="a-button a-button--menu u-h6" href="#">
+              <li>
+                <a class="a-button a-button--menu foo" href="#">
                   Option 1
                 </a>
               </li>
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a class="a-button a-button--menu" href="#">
                   Option 2
                 </a>
               </li>
               <li role="separator">
               </li>
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a class="a-button a-button--menu" href="#">
                   Option 3
                 </a>
               </li>
@@ -386,8 +391,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       |> Keyword.put_new(:variant, :ui)
       |> maybe_put_icon(button[:label], button[:icon_file])
 
-    {menu, menu_extra} =
-      assigns_from_single_slot(assigns, :menu, exclude: [:class], optional: true)
+    {menu, menu_extra} = assigns_from_single_slot(assigns, :menu, exclude: [:class])
 
     class =
       classnames([
@@ -396,7 +400,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         {"u-flex u-justify-end", variant?(:right, assigns[:variant])}
       ])
 
-    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :option, :variant])
+    extra = assigns_to_attributes(assigns, [:class, :menu, :button, :variant])
 
     assigns =
       assign(
@@ -419,13 +423,28 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <% end %>
         </.ui_button>
         <ul class={@menu_class} {@menu_extra}>
-          <%= for option <- @option do %>
-            <li {assigns_to_attributes(option)}>
-              <%= render_slot(option) %>
-            </li>
-          <% end %>
+          <%= render_slot(@menu) %>
         </ul>
       </div>
+    """
+  end
+
+  @doc """
+  Renders an option for usage inside of a dropdown menu.
+  All attributes are passed down to the `BitstylesPhoenix.Component.Button.ui_button/1` component.
+  """
+  def ui_dropdown_option(assigns) do
+    extra =
+      assigns
+      |> assigns_to_attributes()
+      |> Keyword.put_new(:variant, "menu")
+
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <li>
+      <.ui_button {@extra}><%= render_slot(@inner_block) %></.ui_button>
+    </li>
     """
   end
 

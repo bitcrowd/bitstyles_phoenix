@@ -28,7 +28,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>           </div>
         ...>           <span class="a-button__label">Jane Dobermann</span>
         ...>         </:button>
-        ...>         <:option><.ui_button to="#" variant="menu">Logout</.ui_button></:option>
+        ...>         <:menu>
+        ...>           <.ui_dropdown_option to="#">Logout</.ui_dropdown_option>
+        ...>         </:menu>
         ...>       </.ui_dropdown>
         ...>     </.ui_sidebar_section>
         ...>   </:sidebar_content>
