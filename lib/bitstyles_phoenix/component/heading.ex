@@ -82,12 +82,12 @@ defmodule BitstylesPhoenix.Component.Heading do
             </div>
           </div>
           <ul class="a-list-reset u-flex u-flex-wrap">
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s-right">
               <button class="a-button" type="button">
                 Edit
               </button>
             </li>
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s-right">
               <button class="a-button a-button--danger" type="button">
                 Delete
               </button>
@@ -226,12 +226,12 @@ defmodule BitstylesPhoenix.Component.Heading do
             </span>
           </div>
           <ul class="a-list-reset u-flex u-flex-wrap">
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s-right">
               <button class="a-button" type="button">
                 Edit
               </button>
             </li>
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s-right">
               <button class="a-button a-button--danger" type="button">
                 Delete
               </button>
@@ -279,7 +279,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     <ul class="a-list-reset u-flex u-flex-wrap">
       <%= for action <- @action do %>
         <%= if Map.get(action, :show, true) do %>
-          <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
+          <li class={classnames(["u-margin-s-right", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
             <%= render_slot(action) %>
           </li>
         <% end %>
