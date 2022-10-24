@@ -7,7 +7,6 @@ defmodule BitstylesPhoenix.Component.Button do
 
   @link_attributes [:href, :navigate, :patch]
 
-  import BitstylesPhoenix.Helper.Button
   import BitstylesPhoenix.Component.Icon
 
   @doc """

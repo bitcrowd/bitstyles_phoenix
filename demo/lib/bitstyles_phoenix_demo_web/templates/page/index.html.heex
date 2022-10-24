@@ -26,7 +26,7 @@
   <.ui_js_dropdown>
     <:button label="Menu" class="e2e-dropdown-button" />
     <:menu>
-      <.ui_dropdown_option to={Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive)} class="e2e-dropdown-option">
+      <.ui_dropdown_option href={Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive)} class="e2e-dropdown-option">
         Live
       </.ui_dropdown_option>
     </:menu>
