@@ -34,10 +34,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> <.ui_js_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:menu>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 1
         ...>     </.ui_dropdown_option>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 2
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
@@ -45,7 +45,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> """
         """
         <div class="u-relative" x-data="{ dropdownOpen: false }">
-          <button @click="dropdownOpen = true" class="a-button a-button--ui" type="button">
+          <button type="button" @click="dropdownOpen = true" class="a-button a-button--ui">
             <span class="a-button__label">
               Select me
             </span>
@@ -56,12 +56,12 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="dropdownOpen = false" x-cloak="x-cloak" x-show="dropdownOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 2
               </a>
             </li>
@@ -88,10 +88,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> <.ui_js_dropdown x_name="myOwnDropDown">
         ...>   <:button label="Select me" icon_file="assets/icons.svg"/>
         ...>   <:menu>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 1
         ...>     </.ui_dropdown_option>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 2
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
@@ -99,7 +99,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...> """
         """
         <div class="u-relative" x-data="{ myOwnDropDown: false }">
-          <button @click="myOwnDropDown = true" class="a-button a-button--ui" type="button">
+          <button type="button" @click="myOwnDropDown = true" class="a-button a-button--ui">
             <span class="a-button__label">
               Select me
             </span>
@@ -110,12 +110,12 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="myOwnDropDown = false" x-cloak="x-cloak" x-show="myOwnDropDown" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 2
               </a>
             </li>

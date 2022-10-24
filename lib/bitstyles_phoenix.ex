@@ -123,7 +123,6 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Tabs
       import BitstylesPhoenix.Component.UseSVG
 
-      import BitstylesPhoenix.Helper.Button
       import BitstylesPhoenix.Helper.Classnames
     end
   end

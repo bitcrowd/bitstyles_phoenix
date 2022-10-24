@@ -17,8 +17,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       Menu
         ...>     </.ui_sidebar_section>
         ...>     <.ui_sidebar_nav>
-        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
-        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>     <.ui_sidebar_section border="top">
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
@@ -29,7 +29,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>           <span class="a-button__label">Jane Dobermann</span>
         ...>         </:button>
         ...>         <:menu>
-        ...>           <.ui_dropdown_option to="#">Logout</.ui_dropdown_option>
+        ...>           <.ui_dropdown_option href="#">Logout</.ui_dropdown_option>
         ...>         </:menu>
         ...>       </.ui_dropdown>
         ...>     </.ui_sidebar_section>
@@ -48,19 +48,19 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button class="a-button a-button--nav-large" type="button">
+                    <button type="button" class="a-button a-button--nav-large">
                       <div class="a-button__icon a-avatar">
                         <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
@@ -70,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                     </button>
                     <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a class="a-button a-button--menu" href="#">
+                        <a href="#" class="a-button a-button--menu">
                           Logout
                         </a>
                       </li>
@@ -85,19 +85,19 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button class="a-button a-button--nav-large" type="button">
+                    <button type="button" class="a-button a-button--nav-large">
                       <div class="a-button__icon a-avatar">
                         <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
@@ -107,7 +107,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                     </button>
                     <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a class="a-button a-button--menu" href="#">
+                        <a href="#" class="a-button a-button--menu">
                           Logout
                         </a>
                       </li>
@@ -362,7 +362,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     assigns = assign(assigns, extra: extra, class: class)
 
     ~H"""
-    <ul class={@class} {extra}>
+    <ul class={@class} {@extra}>
       <%= render_slot(@inner_block) %>
     </ul>
     """
@@ -422,7 +422,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     assigns = assign(assigns, extra: extra, class: class)
 
     ~H"""
-    <div class={class} {extra}><%= render_block(@inner_block) %></div>
+    <div class={@class} {@extra}><%= render_slot(@inner_block) %></div>
     """
   end
 end

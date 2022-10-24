@@ -4,13 +4,13 @@
       <.ui_page_title>
         Live test
         <:action>
-          <%= ui_button "Flash messages", "phx-click": "show-flash" %>
+          <.ui_button phx-click="show-flash">Flash messages</.ui_button>
         </:action>
         <:action>
           <.ui_js_dropdown variant="right">
             <:button label="Test" class="e2e-dropdown-button" />
             <:menu>
-              <.ui_dropdown_option to={Routes.page_path(@socket, :index)} class="e2e-dropdown-option">
+              <.ui_dropdown_option href={Routes.page_path(@socket, :index)} class="e2e-dropdown-option">
                 Funky
               </.ui_dropdown_option>
               <.ui_dropdown_option>
@@ -30,7 +30,7 @@
         <span class="a-button__label">Test with ID and custom button content</span>
       </:button>
       <:menu id="a-dropdown">
-        <.ui_dropdown_option to={Routes.page_path(@socket, :index)} class="e2e-dropdown-option-id">
+        <.ui_dropdown_option href={Routes.page_path(@socket, :index)} class="e2e-dropdown-option-id">
           Funky
         </.ui_dropdown_option>
         <.ui_dropdown_option>

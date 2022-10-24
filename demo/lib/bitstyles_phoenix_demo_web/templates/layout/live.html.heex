@@ -18,8 +18,8 @@
   </:small_sidebar>
   <:sidebar_content>
     <.ui_sidebar_nav>
-      <.ui_sidebar_nav_item><%= ui_button "Alpine 3", to: Routes.page_path(@socket, :index), class: "u-flex-grow-1 e2e-sidebar-alpine", variant: "nav" %></.ui_sidebar_nav_item>
-      <.ui_sidebar_nav_item><%= ui_button "Live", to: Routes.live_path(@socket, BitstylesPhoenixDemoWeb.DemoLive), class: "u-flex-grow-1 e2e-sidebar-live", variant: "nav", link_fn: &live_redirect/2 %></.ui_sidebar_nav_item>
+      <.ui_sidebar_nav_item><.ui_button href={Routes.page_path(@socket, :index)} class="u-flex-grow-1 e2e-sidebar-alpine" variant="nav">Alpine 3</.ui_button></.ui_sidebar_nav_item>
+      <.ui_sidebar_nav_item><.ui_button href={Routes.live_path(@socket, BitstylesPhoenixDemoWeb.DemoLive)} class="u-flex-grow-1 e2e-sidebar-live" variant="nav">Live</.ui_button></.ui_sidebar_nav_item>
     </.ui_sidebar_nav>
   </:sidebar_content>
   <:main let={s}>

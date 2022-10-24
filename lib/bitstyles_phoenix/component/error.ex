@@ -68,18 +68,18 @@ defmodule BitstylesPhoenix.Component.Error do
 
         ~H"""
           <.ui_error
-            error={error}
+            error={@error}
             phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)}
             class={assigns[:error_class]} />
         """
 
       errors ->
         class = classnames(["u-padding-xl-left", assigns[:class]])
-        assigns = assign(assigns, class: class)
+        assigns = assign(assigns, class: class, errors: errors)
 
         ~H"""
           <ul class={@class}>
-            <%= for error <- errors do %>
+            <%= for error <- @errors do %>
               <li>
                 <.ui_error
                   error={error}

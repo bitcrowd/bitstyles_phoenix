@@ -2,7 +2,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
   use BitstylesPhoenix.Component
 
   alias BitstylesPhoenix.Component.Sidebar, as: RawSidebar
-  import BitstylesPhoenix.Helper.Button
+  import BitstylesPhoenix.Component.Button
   import Phoenix.LiveView.Utils, only: [random_id: 0]
 
   @moduledoc """
@@ -36,8 +36,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>   </:small_sidebar>
         ...>   <:sidebar_content>
         ...>     <.ui_sidebar_nav>
-        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
-        ...>       <.ui_sidebar_nav_item><.ui_button to="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
         ...>   <:main let={s} class="u-margin-s-top">
@@ -61,12 +61,12 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                 </a>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
@@ -81,7 +81,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </span>
                   </a>
                   <div>
-                    <button :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button a-button--icon a-button--icon-reversed" title="Close" type="button">
+                    <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button a-button--icon a-button--icon-reversed" title="Close">
                       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                         <use xlink:href="#icon-cross">
                         </use>
@@ -94,12 +94,12 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a class="a-button a-button--nav u-flex-grow-1" href="#">
+                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
@@ -109,7 +109,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
           </header>
           <main class="u-flex-grow-1 u-overflow--y u-margin-s-top">
             <div class="a-content flex">
-              <button :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar" type="button">
+              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-hamburger">
                   </use>
@@ -191,10 +191,10 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         x-transition:leave-start="is-on-screen"
         x-transition:leave-end="is-off-screen"
         {@small_extra}>
-        <%= assigns[:small_sidebar] && render_block(assigns[:small_sidebar], {@x_data, @small_extra[:id]}) %>
+        <%= assigns[:small_sidebar] && render_slot(assigns[:small_sidebar], {@x_data, @small_extra[:id]}) %>
       </:small_sidebar>
-      <:main {main_extra}>
-        <%= render_block(assigns[:main] || @inner_block, {@x_data, @small_extra[:id]}) %>
+      <:main {@main_extra}>
+        <%= render_slot(assigns[:main] || @inner_block, {@x_data, @small_extra[:id]}) %>
       </:main>
     </RawSidebar.ui_sidebar_layout>
     """
@@ -225,7 +225,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
     assigns = assign(assigns, icon: assigns[:icon] || "cross", options: options)
 
     ~H"""
-    <%= ui_icon_button(@icon, assigns[:label] || "Close", @options) %>
+    <.ui_icon_button icon={@icon} label={assigns[:label] || "Close"} {@options} />
     """
   end
 
@@ -254,7 +254,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
     assigns = assign(assigns, icon: assigns[:icon] || "hamburger", options: options)
 
     ~H"""
-    <%= ui_icon_button(@icon, assigns[:label] || "Open sidebar", @options) %>
+    <.ui_icon_button icon={@icon} label={assigns[:label] || "Open sidebar"} {@options} />
     """
   end
 end
