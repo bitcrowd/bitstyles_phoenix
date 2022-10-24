@@ -1,6 +1,18 @@
 # Changelog
 
-## Unreleased
+# Unreleased 
+
+### Breaking 
+
+- Updated to LiveView 0.18.X
+- Removed `ui_button/2` helper
+  -> Use the `ui_button` component
+- Removed `ui_icon_button/3` helper
+  -> Use the `ui_icon_button` component
+- `ui_button` component now acts as a wrapper for Phoenix.Component.link 
+- Removed `link_fn` on `ui_button` component
+
+## v1.0.0 - 2022-01-04
 
 This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent develpments in Phoenix and LiveView.
 
