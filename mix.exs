@@ -15,7 +15,7 @@ defmodule BitstylesPhoenix.MixProject do
       docs: [
         main: "BitstylesPhoenix",
         assets: "assets",
-        logo: "assets/logo.svg",
+        logo: "assets/logo1212.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
         groups_for_modules: [
           Helpers: ~r/Helper/,
@@ -52,7 +52,7 @@ defmodule BitstylesPhoenix.MixProject do
   defp deps do
     [
       {:jason, "~> 1.0"},
-      {:phoenix_live_view, "~> 0.17.0"},
+      {:phoenix_live_view, "~> 0.18.0"},
       {:floki, "~> 0.32.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:credo, ">= 0.0.0", only: :dev, runtime: false}

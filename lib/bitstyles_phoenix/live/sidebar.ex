@@ -3,7 +3,7 @@ defmodule BitstylesPhoenix.Live.Sidebar do
 
   alias BitstylesPhoenix.Component.Sidebar, as: RawSidebar
   alias Phoenix.LiveView.JS
-  import BitstylesPhoenix.Helper.Button
+  import BitstylesPhoenix.Component.Button
   import Phoenix.LiveView.Utils, only: [random_id: 0]
 
   @moduledoc """
@@ -36,10 +36,10 @@ defmodule BitstylesPhoenix.Live.Sidebar do
       <:small_sidebar
         style="display: none"
         {@small_extra}>
-        <%= render_block(assigns[:small_sidebar], @small_extra[:id]) %>
+        <%= render_slot(assigns[:small_sidebar], @small_extra[:id]) %>
       </:small_sidebar>
-      <:main {main_extra}>
-        <%= render_block(assigns[:main] || @inner_block, @small_extra[:id]) %>
+      <:main {@main_extra}>
+        <%= render_slot(assigns[:main] || @inner_block, @small_extra[:id]) %>
       </:main>
     </RawSidebar.ui_sidebar_layout>
     """
@@ -69,7 +69,7 @@ defmodule BitstylesPhoenix.Live.Sidebar do
     assigns = assign(assigns, icon: assigns[:icon] || "cross", options: options)
 
     ~H"""
-    <%= ui_icon_button(@icon, assigns[:label] || "Close", @options) %>
+    <.ui_icon_button icon={@icon} label={assigns[:label] || "Close"} {@options} />
     """
   end
 
@@ -97,7 +97,7 @@ defmodule BitstylesPhoenix.Live.Sidebar do
     assigns = assign(assigns, icon: assigns[:icon] || "hamburger", options: options)
 
     ~H"""
-    <%= ui_icon_button(@icon, assigns[:label] || "Open sidebar", @options) %>
+    <.ui_icon_button icon={@icon} label={assigns[:label] || "Open sidebar"} {@options} />
     """
   end
 end

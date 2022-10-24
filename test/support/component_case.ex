@@ -7,7 +7,7 @@ defmodule BitstylesPhoenix.ComponentCase do
     quote do
       use BitstylesPhoenix, js_mode: :none
       alias Phoenix.HTML.Safe
-      import Phoenix.LiveView.Helpers, only: [sigil_H: 2]
+      import Phoenix.Component, only: [sigil_H: 2]
       import Phoenix.HTML, only: [safe_to_string: 1]
 
       defp render(template = %Phoenix.LiveView.Rendered{}) do

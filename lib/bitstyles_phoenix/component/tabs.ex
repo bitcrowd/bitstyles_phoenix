@@ -40,17 +40,17 @@ defmodule BitstylesPhoenix.Component.Tabs do
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
-            <button class="a-button a-button--tab" type="button">
+            <button type="button" class="a-button a-button--tab">
               Foo
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button class="a-button a-button--tab" type="button">
+            <button type="button" class="a-button a-button--tab">
               Bar
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button class="a-button a-button--tab" type="button">
+            <button type="button" class="a-button a-button--tab">
               Baz
             </button>
           </li>
@@ -74,17 +74,17 @@ defmodule BitstylesPhoenix.Component.Tabs do
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
-            <button aria-selected="true" class="a-button a-button--tab" type="button">
+            <button type="button" aria-selected="true" class="a-button a-button--tab">
               Foo
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button aria-selected="false" class="a-button a-button--tab" type="button">
+            <button type="button" aria-selected="false" class="a-button a-button--tab">
               Bar
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button aria-selected="false" class="a-button a-button--tab" type="button">
+            <button type="button" aria-selected="false" class="a-button a-button--tab">
               Baz
             </button>
           </li>
@@ -102,23 +102,23 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...> <.ui_tabs active={:foo}>
         ...>   <:tab ref={:foo}>Foo</:tab>
         ...>   <:tab ref={:bar}>Bar</:tab>
-        ...>   <:tab ref={:baz} class="extra" to="#">Baz</:tab>
+        ...>   <:tab ref={:baz} class="extra" href="#">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
-            <button aria-selected="true" class="a-button a-button--tab" type="button">
+            <button type="button" aria-selected="true" class="a-button a-button--tab">
               Foo
             </button>
           </li>
           <li class="u-margin-s-right">
-            <button aria-selected="false" class="a-button a-button--tab" type="button">
+            <button type="button" aria-selected="false" class="a-button a-button--tab">
               Bar
             </button>
           </li>
           <li class="u-margin-s-right">
-            <a aria-selected="false" class="a-button a-button--tab extra" href="#">
+            <a href="#" aria-selected="false" class="a-button a-button--tab extra">
               Baz
             </a>
           </li>

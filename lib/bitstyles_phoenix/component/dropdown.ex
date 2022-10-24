@@ -55,10 +55,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> <.ui_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:menu>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 1
         ...>     </.ui_dropdown_option>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 2
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
@@ -66,7 +66,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative">
-          <button class="a-button a-button--ui" type="button">
+          <button type="button" class="a-button a-button--ui">
             <span class="a-button__label">
               Select me
             </span>
@@ -77,12 +77,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top">
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 2
               </a>
             </li>
@@ -109,10 +109,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   <.ui_dropdown variant={:top}>
         ...>     <:button label="Select me"/>
         ...>     <:menu>
-        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>       <.ui_dropdown_option href="#" class="u-h6">
         ...>         Option 1
         ...>       </.ui_dropdown_option>
-        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>       <.ui_dropdown_option href="#" class="u-h6">
         ...>         Option 2
         ...>       </.ui_dropdown_option>
         ...>     </:menu>
@@ -124,7 +124,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative">
-            <button class="a-button a-button--ui" type="button">
+            <button type="button" class="a-button a-button--ui">
               <span class="a-button__label">
                 Select me
               </span>
@@ -135,12 +135,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top u-margin-s-bottom">
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a href="#" class="a-button a-button--menu u-h6">
                   Option 1
                 </a>
               </li>
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a href="#" class="a-button a-button--menu u-h6">
                   Option 2
                 </a>
               </li>
@@ -166,10 +166,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> <.ui_dropdown variant="right">
         ...>   <:button label="Select me"/>
         ...>   <:menu>
-        ...>     <.ui_dropdown_option to="#">
+        ...>     <.ui_dropdown_option href="#">
         ...>       Option 1
         ...>     </.ui_dropdown_option>
-        ...>     <.ui_dropdown_option to="#">
+        ...>     <.ui_dropdown_option href="#">
         ...>       Option 2
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
@@ -177,7 +177,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative u-flex u-justify-end">
-          <button class="a-button a-button--ui" type="button">
+          <button type="button" class="a-button a-button--ui">
             <span class="a-button__label">
               Select me
             </span>
@@ -188,12 +188,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--right u-margin-s-top">
             <li>
-              <a class="a-button a-button--menu" href="#">
+              <a href="#" class="a-button a-button--menu">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu" href="#">
+              <a href="#" class="a-button a-button--menu">
                 Option 2
               </a>
             </li>
@@ -221,10 +221,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   <.ui_dropdown variant={[:top, :right]}>
         ...>     <:button label="Select me"/>
         ...>     <:menu>
-        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>       <.ui_dropdown_option href="#" class="u-h6">
         ...>         Option 1
         ...>       </.ui_dropdown_option>
-        ...>       <.ui_dropdown_option to="#" class="u-h6">
+        ...>       <.ui_dropdown_option href="#" class="u-h6">
         ...>         Option 2
         ...>       </.ui_dropdown_option>
         ...>     </:menu>
@@ -236,7 +236,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative u-flex u-justify-end">
-            <button class="a-button a-button--ui" type="button">
+            <button type="button" class="a-button a-button--ui">
               <span class="a-button__label">
                 Select me
               </span>
@@ -247,12 +247,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--right u-margin-s-bottom">
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a href="#" class="a-button a-button--menu u-h6">
                   Option 1
                 </a>
               </li>
               <li>
-                <a class="a-button a-button--menu u-h6" href="#">
+                <a href="#" class="a-button a-button--menu u-h6">
                   Option 2
                 </a>
               </li>
@@ -279,10 +279,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> <.ui_dropdown>
         ...>   <:button class="foo">Custom button content</:button>
         ...>   <:menu>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 1
         ...>     </.ui_dropdown_option>
-        ...>     <.ui_dropdown_option to="#" class="u-h6">
+        ...>     <.ui_dropdown_option href="#" class="u-h6">
         ...>       Option 2
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
@@ -290,17 +290,17 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
         """
         <div class="u-relative">
-          <button class="a-button a-button--ui foo" type="button">
+          <button type="button" class="a-button a-button--ui foo">
             Custom button content
           </button>
           <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top">
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 1
               </a>
             </li>
             <li>
-              <a class="a-button a-button--menu u-h6" href="#">
+              <a href="#" class="a-button a-button--menu u-h6">
                 Option 2
               </a>
             </li>
@@ -319,14 +319,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   <.ui_dropdown variant="full-width">
         ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me" icon_file="assets/icons.svg" />
         ...>     <:menu style="display: none" id="dropdown-1">
-        ...>       <.ui_dropdown_option to="#" class="foo">
+        ...>       <.ui_dropdown_option href="#" class="foo">
         ...>         Option 1
         ...>       </.ui_dropdown_option>
-        ...>       <.ui_dropdown_option to="#">
+        ...>       <.ui_dropdown_option href="#">
         ...>         Option 2
         ...>       </.ui_dropdown_option>
         ...>       <li role="separator"></li>
-        ...>       <.ui_dropdown_option to="#">
+        ...>       <.ui_dropdown_option href="#">
         ...>         Option 3
         ...>       </.ui_dropdown_option>
         ...>     </:menu>
@@ -336,7 +336,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         """
         <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">
-            <button aria-controls="dropdown-1" class="a-button a-button--ui" onclick=\"toggle(&#39;dropdown-1&#39;)\" type="button">
+            <button type="button" aria-controls="dropdown-1" class="a-button a-button--ui" onclick=\"toggle(&#39;dropdown-1&#39;)\">
               <span class="a-button__label">
                 Select me
               </span>
@@ -347,19 +347,19 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
               <li>
-                <a class="a-button a-button--menu foo" href="#">
+                <a href="#" class="a-button a-button--menu foo">
                   Option 1
                 </a>
               </li>
               <li>
-                <a class="a-button a-button--menu" href="#">
+                <a href="#" class="a-button a-button--menu">
                   Option 2
                 </a>
               </li>
               <li role="separator">
               </li>
               <li>
-                <a class="a-button a-button--menu" href="#">
+                <a href="#" class="a-button a-button--menu">
                   Option 3
                 </a>
               </li>

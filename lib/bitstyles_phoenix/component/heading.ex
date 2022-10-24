@@ -83,12 +83,12 @@ defmodule BitstylesPhoenix.Component.Heading do
           </div>
           <ul class="a-list-reset u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
-              <button class="a-button" type="button">
+              <button type="button" class="a-button">
                 Edit
               </button>
             </li>
             <li class="u-margin-s-right u-margin-m-bottom">
-              <button class="a-button a-button--danger" type="button">
+              <button type="button" class="a-button a-button--danger">
                 Delete
               </button>
             </li>
@@ -227,12 +227,12 @@ defmodule BitstylesPhoenix.Component.Heading do
           </div>
           <ul class="a-list-reset u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
-              <button class="a-button" type="button">
+              <button type="button" class="a-button">
                 Edit
               </button>
             </li>
             <li class="u-margin-s-right u-margin-m-bottom">
-              <button class="a-button a-button--danger" type="button">
+              <button type="button" class="a-button a-button--danger">
                 Delete
               </button>
             </li>
