@@ -10,22 +10,15 @@ defmodule BitstylesPhoenix.Component.Button do
   import BitstylesPhoenix.Component.Icon
 
   @doc """
-  This wraps `BitstylesPhoenix.Helper.Button.ui_button/2` in a component,
-  passing all attributes as options and it's content as button content.
-
-  - `to` - if there’s a `to` parameter, you’ll get an anchor element, otherwise a button element. The option is also fowarded to `link_fn`
-  - `link_fn` - Overrides the function used to generate the anchor element, when `to` is provided.
-    By default, the anchor element will be generated with `Phoenix.HTML.Link.link/2`.
-    `link_fn` must be a function of arity 2, accepting a text and opts as argument.
-    For example, one could pass Phoenix LiveView's [`link/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#live_redirect/2)
-    or [`live_patch/2`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#live_patch/2).
+  Renders anchor or button elements that look like a button — using the `a-button` classes.
+  - `href`, `navigate`, `patch` - if there’s one of these, you’ll get an anchor element, otherwise a button element. (See Phoenix.Component.link/1)
   - `variant` - specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
   - `class` - Extra classes to pass to the badge. See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `icon` - An icon name as string or a tuple with `{icon_name, icon_opts}` which is passed to `BitstylesPhoenix.Component.Icon.ui_icon/1` as
     attributes. Additionally it is possible to pass `after: true` to the icon_opts, to make the icon appear after the button label instead of in
     front of it.
 
-  All other parameters you pass are forwarded to the Phoenix link or submit helpers, if one of those is rendered.
+  All other attributes you pass are forwarded to [Phoenix.Component.link/1](https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#link/1) or on the button tag, if one of those is rendered.
 
   See the [bitstyles button docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-buttons-buttons--page) for available button variants.
 

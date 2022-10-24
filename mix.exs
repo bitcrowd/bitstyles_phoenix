@@ -15,7 +15,7 @@ defmodule BitstylesPhoenix.MixProject do
       docs: [
         main: "BitstylesPhoenix",
         assets: "assets",
-        logo: "assets/logo1212.svg",
+        logo: "assets/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
         groups_for_modules: [
           Helpers: ~r/Helper/,
