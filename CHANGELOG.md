@@ -1,16 +1,31 @@
 # Changelog
 
-# Unreleased 
+## v2.0.0 - 2022-11-12 
+
+Since there is quite some changes in liveview 0.18.0 mainly about link helpers this breaks with the existing API for the `ui_button` and
+`ui_icon_button` components quite a lot. Since the underlying phoenix helper for generating links is now available as component as well,
+the support for the `ui_button` as helper is dropped completely in favor of components.
 
 ### Breaking 
 
 - Updated to LiveView 0.18.X
-- Removed `ui_button/2` helper
-  -> Use the `ui_button` component
-- Removed `ui_icon_button/3` helper
-  -> Use the `ui_icon_button` component
+- Removed BitstylesPhoenix.Helpers.Button
+  - Removed `ui_button/2` helper 
+    -> Use the `ui_button` component
+  - Removed `ui_icon_button/3` helper
+    -> Use the `ui_icon_button` component
 - `ui_button` component now acts as a wrapper for Phoenix.Component.link 
-- Removed `link_fn` on `ui_button` component
+  - Removed `link_fn` on `ui_button` component, since it's main use-case is now deprecated.
+
+### How to update: 
+
+- Upgrade to LiveView > 0.18
+`<%= ui_button("some label", to: some_path) %>` => `<.ui_button href={some_path}>some label</.ui_button>`
+`<.ui_button to={some_path} %>some label</.ui_button>` => `<.ui_button href={some_path}>some label</.ui_button>`
+`<.ui_button to={some_path} link_fn={&live_redirect/2}%>some label</.ui_button>` => `<.ui_button navigate={some_path}>some label</.ui_button>`
+`<.ui_button to={some_path} link_fn={&live_patch/2}%>some label</.ui_button>` => `<.ui_button patch={some_path}>some label</.ui_button>`
+`<%= ui_icon_button("some label", to: some_path) %>` => `<.ui_icon_button href={some_path}>some label</.ui_button>`
+...
 
 ## v1.0.0 - 2022-01-04
 
