@@ -303,7 +303,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         large_extra: large_extra,
         small_extra: small_extra,
         main_extra: main_extra,
-        main_class: classnames(["u-flex-grow-1 u-overflow--y", main && main[:class]]),
+        main_class: classnames(["u-flex-grow-1 u-overflow--y", main[:class]]),
         large_class: sidebar_classnames(large_sidebar, sidebar, @large_classes),
         small_class: sidebar_classnames(small_sidebar, sidebar, @small_classes)
       )
@@ -338,7 +338,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
       default_classes,
       {"u-bg--#{bg}", !!bg},
       {"u-fg--#{fg}", !!fg},
-      sidebar && sidebar[:class],
+      sidebar[:class],
       sidebar_layout[:class]
     ])
   end
