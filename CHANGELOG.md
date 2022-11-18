@@ -1,23 +1,27 @@
 # Changelog
 
-## v2.0.0 - 2022-11-12 
+## Unreleased
+### Changed
+- `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
+
+## v2.0.0 - 2022-11-12
 
 Since there is quite some changes in liveview 0.18.0 mainly about link helpers this breaks with the existing API for the `ui_button` and
 `ui_icon_button` components quite a lot. Since the underlying phoenix helper for generating links is now available as component as well,
 the support for the `ui_button` as helper is dropped completely in favor of components.
 
-### Breaking 
+### Breaking
 
 - Updated to LiveView 0.18.X
 - Removed BitstylesPhoenix.Helpers.Button
-  - Removed `ui_button/2` helper 
+  - Removed `ui_button/2` helper
     -> Use the `ui_button` component
   - Removed `ui_icon_button/3` helper
     -> Use the `ui_icon_button` component
-- `ui_button` component now acts as a wrapper for Phoenix.Component.link 
+- `ui_button` component now acts as a wrapper for Phoenix.Component.link
   - Removed `link_fn` on `ui_button` component, since it's main use-case is now deprecated.
 
-### How to update: 
+### How to update:
 
 - Upgrade to LiveView > 0.18
 `<%= ui_button("some label", to: some_path) %>` => `<.ui_button href={some_path}>some label</.ui_button>`
@@ -34,7 +38,7 @@ This version breaks with the existing API quite a lot 🔥, since we changed the
 ### Breaking
 
 All `ui_*` component helpers are now instead [HEEx function components](https://hexdocs.pm/phoenix/views.html#html-components). They will expect the options and arguments
-now through component attributes. The only exception is `ui_button`, which still delegate to the link_helper given via `link_fn`, but is also available as component. 
+now through component attributes. The only exception is `ui_button`, which still delegate to the link_helper given via `link_fn`, but is also available as component.
 In order to migrate to the new components update to Phoenix 1.6.0 and LiveView 1.17.0 and change all templates from
 `*.html.eex` to `*.html.heex` to be able to use the new component syntax. After that you can change your previous `ui_*` helpers to use the new syntax:
 
@@ -44,12 +48,12 @@ If you have contexts, where you do not want to use `heex` templates yet, you can
 
 Below is a list of changes that happened besides the componentization:
 
-- Renamed `ui_error_tag` to `ui_error` 
-- `ui_input` dropped `datetime` input type (was not working anyways) 
-- `ui_input` dropped `radio` input type (use `ui_unwrapped_input` with `radio_button` instead) 
+- Renamed `ui_error_tag` to `ui_error`
+- `ui_input` dropped `datetime` input type (was not working anyways)
+- `ui_input` dropped `radio` input type (use `ui_unwrapped_input` with `radio_button` instead)
 - `ui_input` dropped `textarea` input type (use `ui_textarea` instead)
 - Removed `ui_time/2` without replacement for now
-- Removed `xclassnames/1`. Use `classnames/1` from the same module instead. 
+- Removed `xclassnames/1`. Use `classnames/1` from the same module instead.
 - `classnames/1` now returns `false` instead of empty string when there is no class set.
 - Removed `BitstylesPhoenix.Components` module. Instead of `use BitstylesPhoenix.Components` do `use BitstylesPhoenix`.
 - Removed all `e2e_classname` options. Use `class` instead, which will trim the e2e classes by default (like before).
@@ -76,12 +80,12 @@ Below is a list of changes that happened besides the componentization:
 - Added `icon` option to `ui_button`.
 - Added support for `:datetime` type in `ui_input`, rendered as Browser-native datetime input element
 
-### Changed 
+### Changed
 
 - Added dependency to `phoenix_live_view` >= 1.17.0 (for using `sigil_H/1` and new component syntax)
 - Doctest now use `floki` to prettify the output HTML, so docs will be a nicer read.
 - `classnames/1` is now imported by default with `use BitstylesPhoenix`
-- Updated to bitstyles `v3.0.0` 
+- Updated to bitstyles `v3.0.0`
 - `ui_errors` now uses larger padding
 
 ## v0.8.0
