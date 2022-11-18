@@ -15,7 +15,7 @@ defmodule BitstylesPhoenix.Component do
   @type assigns_from_single_slot_option :: {:exclude, [atom()]} | {:optional, boolean()}
   @spec assigns_from_single_slot(assigns :: map(), slot_name :: atom(), [
           assigns_from_single_slot_option
-        ]) :: {slot :: map(), attributes :: keyword()}
+        ]) :: {slot :: map(), attributes :: keyword()} | {nil, []}
   def assigns_from_single_slot(assigns, slot_name, opts \\ []) do
     case assigns[slot_name] do
       [slot] ->

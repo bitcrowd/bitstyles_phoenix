@@ -132,7 +132,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
   def ui_js_dropdown(assigns) do
     {_button, button_extra} = assigns_from_single_slot(assigns, :button)
 
-    {_menu, menu_extra} = assigns_from_single_slot(assigns, :menu, with: :menu_extra)
+    {_menu, menu_extra} = assigns_from_single_slot(assigns, :menu)
 
     extra = assigns_to_attributes(assigns, [:menu, :button, :x_name])
 
