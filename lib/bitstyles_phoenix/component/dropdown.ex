@@ -410,7 +410,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         button_label: button[:label],
         button_extra: button_extra,
         menu_extra: menu_extra,
-        menu_class: menu_class(assigns[:variant], menu && menu[:class])
+        menu_class: menu_class(assigns[:variant], menu[:class])
       )
 
     ~H"""
