@@ -45,7 +45,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "4.1.0")
+    classname(mapping, "4.0.0")
   end
 
   def classname(class, version) when version >= "1.5.0" do
