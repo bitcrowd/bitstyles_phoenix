@@ -25,7 +25,7 @@ defmodule BitstylesPhoenix.Component.Badge do
       ...> </.ui_badge>
       ...> """
       """
-      <span class="a-badge u-h6 u-font--medium a-badge--gray">
+      <span class="a-badge u-h6 u-font-medium a-badge--gray">
         published
       </span>
       """
@@ -39,7 +39,7 @@ defmodule BitstylesPhoenix.Component.Badge do
       ...> </.ui_badge>
       ...> """
       """
-      <span class="a-badge u-h6 u-font--medium a-badge--brand-1">
+      <span class="a-badge u-h6 u-font-medium a-badge--brand-1">
         new
       </span>
       """
@@ -53,7 +53,7 @@ defmodule BitstylesPhoenix.Component.Badge do
       ...> </.ui_badge>
       ...> """
       """
-      <span class="a-badge u-h6 u-font--medium a-badge--brand-2">
+      <span class="a-badge u-h6 u-font-medium a-badge--brand-2">
         recommended
       </span>
       """
@@ -67,7 +67,7 @@ defmodule BitstylesPhoenix.Component.Badge do
       ...> </.ui_badge>
       ...> """
       """
-      <span class="a-badge u-h6 u-font--medium a-badge--danger">
+      <span class="a-badge u-h6 u-font-medium a-badge--danger">
         deleted
       </span>
       """
@@ -81,7 +81,7 @@ defmodule BitstylesPhoenix.Component.Badge do
       ...> </.ui_badge>
       ...> """
       """
-      <span class="a-badge u-h6 u-font--medium a-badge--gray extra-class" data-foo="bar">
+      <span class="a-badge u-h6 u-font-medium a-badge--gray extra-class" data-foo="bar">
         published
       </span>
       """
@@ -92,7 +92,7 @@ defmodule BitstylesPhoenix.Component.Badge do
 
     class =
       classnames([
-        "a-badge u-h6 u-font--medium a-badge--#{variant}",
+        "a-badge u-h6 u-font-medium a-badge--#{variant}",
         assigns[:class]
       ])
 

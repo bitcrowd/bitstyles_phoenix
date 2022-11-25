@@ -76,7 +76,7 @@ defmodule BitstylesPhoenix.Component.Heading do
               Title
             </h1>
             <div class="u-flex-shrink-0 u-margin-m-bottom">
-              <span class="a-badge u-h6 u-font--medium a-badge--gray">
+              <span class="a-badge u-h6 u-font-medium a-badge--gray">
                 Published
               </span>
             </div>
@@ -221,7 +221,7 @@ defmodule BitstylesPhoenix.Component.Heading do
             <h3 class="u-margin-0 u-margin-m-right u-break-text">
               Section title
             </h3>
-            <span class="a-badge u-h6 u-font--medium a-badge--gray">
+            <span class="a-badge u-h6 u-font-medium a-badge--gray">
               Published
             </span>
           </div>
@@ -263,7 +263,7 @@ defmodule BitstylesPhoenix.Component.Heading do
       <div class={@class} {@extra}>
         <div class="u-flex u-items-center">
           <%= Phoenix.HTML.Tag.content_tag @tag, class: "u-margin-0 u-margin-m-right u-break-text" do %>
-            <%= render_slot(@inner_block) %> 
+            <%= render_slot(@inner_block) %>
           <% end %>
           <%= assigns[:title_extra] && render_slot(@title_extra) %>
         </div>

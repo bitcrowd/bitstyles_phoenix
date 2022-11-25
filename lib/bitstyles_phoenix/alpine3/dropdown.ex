@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
               </use>
             </svg>
           </button>
-          <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="dropdownOpen = false" x-cloak="x-cloak" x-show="dropdownOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
+          <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top" @click.away="dropdownOpen = false" x-cloak="x-cloak" x-show="dropdownOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
             <li>
               <a href="#" class="a-button a-button--menu u-h6">
                 Option 1
@@ -108,7 +108,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
               </use>
             </svg>
           </button>
-          <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top" @click.away="myOwnDropDown = false" x-cloak="x-cloak" x-show="myOwnDropDown" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
+          <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top" @click.away="myOwnDropDown = false" x-cloak="x-cloak" x-show="myOwnDropDown" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
             <li>
               <a href="#" class="a-button a-button--menu u-h6">
                 Option 1

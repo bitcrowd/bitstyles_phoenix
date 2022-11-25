@@ -41,12 +41,12 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg--gray-80 u-fg--gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
                 Large header
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
@@ -68,7 +68,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
                         <a href="#" class="a-button a-button--menu">
                           Logout
@@ -78,12 +78,12 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   </div>
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg--gray-80 u-fg--gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
                 Small header
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
@@ -105,7 +105,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow--y a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
                         <a href="#" class="a-button a-button--menu">
                           Logout
@@ -117,7 +117,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y">
+          <main class="u-flex-grow-1 u-overflow-y-auto">
             Main Content
           </main>
         </div>
@@ -203,13 +203,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg--gray-80 u-fg--gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
                 Large header
                 <div>
                   Sidebar
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg--gray-80 u-fg--gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
                 Small header
                 <div>
                   Sidebar
@@ -217,7 +217,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y">
+          <main class="u-flex-grow-1 u-overflow-y-auto">
             Main Content
           </main>
         </div>
@@ -241,13 +241,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg--gray-80 u-fg--gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg--gray-80 u-fg--gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y">
+          <main class="u-flex-grow-1 u-overflow-y-auto">
             Main Content
           </main>
         </div>
@@ -303,7 +303,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         large_extra: large_extra,
         small_extra: small_extra,
         main_extra: main_extra,
-        main_class: classnames(["u-flex-grow-1 u-overflow--y", main[:class]]),
+        main_class: classnames(["u-flex-grow-1 u-overflow-y-auto", main[:class]]),
         large_class: sidebar_classnames(large_sidebar, sidebar, @large_classes),
         small_class: sidebar_classnames(small_sidebar, sidebar, @small_classes)
       )
@@ -336,8 +336,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
     classnames([
       default_classes,
-      {"u-bg--#{bg}", !!bg},
-      {"u-fg--#{fg}", !!fg},
+      {"u-bg-#{bg}", !!bg},
+      {"u-fg-#{fg}", !!fg},
       sidebar[:class],
       sidebar_layout[:class]
     ])
@@ -354,7 +354,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
   You can add items `ui_sidebar_nav_item/1` to add items to the navigation.
   """
-  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex " <>
+  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex " <>
                          "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
     extra = assigns_to_attributes(assigns, [:class])
