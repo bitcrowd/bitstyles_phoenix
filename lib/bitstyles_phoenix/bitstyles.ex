@@ -32,6 +32,8 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def classname(class, version) when version >= "2.0.0" do
+    # credo:disable-for-previous-line Credo.Check.Refactor.CyclomaticComplexity
+
     mapping =
       case class do
         "u-overflow-x-auto" -> "u-overflow--x"
