@@ -11,8 +11,13 @@ defmodule BitstylesPhoenix.BitstylesTest do
              )
     end
 
-    test "version 4.0.0" do
+    test "version 4.2.0" do
+      assert classname("u-border-radius-0", "4.2.0") == "u-border-radius-0"
+    end
+
+    test "version 4.1.0" do
       assert classname("u-flex", "4.0.0") == "u-flex"
+      assert classname("u-border-radius-0", "4.0.0") == "u-round-0"
       assert classname("u-overflow-x-auto", "4.0.0") == "u-overflow-x-auto"
       assert classname("u-overflow-y-auto", "4.0.0") == "u-overflow-y-auto"
       assert classname("u-bg-gray-80", "4.0.0") == "u-bg-gray-80"
@@ -20,7 +25,25 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "4.0.0") == "u-font-medium"
       assert classname("u-line-height-min", "4.0.0") == "u-line-height-min"
       assert classname("u-text-right", "4.0.0") == "u-text-right"
-      assert classname("u-round-0-tr", "4.0.0") == "u-round-0-tr"
+      assert classname("u-flex-shrink-0", "4.0.0") == "u-flex-shrink-0"
+      assert classname("u-flex-grow-1", "4.0.0") == "u-flex-grow-1"
+      assert classname("u-flex-wrap", "4.0.0") == "u-flex-wrap"
+      assert classname("u-flex-col", "4.0.0") == "u-flex-col"
+      assert classname("u-grid-cols-3", "4.0.0") == "u-grid-cols-3"
+      assert classname("u-col-span-3", "4.0.0") == "u-col-span-3"
+      assert classname("u-col-start-1", "4.0.0") == "u-col-start-1"
+    end
+
+    test "version 4.0.0" do
+      assert classname("u-flex", "4.0.0") == "u-flex"
+      assert classname("u-border-radius-0", "4.0.0") == "u-round-0"
+      assert classname("u-overflow-x-auto", "4.0.0") == "u-overflow-x-auto"
+      assert classname("u-overflow-y-auto", "4.0.0") == "u-overflow-y-auto"
+      assert classname("u-bg-gray-80", "4.0.0") == "u-bg-gray-80"
+      assert classname("u-fg-warning", "4.0.0") == "u-fg-warning"
+      assert classname("u-font-medium", "4.0.0") == "u-font-medium"
+      assert classname("u-line-height-min", "4.0.0") == "u-line-height-min"
+      assert classname("u-text-right", "4.0.0") == "u-text-right"
       assert classname("u-flex-shrink-0", "4.0.0") == "u-flex-shrink-0"
       assert classname("u-flex-grow-1", "4.0.0") == "u-flex-grow-1"
       assert classname("u-flex-wrap", "4.0.0") == "u-flex-wrap"
@@ -39,7 +62,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "3.0.0") == "u-font--medium"
       assert classname("u-line-height-min", "3.0.0") == "u-line-height--min"
       assert classname("u-text-right", "3.0.0") == "u-text--right"
-      assert classname("u-round-0-tr", "3.0.0") == "u-round--0-tr"
+      assert classname("u-border-radius-0-tr", "3.0.0") == "u-round--0-tr"
       assert classname("u-flex-shrink-0", "3.0.0") == "u-flex-shrink-0"
       assert classname("u-flex-grow-1", "3.0.0") == "u-flex-grow-1"
       assert classname("u-flex-wrap", "3.0.0") == "u-flex-wrap"
@@ -58,7 +81,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "2.0.0") == "u-font--medium"
       assert classname("u-line-height-min", "2.0.0") == "u-line-height--min"
       assert classname("u-text-right", "2.0.0") == "u-text--right"
-      assert classname("u-round-0-tr", "2.0.0") == "u-round--0-tr"
+      assert classname("u-border-radius-0-tr", "2.0.0") == "u-round--0-tr"
       assert classname("u-flex-shrink-0", "2.0.0") == "u-flex-shrink-0"
       assert classname("u-flex-grow-1", "2.0.0") == "u-flex-grow-1"
       assert classname("u-flex-wrap", "2.0.0") == "u-flex-wrap"
@@ -77,7 +100,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "1.5.0") == "u-font--medium"
       assert classname("u-line-height-min", "1.5.0") == "u-line-height--min"
       assert classname("u-text-right", "1.5.0") == "u-text--right"
-      assert classname("u-round-0-tr", "1.5.0") == "u-round--0-tr"
+      assert classname("u-border-radius-0-tr", "1.5.0") == "u-round--0-tr"
       assert classname("u-flex-shrink-0", "1.5.0") == "u-flex__shrink-0"
       assert classname("u-flex-grow-1", "1.5.0") == "u-flex__grow-1"
       assert classname("u-flex-wrap", "1.5.0") == "u-flex--wrap"
@@ -96,7 +119,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "1.3.0") == "u-font--medium"
       assert classname("u-line-height-min", "1.3.0") == "u-line-height--min"
       assert classname("u-text-right", "1.3.0") == "u-text--right"
-      assert classname("u-round-0-tr", "1.3.0") == "u-round--0-tr"
+      assert classname("u-border-radius-0-tr", "1.3.0") == "u-round--0-tr"
       assert classname("u-flex-shrink-0", "1.3.0") == "u-flex__shrink-0"
       assert classname("u-flex-grow-1", "1.3.0") == "u-flex__grow-1"
       assert classname("u-flex-wrap", "1.3.0") == "u-flex--wrap"
