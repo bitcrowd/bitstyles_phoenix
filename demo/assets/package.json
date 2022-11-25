@@ -4,6 +4,6 @@
   "license": "ISC",
   "dependencies": {
     "alpinejs": "^3.5.1",
-    "bitstyles": "^2.0.0"
+    "bitstyles": "^4.0.0"
   }
 }
