@@ -3,6 +3,7 @@
 ## Unreleased
 ### Changed
 - `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
+- Updated to bitstyles `v4.3.0`
 
 ## v2.0.0 - 2022-11-12
 
