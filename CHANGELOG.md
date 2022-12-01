@@ -2,7 +2,7 @@
 
 ## Unreleased
 ### Changed
-- Add `heading_class` option to `ui_heading_title` to set classes on the heading
+- Add `heading_class` option to `ui_section_title` to set classes on the heading
 - `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
 - Updated to bitstyles `v4.3.0`
 
