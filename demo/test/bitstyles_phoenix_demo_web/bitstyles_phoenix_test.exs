@@ -6,11 +6,11 @@ defmodule BitstylesPhoenixWebDemo.BitstylesPhoenixTest do
     session
     |> visit("/")
     |> find(Query.css(".e2e-form", count: 1))
-    |> assert_has(Query.css(".u-fg--warning", text: "can't be blank"))
+    |> assert_has(Query.css(".u-fg-warning", text: "can't be blank"))
 
     session
     |> find(Query.css(".e2e-form-de", count: 1))
-    |> assert_has(Query.css(".u-fg--warning", text: "muss ausgefüllt werden"))
+    |> assert_has(Query.css(".u-fg-warning", text: "muss ausgefüllt werden"))
   end
 
   feature "allows icon config and can still render inline", %{session: session} do

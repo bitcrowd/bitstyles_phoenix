@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "3.0.0"
+  @default_version "4.3.0"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
@@ -14,12 +14,41 @@ defmodule BitstylesPhoenix.Bitstyles do
   """
   def classname(name), do: classname(name, version())
 
-  def classname(class, version) when version > "3.0.0" do
+  def classname(class, version) when version > "4.3.0" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
     class
   end
 
-  def classname(class, version) when version >= "2.0.0", do: class
+  def classname(class, version) when version >= "4.2.0", do: class
+
+  def classname(class, version) when version >= "4.0.0" do
+    mapping =
+      case class do
+        "u-border-radius-" <> variant -> "u-round-#{variant}"
+        _ -> class
+      end
+
+    classname(mapping, "4.2.0")
+  end
+
+  def classname(class, version) when version >= "2.0.0" do
+    # credo:disable-for-previous-line Credo.Check.Refactor.CyclomaticComplexity
+
+    mapping =
+      case class do
+        "u-overflow-x-auto" -> "u-overflow--x"
+        "u-overflow-y-auto" -> "u-overflow--y"
+        "u-bg-" <> variant -> "u-bg--#{variant}"
+        "u-fg-" <> variant -> "u-fg--#{variant}"
+        "u-font-" <> variant -> "u-font--#{variant}"
+        "u-line-height-" <> variant -> "u-line-height--#{variant}"
+        "u-text-" <> variant -> "u-text--#{variant}"
+        "u-border-radius-" <> variant -> "u-round--#{variant}"
+        _ -> class
+      end
+
+    classname(mapping, "4.0.0")
+  end
 
   def classname(class, version) when version >= "1.5.0" do
     mapping =

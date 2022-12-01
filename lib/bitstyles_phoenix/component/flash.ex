@@ -37,7 +37,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
-          <div class="a-content u-flex u-items-center u-font--medium">
+          <div class="a-content u-flex u-items-center u-font-medium">
             Something you may be interested to hear
           </div>
         </div>
@@ -57,7 +57,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--positive">
-          <div class="a-content u-flex u-items-center u-font--medium">
+          <div class="a-content u-flex u-items-center u-font-medium">
             Saved successfully
           </div>
         </div>
@@ -77,7 +77,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--warning">
-          <div class="a-content u-flex u-items-center u-font--medium">
+          <div class="a-content u-flex u-items-center u-font-medium">
             Saved with errors
           </div>
         </div>
@@ -97,7 +97,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger">
-          <div class="a-content u-flex u-items-center u-font--medium">
+          <div class="a-content u-flex u-items-center u-font-medium">
             Saving failed
           </div>
         </div>
@@ -117,7 +117,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger">
-          <div class="a-content a-content--full u-flex u-items-center u-font--medium">
+          <div class="a-content a-content--full u-flex u-items-center u-font-medium">
             Saving failed
           </div>
         </div>
@@ -137,7 +137,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...> """)
         """
         <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1 extra-class" data-foo="bar">
-          <div class="a-content u-flex u-items-center u-font--medium extra-inner-class">
+          <div class="a-content u-flex u-items-center u-font-medium extra-inner-class">
             Saving failed
           </div>
         </div>
@@ -161,7 +161,7 @@ defmodule BitstylesPhoenix.Component.Flash do
         assigns[:class]
       ])
 
-    content_class = classnames(["u-flex u-items-center u-font--medium", assigns[:content_class]])
+    content_class = classnames(["u-flex u-items-center u-font-medium", assigns[:content_class]])
 
     extra = assigns_to_attributes(assigns, [:class, :content_class, :variant])
 

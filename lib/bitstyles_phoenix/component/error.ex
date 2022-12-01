@@ -29,7 +29,7 @@ defmodule BitstylesPhoenix.Component.Error do
       ...> <.ui_errors form={@form} field={:single} />
       ...> """
       """
-      <span class="u-fg--warning" phx-feedback-for="user[single]">
+      <span class="u-fg-warning" phx-feedback-for="user[single]">
         is too short
       </span>
       """
@@ -43,12 +43,12 @@ defmodule BitstylesPhoenix.Component.Error do
       """
       <ul class="u-padding-xl-left">
         <li>
-          <span class="u-fg--warning" phx-feedback-for="user[multiple]">
+          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
             is simply bad
           </span>
         </li>
         <li>
-          <span class="u-fg--warning" phx-feedback-for="user[multiple]">
+          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
             not fun
           </span>
         </li>
@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Error do
       ...> <.ui_error error={{"Foo error", []}} />
       ...> """
       """
-      <span class="u-fg--warning">
+      <span class="u-fg-warning">
         Foo error
       </span>
       """
@@ -124,7 +124,7 @@ defmodule BitstylesPhoenix.Component.Error do
       ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
       ...> """
       """
-      <span class="u-fg--warning bar" phx-feedback-for="foo">
+      <span class="u-fg-warning bar" phx-feedback-for="foo">
         Foo error
       </span>
       """
@@ -132,7 +132,7 @@ defmodule BitstylesPhoenix.Component.Error do
 
   def ui_error(assigns) do
     extra = assigns_to_attributes(assigns, [:class, :error, :field, :form])
-    class = classnames(["u-fg--warning", assigns[:class]])
+    class = classnames(["u-fg-warning", assigns[:class]])
     assigns = assign(assigns, class: class, extra: extra)
 
     ~H"""

@@ -22,7 +22,7 @@ defmodule BitstylesPhoenix do
 
   ```elixir
   <.ui_badge>A nice badge</.ui_badge>
-  # => <span class="a-badge u-h6 u-font--medium a-badge--gray">A nice badge</span>
+  # => <span class="a-badge u-h6 u-font-medium a-badge--gray">A nice badge</span>
   ```
 
   ```elixir

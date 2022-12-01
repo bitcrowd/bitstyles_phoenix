@@ -52,14 +52,14 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         <div class="u-flex u-height-100vh" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg--gray-80 u-fg--gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
                 <a href="#" class="u-padding-l">
                   <img src="assets/logo.svg" aria-hidden="true" width="100"/>
                   <span class="u-sr-only">
                     bitcrowd
                   </span>
                 </a>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
@@ -72,7 +72,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                   </li>
                 </ul>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg--gray-80 u-fg--gray-30" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
                 <div class="u-flex">
                   <a href="#" class="u-flex-grow-1 u-padding-l">
                     <img src="assets/logo.svg" aria-hidden="true" width="100"/>
@@ -92,7 +92,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </button>
                   </div>
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow--y a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--nav u-flex-grow-1">
                       Menu item #1
@@ -107,7 +107,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow--y u-margin-s-top">
+          <main class="u-flex-grow-1 u-overflow-y-auto u-margin-s-top">
             <div class="a-content flex">
               <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
