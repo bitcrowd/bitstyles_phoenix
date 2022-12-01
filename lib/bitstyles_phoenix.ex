@@ -104,6 +104,29 @@ defmodule BitstylesPhoenix do
   config :bitstyles_phoenix,
     trim_e2e_classes: [enabled: true, prefix: "test-"]
   ```
+
+  ### Defining a required label
+
+  You can control how required labels are rendered. By default you will get this appended to your labels if the input is required:
+  ```html
+    <span aria-hidden="true" class="u-fg-warning u-margin-xss-left">*</span>
+  ```
+
+  You can override it by specifying your own component to render the required labels. The component will get the form and the field as assigns.
+
+  ```elixir
+  config :bitstyles_phoenix,
+    required_label: {MyComponent, :my_required_label, []}
+
+  defmodule MyComponent do
+    use Phoenix.Component
+
+    def my_required_label(assigns) do
+      ~H"<span>(required)</span>"
+    end
+  end
+  ```
+
   """
 
   defmacro __using__(_) do

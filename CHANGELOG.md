@@ -1,11 +1,18 @@
 # Changelog
 
 ## Unreleased
+
 ### Changed
+
 - `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
 - Updated to bitstyles `v4.3.0`
 
+### Added 
+
+- Inputs now render a required label *. This can be configured via `required_label` config. If you do not want this new behaviour, define an empty component as required label.
+
 ### Breaking
+
 - When `ui_button` is disabled it always renders a button now instead of a link with a disabled property. In most cases this should be fine, but it could break e2e tests that check for links or similar things.
 
 ## v2.0.0 - 2022-11-12
