@@ -634,12 +634,12 @@ defmodule BitstylesPhoenix.Component.Form do
   defp default_label(field), do: PhxForm.humanize(field)
 
   defp required_label(%{required: value} = assigns)
-       when not is_nil(value) do
+       when value not in [nil, false, "false"] do
     {module, function, opts} =
       Application.get_env(:bitstyles_phoenix, :required_label, {
         __MODULE__,
         :default_required_label,
-        [foo: :bar]
+        []
       })
 
     assigns =
