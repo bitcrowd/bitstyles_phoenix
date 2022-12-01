@@ -138,6 +138,8 @@ defmodule BitstylesPhoenix.Component.Heading do
   - `class` - Set CSS classes on the outer div.
   - `border` - Controls the bottom border and padding (default: true, boolean)
   - `border_color` - The border color, defaults to `gray-10` resulting in `u-border-gray-10-bottom`.
+  - `tag` - the heading tag (defaults to h3)
+  - `heading_class` - Extra classes on the heading
   - All other attributes are passed to the outer `div` tag.
 
   ## Attributes - `title_extra` slot
