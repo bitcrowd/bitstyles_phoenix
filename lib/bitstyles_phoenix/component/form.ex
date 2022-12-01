@@ -79,6 +79,22 @@ defmodule BitstylesPhoenix.Component.Form do
       """
   ''')
 
+  story("Text required field with label", '''
+      iex> assigns=%{form: @user_form}
+      ...> render ~H"""
+      ...> <.ui_input form={@form} field={:name} required/>
+      ...> """
+      """
+      <label for="user_name">
+        Name
+        <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
+          *
+        </span>
+      </label>
+      <input id="user_name" maxlength="255" name="user[name]" required="required" type="text"/>
+      """
+  ''')
+
   story("Text field with error", '''
       iex> assigns=%{form: @error_form}
       ...> render ~H"""
@@ -165,6 +181,9 @@ defmodule BitstylesPhoenix.Component.Form do
       """
       <label class="extra" for="user_totp">
         Authentication code
+        <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
+          *
+        </span>
       </label>
       <input autocomplete="one-time-code" id="user_totp" inputmode="numeric" maxlength="6" name="user[totp]" pattern="[0-9]*" placeholder="6-digit code" required="required" type="text" value=""/>
       """
@@ -224,6 +243,23 @@ defmodule BitstylesPhoenix.Component.Form do
         <input name="user[accept]" type="hidden" value="false"/>
         <input id="user_accept" name="user[accept]" type="checkbox" value="true"/>
         Accept
+      </label>
+      """
+  ''')
+
+  story("Checkbox required", '''
+      iex> assigns=%{form: @user_form}
+      ...> render ~H"""
+      ...> <.ui_input form={@form} field={:accept} type={:checkbox} required/>
+      ...> """
+      """
+      <label for="user_accept">
+        <input name="user[accept]" type="hidden" value="false"/>
+        <input id="user_accept" name="user[accept]" required="required" type="checkbox" value="true"/>
+        Accept
+        <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
+          *
+        </span>
       </label>
       """
   ''')
@@ -300,6 +336,23 @@ defmodule BitstylesPhoenix.Component.Form do
         About me
       </label>
       <textarea id="user_about_me" name="user[about_me]">
+      </textarea>
+      """
+  ''')
+
+  story("Textarea", '''
+      iex> assigns=%{form: @user_form}
+      ...> render ~H"""
+      ...> <.ui_textarea form={@form} field={:about_me} required/>
+      ...> """
+      """
+      <label for="user_about_me">
+        About me
+        <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
+          *
+        </span>
+      </label>
+      <textarea id="user_about_me" name="user[about_me]" required="required">
       </textarea>
       """
   ''')
@@ -405,6 +458,29 @@ defmodule BitstylesPhoenix.Component.Form do
       """
   ''')
 
+  story("Select box required", '''
+      iex> assigns=%{form: @user_form}
+      ...> render ~H"""
+      ...> <.ui_select form={@form} field={:week} options={1..2} required />
+      ...> """
+      """
+      <label for="user_week">
+        Week
+        <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
+          *
+        </span>
+      </label>
+      <select id="user_week" name="user[week]" required="required">
+        <option value="1">
+          1
+        </option>
+        <option value="2">
+          2
+        </option>
+      </select>
+      """
+  ''')
+
   story("Select box without label", '''
       iex> assigns=%{form: @user_form}
       ...> render ~H"""
@@ -461,7 +537,7 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   defp wrapper_assigns(assigns) do
-    Map.take(assigns, @wrapper_assigns_keys)
+    Map.take(assigns, @wrapper_assigns_keys ++ [:required])
   end
 
   @doc """
@@ -505,12 +581,14 @@ defmodule BitstylesPhoenix.Component.Form do
         classnames([label_opts[:class], {"u-sr-only", assigns[:hidden_label]}])
       )
 
-    label = PhxForm.label(assigns.form, assigns.field, label_text, label_opts)
-
-    assigns = assign(assigns, :label, label)
+    assigns = assign(assigns, label_text: label_text, label_opts: label_opts)
 
     ~H"""
-    <%= @label %><%= render_slot(@inner_block) %><.ui_errors form={@form} field={@field} />
+    <%= PhxForm.label @form, @field, @label_opts do %>
+      <%= @label_text %>
+      <.required_label {assigns_to_attributes(assigns)}/>
+    <% end %><%= render_slot(@inner_block) %>
+    <.ui_errors form={@form} field={@field} />
     """
   end
 
@@ -547,10 +625,44 @@ defmodule BitstylesPhoenix.Component.Form do
     <%= PhxForm.label @form, @field, @label_opts do %>
       <%= render_slot(@inner_block) %>
       <%= @label %>
+      <.required_label {assigns_to_attributes(assigns)} />
     <% end %>
     <.ui_errors form={@form} field={@field} />
     """
   end
 
   defp default_label(field), do: PhxForm.humanize(field)
+
+  defp required_label(%{required: value} = assigns)
+       when value not in [nil, false, "false"] do
+    {module, function, opts} =
+      Application.get_env(:bitstyles_phoenix, :required_label, {
+        __MODULE__,
+        :default_required_label,
+        []
+      })
+
+    assigns =
+      assign(assigns,
+        component_fn: fn a -> apply(module, function, [a]) end,
+        opts: opts
+      )
+
+    ~H"""
+    <%= Phoenix.LiveView.HTMLEngine.component(
+      @component_fn,
+      [form: @form, field: @field, opts: @opts],
+      {__ENV__.module, __ENV__.function, __ENV__.file, __ENV__.line}
+    ) %>
+    """
+  end
+
+  defp required_label(assigns), do: ~H""
+
+  @doc false
+  def default_required_label(assigns) do
+    ~H"""
+    <span aria-hidden="true" class={classnames("u-fg-warning u-margin-xxs-left")}>*</span>
+    """
+  end
 end
