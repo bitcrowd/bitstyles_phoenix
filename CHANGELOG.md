@@ -5,6 +5,9 @@
 - `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
 - Updated to bitstyles `v4.3.0`
 
+### Breaking
+- When `ui_button` is disabled it always renders a button now instead of a link with a disabled property. In most cases this should be fine, but it could break e2e tests that check for links or similar things.
+
 ## v2.0.0 - 2022-11-12
 
 Since there is quite some changes in liveview 0.18.0 mainly about link helpers this breaks with the existing API for the `ui_button` and
