@@ -274,7 +274,7 @@ defmodule BitstylesPhoenix.Component.Button do
     <%= unless @icon_after do %>
       <.ui_icon {@icon_opts} />
     <% end %>
-    <span class="a-button__label"><%= render_slot(@inner_block) %></span>
+    <span class={classnames("a-button__label")}><%= render_slot(@inner_block) %></span>
     <%= if @icon_after do %>
       <.ui_icon {@icon_opts} />
     <% end %>
@@ -384,7 +384,7 @@ defmodule BitstylesPhoenix.Component.Button do
     ~H"""
     <.ui_button variant={@variant} title={assigns[:title] || @label} {@extra}>
       <.ui_icon name={@icon} {@icon_opts}/>
-      <span class="u-sr-only"><%= @label %></span>
+      <span class={classnames("u-sr-only")}><%= @label %></span>
     </.ui_button>
     """
   end

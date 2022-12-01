@@ -114,8 +114,8 @@ defmodule BitstylesPhoenix.Component.Heading do
 
     ~H"""
     <div class={@class} {@extra}>
-      <div class="u-flex u-flex-wrap u-items-center">
-        <h1 class="u-margin-m-right u-break-text"><%= render_slot(@inner_block) %></h1>
+      <div class={classnames("u-flex u-flex-wrap u-items-center")}>
+        <h1 class={classnames("u-margin-m-right u-break-text")}><%= render_slot(@inner_block) %></h1>
         <%= if assigns[:title_extra] do %>
           <div class={classnames(["u-flex-shrink-0 u-margin-m-bottom", @title_extra[:class]])} {assigns_to_attributes(@title_extra, [:class])}>
              <%= render_slot(@title_extra) %>
@@ -199,7 +199,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_section_title border_color="gray-70">
+        ...> <.ui_section_title border_color="gray-70" heading_class="extra">
         ...>   Section title
         ...>   <:title_extra>
         ...>     <.ui_badge>Published</.ui_badge>
@@ -218,7 +218,7 @@ defmodule BitstylesPhoenix.Component.Heading do
         """
         <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-70-bottom">
           <div class="u-flex u-items-center">
-            <h3 class="u-margin-0 u-margin-m-right u-break-text">
+            <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
               Section title
             </h3>
             <span class="a-badge u-h6 u-font-medium a-badge--gray">
@@ -255,14 +255,22 @@ defmodule BitstylesPhoenix.Component.Heading do
       ])
 
     extra =
-      assigns_to_attributes(assigns, [:class, :action, :title_extra, :tag, :border, :border_color])
+      assigns_to_attributes(assigns, [
+        :class,
+        :action,
+        :title_extra,
+        :tag,
+        :border,
+        :border_color,
+        :heading_class
+      ])
 
     assigns = assigns |> assign(class: class, extra: extra) |> assign_new(:tag, fn -> :h3 end)
 
     ~H"""
       <div class={@class} {@extra}>
-        <div class="u-flex u-items-center">
-          <%= Phoenix.HTML.Tag.content_tag @tag, class: "u-margin-0 u-margin-m-right u-break-text" do %>
+        <div class={classnames("u-flex u-items-center")}>
+          <%= Phoenix.HTML.Tag.content_tag @tag, class: classnames(["u-margin-0 u-margin-m-right u-break-text", assigns[:heading_class]]) do %>
             <%= render_slot(@inner_block) %>
           <% end %>
           <%= assigns[:title_extra] && render_slot(@title_extra) %>
@@ -276,7 +284,7 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   defp ui_action_buttons(assigns) do
     ~H"""
-    <ul class="a-list-reset u-flex u-flex-wrap">
+    <ul class={classnames("a-list-reset u-flex u-flex-wrap")}>
       <%= for action <- @action do %>
         <%= if Map.get(action, :show, true) do %>
           <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
