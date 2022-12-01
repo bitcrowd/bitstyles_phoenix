@@ -54,6 +54,20 @@ defmodule BitstylesPhoenix.Component.Button do
       """
   ''')
 
+  story("Default disabled link renders disabled button instead", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button href="/" variant="ui" disabled>
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--ui" disabled="disabled">
+        Publish
+      </button>
+      """
+  ''')
+
   story("Default submit button", '''
       iex> assigns = %{}
       ...> render ~H"""
@@ -235,7 +249,10 @@ defmodule BitstylesPhoenix.Component.Button do
 
     assigns =
       assigns
-      |> assign(:link, Enum.any?(@link_attributes, &Map.has_key?(assigns, &1)))
+      |> assign(
+        :link,
+        !assigns[:disabled] && Enum.any?(@link_attributes, &Map.has_key?(assigns, &1))
+      )
       |> assign(:extra, extra)
 
     ~H"""
@@ -244,7 +261,7 @@ defmodule BitstylesPhoenix.Component.Button do
         <%= render_slot(@inner_block) %>
       </.link>
     <% else %>
-      <button type={assigns[:type] || "button"} {@extra}>
+      <button type={assigns[:type] || "button"} {Keyword.drop(@extra, [:to, :href, :navigate, :patch])}>
         <%= render_slot(@inner_block) %>
       </button>
     <% end %>
