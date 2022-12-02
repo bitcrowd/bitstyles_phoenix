@@ -310,8 +310,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
     ~H"""
       <div class={@class} {@extra}>
-        <header role="banner" class="u-flex">
-          <nav class="u-flex">
+        <header role="banner" class={classnames("u-flex")}>
+          <nav class={classnames("u-flex")}>
             <div class={@large_class} {@sidebar_extra} {@large_extra}>
               <%= assigns[:large_sidebar] && render_slot(@large_sidebar) %>
               <%= assigns[:sidebar_content] &&render_slot(@sidebar_content) %>

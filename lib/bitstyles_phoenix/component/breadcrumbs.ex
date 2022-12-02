@@ -182,7 +182,7 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
               {assigns[:item] && assigns_to_attributes(item, [:class]) || []}
             >
               <%= if assigns[:item], do: render_slot(item), else: item %>
-              <.ui_icon name="caret-right" size="m" class="u-fg-gray-30 u-margin-xs-left" {@icon_extra} />
+              <.ui_icon name="caret-right" size="m" class={classnames("u-fg-gray-30 u-margin-xs-left")} {@icon_extra} />
             </li>
           <% end %>
         </ol>
