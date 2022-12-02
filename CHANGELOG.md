@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.1 - 2022-12-02
+
+- Fixed version backwards compatibility
+
 ## v2.1.0 - 2022-12-02
 
 ### Changed
