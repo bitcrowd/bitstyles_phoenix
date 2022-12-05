@@ -18,7 +18,7 @@ The package can be installed by adding `bitstyles_phoenix` to your list of depen
 ```elixir
 def deps do
   [
-    {:bitstyles_phoenix, "~> 2.1.0"}
+    {:bitstyles_phoenix, "~> 2.1.1"}
   ]
 end
 ```

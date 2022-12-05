@@ -36,14 +36,23 @@ defmodule BitstylesPhoenix.Bitstyles do
 
     mapping =
       case class do
-        "u-overflow-x-auto" -> "u-overflow--x"
-        "u-overflow-y-auto" -> "u-overflow--y"
+        # Make sure that we leave the classes in place that are old anyway (update compatibility)
+        "u-bg--" <> _ -> class
+        "u-fg--" <> _ -> class
+        "u-font--" <> _ -> class
+        "u-line-height--" <> _ -> class
+        "u-text--" <> _ -> class
+        "u-round--" <> _ -> class
+        # Make sure we port back already updated classes
         "u-bg-" <> variant -> "u-bg--#{variant}"
         "u-fg-" <> variant -> "u-fg--#{variant}"
         "u-font-" <> variant -> "u-font--#{variant}"
         "u-line-height-" <> variant -> "u-line-height--#{variant}"
         "u-text-" <> variant -> "u-text--#{variant}"
+        "u-round-" <> variant -> "u-round--#{variant}"
         "u-border-radius-" <> variant -> "u-round--#{variant}"
+        "u-overflow-x-auto" -> "u-overflow--x"
+        "u-overflow-y-auto" -> "u-overflow--y"
         _ -> class
       end
 

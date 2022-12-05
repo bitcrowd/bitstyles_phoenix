@@ -62,6 +62,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-font-medium", "3.0.0") == "u-font--medium"
       assert classname("u-line-height-min", "3.0.0") == "u-line-height--min"
       assert classname("u-text-right", "3.0.0") == "u-text--right"
+      assert classname("u-round-0-tr", "3.0.0") == "u-round--0-tr"
       assert classname("u-border-radius-0-tr", "3.0.0") == "u-round--0-tr"
       assert classname("u-flex-shrink-0", "3.0.0") == "u-flex-shrink-0"
       assert classname("u-flex-grow-1", "3.0.0") == "u-flex-grow-1"
@@ -70,6 +71,14 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-grid-cols-3", "3.0.0") == "u-grid-cols-3"
       assert classname("u-col-span-3", "3.0.0") == "u-col-span-3"
       assert classname("u-col-start-1", "3.0.0") == "u-col-start-1"
+
+      # Support existing classes
+      assert classname("u-bg--gray-80", "3.0.0") == "u-bg--gray-80"
+      assert classname("u-fg--warning", "3.0.0") == "u-fg--warning"
+      assert classname("u-font--medium", "3.0.0") == "u-font--medium"
+      assert classname("u-line-height--min", "3.0.0") == "u-line-height--min"
+      assert classname("u-text--right", "3.0.0") == "u-text--right"
+      assert classname("u-round--0-tr", "3.0.0") == "u-round--0-tr"
     end
 
     test "version 2.0.0" do
