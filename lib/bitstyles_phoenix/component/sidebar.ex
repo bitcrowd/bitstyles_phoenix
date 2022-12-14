@@ -38,7 +38,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> </.ui_sidebar_layout>
         ...> """
         """
-        <div class="u-flex u-height-100vh">
+        <div class="u-flex u-height-stretch">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
               <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
@@ -200,7 +200,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> </.ui_sidebar_layout>
         ...> """
         """
-        <div class="u-flex u-height-100vh">
+        <div class="u-flex u-height-stretch">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
               <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
@@ -238,7 +238,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> </.ui_sidebar_layout>
         ...> """
         """
-        <div class="u-flex u-height-100vh">
+        <div class="u-flex u-height-stretch">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
               <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
@@ -297,7 +297,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     assigns =
       assigns
       |> assign(
-        class: classnames(["u-flex u-height-100vh", assigns[:class]]),
+        class: classnames(["u-flex", wrapper_height(), assigns[:class]]),
         extra: extra,
         sidebar_extra: sidebar_extra,
         large_extra: large_extra,
@@ -424,5 +424,16 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     ~H"""
     <div class={@class} {@extra}><%= render_slot(@inner_block) %></div>
     """
+  end
+
+  defp wrapper_height() do
+    # height: strech is not supported by recent browsers yet.
+    # So if we can't have autoprefixer for some reason, we should
+    # use height: 100vh.
+    if BitstylesPhoenix.Bitstyles.autoprefixer() do
+      "u-height-stretch"
+    else
+      "u-height-100vh"
+    end
   end
 end

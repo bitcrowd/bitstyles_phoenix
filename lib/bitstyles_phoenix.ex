@@ -53,9 +53,19 @@ defmodule BitstylesPhoenix do
 
   ```elixir
   config :bitstyles_phoenix,
-    bitstyles_version: "1.5.0"
+    bitstyles_version: "3.0.0"
   ```
   Release candidate versions are currently not supported.
+
+  ### Autoprefixer
+
+  Bitstyles phoenix will use some classes that require autoprefixer even for newer browers.
+  If you can't run autoprefixer for some reason (not recommended) you can set `autoprefixer: false`
+  to make bitstyles_phoenix only output classes that are well supported in recent browsers.
+
+  ```elixir
+  config :bitstyles_phoenix, autoprefixer: false
+  ```
 
   ### Translating error messages
 
