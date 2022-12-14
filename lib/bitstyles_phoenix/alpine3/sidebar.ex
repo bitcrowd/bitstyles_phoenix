@@ -49,7 +49,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...> </.ui_js_sidebar_layout>
         ...> """
         """
-        <div class="u-flex u-height-stretch" x-data="{ sidebarOpen: false }">
+        <div class="u-flex u-height-100vh u-min-height-stretch" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
               <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
