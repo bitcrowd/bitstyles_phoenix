@@ -12,7 +12,7 @@ defmodule BitstylesPhoenix.Component.Avatar do
   Always provide a source and alt. The width and height have 32px default values and can be overidden.
 
   See the [bitstyles avatar docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-avatar--a-avatar-m) for further info.
-"""
+  """
 
   story("Default avatar", '''
       iex> assigns = %{}
@@ -89,12 +89,12 @@ defmodule BitstylesPhoenix.Component.Avatar do
     assigns = assign(assigns, extra: extra, class: class)
 
     ~H"""
-    <div class="u-flex u-items-center">
+    <div class={classnames("u-flex u-items-center")}>
       <div class={@class}>
         <img {@extra} />
       </div>
       <%= if assigns[:inner_block] do %>
-        <span class="u-margin-s-left">
+        <span class={classnames("u-margin-s-left")}>
          <%= render_slot(@inner_block) %>
         </span>
       <% end %>
@@ -108,5 +108,4 @@ defmodule BitstylesPhoenix.Component.Avatar do
     |> Keyword.put_new(:width, @default_size)
     |> Keyword.put_new(:height, @default_size)
   end
-
 end
