@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `Card` and `Avatar` components
+
 ## v2.1.1 - 2022-12-02
 
 - Fixed version backwards compatibility
