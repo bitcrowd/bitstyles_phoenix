@@ -20,9 +20,9 @@ jobs:
       - image: cimg/elixir:1.12.2-browsers
     working_directory: ~/repo
     steps:
+      - checkout
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - checkout
       - run: mix local.hex --force
       - run: mix local.rebar --force
       - run: cd demo && mix deps.get
