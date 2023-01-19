@@ -131,6 +131,7 @@ defmodule BitstylesPhoenix do
 
   defmacro __using__(_) do
     quote do
+      import BitstylesPhoenix.Component.Avatar
       import BitstylesPhoenix.Component.Badge
       import BitstylesPhoenix.Component.Breadcrumbs
       import BitstylesPhoenix.Component.Button
