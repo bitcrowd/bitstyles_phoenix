@@ -135,6 +135,7 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Badge
       import BitstylesPhoenix.Component.Breadcrumbs
       import BitstylesPhoenix.Component.Button
+      import BitstylesPhoenix.Component.Card
       import BitstylesPhoenix.Component.Content
       import BitstylesPhoenix.Component.DescriptionList
       import BitstylesPhoenix.Component.Dropdown
