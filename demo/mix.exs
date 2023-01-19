@@ -71,7 +71,8 @@ defmodule BitstylesPhoenixDemo.MixProject do
       ],
       bitstyles: [
         "cmd mkdir -p priv/static/assets",
-        "cmd cp -R assets/node_modules/bitstyles/assets/* priv/static/assets"
+        "cmd cp -R assets/node_modules/bitstyles/assets/* priv/static/assets",
+        "cmd cp -R ../assets/logo.svg priv/static/assets/images/"
       ],
       "bitstyles.watch": [
         "bitstyles",

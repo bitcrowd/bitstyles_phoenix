@@ -8,6 +8,10 @@ defmodule BitstylesPhoenix.Bitstyles do
     "#{@cdn_url}@#{@default_version}"
   end
 
+  def autoprefixer do
+    Application.get_env(:bitstyles_phoenix, :autoprefixer, true)
+  end
+
   @doc """
   Returns the classnames for the configured version.
   Input classnames are assumed to be from the #{@default_version} version of bitstyles.
@@ -25,6 +29,7 @@ defmodule BitstylesPhoenix.Bitstyles do
     mapping =
       case class do
         "u-border-radius-" <> variant -> "u-round-#{variant}"
+        "u-height-stretch" -> "u-height-100vh"
         _ -> class
       end
 

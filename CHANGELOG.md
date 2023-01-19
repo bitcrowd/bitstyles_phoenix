@@ -1,5 +1,13 @@
 # Changelog
 
+# Unreleased 
+
+## Breaking 
+
+- Sidebars use `u-height-strech` instead of `u-height-100vh`. This requires the project to run autoprefixer.
+  If you can't run autoprefixer in your project, set `config :bitstyles_phoenix, autoprefixer: false` to get the 
+  old behaviour.
+
 ## v2.1.1 - 2022-12-02
 
 - Fixed version backwards compatibility
