@@ -21,7 +21,7 @@ defmodule BitstylesPhoenix.Component.Icon do
     This can also be configured to a default `icon_file`, see `BitstylesPhoenix` for config options. With the configuration present, inline icons can still be rendered with `file={nil}`.
   - `class` - Extra classes to pass to the svg. See `BitstylesPhoenix.Helper.classnames/1` for usage.
 
-  See the [bitstyles icon docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-icon--icon) for examples of icon usage, and available icons in the bitstyles icon set.
+  See the [bitstyles icon docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-icon) for examples of icon usage, and available icons in the [bitstyles icon set](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-data-icons).
   """
 
   story(
