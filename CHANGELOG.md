@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.2.0 - 2023-03-20
 
 - Updated to LiveView 0.18.18
 - Add `Card` and `Avatar` components
