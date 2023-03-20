@@ -31,7 +31,7 @@ defmodule BitstylesPhoenixDemoWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {BitstylesPhoenixDemoWeb.LayoutView, "live.html"}
+        layout: {BitstylesPhoenixDemoWeb.LayoutView, :live}
 
       use BitstylesPhoenix.Live
 

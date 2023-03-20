@@ -24,7 +24,7 @@ defmodule BitstylesPhoenix.Component.Error do
   """
 
   story("A single error", '''
-      iex> assigns = %{form: @error_form}
+      iex> assigns = %{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_errors form={@form} field={:single} />
       ...> """
@@ -36,7 +36,7 @@ defmodule BitstylesPhoenix.Component.Error do
   ''')
 
   story("Multiple errors", '''
-      iex> assigns = %{form: @error_form}
+      iex> assigns = %{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_errors form={@form} field={:multiple} />
       ...> """

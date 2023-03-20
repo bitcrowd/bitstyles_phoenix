@@ -5,7 +5,7 @@
       <span class="u-sr-only">bitcrowd </span>
     </a>
   </:large_sidebar>
-  <:small_sidebar let={s}>
+  <:small_sidebar :let={s}>
     <div class="u-flex">
       <a href="/" class="u-flex-grow-1 u-padding-l">
         <img src={Routes.static_path(@conn, "/assets/images/logo.svg")} aria-hidden="true" width="100"/>
@@ -22,7 +22,7 @@
       <.ui_sidebar_nav_item><.ui_button href={Routes.live_path(@conn, BitstylesPhoenixDemoWeb.DemoLive)} class="u-flex-grow-1 e2e-sidebar-live" variant="nav">Live</.ui_button></.ui_sidebar_nav_item>
     </.ui_sidebar_nav>
   </:sidebar_content>
-  <:main let={s}>
+  <:main :let={s}>
     <.ui_js_sidebar_open sidebar={s} class="u-margin-s e2e-sidebar-open"/>
     <%= if content = get_flash(@conn, :info) do %>
       <.ui_flash variant={[:positive, :full]}>
