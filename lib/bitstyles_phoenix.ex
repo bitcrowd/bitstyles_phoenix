@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix do
     <span aria-hidden="true" class="u-fg-warning u-margin-xss-left">*</span>
   ```
 
-  You can override it by specifying your own component to render the required labels. The component will get the form and the field as assigns.
+  You can override it by specifying your own component to render the required labels. The component will get the form and the field as assigns, as well as any optional parameters you pass in the MFA as `@opts`.
 
   ```elixir
   config :bitstyles_phoenix,

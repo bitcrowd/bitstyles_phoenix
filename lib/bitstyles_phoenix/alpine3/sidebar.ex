@@ -23,7 +23,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>       </span>
         ...>     </a>
         ...>   </:large_sidebar>
-        ...>   <:small_sidebar let={s} id="sidebar-small">
+        ...>   <:small_sidebar :let={s} id="sidebar-small">
         ...>     <div class="u-flex">
         ...>       <a href="#" class="u-flex-grow-1 u-padding-l">
         ...>         <img src="assets/logo.svg" aria-hidden="true" width="100" />
@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
-        ...>   <:main let={s} class="u-margin-s-top">
+        ...>   <:main :let={s} class="u-margin-s-top">
         ...>     <.ui_content class="flex">
         ...>       <.ui_js_sidebar_open sidebar={s} class="u-margin-s-right"/>
         ...>       Main Content

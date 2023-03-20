@@ -67,7 +67,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Text field with label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} />
       ...> """
@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text required field with label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} required/>
       ...> """
@@ -96,7 +96,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with error", '''
-      iex> assigns=%{form: @error_form}
+      iex> assigns=%{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} />
       ...> """
@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with multiple errors", '''
-      iex> assigns=%{form: @error_form}
+      iex> assigns=%{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:email} />
       ...> """
@@ -137,7 +137,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with hidden label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} hidden_label={true} />
       ...> """
@@ -150,7 +150,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with label (without maxlength)", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} maxlength={false}/>
       ...> """
@@ -163,7 +163,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with options", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input
       ...>   form={@form}
@@ -190,7 +190,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Email field with label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:email} type={:email} />
       ...> """
@@ -203,7 +203,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Search field with placholder", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input
       ...>    form={@form}
@@ -221,20 +221,24 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("File field for pdfs", '''
-      iex> assigns=%{form: @file_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
-      ...> <.ui_input form={@form} field={:file} type={:file} accept="application/pdf" />
+      ...> <Phoenix.Component.form :let={form} for={@form} multipart>
+      ...>   <.ui_input form={form} field={:file} type={:file} accept="application/pdf" />
+      ...> </Phoenix.Component.form>
       ...> """
       """
-      <label for="user_file">
-        File
-      </label>
-      <input accept="application/pdf" id="user_file" name="user[file]" type="file"/>
+      <form enctype=\"multipart/form-data\">
+        <label for="user_file">
+          File
+        </label>
+        <input accept="application/pdf" id="user_file" name="user[file]" type="file"/>
+      </form>
       """
   ''')
 
   story("Checkbox", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} />
       ...> """
@@ -248,7 +252,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Checkbox required", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} required/>
       ...> """
@@ -265,7 +269,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Checkbox with label class", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_opts={[class: "extra"]}/>
       ...> """
@@ -327,7 +331,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Textarea", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:about_me} />
       ...> """
@@ -341,7 +345,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:about_me} required/>
       ...> """
@@ -358,7 +362,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with options", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_textarea
       ...>   form={@form}
@@ -380,7 +384,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with hidden label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:address} hidden_label/>
       ...> """
@@ -394,7 +398,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with error", '''
-      iex> assigns=%{form: @error_form}
+      iex> assigns=%{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:name} />
       ...> """
@@ -439,7 +443,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Select box", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} />
       ...> """
@@ -459,7 +463,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box required", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} required />
       ...> """
@@ -482,7 +486,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box without label", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} hidden_label/>
       ...> """
@@ -502,7 +506,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box with options", '''
-      iex> assigns=%{form: @user_form, options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
+      iex> assigns=%{form: @form, options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_opts={[class: "extra"]}/>
       ...> """
@@ -550,7 +554,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Custom inputs", '''
-      iex> assigns=%{form: @error_form}
+      iex> assigns=%{form: @form_with_errors}
       ...> render ~H"""
       ...> <.ui_unwrapped_input form={@form} field={:name} label="Custom">
       ...>   Custom content
@@ -601,7 +605,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Custom wrapped inputs", '''
-      iex> assigns=%{form: @user_form}
+      iex> assigns=%{form: @form}
       ...> render ~H"""
       ...> <.ui_wrapped_input form={@form} field={:name} label="Current name">
       ...>   <input type="checkbox" id="user_name" whatever="foo" />
@@ -642,19 +646,9 @@ defmodule BitstylesPhoenix.Component.Form do
         []
       })
 
-    assigns =
-      assign(assigns,
-        component_fn: fn a -> apply(module, function, [a]) end,
-        opts: opts
-      )
+    assigns = assign(assigns, opts: opts)
 
-    ~H"""
-    <%= Phoenix.LiveView.HTMLEngine.component(
-      @component_fn,
-      [form: @form, field: @field, opts: @opts],
-      {__ENV__.module, __ENV__.function, __ENV__.file, __ENV__.line}
-    ) %>
-    """
+    apply(module, function, [assigns])
   end
 
   defp required_label(assigns), do: ~H""

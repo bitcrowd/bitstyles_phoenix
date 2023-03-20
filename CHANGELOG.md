@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated to LiveView 0.18.18
 - Add `Card` and `Avatar` components
 
 ## v2.1.1 - 2022-12-02
