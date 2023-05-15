@@ -15,9 +15,7 @@ defmodule BitstylesPhoenix.Component.Modal do
 
   ## Attributes
 
-  - `aria-labelledby` — Sets the `aria-labelledby` property on the modal.
   - `class` - Extra classes to pass to the modal. See `BitstylesPhoenix.Helper.classnames/1` for usage.
-  - `content_class` - Extra classes to pass to the `ui_content/1` that is used for the modals content. See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - All other attributes are passed to the underlying `ui_content/1` component.
 
   # Attributes - `overlay` slot
