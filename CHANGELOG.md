@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.3.0 - 2023-05-15
+- Add `Modal` component
+
 ## v2.2.0 - 2023-03-20
 
 - Updated to LiveView 0.18.18
