@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "4.3.0"
+  @default_version "6.0.0"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
