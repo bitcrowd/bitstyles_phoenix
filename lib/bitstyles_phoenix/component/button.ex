@@ -426,8 +426,11 @@ defmodule BitstylesPhoenix.Component.Button do
     extra = assigns_to_attributes(assigns, [:icon, :class, :variant, :size, :shape])
 
     # class = classnames(["a-button"] ++ variant_classes(assigns[:variant]) ++ [assigns[:class]])
-    class = classnames(["a-button"] ++ variant_classes(assigns[:variant], assigns[:size], assigns[:shape]) ++ [assigns[:class]])
-
+    class =
+      classnames(
+        ["a-button"] ++
+          variant_classes(assigns[:variant], assigns[:size], assigns[:shape]) ++ [assigns[:class]]
+      )
 
     assigns =
       assigns
@@ -482,17 +485,22 @@ defmodule BitstylesPhoenix.Component.Button do
 
   defp variant_classes(nil, nil), do: []
 
-  defp variant_classes(variant, size, shape) when is_binary(variant) or is_atom(variant) and (is_binary(size) or is_atom(size)) and is_binary(shape),
-    do: variant_classes([variant], size, shape)
+  defp variant_classes(variant, size, shape)
+       when is_binary(variant) or
+              (is_atom(variant) and (is_binary(size) or is_atom(size)) and is_binary(shape)),
+       do: variant_classes([variant], size, shape)
 
-  defp variant_classes(variants, size, shape) when is_list(variants) and (is_binary(size) or is_atom(size)) and is_binary(shape),
-    do: Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)] ++ ["a-button--#{shape}"]
+  defp variant_classes(variants, size, shape)
+       when is_list(variants) and (is_binary(size) or is_atom(size)) and is_binary(shape),
+       do:
+         Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)] ++ ["a-button--#{shape}"]
 
   defp variant_classes(variants, nil, shape) when is_list(variants) and is_binary(shape),
     do: Enum.map(variants, &"a-button--#{&1}") ++ ["a-button--#{shape}"]
 
-  defp variant_classes(variants, size, nil) when is_list(variants) and (is_binary(size) or is_atom(size)),
-    do: Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)]
+  defp variant_classes(variants, size, nil)
+       when is_list(variants) and (is_binary(size) or is_atom(size)),
+       do: Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)]
 
   defp variant_classes(variants, nil, nil) when is_list(variants),
     do: Enum.map(variants, &"a-button--#{&1}")
