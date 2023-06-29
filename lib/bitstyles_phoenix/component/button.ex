@@ -483,7 +483,7 @@ defmodule BitstylesPhoenix.Component.Button do
     """
   end
 
-  defp variant_classes(nil, nil), do: []
+  defp variant_classes(nil, nil, nil), do: []
 
   defp variant_classes(variant, size, shape)
        when is_binary(variant) or
@@ -494,6 +494,10 @@ defmodule BitstylesPhoenix.Component.Button do
        when is_list(variants) and (is_binary(size) or is_atom(size)) and is_binary(shape),
        do:
          Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)] ++ ["a-button--#{shape}"]
+
+  defp variant_classes(nil, size, shape)
+       when (is_binary(size) or is_atom(size)) and is_binary(shape),
+       do: [to_classname(size)] ++ ["a-button--#{shape}"]
 
   defp variant_classes(variants, nil, shape) when is_list(variants) and is_binary(shape),
     do: Enum.map(variants, &"a-button--#{&1}") ++ ["a-button--#{shape}"]
