@@ -429,7 +429,8 @@ defmodule BitstylesPhoenix.Component.Button do
     class =
       classnames(
         ["a-button"] ++
-          variant_classes(assigns[:variant], assigns[:size], assigns[:shape]) ++ [assigns[:class]]
+          variant_classes(assigns[:variant]) ++
+          [size_class(assigns[:size])] ++ shape_classes(assigns[:shape]) ++ [assigns[:class]]
       )
 
     assigns =
@@ -483,36 +484,28 @@ defmodule BitstylesPhoenix.Component.Button do
     """
   end
 
-  defp variant_classes(nil, nil, nil), do: []
+  defp variant_classes(nil), do: []
 
-  defp variant_classes(variant, size, shape)
-       when is_binary(variant) or
-              (is_atom(variant) and (is_binary(size) or is_atom(size)) and is_binary(shape)),
-       do: variant_classes([variant], size, shape)
+  defp variant_classes(variant) when is_binary(variant) or is_atom(variant),
+    do: variant_classes([variant])
 
-  defp variant_classes(variants, size, shape)
-       when is_list(variants) and (is_binary(size) or is_atom(size)) and is_binary(shape),
-       do:
-         Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)] ++ ["a-button--#{shape}"]
-
-  defp variant_classes(nil, size, shape)
-       when (is_binary(size) or is_atom(size)) and is_binary(shape),
-       do: [to_classname(size)] ++ ["a-button--#{shape}"]
-
-  defp variant_classes(variants, nil, shape) when is_list(variants) and is_binary(shape),
-    do: Enum.map(variants, &"a-button--#{&1}") ++ ["a-button--#{shape}"]
-
-  defp variant_classes(variants, size, nil)
-       when is_list(variants) and (is_binary(size) or is_atom(size)),
-       do: Enum.map(variants, &"a-button--#{&1}") ++ [to_classname(size)]
-
-  defp variant_classes(variants, nil, nil) when is_list(variants),
+  defp variant_classes(variants) when is_list(variants),
     do: Enum.map(variants, &"a-button--#{&1}")
 
-  defp to_classname(size) do
-    case String.to_existing_atom("a-button--#{size}") do
-      :ok -> "a-button--#{size}"
-      _ -> size
+  defp size_class(nil), do: ""
+
+  defp size_class(size) when is_binary(size) or is_atom(size),
+    do: "a-button--#{size}"
+
+  defp shape_classes(nil), do: []
+
+  defp shape_classes(shape) when is_atom(shape),
+    do: shape_classes(Atom.to_string(shape))
+
+  defp shape_classes(shape) do
+    case shape do
+      "round" -> ["a-button--square", "a-button--round"]
+      _ -> ["a-button--#{shape}"]
     end
   end
 
