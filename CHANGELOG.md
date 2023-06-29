@@ -1,5 +1,8 @@
 # Changelog
 
+## v6.0.0 - 2023-06-28
+- Add `Nav` component
+
 ## v2.3.0 - 2023-05-15
 - Add `Modal` component
 
