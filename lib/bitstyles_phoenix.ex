@@ -145,6 +145,7 @@ defmodule BitstylesPhoenix do
       import BitstylesPhoenix.Component.Heading
       import BitstylesPhoenix.Component.Icon
       import BitstylesPhoenix.Component.Modal
+      import BitstylesPhoenix.Component.Nav
       import BitstylesPhoenix.Component.Sidebar
       import BitstylesPhoenix.Component.Tabs
       import BitstylesPhoenix.Component.UseSVG
