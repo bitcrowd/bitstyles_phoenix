@@ -14,22 +14,26 @@ defmodule BitstylesPhoenix.Component.Nav do
   See the [bitstyles nav docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-navigation-navbar--navbar) for further info.
   """
 
-  story("Default navbar", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_nav(logo_url: "https://placekitten.com/100/100")></.ui_nav>
-      ...> """
-      """
-      <div class="u-bg-gray-80 u-width-full u-padding-s2-top u-padding-s2-bottom u-relative">
-        <div class="u-padding-m-x u-flex u-justify-between u-items-center u-flex-wrap">
-          <div class="u-flex-shrink-1 u-flex u-items-center">
-            <img src="https://placekitten.com/150/50" width="150" height="50" alt="Company logo" class="u-flex-shrink-0 u-margin-l2-right u-hidden u-block@l" />
-            <img src="https://placekitten.com/50/50" width="50" height="50" alt="Company logo" class="u-flex-shrink-0 u-margin-l2-right u-hidden@l" />
+  story(
+    "Default navbar",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_nav(logo_url: "https://placekitten.com/100/100")></.ui_nav>
+        ...> """
+        """
+        <div class="u-bg-gray-80 u-width-full u-padding-s2-top u-padding-s2-bottom u-relative">
+          <div class="u-padding-m-x u-flex u-justify-between u-items-center u-flex-wrap">
+            <div class="u-flex-shrink-1 u-flex u-items-center">
+              <img src="https://placekitten.com/150/50" width="150" height="50" alt="Company logo" class="u-flex-shrink-0 u-margin-l2-right u-hidden u-block@l" />
+              <img src="https://placekitten.com/50/50" width="50" height="50" alt="Company logo" class="u-flex-shrink-0 u-margin-l2-right u-hidden@l" />
+            </div>
           </div>
         </div>
-      </div>
-      """
-  ''')
+        """
+    ''',
+    width: "100%"
+  )
 
   story(
     "Navbar with list of buttons",
@@ -78,7 +82,8 @@ defmodule BitstylesPhoenix.Component.Nav do
           </div>
         </div>
         """
-    '''
+    ''',
+    width: "100%"
   )
 
   story(
@@ -105,7 +110,8 @@ defmodule BitstylesPhoenix.Component.Nav do
             </div>
           </div>
           """
-    '''
+    ''',
+    width: "100%"
   )
 
   def ui_nav(assigns) do
