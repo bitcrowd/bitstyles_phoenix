@@ -4,9 +4,9 @@ defmodule BitstylesPhoenix.BitstylesTest do
   import ExUnit.CaptureIO
 
   describe "classname/2" do
-    test "version 7.0.0" do
+    test "version 5.0.0" do
       assert Regex.match?(
-               ~r/7.0.0 of bitstyles is not yet supported/,
+               ~r/5.0.0 of bitstyles is not yet supported/,
                capture_io(:stderr, fn -> classname("u-flex", "5.0.0") end)
              )
     end

@@ -14,7 +14,7 @@ defmodule BitstylesPhoenix.Bitstyles do
   """
   def classname(name), do: classname(name, version())
 
-  def classname(class, version) when version > "6.0.0" do
+  def classname(class, version) when version > "4.3.0" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
     class
   end

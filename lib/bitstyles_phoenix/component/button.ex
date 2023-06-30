@@ -1,6 +1,8 @@
 defmodule BitstylesPhoenix.Component.Button do
   use BitstylesPhoenix.Component
 
+  alias BitstylesPhoenix.Bitstyles
+
   @moduledoc """
   The button component.
   """
@@ -29,12 +31,12 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Default Primary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="primary">
+      ...> <.ui_button>
       ...>   Publish
       ...> </.ui_button>
       ...> """
       """
-      <button type="button" class="a-button a-button--primary">
+      <button type="button" class="a-button">
         Publish
       </button>
       """
@@ -43,12 +45,12 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Small Primary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="primary" size="small">
+      ...> <.ui_button size="small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
       """
-      <button type="button" class="a-button a-button--primary a-button--small">
+      <button type="button" class="a-button a-button--small">
         Publish
       </button>
       """
@@ -57,12 +59,12 @@ defmodule BitstylesPhoenix.Component.Button do
   story("X-small Primary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="primary" size="x-small">
+      ...> <.ui_button size="x-small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
       """
-      <button type="button" class="a-button a-button--primary a-button--x-small">
+      <button type="button" class="a-button a-button--x-small">
         Publish
       </button>
       """
@@ -85,7 +87,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Small Secondary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="secondary">
+      ...> <.ui_button variant="secondary" size="small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
@@ -211,7 +213,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Small Danger", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button type="submit" variant="danger">
+      ...> <.ui_button type="submit" variant="danger" size="small">
       ...>   Save
       ...> </.ui_button>
       ...> """
@@ -225,7 +227,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("X-small Danger", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button type="submit" variant="danger">
+      ...> <.ui_button type="submit" variant="danger" size="x-small">
       ...>   Save
       ...> </.ui_button>
       ...> """
@@ -272,7 +274,7 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> <.ui_icon_button icon="plus" shape="round" label="Add"/>
         ...> """
         """
-        <button class="a-button a-button--square a-button--round">
+        <button type="button" class="a-button a-button--square a-button--round" title="Add">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m" focusable="false" height="20" width="20">
             <use xlink:href="#icon-plus">
             </use>
@@ -430,7 +432,7 @@ defmodule BitstylesPhoenix.Component.Button do
       classnames(
         ["a-button"] ++
           variant_classes(assigns[:variant]) ++
-          [size_class(assigns[:size])] ++ shape_classes(assigns[:shape]) ++ [assigns[:class]]
+          [variant_class(assigns[:size])] ++ variant_classes(assigns[:shape]) ++ [assigns[:class]]
       )
 
     assigns =
@@ -492,22 +494,10 @@ defmodule BitstylesPhoenix.Component.Button do
   defp variant_classes(variants) when is_list(variants),
     do: Enum.map(variants, &"a-button--#{&1}")
 
-  defp size_class(nil), do: ""
+  defp variant_class(nil), do: ""
 
-  defp size_class(size) when is_binary(size) or is_atom(size),
-    do: "a-button--#{size}"
-
-  defp shape_classes(nil), do: []
-
-  defp shape_classes(shape) when is_atom(shape),
-    do: shape_classes(Atom.to_string(shape))
-
-  defp shape_classes(shape) do
-    case shape do
-      "round" -> ["a-button--square", "a-button--round"]
-      _ -> ["a-button--#{shape}"]
-    end
-  end
+  defp variant_class(variant) when is_binary(variant) or is_atom(variant),
+    do: "a-button--#{variant}"
 
   defp icon_with_label(%{icon: icon} = assigns) when is_binary(icon) do
     assigns
@@ -618,7 +608,28 @@ defmodule BitstylesPhoenix.Component.Button do
     """
   )
 
-  def ui_icon_button(assigns) do
+  def ui_icon_button(name), do: ui_icon_button(name, Bitstyles.version())
+
+  def ui_icon_button(assigns, version) when version >= "5.0.0" do
+    extra = assigns_to_attributes(assigns, [:icon, :label, :variant, :shape, :size, :title])
+
+    {icon, icon_opts} =
+      case assigns.icon do
+        {icon, icon_opts} -> {icon, icon_opts}
+        icon -> {icon, []}
+      end
+
+    assigns = assign(assigns, extra: extra, icon: icon, icon_opts: icon_opts)
+
+    ~H"""
+    <.ui_button variant={@variant} shape={@shape} size={@size} title={assigns[:title] || @label} {@extra}>
+      <.ui_icon name={@icon} {@icon_opts}/>
+      <span class={classnames("u-sr-only")}><%= @label %></span>
+    </.ui_button>
+    """
+  end
+
+  def ui_icon_button(assigns, _version) do
     extra = assigns_to_attributes(assigns, [:icon, :label, :reversed, :variant, :title])
 
     {icon, icon_opts} =
