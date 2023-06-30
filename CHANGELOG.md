@@ -1,5 +1,11 @@
 # Changelog
 
+## next-release
+
+### Breaking
+
+- Dropped support for the `reversed` attribute of the `ui_icon_button` component.
+
 ## v2.3.0 - 2023-05-15
 - Add `Modal` component
 
