@@ -64,7 +64,6 @@ defmodule BitstylesPhoenix.Live.Sidebar do
           JS.hide(to: "##{id}", transition: {"is-transitioning", "is-on-screen", "is-off-screen"}),
         "aria-controls": id
       )
-      |> Keyword.put_new(:reversed, true)
 
     assigns = assign(assigns, icon: assigns[:icon] || "cross", options: options)
 

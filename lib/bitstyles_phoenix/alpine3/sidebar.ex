@@ -81,7 +81,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </span>
                   </a>
                   <div>
-                    <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button a-button--icon a-button--icon-reversed" title="Close">
+                    <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button" title="Close">
                       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                         <use xlink:href="#icon-cross">
                         </use>
@@ -109,7 +109,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
           </header>
           <main class="u-flex-grow-1 u-overflow-y-auto u-margin-s-top">
             <div class="a-content flex">
-              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar">
+              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button u-hidden@l u-margin-s-right" title="Open sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-hamburger">
                   </use>
@@ -220,7 +220,6 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         "aria-controls": id,
         ":aria-expanded": x_data
       )
-      |> Keyword.put_new(:reversed, true)
 
     assigns = assign(assigns, icon: assigns[:icon] || "cross", options: options)
 

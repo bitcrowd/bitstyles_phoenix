@@ -101,7 +101,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("X-small Secondary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="secondary">
+      ...> <.ui_button variant="secondary" size="x-small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
@@ -129,7 +129,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Small Transparent", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="transparent">
+      ...> <.ui_button variant="transparent" size="small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
@@ -143,7 +143,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("X-small Transparent", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button variant="transparent">
+      ...> <.ui_button variant="transparent" size="x-small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
@@ -171,7 +171,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Small Outline", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button type="submit" variant="outline">
+      ...> <.ui_button type="submit" variant="outline" size="small">
       ...>   Save
       ...> </.ui_button>
       ...> """
@@ -185,7 +185,7 @@ defmodule BitstylesPhoenix.Component.Button do
   story("X-small Outline", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button type="submit" variant="outline">
+      ...> <.ui_button type="submit" variant="outline" size="x-small">
       ...>   Save
       ...> </.ui_button>
       ...> """
@@ -243,10 +243,10 @@ defmodule BitstylesPhoenix.Component.Button do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_icon_button icon="plus" shape="square" label="Add"/>
+        ...> <.ui_icon_button icon="plus" shape={["square", "round"]} label="Add"/>
         ...> """
         """
-        <button class="a-button a-button--square">
+        <button type="button" class="a-button a-button--square a-button--round" title="Add">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m" focusable="false" height="20" width="20">
             <use xlink:href="#icon-plus">
             </use>
@@ -271,7 +271,7 @@ defmodule BitstylesPhoenix.Component.Button do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_icon_button icon="plus" shape="round" label="Add"/>
+        ...> <.ui_icon_button icon="plus" shape={["square", "round"]} label="Add"/>
         ...> """
         """
         <button type="button" class="a-button a-button--square a-button--round" title="Add">
@@ -530,7 +530,6 @@ defmodule BitstylesPhoenix.Component.Button do
   ## Attributes
   - `icon` - An icon name as string or a tuple of {name, icon_opts} to be passed on.
   - `label` - A screen reader label for the button.
-  - `reversed` - Icon reversed style (see examples)
   - All other attributes are passed in as attributes to `BitstylesPhoenix.Component.Button.ui_button/1`.
   """
 
@@ -542,7 +541,7 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
         ...> """
         """
-        <a href="#" class="a-button a-button--icon" title="Add">
+        <a href="#" class="a-button" title="Add">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
             <use xlink:href="#icon-plus">
             </use>
@@ -568,7 +567,7 @@ defmodule BitstylesPhoenix.Component.Button do
       ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
       ...> """
       """
-      <button type="button" class="a-button a-button--icon foo" title="Delete">
+      <button type="button" class="a-button foo" title="Delete">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
           <use xlink:href="assets/icons.svg#icon-bin">
           </use>
@@ -580,35 +579,38 @@ defmodule BitstylesPhoenix.Component.Button do
       """
   ''')
 
-  story(
-    "Icon button reversed",
-    '''
-        iex> assigns = %{}
-        ...> render ~H"""
-        ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
-        ...> """
-        """
-        <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
-          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-            <use xlink:href="#icon-plus">
-            </use>
-          </svg>
-          <span class="u-sr-only">
-            Show
-          </span>
-        </a>
-        """
-    ''',
-    extra_html: """
-    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
-      <symbol id="icon-plus" viewBox="0 0 100 100">
-        <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
-      </symbol>
-    </svg>
-    """
-  )
+  # story(
+  #   "Icon button reversed",
+  #   '''
+  #       iex> assigns = %{}
+  #       ...> render ~H"""
+  #       ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
+  #       ...> """
+  #       """
+  #       <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
+  #         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+  #           <use xlink:href="#icon-plus">
+  #           </use>
+  #         </svg>
+  #         <span class="u-sr-only">
+  #           Show
+  #         </span>
+  #       </a>
+  #       """
+  #   ''',
+  #   extra_html: """
+  #   <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+  #     <symbol id="icon-plus" viewBox="0 0 100 100">
+  #       <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
+  #     </symbol>
+  #   </svg>
+  #   """
+  # )
 
-  def ui_icon_button(name), do: ui_icon_button(name, Bitstyles.version())
+  def ui_icon_button(assigns) do
+    {version, assigns} = Map.pop(assigns, :version, Bitstyles.version())
+    ui_icon_button(assigns, version)
+  end
 
   def ui_icon_button(assigns, version) when version >= "5.0.0" do
     extra = assigns_to_attributes(assigns, [:icon, :label, :variant, :shape, :size, :title])
@@ -622,7 +624,7 @@ defmodule BitstylesPhoenix.Component.Button do
     assigns = assign(assigns, extra: extra, icon: icon, icon_opts: icon_opts)
 
     ~H"""
-    <.ui_button variant={@variant} shape={@shape} size={@size} title={assigns[:title] || @label} {@extra}>
+    <.ui_button variant={assigns[:variant]} shape={assigns[:shape]} size={assigns[:size]} title={assigns[:title] || @label} {@extra}>
       <.ui_icon name={@icon} {@icon_opts}/>
       <span class={classnames("u-sr-only")}><%= @label %></span>
     </.ui_button>
