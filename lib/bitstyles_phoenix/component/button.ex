@@ -1,6 +1,8 @@
 defmodule BitstylesPhoenix.Component.Button do
   use BitstylesPhoenix.Component
 
+  alias BitstylesPhoenix.Bitstyles
+
   @moduledoc """
   The button component.
   """
@@ -26,7 +28,7 @@ defmodule BitstylesPhoenix.Component.Button do
   See `BitstylesPhoenix.Helper.Button.ui_button/2` for more examples and options.
   """
 
-  story("Default button", '''
+  story("Default Primary", '''
       iex> assigns = %{}
       ...> render ~H"""
       ...> <.ui_button>
@@ -40,15 +42,267 @@ defmodule BitstylesPhoenix.Component.Button do
       """
   ''')
 
-  story("Default link", '''
+  story("Small Primary", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button href="/" variant="ui">
+      ...> <.ui_button size="small">
       ...>   Publish
       ...> </.ui_button>
       ...> """
       """
-      <a href="/" class="a-button a-button--ui">
+      <button type="button" class="a-button a-button--small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("X-small Primary", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button size="x-small">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--x-small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("Default Secondary", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="secondary">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--secondary">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("Small Secondary", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="secondary" size="small">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--secondary a-button--small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("X-small Secondary", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="secondary" size="x-small">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--secondary a-button--x-small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("Default Transparent", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="transparent">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--transparent">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("Small Transparent", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="transparent" size="small">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--transparent a-button--small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("X-small Transparent", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button variant="transparent" size="x-small">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="button" class="a-button a-button--transparent a-button--x-small">
+        Publish
+      </button>
+      """
+  ''')
+
+  story("Default Outline", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="outline">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--outline">
+        Save
+      </button>
+      """
+  ''')
+
+  story("Small Outline", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="outline" size="small">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--outline a-button--small">
+        Save
+      </button>
+      """
+  ''')
+
+  story("X-small Outline", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="outline" size="x-small">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--outline a-button--x-small">
+        Save
+      </button>
+      """
+  ''')
+
+  story("Default Danger", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="danger">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--danger">
+        Save
+      </button>
+      """
+  ''')
+
+  story("Small Danger", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="danger" size="small">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--danger a-button--small">
+        Save
+      </button>
+      """
+  ''')
+
+  story("X-small Danger", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button type="submit" variant="danger" size="x-small">
+      ...>   Save
+      ...> </.ui_button>
+      ...> """
+      """
+      <button type="submit" class="a-button a-button--danger a-button--x-small">
+        Save
+      </button>
+      """
+  ''')
+
+  story(
+    "Square Button with Icon",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon_button icon="plus" shape={["square", "round"]} label="Add"/>
+        ...> """
+        """
+        <button type="button" class="a-button a-button--square a-button--round" title="Add">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m" focusable="false" height="20" width="20">
+            <use xlink:href="#icon-plus">
+            </use>
+          </svg>
+          <span class="u-sr-only">
+            Add
+          </span>
+        </button>
+        """
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-plus" viewBox="0 0 100 100">
+        <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
+      </symbol>
+    </svg>
+    """
+  )
+
+  story(
+    "Round Button with Icon",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon_button icon="plus" shape={["square", "round"]} label="Add"/>
+        ...> """
+        """
+        <button type="button" class="a-button a-button--square a-button--round" title="Add">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m" focusable="false" height="20" width="20">
+            <use xlink:href="#icon-plus">
+            </use>
+          </svg>
+          <span class="u-sr-only">
+            Add
+          </span>
+        </button>
+        """
+    ''',
+    extra_html: """
+    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+      <symbol id="icon-plus" viewBox="0 0 100 100">
+        <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
+      </symbol>
+    </svg>
+    """
+  )
+
+  story("Default link", '''
+      iex> assigns = %{}
+      ...> render ~H"""
+      ...> <.ui_button href="/" variant="transparent">
+      ...>   Publish
+      ...> </.ui_button>
+      ...> """
+      """
+      <a href="/" class="a-button a-button--transparent">
         Publish
       </a>
       """
@@ -57,27 +311,13 @@ defmodule BitstylesPhoenix.Component.Button do
   story("Default disabled link renders disabled button instead", '''
       iex> assigns = %{}
       ...> render ~H"""
-      ...> <.ui_button href="/" variant="ui" disabled>
+      ...> <.ui_button href="/" variant="transparent" disabled>
       ...>   Publish
       ...> </.ui_button>
       ...> """
       """
-      <button type="button" class="a-button a-button--ui" disabled="disabled">
+      <button type="button" class="a-button a-button--transparent" disabled="disabled">
         Publish
-      </button>
-      """
-  ''')
-
-  story("Default submit button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit">
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button">
-        Save
       </button>
       """
   ''')
@@ -91,34 +331,6 @@ defmodule BitstylesPhoenix.Component.Button do
       ...> """
       """
       <button type="submit" class="a-button foo bar">
-        Save
-      </button>
-      """
-  ''')
-
-  story("UI button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit" variant={:ui}>
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button a-button--ui">
-        Save
-      </button>
-      """
-  ''')
-
-  story("Dangerous button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit" variant={:danger}>
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button a-button--danger">
         Save
       </button>
       """
@@ -213,9 +425,15 @@ defmodule BitstylesPhoenix.Component.Button do
   ''')
 
   def ui_button(assigns) do
-    extra = assigns_to_attributes(assigns, [:icon, :class, :variant])
+    extra = assigns_to_attributes(assigns, [:icon, :class, :variant, :size, :shape])
 
-    class = classnames(["a-button"] ++ variant_classes(assigns[:variant]) ++ [assigns[:class]])
+    # class = classnames(["a-button"] ++ variant_classes(assigns[:variant]) ++ [assigns[:class]])
+    class =
+      classnames(
+        ["a-button"] ++
+          variant_classes(assigns[:variant]) ++
+          [variant_class(assigns[:size])] ++ variant_classes(assigns[:shape]) ++ [assigns[:class]]
+      )
 
     assigns =
       assigns
@@ -276,6 +494,11 @@ defmodule BitstylesPhoenix.Component.Button do
   defp variant_classes(variants) when is_list(variants),
     do: Enum.map(variants, &"a-button--#{&1}")
 
+  defp variant_class(nil), do: ""
+
+  defp variant_class(variant) when is_binary(variant) or is_atom(variant),
+    do: "a-button--#{variant}"
+
   defp icon_with_label(%{icon: icon} = assigns) when is_binary(icon) do
     assigns
     |> assign(:icon, {icon, []})
@@ -307,7 +530,6 @@ defmodule BitstylesPhoenix.Component.Button do
   ## Attributes
   - `icon` - An icon name as string or a tuple of {name, icon_opts} to be passed on.
   - `label` - A screen reader label for the button.
-  - `reversed` - Icon reversed style (see examples)
   - All other attributes are passed in as attributes to `BitstylesPhoenix.Component.Button.ui_button/1`.
   """
 
@@ -319,7 +541,7 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
         ...> """
         """
-        <a href="#" class="a-button a-button--icon" title="Add">
+        <a href="#" class="a-button" title="Add">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
             <use xlink:href="#icon-plus">
             </use>
@@ -345,7 +567,7 @@ defmodule BitstylesPhoenix.Component.Button do
       ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
       ...> """
       """
-      <button type="button" class="a-button a-button--icon foo" title="Delete">
+      <button type="button" class="a-button foo" title="Delete">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
           <use xlink:href="assets/icons.svg#icon-bin">
           </use>
@@ -357,35 +579,59 @@ defmodule BitstylesPhoenix.Component.Button do
       """
   ''')
 
-  story(
-    "Icon button reversed",
-    '''
-        iex> assigns = %{}
-        ...> render ~H"""
-        ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
-        ...> """
-        """
-        <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
-          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-            <use xlink:href="#icon-plus">
-            </use>
-          </svg>
-          <span class="u-sr-only">
-            Show
-          </span>
-        </a>
-        """
-    ''',
-    extra_html: """
-    <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
-      <symbol id="icon-plus" viewBox="0 0 100 100">
-        <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
-      </symbol>
-    </svg>
-    """
-  )
+  # story(
+  #   "Icon button reversed",
+  #   '''
+  #       iex> assigns = %{}
+  #       ...> render ~H"""
+  #       ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
+  #       ...> """
+  #       """
+  #       <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
+  #         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+  #           <use xlink:href="#icon-plus">
+  #           </use>
+  #         </svg>
+  #         <span class="u-sr-only">
+  #           Show
+  #         </span>
+  #       </a>
+  #       """
+  #   ''',
+  #   extra_html: """
+  #   <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+  #     <symbol id="icon-plus" viewBox="0 0 100 100">
+  #       <path d="M54.57,87.43V54.57H87.43a4.57,4.57,0,0,0,0-9.14H54.57V12.57a4.57,4.57,0,1,0-9.14,0V45.43H12.57a4.57,4.57,0,0,0,0,9.14H45.43V87.43a4.57,4.57,0,0,0,9.14,0Z"/>
+  #     </symbol>
+  #   </svg>
+  #   """
+  # )
 
   def ui_icon_button(assigns) do
+    {version, assigns} = Map.pop(assigns, :version, Bitstyles.version())
+    ui_icon_button(assigns, version)
+  end
+
+  def ui_icon_button(assigns, version) when version >= "5.0.0" do
+    extra = assigns_to_attributes(assigns, [:icon, :label, :variant, :shape, :size, :title])
+
+    {icon, icon_opts} =
+      case assigns.icon do
+        {icon, icon_opts} -> {icon, icon_opts}
+        icon -> {icon, []}
+      end
+
+    assigns = assign(assigns, extra: extra, icon: icon, icon_opts: icon_opts)
+
+    ~H"""
+    <.ui_button variant={assigns[:variant]} shape={assigns[:shape]} size={assigns[:size]} title={assigns[:title] || @label} {@extra}>
+      <.ui_icon name={@icon} {@icon_opts}/>
+      <span class={classnames("u-sr-only")}><%= @label %></span>
+    </.ui_button>
+    """
+  end
+
+  def ui_icon_button(assigns, _version) do
     extra = assigns_to_attributes(assigns, [:icon, :label, :reversed, :variant, :title])
 
     {icon, icon_opts} =
