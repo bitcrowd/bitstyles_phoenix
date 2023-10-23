@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.3.1 - 2023-10-23
+- Bump LiveView
+
 ## v2.3.0 - 2023-05-15
 - Add `Modal` component
 

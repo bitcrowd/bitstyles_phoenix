@@ -4,7 +4,7 @@ defmodule BitstylesPhoenix.MixProject do
   def project do
     [
       app: :bitstyles_phoenix,
-      version: "2.3.0",
+      version: "2.3.1",
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -52,7 +52,7 @@ defmodule BitstylesPhoenix.MixProject do
   defp deps do
     [
       {:jason, "~> 1.0"},
-      {:phoenix_live_view, "~> 0.18.18"},
+      {:phoenix_live_view, "~>0.18.8 or ~> 0.19.0 or ~> 0.20.0"},
       {:floki, "~> 0.32.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:credo, ">= 0.0.0", only: :dev, runtime: false}
