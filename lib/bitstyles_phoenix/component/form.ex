@@ -67,7 +67,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Text field with label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} />
       ...> """
@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text required field with label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} required/>
       ...> """
@@ -96,7 +96,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with error", '''
-      iex> assigns=%{form: @form_with_errors}
+      iex> assigns=%{form: form_with_errors()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} />
       ...> """
@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with multiple errors", '''
-      iex> assigns=%{form: @form_with_errors}
+      iex> assigns=%{form: form_with_errors()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:email} />
       ...> """
@@ -137,7 +137,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with hidden label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} hidden_label={true} />
       ...> """
@@ -150,7 +150,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with label (without maxlength)", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:name} maxlength={false}/>
       ...> """
@@ -163,7 +163,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Text field with options", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input
       ...>   form={@form}
@@ -190,7 +190,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Email field with label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:email} type={:email} />
       ...> """
@@ -203,7 +203,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Search field with placholder", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input
       ...>    form={@form}
@@ -221,7 +221,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("File field for pdfs", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <Phoenix.Component.form :let={form} for={@form} multipart>
       ...>   <.ui_input form={form} field={:file} type={:file} accept="application/pdf" />
@@ -238,7 +238,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Checkbox", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} />
       ...> """
@@ -252,7 +252,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Checkbox required", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} required/>
       ...> """
@@ -269,7 +269,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Checkbox with label class", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_opts={[class: "extra"]}/>
       ...> """
@@ -331,7 +331,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Textarea", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:about_me} />
       ...> """
@@ -345,7 +345,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:about_me} required/>
       ...> """
@@ -362,7 +362,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with options", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_textarea
       ...>   form={@form}
@@ -384,7 +384,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with hidden label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:address} hidden_label/>
       ...> """
@@ -398,7 +398,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Textarea with error", '''
-      iex> assigns=%{form: @form_with_errors}
+      iex> assigns=%{form: form_with_errors()}
       ...> render ~H"""
       ...> <.ui_textarea form={@form} field={:name} />
       ...> """
@@ -443,7 +443,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Select box", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} />
       ...> """
@@ -463,7 +463,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box required", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} required />
       ...> """
@@ -486,7 +486,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box without label", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:week} options={1..2} hidden_label/>
       ...> """
@@ -506,7 +506,7 @@ defmodule BitstylesPhoenix.Component.Form do
   ''')
 
   story("Select box with options", '''
-      iex> assigns=%{form: @form, options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
+      iex> assigns=%{form: form(), options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
       ...> render ~H"""
       ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_opts={[class: "extra"]}/>
       ...> """
@@ -554,7 +554,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Custom inputs", '''
-      iex> assigns=%{form: @form_with_errors}
+      iex> assigns=%{form: form_with_errors()}
       ...> render ~H"""
       ...> <.ui_unwrapped_input form={@form} field={:name} label="Custom">
       ...>   Custom content
@@ -605,7 +605,7 @@ defmodule BitstylesPhoenix.Component.Form do
   """
 
   story("Custom wrapped inputs", '''
-      iex> assigns=%{form: @form}
+      iex> assigns=%{form: form()}
       ...> render ~H"""
       ...> <.ui_wrapped_input form={@form} field={:name} label="Current name">
       ...>   <input type="checkbox" id="user_name" whatever="foo" />

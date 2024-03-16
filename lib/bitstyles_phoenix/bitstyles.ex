@@ -1,11 +1,13 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
+  # TODO: write a document about how to do bitstyles upgrades in this repo
+
   @default_version "4.3.0"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
-    "#{@cdn_url}@#{@default_version}"
+    "#{@cdn_url}@#{version()}"
   end
 
   @doc """

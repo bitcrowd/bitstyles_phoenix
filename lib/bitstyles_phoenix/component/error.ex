@@ -24,32 +24,32 @@ defmodule BitstylesPhoenix.Component.Error do
   """
 
   story("A single error", '''
-      iex> assigns = %{form: @form_with_errors}
+      iex> assigns = %{form: form_with_errors()}
       ...> render ~H"""
-      ...> <.ui_errors form={@form} field={:single} />
+      ...> <.ui_errors form={@form} field={:name} />
       ...> """
       """
-      <span class="u-fg-warning" phx-feedback-for="user[single]">
+      <span class="u-fg-warning" phx-feedback-for="user[name]">
         is too short
       </span>
       """
   ''')
 
   story("Multiple errors", '''
-      iex> assigns = %{form: @form_with_errors}
+      iex> assigns = %{form: form_with_errors()}
       ...> render ~H"""
-      ...> <.ui_errors form={@form} field={:multiple} />
+      ...> <.ui_errors form={@form} field={:email} />
       ...> """
       """
       <ul class="u-padding-xl-left">
         <li>
-          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
-            is simply bad
+          <span class="u-fg-warning" phx-feedback-for="user[email]">
+            is invalid
           </span>
         </li>
         <li>
-          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
-            not fun
+          <span class="u-fg-warning" phx-feedback-for="user[email]">
+            must end with @bitcrowd.net
           </span>
         </li>
       </ul>
