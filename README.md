@@ -8,7 +8,9 @@ Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir 
 
 ## Requirements
 
-bitstyles must be installed separately into the asset generation. The helpers in this project just output classes for working with bitstyles.
+Bitstyles must be installed separately into the asset generation. The helpers in this project just output classes for working with bitstyles.
+
+Bitstyles versions from 4.3.0 down to 1.3.0 are supported.
 
 ## Installation
 
@@ -61,3 +63,5 @@ mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 ```
 
 For running the demo app & integration tests check out the [demo README](demo/README.md).
+
+For guides on how to adapt bitstyles_phoenix to a higher bitstyles version, see [bitstyles version compatibility](docs/bitstyles_version_compatibility.md).
