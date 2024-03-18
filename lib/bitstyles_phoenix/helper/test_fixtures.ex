@@ -1,6 +1,7 @@
 defmodule BitstylesPhoenix.Helper.TestFixtures do
-  @moduledoc "Static values helpful in writing doctests."
+  @moduledoc false
 
+  # Static values helpful in writing doctests.
   # This module is in `/lib` and not in `/test` so that it can be used in the dev env
   # in the mix task Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase
 
