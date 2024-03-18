@@ -26,11 +26,19 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
   @dir_name "versions_showcase"
 
   @impl true
-  def run(_args) do
-    # TODO: accept args and --only and --exclude version options
+  def run(args) do
+    {opts, _} = OptionParser.parse!(args, strict: [only: :keep])
+    only_versions = Keyword.get_values(opts, :only)
     components = get_components()
 
-    versions = @all_supported_bitstyles_versions
+    versions =
+      if only_versions == [] do
+        @all_supported_bitstyles_versions
+      else
+        @all_supported_bitstyles_versions
+        |> Enum.filter(&(&1 in only_versions))
+      end
+
     File.mkdir_p(@dir_name)
     write_index_html(versions)
 
