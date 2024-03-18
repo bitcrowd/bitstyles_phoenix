@@ -1,8 +1,8 @@
-defmodule Script.GenerateVersionShowcase do
+defmodule Scripts.GenerateVersionShowcase do
   import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
-  @dir_name "versions_showcase"
+  @dir_name "version_showcase"
 
   @moduledoc "Generates static HTML pages in #{@dir_name} for manually testing bitstyles_phoenix with different bitstyles versions."
 
@@ -321,4 +321,4 @@ defmodule Script.GenerateVersionShowcase do
   end
 end
 
-Script.GenerateVersionsShowcase.run(System.argv())
+Scripts.GenerateVersionShowcase.run(System.argv())

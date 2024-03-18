@@ -25,10 +25,10 @@ The script accepts multiple `--only` arguments if you want to limit the showcase
 mix run scripts/generate_version_showcase.ex --only 4.3.0 --only 4.2.0
 ```
 
-This script will create a `versions_showcase` directory with static web pages. Open the starting page with:
+This script will create a `version_showcase` directory with static web pages. Open the starting page with:
 
 ```bash
-open versions_showcase/index.html
+open version_showcase/index.html
 ```
 
 ## How to upgrade the default bitstyles version in bitstyles_phoenix?

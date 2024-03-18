@@ -16,7 +16,7 @@ jobs:
       - run: mix credo --strict
       - run: mix docs
       - name: Check if versions showcase mix script finishes
-        run: mix run scripts/generate_versions_showcase.ex
+        run: mix run scripts/generate_version_showcase.ex
   demo:
     runs-on: ubuntu-latest
     name: Demo

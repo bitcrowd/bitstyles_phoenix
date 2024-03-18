@@ -22,4 +22,4 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 bitstyles_phoenix-*.tar
 
-/versions_showcase
+/version_showcase
