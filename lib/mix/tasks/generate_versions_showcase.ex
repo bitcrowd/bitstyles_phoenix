@@ -5,11 +5,11 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
   import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
-  # TODO
-  @shortdoc "TODO"
+  @dir_name "versions_showcase"
+
+  @shortdoc "Generates static HTML pages in #{@dir_name} for manually testing bitstyles_phoenix with different bitstyles versions."
   @moduledoc @shortdoc
 
-  # TODO: all versions
   @all_supported_bitstyles_versions [
     "4.3.0",
     "4.2.0",
@@ -23,7 +23,6 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
     "1.3.0"
   ]
   @doctest_entries ["iex>", "...>"]
-  @dir_name "versions_showcase"
 
   @impl true
   def run(args) do
@@ -77,6 +76,7 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
         if acc do
           {node, acc}
         else
+          # credo:disable-for-next-line Credo.Check.Refactor.Nesting
           case node do
             {:defmodule, _meta,
              [{:__aliases__, _, [:BitstylesPhoenix, :Component, component_name]}, _]} ->
@@ -105,13 +105,8 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
               |> to_string()
               |> String.split("\n")
               |> Enum.map(&String.trim/1)
-              |> Enum.filter(fn line ->
-                Enum.any?(@doctest_entries, &String.starts_with?(line, &1))
-              end)
-              |> Enum.map(fn line ->
-                Enum.reduce(@doctest_entries, String.trim(line), &String.trim_leading(&2, &1))
-              end)
-              |> Enum.join("\n")
+              |> Enum.filter(&doctest_line?/1)
+              |> Enum.map_join("\n", &extract_code_from_doctest_line/1)
 
             {node,
              [%{name: name, code: code, opts: opts || [], line: Keyword.get(meta, :line)} | acc]}
@@ -122,6 +117,14 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
       end)
 
     Enum.reverse(stories)
+  end
+
+  defp doctest_line?(line) do
+    Enum.any?(@doctest_entries, &String.starts_with?(line, &1))
+  end
+
+  defp extract_code_from_doctest_line(line) do
+    Enum.reduce(@doctest_entries, String.trim(line), &String.trim_leading(&2, &1))
   end
 
   defp write_index_html(versions) do
@@ -220,7 +223,7 @@ defmodule Mix.Tasks.BitstylesPhoenix.GenerateVersionsShowcase do
 
     code = """
     defmodule BitstylesPhoenix.Component.#{component.name}.Showcase.V#{slugify_version(version)}.L#{story.line} do
-      use BitstylesPhoenix.Helper.Abcdef
+      use BitstylesPhoenix.Helper.ComponentRendering
       use BitstylesPhoenix.Component
 
       def render_html do

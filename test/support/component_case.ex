@@ -5,7 +5,7 @@ defmodule BitstylesPhoenix.ComponentCase do
 
   using do
     quote do
-      use BitstylesPhoenix.Helper.Abcdef
+      use BitstylesPhoenix.Helper.ComponentRendering
     end
   end
 end

@@ -1,5 +1,6 @@
-# TODO: rename me
-defmodule BitstylesPhoenix.Helper.Abcdef do
+defmodule BitstylesPhoenix.Helper.ComponentRendering do
+  @moduledoc false
+
   defmacro __using__(_) do
     quote do
       use BitstylesPhoenix, js_mode: :none
