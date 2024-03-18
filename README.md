@@ -63,5 +63,3 @@ mix docs && fswatch -o lib | xargs -n1 -I {} mix docs
 ```
 
 For running the demo app & integration tests check out the [demo README](demo/README.md).
-
-For guides on how to adapt bitstyles_phoenix to a higher bitstyles version, see [bitstyles version compatibility](docs/bitstyles_version_compatibility.md).
