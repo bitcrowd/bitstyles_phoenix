@@ -43,6 +43,8 @@ defmodule BitstylesPhoenix.Component.Modal do
         ...>   Content
         ...> </.ui_modal>
         ...> """
+    ''',
+    '''
         """
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay">
@@ -69,6 +71,8 @@ defmodule BitstylesPhoenix.Component.Modal do
         ...>   </:content>
         ...> </.ui_modal>
         ...> """
+    ''',
+    '''
         """
         <div class="o-modal foo" aria-modal="true" role="dialog" aria-labelledby="dialog-title">
           <div class="o-modal__overlay">
@@ -94,6 +98,8 @@ defmodule BitstylesPhoenix.Component.Modal do
         ...>   Content
         ...> </.ui_modal>
         ...> """
+    ''',
+    '''
         """
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay extra" data-foo="bar">
@@ -121,6 +127,8 @@ defmodule BitstylesPhoenix.Component.Modal do
         ...>   Content
         ...> </.ui_modal>
         ...> """
+    ''',
+    '''
         """
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay extra" data-foo="bar">

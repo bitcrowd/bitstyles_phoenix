@@ -16,6 +16,8 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> render ~H"""
         ...> <.ui_svg use="arrow"/>
         ...> """
+    ''',
+    '''
         """
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="#arrow">
@@ -39,6 +41,8 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> render ~H"""
         ...> <.ui_svg use="logo" file="assets/logo.svg" viewbox="0 0 400 280"/>
         ...> """
+    ''',
+    '''
         """
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 280">
           <use xlink:href="assets/logo.svg#logo">
@@ -56,6 +60,8 @@ defmodule BitstylesPhoenix.Component.UseSVG do
         ...> render ~H"""
         ...> <.ui_svg file="assets/icons.svg" use="icon-bin"/>
         ...> """
+    ''',
+    '''
         """
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="assets/icons.svg#icon-bin">

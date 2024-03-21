@@ -43,6 +43,8 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>   </:menu>
         ...> </.ui_js_dropdown>
         ...> """
+    ''',
+    '''
         """
         <div class="u-relative" x-data="{ dropdownOpen: false }">
           <button type="button" @click="dropdownOpen = true" class="a-button a-button--ui">
@@ -97,6 +99,8 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>   </:menu>
         ...> </.ui_js_dropdown>
         ...> """
+    ''',
+    '''
         """
         <div class="u-relative" x-data="{ myOwnDropDown: false }">
           <button type="button" @click="myOwnDropDown = true" class="a-button a-button--ui">

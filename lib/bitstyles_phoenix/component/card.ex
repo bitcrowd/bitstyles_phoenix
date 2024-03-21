@@ -18,6 +18,8 @@ defmodule BitstylesPhoenix.Component.Card do
         ...> render ~H"""
         ...> <.ui_card><p>Hello world</p></.ui_card>
         ...> """
+    ''',
+    '''
         """
         <article class="a-card">
           <p>
@@ -35,6 +37,8 @@ defmodule BitstylesPhoenix.Component.Card do
         ...> render ~H"""
         ...> <.ui_card size="l"><p>Hello world</p></.ui_card>
         ...> """
+    ''',
+    '''
         """
         <article class="a-card a-card-l">
           <p>
@@ -55,6 +59,8 @@ defmodule BitstylesPhoenix.Component.Card do
         ...>  <p>Hello world</p>
         ...> </.ui_card>
         ...> """
+    ''',
+    '''
         """
         <article class="a-card a-card-l">
           <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger a-card-l__header">
@@ -80,6 +86,8 @@ defmodule BitstylesPhoenix.Component.Card do
         ...>  <p>Hello world</p>
         ...> </.ui_card>
         ...> """
+    ''',
+    '''
         """
         <article class="a-card">
           <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger a-card__header">

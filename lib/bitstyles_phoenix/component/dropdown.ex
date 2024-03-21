@@ -64,6 +64,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
+    ''',
+    '''
         """
         <div class="u-relative">
           <button type="button" class="a-button a-button--ui">
@@ -119,6 +121,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
+    ''',
+    '''
         """
         <div style="min-height: 150px;" class="u-flex u-flex-col">
           <div class="u-flex-grow-1">
@@ -175,6 +179,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
+    ''',
+    '''
         """
         <div class="u-relative u-flex u-justify-end">
           <button type="button" class="a-button a-button--ui">
@@ -231,6 +237,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
+    ''',
+    '''
         """
         <div style="min-height: 150px;" class="u-flex u-flex-col">
           <div class="u-flex-grow-1">
@@ -288,6 +296,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
+    ''',
+    '''
         """
         <div class="u-relative">
           <button type="button" class="a-button a-button--ui foo">
@@ -333,6 +343,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
+    ''',
+    '''
         """
         <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">

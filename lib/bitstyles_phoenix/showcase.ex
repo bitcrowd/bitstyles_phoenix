@@ -4,16 +4,17 @@ defmodule BitstylesPhoenix.Showcase do
   import Phoenix.HTML, only: [safe_to_string: 1]
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
-  @doctest_entries ["iex>", "...>"]
-
-  defmacro story(name, example, opts \\ []) do
+  defmacro story(name, doctest_iex_code, doctest_expected_result, opts \\ []) do
     code =
-      example
+      doctest_expected_result
       |> to_string()
       |> String.split("\n")
       |> Enum.map(&String.trim/1)
-      |> Enum.reject(fn line -> Enum.any?(@doctest_entries, &String.starts_with?(line, &1)) end)
       |> Enum.join("\n")
+
+    # it's crucial that there is exactly one new line after the iex code,
+    # if there's more, it would be an always-green doctest without an expected result
+    example = "#{doctest_iex_code |> to_string() |> String.trim_trailing()}\n#{doctest_expected_result}"
 
     storydoc = """
     ## #{name}

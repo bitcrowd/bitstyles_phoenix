@@ -37,6 +37,8 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab show={false}>Hidden</:tab>
         ...> </.ui_tabs>
         ...> """
+    ''',
+    '''
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
@@ -71,6 +73,8 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab ref="baz">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
+    ''',
+    '''
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
@@ -105,6 +109,8 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab ref={:baz} class="extra" href="#">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
+    ''',
+    '''
         """
         <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">

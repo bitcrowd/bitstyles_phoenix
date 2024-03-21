@@ -31,6 +31,8 @@ defmodule BitstylesPhoenix.Component.Icon do
         ...> render ~H"""
         ...> <.ui_icon name="inline-arrow"/>
         ...> """
+    ''',
+    '''
         """
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
           <use xlink:href="#icon-inline-arrow">
@@ -47,31 +49,41 @@ defmodule BitstylesPhoenix.Component.Icon do
     """
   )
 
-  story("An icon with a size", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_icon name="hamburger" file="assets/icons.svg" size="xl"/>
-      ...> """
-      """
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
-        <use xlink:href="assets/icons.svg#icon-hamburger">
-        </use>
-      </svg>
-      """
-  ''')
+  story(
+    "An icon with a size",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon name="hamburger" file="/assets/icons.svg" size="xl"/>
+        ...> """
+    ''',
+    '''
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
+          <use xlink:href="/assets/icons.svg#icon-hamburger">
+          </use>
+        </svg>
+        """
+    '''
+  )
 
-  story("An icon with extra options", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_icon name="bin" file="assets/icons.svg" class="foo bar"/>
-      ...> """
-      """
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
-        <use xlink:href="assets/icons.svg#icon-bin">
-        </use>
-      </svg>
-      """
-  ''')
+  story(
+    "An icon with extra options",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon name="bin" file="/assets/icons.svg" class="foo bar"/>
+        ...> """
+    ''',
+    '''
+        """
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon foo bar" focusable="false" height="16" width="16">
+          <use xlink:href="/assets/icons.svg#icon-bin">
+          </use>
+        </svg>
+        """
+    '''
+  )
 
   def ui_icon(assigns) do
     icon = "icon-#{assigns.name}"

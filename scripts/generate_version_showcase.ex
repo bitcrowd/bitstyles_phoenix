@@ -34,6 +34,7 @@ defmodule Scripts.GenerateVersionShowcase do
       end
 
     File.mkdir_p(@dir_name)
+    File.cp_r("assets", Path.join(@dir_name, "assets"))
     write_index_html(versions)
 
     IO.puts("Generating versions")
@@ -92,15 +93,14 @@ defmodule Scripts.GenerateVersionShowcase do
         case node do
           {:story, meta, args} ->
             name = Enum.at(args, 0)
-            doctest = Enum.at(args, 1)
-            opts = Enum.at(args, 2)
+            doctest_iex_code = Enum.at(args, 1)
+            opts = Enum.at(args, 3)
 
             code =
-              doctest
+              doctest_iex_code
               |> to_string()
               |> String.split("\n")
               |> Enum.map(&String.trim/1)
-              |> Enum.filter(&doctest_line?/1)
               |> Enum.map_join("\n", &extract_code_from_doctest_line/1)
 
             {node,
@@ -112,10 +112,6 @@ defmodule Scripts.GenerateVersionShowcase do
       end)
 
     Enum.reverse(stories)
-  end
-
-  defp doctest_line?(line) do
-    Enum.any?(@doctest_entries, &String.starts_with?(line, &1))
   end
 
   defp extract_code_from_doctest_line(line) do

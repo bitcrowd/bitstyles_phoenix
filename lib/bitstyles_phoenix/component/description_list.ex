@@ -15,6 +15,8 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         ...>   <.ui_dl_item label="Inserted at">2007-01-02</.ui_dl_item>
         ...> </.ui_dl>
         ...> """
+    ''',
+    '''
         """
         <dl class="a-dl">
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-m u-padding-m-y u-padding-m@m u-items-baseline">
@@ -57,6 +59,8 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         ...>   </.ui_dl_item>
         ...> </.ui_dl>
         ...> """
+    ''',
+    '''
         """
         <dl class="a-dl extra" data-foo="baz">
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-m u-padding-m-y u-padding-m@m u-items-baseline u-fg-brand-2">

@@ -26,6 +26,8 @@ defmodule BitstylesPhoenix.Component.Content do
         ...>   Content
         ...> </.ui_content>
         ...> """
+    ''',
+    '''
         """
         <div class="a-content">
           Content
@@ -44,6 +46,8 @@ defmodule BitstylesPhoenix.Component.Content do
         ...>   Full Content
         ...> </.ui_content>
         ...> """
+    ''',
+    '''
         """
         <div class="a-content a-content--full">
           Full Content
@@ -62,6 +66,8 @@ defmodule BitstylesPhoenix.Component.Content do
         ...>   Content with extra
         ...> </.ui_content>
         ...> """
+    ''',
+    '''
         """
         <div class="a-content a-content--full u-h2" data-foo="bar">
           Content with extra

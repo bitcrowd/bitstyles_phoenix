@@ -48,6 +48,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>   </:main>
         ...> </.ui_js_sidebar_layout>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-height-100vh" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">

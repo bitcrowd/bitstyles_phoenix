@@ -17,75 +17,100 @@ defmodule BitstylesPhoenix.Component.Badge do
   See [bitstyles badge docs](https://bitcrowd.github.io/bitstyles/?path=/docs/atoms-badge--badge) for examples, and for the default variants available.
   """
 
-  story("Default badge", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_badge>
-      ...>   published
-      ...> </.ui_badge>
-      ...> """
-      """
-      <span class="a-badge u-h6 u-font-medium a-badge--gray">
-        published
-      </span>
-      """
-  ''')
+  story(
+    "Default badge",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_badge>
+        ...>   published
+        ...> </.ui_badge>
+        ...> """
+    ''',
+    '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--gray">
+          published
+        </span>
+        """
+    '''
+  )
 
-  story("Badge variant brand-1", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_badge variant="brand-1">
-      ...>   new
-      ...> </.ui_badge>
-      ...> """
-      """
-      <span class="a-badge u-h6 u-font-medium a-badge--brand-1">
-        new
-      </span>
-      """
-  ''')
+  story(
+    "Badge variant brand-1",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_badge variant="brand-1">
+        ...>   new
+        ...> </.ui_badge>
+        ...> """
+    ''',
+    '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--brand-1">
+          new
+        </span>
+        """
+    '''
+  )
 
-  story("Badge variant brand-2", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_badge variant="brand-2">
-      ...>   recommended
-      ...> </.ui_badge>
-      ...> """
-      """
-      <span class="a-badge u-h6 u-font-medium a-badge--brand-2">
-        recommended
-      </span>
-      """
-  ''')
+  story(
+    "Badge variant brand-2",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_badge variant="brand-2">
+        ...>   recommended
+        ...> </.ui_badge>
+        ...> """
+    ''',
+    '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--brand-2">
+          recommended
+        </span>
+        """
+    '''
+  )
 
-  story("Badge variant danger", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_badge variant="danger">
-      ...>   deleted
-      ...> </.ui_badge>
-      ...> """
-      """
-      <span class="a-badge u-h6 u-font-medium a-badge--danger">
-        deleted
-      </span>
-      """
-  ''')
+  story(
+    "Badge variant danger",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_badge variant="danger">
+        ...>   deleted
+        ...> </.ui_badge>
+        ...> """
+    ''',
+    '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--danger">
+          deleted
+        </span>
+        """
+    '''
+  )
 
-  story("Extra options and classes", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_badge class="extra-class" data-foo="bar">
-      ...>   published
-      ...> </.ui_badge>
-      ...> """
-      """
-      <span class="a-badge u-h6 u-font-medium a-badge--gray extra-class" data-foo="bar">
-        published
-      </span>
-      """
-  ''')
+  story(
+    "Extra options and classes",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_badge class="extra-class" data-foo="bar">
+        ...>   published
+        ...> </.ui_badge>
+        ...> """
+    ''',
+    '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--gray extra-class" data-foo="bar">
+          published
+        </span>
+        """
+    '''
+  )
 
   def ui_badge(assigns) do
     variant = assigns[:variant] || "gray"

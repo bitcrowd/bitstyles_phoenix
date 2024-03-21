@@ -39,6 +39,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
         ...> """
+    ''',
+    '''
         """
         <nav aria-label="breadcrumbs">
           <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
@@ -83,6 +85,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         ...> render ~H"""
         ...> <.ui_breadcrumbs items={["Foo", "Bar", "Baz"]} />
         ...> """
+    ''',
+    '''
         """
         <nav aria-label="breadcrumbs">
           <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
@@ -131,6 +135,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
         ...> """
+    ''',
+    '''
         """
         <nav aria-label="breadcrumbs" data-foo="bar">
           <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center u-fg-warning">

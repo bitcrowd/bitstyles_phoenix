@@ -37,6 +37,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   Main Content
         ...> </.ui_sidebar_layout>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
@@ -199,6 +201,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   <:main>Main Content</:main>
         ...> </.ui_sidebar_layout>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
@@ -237,6 +241,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   Main Content
         ...> </.ui_sidebar_layout>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
