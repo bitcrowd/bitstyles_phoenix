@@ -31,9 +31,16 @@ defmodule BitstylesPhoenix.Component.Error do
         ...> <.ui_errors form={@form} field={:name} />
         ...> """
     ''',
-    '''
+    "4.3.0": '''
         """
         <span class="u-fg-warning" phx-feedback-for="user[name]">
+          is too short
+        </span>
+        """
+    ''',
+    "3.0.0": '''
+        """
+        <span class="u-fg--warning" phx-feedback-for="user[name]">
           is too short
         </span>
         """
@@ -124,9 +131,16 @@ defmodule BitstylesPhoenix.Component.Error do
         ...> <.ui_error error={{"Foo error", []}} />
         ...> """
     ''',
-    '''
+    "4.3.0": '''
         """
         <span class="u-fg-warning">
+          Foo error
+        </span>
+        """
+    ''',
+    "3.0.0": '''
+        """
+        <span class="u-fg--warning">
           Foo error
         </span>
         """

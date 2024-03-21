@@ -65,33 +65,62 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> </.ui_dropdown>
         ...> """
     ''',
-    '''
-        """
-        <div class="u-relative">
-          <button type="button" class="a-button a-button--ui">
-            <span class="a-button__label">
-              Select me
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
-              <use xlink:href="#icon-caret-down">
-              </use>
-            </svg>
-          </button>
-          <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
-            <li>
-              <a href="#" class="a-button a-button--menu u-h6">
-                Option 1
-              </a>
-            </li>
-            <li>
-              <a href="#" class="a-button a-button--menu u-h6">
-                Option 2
-              </a>
-            </li>
-          </ul>
-        </div>
-        """
-    ''',
+    [
+      "4.3.0": '''
+          """
+          <div class="u-relative">
+            <button type="button" class="a-button a-button--ui">
+              <span class="a-button__label">
+                Select me
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+                <use xlink:href="#icon-caret-down">
+                </use>
+              </svg>
+            </button>
+            <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
+              <li>
+                <a href="#" class="a-button a-button--menu u-h6">
+                  Option 1
+                </a>
+              </li>
+              <li>
+                <a href="#" class="a-button a-button--menu u-h6">
+                  Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+          """
+      ''',
+      "3.0.0": '''
+          """
+          <div class="u-relative">
+            <button type="button" class="a-button a-button--ui">
+              <span class="a-button__label">
+                Select me
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+                <use xlink:href="#icon-caret-down">
+                </use>
+              </svg>
+            </button>
+            <ul class="a-dropdown u-overflow--y a-list-reset u-margin-s-top">
+              <li>
+                <a href="#" class="a-button a-button--menu u-h6">
+                  Option 1
+                </a>
+              </li>
+              <li>
+                <a href="#" class="a-button a-button--menu u-h6">
+                  Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+          """
+      '''
+    ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-down" viewBox="0 0 100 100">
