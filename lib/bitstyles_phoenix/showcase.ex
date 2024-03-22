@@ -28,8 +28,7 @@ defmodule BitstylesPhoenix.Showcase do
       doctest_expected_result_default_version
       |> to_string()
       |> String.split("\n")
-      |> Enum.map(&String.trim/1)
-      |> Enum.join("\n")
+      |> Enum.map_join("\n", &String.trim/1)
 
     storydoc = """
     ## #{name}
@@ -140,17 +139,14 @@ defmodule BitstylesPhoenix.Showcase do
     # when generating docs, we want to only to show the snippets for the default version
     if Mix.env() === :test do
       doctest_expected_results
-      |> Enum.map(fn {version, expected_result} ->
+      |> Enum.map_join("\n\n", fn {version, expected_result} ->
         """
             iex> Application.put_env(:bitstyles_phoenix, :bitstyles_version, "#{version}")
         #{doctest_iex_code |> String.replace("iex>", "...>")}
         #{expected_result}
         """
       end)
-      |> Enum.join("\n\n")
     else
-      [{default_version, Keyword.get(doctest_expected_results, default_version)}]
-
       """
       #{doctest_iex_code}
       #{Keyword.get(doctest_expected_results, default_version)}
