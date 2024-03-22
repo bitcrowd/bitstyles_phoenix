@@ -1,0 +1,34 @@
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '25.1'
+          elixir-version: '1.14.5'
+      - run: mix deps.get
+      - run: mix format --check-formatted
+      - run: mix test
+      - run: mix credo --strict
+      - run: mix docs
+  demo:
+    runs-on: ubuntu-latest
+    name: Demo
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '25.1'
+          elixir-version: '1.14.5'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - uses: nanasess/setup-chromedriver@v2
+      - run: cd demo && mix deps.get
+      - run: cd demo && mix format --check-formatted
+      - run: cd demo/assets && npm install
+      - run: cd demo && mix test

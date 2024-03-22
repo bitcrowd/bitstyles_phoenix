@@ -3,7 +3,6 @@
 [![Hex pm](http://img.shields.io/hexpm/v/bitstyles_phoenix.svg?style=flat)](https://hex.pm/packages/bitstyles_phoenix)
 [![Hex docs](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/bitstyles_phoenix)
 [![License](https://img.shields.io/hexpm/l/bitstyles_phoenix?style=flat)](./LICENSE.txt)
-[![CircleCI](https://circleci.com/gh/bitcrowd/bitstyles_phoenix.svg?style=shield)](https://circleci.com/gh/bitcrowd/bitstyles_phoenix)
 
 Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir phoenix projects.
 
