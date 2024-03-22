@@ -3,7 +3,7 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    name: unit
     steps:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1
@@ -19,7 +19,7 @@ jobs:
         run: mix run scripts/generate_version_showcase.ex
   demo:
     runs-on: ubuntu-latest
-    name: Demo
+    name: demo
     steps:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1
