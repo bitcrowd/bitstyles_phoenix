@@ -35,6 +35,8 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   Title
         ...> </.ui_page_title>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-justify-between u-flex-wrap u-items-center">
           <div class="u-flex u-flex-wrap u-items-center">
@@ -69,6 +71,8 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   </:action>
         ...> </.ui_page_title>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-justify-between u-flex-wrap u-items-center">
           <div class="u-flex u-flex-wrap u-items-center">
@@ -161,6 +165,8 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   Section title
         ...> </.ui_section_title>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-10-bottom">
           <div class="u-flex u-items-center">
@@ -183,6 +189,8 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   Section title
         ...> </.ui_section_title>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-flex-wrap u-items-center u-justify-between">
           <div class="u-flex u-items-center">
@@ -217,6 +225,8 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>   </:action>
         ...> </.ui_section_title>
         ...> """
+    ''',
+    '''
         """
         <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-70-bottom">
           <div class="u-flex u-items-center">

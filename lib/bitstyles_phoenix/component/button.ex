@@ -26,103 +26,138 @@ defmodule BitstylesPhoenix.Component.Button do
   See `BitstylesPhoenix.Helper.Button.ui_button/2` for more examples and options.
   """
 
-  story("Default button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button>
-      ...>   Publish
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="button" class="a-button">
-        Publish
-      </button>
-      """
-  ''')
+  story(
+    "Default button",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button>
+        ...>   Publish
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="button" class="a-button">
+          Publish
+        </button>
+        """
+    '''
+  )
 
-  story("Default link", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button href="/" variant="ui">
-      ...>   Publish
-      ...> </.ui_button>
-      ...> """
-      """
-      <a href="/" class="a-button a-button--ui">
-        Publish
-      </a>
-      """
-  ''')
+  story(
+    "Default link",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button href="/" variant="ui">
+        ...>   Publish
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <a href="/" class="a-button a-button--ui">
+          Publish
+        </a>
+        """
+    '''
+  )
 
-  story("Default disabled link renders disabled button instead", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button href="/" variant="ui" disabled>
-      ...>   Publish
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="button" class="a-button a-button--ui" disabled="disabled">
-        Publish
-      </button>
-      """
-  ''')
+  story(
+    "Default disabled link renders disabled button instead",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button href="/" variant="ui" disabled>
+        ...>   Publish
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="button" class="a-button a-button--ui" disabled="disabled">
+          Publish
+        </button>
+        """
+    '''
+  )
 
-  story("Default submit button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit">
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button">
-        Save
-      </button>
-      """
-  ''')
+  story(
+    "Default submit button",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button type="submit">
+        ...>   Save
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="submit" class="a-button">
+          Save
+        </button>
+        """
+    '''
+  )
 
-  story("Default submit button with custom classes", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit" class="foo bar">
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button foo bar">
-        Save
-      </button>
-      """
-  ''')
+  story(
+    "Default submit button with custom classes",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button type="submit" class="foo bar">
+        ...>   Save
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="submit" class="a-button foo bar">
+          Save
+        </button>
+        """
+    '''
+  )
 
-  story("UI button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit" variant={:ui}>
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button a-button--ui">
-        Save
-      </button>
-      """
-  ''')
+  story(
+    "UI button",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button type="submit" variant={:ui}>
+        ...>   Save
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="submit" class="a-button a-button--ui">
+          Save
+        </button>
+        """
+    '''
+  )
 
-  story("Dangerous button", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button type="submit" variant={:danger}>
-      ...>   Save
-      ...> </.ui_button>
-      ...> """
-      """
-      <button type="submit" class="a-button a-button--danger">
-        Save
-      </button>
-      """
-  ''')
+  story(
+    "Dangerous button",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button type="submit" variant={:danger}>
+        ...>   Save
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="submit" class="a-button a-button--danger">
+          Save
+        </button>
+        """
+    '''
+  )
 
   story(
     "Button with an icon",
@@ -133,6 +168,8 @@ defmodule BitstylesPhoenix.Component.Button do
         ...>   Add
         ...> </.ui_button>
         ...> """
+    ''',
+    '''
         """
         <button type="submit" class="a-button">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-button__icon" focusable="false" height="16" width="16">
@@ -163,6 +200,8 @@ defmodule BitstylesPhoenix.Component.Button do
         ...>   Add
         ...> </.ui_button>
         ...> """
+    ''',
+    '''
         """
         <a href="/" class="a-button">
           <span class="a-button__label">
@@ -184,33 +223,43 @@ defmodule BitstylesPhoenix.Component.Button do
     """
   )
 
-  story("Pass along attributes to Phoenix helpers", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button href="/admin/admin_accounts/id" data-confirm="Are you sure?">
-      ...>   Add
-      ...> </.ui_button>
-      ...> """
-      """
-      <a href="/admin/admin_accounts/id" class="a-button" data-confirm="Are you sure?">
-        Add
-      </a>
-      """
-  ''')
+  story(
+    "Pass along attributes to Phoenix helpers",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button href="/admin/admin_accounts/id" data-confirm="Are you sure?">
+        ...>   Add
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <a href="/admin/admin_accounts/id" class="a-button" data-confirm="Are you sure?">
+          Add
+        </a>
+        """
+    '''
+  )
 
-  story("Button with LiveView patch", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_button patch="/foo">
-      ...>   Add
-      ...> </.ui_button>
-      ...> """
-      """
-      <a href="/foo" data-phx-link=\"patch\" data-phx-link-state=\"push\" class="a-button">
-        Add
-      </a>
-      """
-  ''')
+  story(
+    "Button with LiveView patch",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button patch="/foo">
+        ...>   Add
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <a href="/foo" data-phx-link=\"patch\" data-phx-link-state=\"push\" class="a-button">
+          Add
+        </a>
+        """
+    '''
+  )
 
   def ui_button(assigns) do
     extra = assigns_to_attributes(assigns, [:icon, :class, :variant])
@@ -318,6 +367,8 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> render ~H"""
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
         ...> """
+    ''',
+    '''
         """
         <a href="#" class="a-button a-button--icon" title="Add">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
@@ -339,23 +390,28 @@ defmodule BitstylesPhoenix.Component.Button do
     """
   )
 
-  story("Icon button with some options", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
-      ...> """
-      """
-      <button type="button" class="a-button a-button--icon foo" title="Delete">
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
-          <use xlink:href="assets/icons.svg#icon-bin">
-          </use>
-        </svg>
-        <span class="u-sr-only">
-          Delete
-        </span>
-      </button>
-      """
-  ''')
+  story(
+    "Icon button with some options",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
+        ...> """
+    ''',
+    '''
+        """
+        <button type="button" class="a-button a-button--icon foo" title="Delete">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
+            <use xlink:href="assets/icons.svg#icon-bin">
+            </use>
+          </svg>
+          <span class="u-sr-only">
+            Delete
+          </span>
+        </button>
+        """
+    '''
+  )
 
   story(
     "Icon button reversed",
@@ -364,6 +420,8 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> render ~H"""
         ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
         ...> """
+    ''',
+    '''
         """
         <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">

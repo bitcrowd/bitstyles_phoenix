@@ -23,38 +23,55 @@ defmodule BitstylesPhoenix.Component.Error do
   Uses the `translate_errors` MFA from the config to translate field errors (e.g. with `gettext`).
   """
 
-  story("A single error", '''
-      iex> assigns = %{form: @form_with_errors}
-      ...> render ~H"""
-      ...> <.ui_errors form={@form} field={:single} />
-      ...> """
-      """
-      <span class="u-fg-warning" phx-feedback-for="user[single]">
-        is too short
-      </span>
-      """
-  ''')
+  story(
+    "A single error",
+    '''
+        iex> assigns = %{form: form_with_errors()}
+        ...> render ~H"""
+        ...> <.ui_errors form={@form} field={:name} />
+        ...> """
+    ''',
+    "4.3.0": '''
+        """
+        <span class="u-fg-warning" phx-feedback-for="user[name]">
+          is too short
+        </span>
+        """
+    ''',
+    "3.0.0": '''
+        """
+        <span class="u-fg--warning" phx-feedback-for="user[name]">
+          is too short
+        </span>
+        """
+    '''
+  )
 
-  story("Multiple errors", '''
-      iex> assigns = %{form: @form_with_errors}
-      ...> render ~H"""
-      ...> <.ui_errors form={@form} field={:multiple} />
-      ...> """
-      """
-      <ul class="u-padding-xl-left">
-        <li>
-          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
-            is simply bad
-          </span>
-        </li>
-        <li>
-          <span class="u-fg-warning" phx-feedback-for="user[multiple]">
-            not fun
-          </span>
-        </li>
-      </ul>
-      """
-  ''')
+  story(
+    "Multiple errors",
+    '''
+        iex> assigns = %{form: form_with_errors()}
+        ...> render ~H"""
+        ...> <.ui_errors form={@form} field={:email} />
+        ...> """
+    ''',
+    '''
+        """
+        <ul class="u-padding-xl-left">
+          <li>
+            <span class="u-fg-warning" phx-feedback-for="user[email]">
+              is invalid
+            </span>
+          </li>
+          <li>
+            <span class="u-fg-warning" phx-feedback-for="user[email]">
+              must end with @bitcrowd.net
+            </span>
+          </li>
+        </ul>
+        """
+    '''
+  )
 
   def ui_errors(assigns) do
     assigns.form.errors
@@ -106,29 +123,46 @@ defmodule BitstylesPhoenix.Component.Error do
   specified in [bitstyles colors](https://bitcrowd.github.io/bitstyles/?path=/docs/utilities-fg--warning).
   """
 
-  story("An error tag", '''
-      iex> assigns = %{}
-      ...> render ~H"""
-      ...> <.ui_error error={{"Foo error", []}} />
-      ...> """
-      """
-      <span class="u-fg-warning">
-        Foo error
-      </span>
-      """
-  ''')
+  story(
+    "An error tag",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_error error={{"Foo error", []}} />
+        ...> """
+    ''',
+    "4.3.0": '''
+        """
+        <span class="u-fg-warning">
+          Foo error
+        </span>
+        """
+    ''',
+    "3.0.0": '''
+        """
+        <span class="u-fg--warning">
+          Foo error
+        </span>
+        """
+    '''
+  )
 
-  story("An error tag extra options and classes", '''
-      iex> assigns = %{error: {"Foo error", []}}
-      ...> render ~H"""
-      ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
-      ...> """
-      """
-      <span class="u-fg-warning bar" phx-feedback-for="foo">
-        Foo error
-      </span>
-      """
-  ''')
+  story(
+    "An error tag extra options and classes",
+    '''
+        iex> assigns = %{error: {"Foo error", []}}
+        ...> render ~H"""
+        ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
+        ...> """
+    ''',
+    '''
+        """
+        <span class="u-fg-warning bar" phx-feedback-for="foo">
+          Foo error
+        </span>
+        """
+    '''
+  )
 
   def ui_error(assigns) do
     extra = assigns_to_attributes(assigns, [:class, :error, :field, :form])

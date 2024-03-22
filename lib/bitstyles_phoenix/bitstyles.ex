@@ -5,7 +5,7 @@ defmodule BitstylesPhoenix.Bitstyles do
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
-    "#{@cdn_url}@#{@default_version}"
+    "#{@cdn_url}@#{version()}"
   end
 
   @doc """
@@ -92,6 +92,13 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def version do
-    Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
+    bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
+
+    bitstyles_version_override ||
+      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
+  end
+
+  def default_version do
+    @default_version
   end
 end
