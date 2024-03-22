@@ -92,7 +92,10 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def version do
-    Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
+    bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
+
+    bitstyles_version_override ||
+      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
   end
 
   def default_version do

@@ -141,7 +141,7 @@ defmodule BitstylesPhoenix.Showcase do
       doctest_expected_results
       |> Enum.map_join("\n\n", fn {version, expected_result} ->
         """
-            iex> Application.put_env(:bitstyles_phoenix, :bitstyles_version, "#{version}")
+            iex> Process.put(:bitstyles_phoenix_bistyles_version, "#{version}")
         #{doctest_iex_code |> String.replace("iex>", "...>")}
         #{expected_result}
         """
