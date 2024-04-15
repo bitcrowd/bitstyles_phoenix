@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "4.3.0"
+  @default_version "5.0.0"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
@@ -14,12 +14,20 @@ defmodule BitstylesPhoenix.Bitstyles do
   """
   def classname(name), do: classname(name, version())
 
-  def classname(class, version) when version > "4.3.0" do
+  def classname(class, version) when version > "5.0.0" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
     class
   end
 
-  def classname(class, version) when version >= "4.2.0", do: class
+  def classname(class, version) when version >= "5.0.0" do
+    class
+  end
+
+  def classname(class, version) when version >= "4.3.0" do
+    # TODO
+    mapping = %{}
+    classname(mapping, "5.0.0")
+  end
 
   def classname(class, version) when version >= "4.0.0" do
     mapping =
@@ -28,7 +36,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "4.2.0")
+    classname(mapping, "4.3.0")
   end
 
   def classname(class, version) when version >= "2.0.0" do
