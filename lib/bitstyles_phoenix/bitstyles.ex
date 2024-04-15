@@ -20,13 +20,14 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def classname(class, version) when version >= "5.0.0" do
-    class
+    # TODO
+    case class do
+      _ -> class
+    end
   end
 
-  def classname(class, version) when version >= "4.3.0" do
-    # TODO
-    mapping = %{}
-    classname(mapping, "5.0.0")
+  def classname(class, version) when version >= "4.2.0" do
+    classname(class, "5.0.0")
   end
 
   def classname(class, version) when version >= "4.0.0" do

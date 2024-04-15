@@ -4,11 +4,49 @@ defmodule BitstylesPhoenix.BitstylesTest do
   import ExUnit.CaptureIO
 
   describe "classname/2" do
-    test "version 5.0.0" do
+    test "version 6.0.0" do
       assert Regex.match?(
-               ~r/5.0.0 of bitstyles is not yet supported/,
-               capture_io(:stderr, fn -> classname("u-flex", "5.0.0") end)
+               ~r/6.0.0 of bitstyles is not yet supported/,
+               capture_io(:stderr, fn -> classname("u-flex", "6.0.0") end)
              )
+    end
+
+    test "version 5.0.0" do
+      assert classname("u-flex", "5.0.0") == "u-flex"
+      assert classname("u-border-radius-0", "5.0.0") == "u-border-radius-0"
+      assert classname("u-overflow-x-auto", "5.0.0") == "u-overflow-x-auto"
+      assert classname("u-overflow-y-auto", "5.0.0") == "u-overflow-y-auto"
+      assert classname("u-bg-gray-80", "5.0.0") == "u-bg-gray-80"
+      assert classname("u-fg-warning", "5.0.0") == "u-fg-warning"
+      assert classname("u-font-medium", "5.0.0") == "u-font-medium"
+      assert classname("u-line-height-min", "5.0.0") == "u-line-height-min"
+      assert classname("u-text-right", "5.0.0") == "u-text-right"
+      assert classname("u-flex-shrink-0", "5.0.0") == "u-flex-shrink-0"
+      assert classname("u-flex-grow-1", "5.0.0") == "u-flex-grow-1"
+      assert classname("u-flex-wrap", "5.0.0") == "u-flex-wrap"
+      assert classname("u-flex-col", "5.0.0") == "u-flex-col"
+      assert classname("u-grid-cols-3", "5.0.0") == "u-grid-cols-3"
+      assert classname("u-col-span-3", "5.0.0") == "u-col-span-3"
+      assert classname("u-col-start-1", "5.0.0") == "u-col-start-1"
+    end
+
+    test "version 4.3.0" do
+      assert classname("u-flex", "4.3.0") == "u-flex"
+      assert classname("u-border-radius-0", "4.3.0") == "u-border-radius-0"
+      assert classname("u-overflow-x-auto", "4.3.0") == "u-overflow-x-auto"
+      assert classname("u-overflow-y-auto", "4.3.0") == "u-overflow-y-auto"
+      assert classname("u-bg-gray-80", "4.3.0") == "u-bg-gray-80"
+      assert classname("u-fg-warning", "4.3.0") == "u-fg-warning"
+      assert classname("u-font-medium", "4.3.0") == "u-font-medium"
+      assert classname("u-line-height-min", "4.3.0") == "u-line-height-min"
+      assert classname("u-text-right", "4.3.0") == "u-text-right"
+      assert classname("u-flex-shrink-0", "4.3.0") == "u-flex-shrink-0"
+      assert classname("u-flex-grow-1", "4.3.0") == "u-flex-grow-1"
+      assert classname("u-flex-wrap", "4.3.0") == "u-flex-wrap"
+      assert classname("u-flex-col", "4.3.0") == "u-flex-col"
+      assert classname("u-grid-cols-3", "4.3.0") == "u-grid-cols-3"
+      assert classname("u-col-span-3", "4.3.0") == "u-col-span-3"
+      assert classname("u-col-start-1", "4.3.0") == "u-col-start-1"
     end
 
     test "version 4.2.0" do
