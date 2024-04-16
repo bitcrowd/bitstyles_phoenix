@@ -20,14 +20,23 @@ defmodule BitstylesPhoenix.Bitstyles do
   end
 
   def classname(class, version) when version >= "5.0.0" do
-    # TODO
-    case class do
-      _ -> class
-    end
+    class
   end
 
   def classname(class, version) when version >= "4.2.0" do
-    classname(class, "5.0.0")
+    sizes_renaming = %{
+      "3xs" => "xxxs",
+      "2xs" => "xxs",
+      "2xl" => "xxl",
+      "3xl" => "xxxl"
+    }
+
+    mapping =
+      Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+        String.replace(acc, "-#{new_size}", "-#{old_size}")
+      end)
+
+    classname(mapping, "5.0.0")
   end
 
   def classname(class, version) when version >= "4.0.0" do

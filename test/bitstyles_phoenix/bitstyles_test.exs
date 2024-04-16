@@ -28,6 +28,13 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-grid-cols-3", "5.0.0") == "u-grid-cols-3"
       assert classname("u-col-span-3", "5.0.0") == "u-col-span-3"
       assert classname("u-col-start-1", "5.0.0") == "u-col-start-1"
+      assert classname("u-margin-2xs", "5.0.0") == "u-margin-2xs"
+      assert classname("u-margin-3xs\@m", "5.0.0") == "u-margin-3xs\@m"
+      assert classname("u-margin-3xs-bottom", "5.0.0") == "u-margin-3xs-bottom"
+      assert classname("u-padding-2xl", "5.0.0") == "u-padding-2xl"
+      assert classname("u-padding-3xl\@l", "5.0.0") == "u-padding-3xl\@l"
+      assert classname("u-margin-3xl-bottom", "5.0.0") == "u-margin-3xl-bottom"
+      assert classname("u-margin-neg-3xl-bottom", "5.0.0") == "u-margin-neg-3xl-bottom"
     end
 
     test "version 4.3.0" do
@@ -47,6 +54,13 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-grid-cols-3", "4.3.0") == "u-grid-cols-3"
       assert classname("u-col-span-3", "4.3.0") == "u-col-span-3"
       assert classname("u-col-start-1", "4.3.0") == "u-col-start-1"
+      assert classname("u-margin-2xs", "4.3.0") == "u-margin-xxs"
+      assert classname("u-margin-3xs\@m", "4.3.0") == "u-margin-xxxs\@m"
+      assert classname("u-margin-3xs-bottom", "4.3.0") == "u-margin-xxxs-bottom"
+      assert classname("u-padding-2xl", "4.3.0") == "u-padding-xxl"
+      assert classname("u-padding-3xl\@l", "4.3.0") == "u-padding-xxxl\@l"
+      assert classname("u-margin-3xl-bottom", "4.3.0") == "u-margin-xxxl-bottom"
+      assert classname("u-margin-neg-3xl-bottom", "4.3.0") == "u-margin-neg-xxxl-bottom"
     end
 
     test "version 4.2.0" do
