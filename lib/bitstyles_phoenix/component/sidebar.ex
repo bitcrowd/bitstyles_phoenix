@@ -24,7 +24,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
         ...>         <:button variant="nav-large">
         ...>           <div class="a-button__icon a-avatar">
-        ...>             <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar" />
+        ...>             <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar" />
         ...>           </div>
         ...>           <span class="a-button__label">Jane Dobermann</span>
         ...>         </:button>
@@ -64,7 +64,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   <div class="u-relative">
                     <button type="button" class="a-button a-button--nav-large">
                       <div class="a-button__icon a-avatar">
-                        <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
+                        <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
                       <span class="a-button__label">
                         Jane Dobermann
@@ -101,7 +101,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   <div class="u-relative">
                     <button type="button" class="a-button a-button--nav-large">
                       <div class="a-button__icon a-avatar">
-                        <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
+                        <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
                       <span class="a-button__label">
                         Jane Dobermann
