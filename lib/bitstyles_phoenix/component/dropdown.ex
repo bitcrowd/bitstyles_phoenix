@@ -66,7 +66,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
     ''',
     [
-      "5.0.0": '''
+      "5.0.1": '''
           """
           <div class="u-relative">
             <button type="button" class="a-button a-button--ui">
