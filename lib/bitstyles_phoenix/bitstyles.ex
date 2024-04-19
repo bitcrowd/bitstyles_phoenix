@@ -31,12 +31,18 @@ defmodule BitstylesPhoenix.Bitstyles do
       "3xl" => "xxxl"
     }
 
-    mapping =
+    class =
       Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
         String.replace(acc, "-#{new_size}", "-#{old_size}")
       end)
 
-    classname(mapping, "5.0.0")
+    class =
+      case class do
+        "u-list-none" -> "a-list-reset"
+        class -> class
+      end
+
+    classname(class, "5.0.0")
   end
 
   def classname(class, version) when version >= "4.0.0" do

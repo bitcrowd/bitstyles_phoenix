@@ -40,35 +40,66 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         ...> </.ui_breadcrumbs>
         ...> """
     ''',
-    '''
-        """
-        <nav aria-label="breadcrumbs">
-          <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
-            <li class="u-margin-xs-right u-flex u-items-center">
-              Foo
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
-                <use xlink:href="#icon-caret-right">
-                </use>
-              </svg>
-            </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
-              Bar
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
-                <use xlink:href="#icon-caret-right">
-                </use>
-              </svg>
-            </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
-              Baz
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
-                <use xlink:href="#icon-caret-right">
-                </use>
-              </svg>
-            </li>
-          </ol>
-        </nav>
-        """
-    ''',
+    [
+      "5.0.1": '''
+          """
+          <nav aria-label="breadcrumbs">
+            <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Foo
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Bar
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Baz
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+            </ol>
+          </nav>
+          """
+      ''',
+      "4.3.0": '''
+          """
+          <nav aria-label="breadcrumbs">
+            <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Foo
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Bar
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Baz
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+            </ol>
+          </nav>
+          """
+      '''
+    ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-right" viewBox="0 0 100 100">
@@ -89,7 +120,7 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
     '''
         """
         <nav aria-label="breadcrumbs">
-          <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
+          <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
             <li class="u-margin-xs-right u-flex u-items-center">
               Foo
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
@@ -139,7 +170,7 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
     '''
         """
         <nav aria-label="breadcrumbs" data-foo="bar">
-          <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center u-fg-warning">
+          <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center u-fg-warning">
             <li class="u-margin-xs-right u-flex u-items-center u-fg-brand-2" data-baz="foo">
               Foo
               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-gray-30 u-margin-xs-left" focusable="false" height="16" width="16">
@@ -181,7 +212,7 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
 
     ~H"""
       <nav aria-label="breadcrumbs" {@extra}>
-        <ol class={classnames(["u-h6 a-list-reset u-flex u-flex-wrap u-items-center", assigns[:class]])}>
+        <ol class={classnames(["u-h6 u-list-none u-flex u-flex-wrap u-items-center", assigns[:class]])}>
           <%= for item <- (assigns[:item] || assigns[:items]) do %>
             <li
               class={classnames(["u-margin-xs-right u-flex u-items-center", assigns[:item] && item[:class]])}
