@@ -39,6 +39,7 @@ defmodule BitstylesPhoenix.Bitstyles do
     class =
       case class do
         "u-list-none" -> "a-list-reset"
+        "a-badge--text" -> "a-badge--gray"
         class -> class
       end
 

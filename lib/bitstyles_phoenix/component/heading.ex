@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.Heading do
               Title
             </h1>
             <div class="u-flex-shrink-0 u-margin-m-bottom">
-              <span class="a-badge u-h6 u-font-medium a-badge--gray">
+              <span class="a-badge u-h6 u-font-medium a-badge--text">
                 Published
               </span>
             </div>
@@ -233,7 +233,7 @@ defmodule BitstylesPhoenix.Component.Heading do
             <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
               Section title
             </h3>
-            <span class="a-badge u-h6 u-font-medium a-badge--gray">
+            <span class="a-badge u-h6 u-font-medium a-badge--text">
               Published
             </span>
           </div>

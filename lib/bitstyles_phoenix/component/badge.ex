@@ -27,7 +27,14 @@ defmodule BitstylesPhoenix.Component.Badge do
         ...> </.ui_badge>
         ...> """
     ''',
-    '''
+    "5.0.1": '''
+        """
+        <span class="a-badge u-h6 u-font-medium a-badge--text">
+          published
+        </span>
+        """
+    ''',
+    "4.3.0": '''
         """
         <span class="a-badge u-h6 u-font-medium a-badge--gray">
           published
@@ -105,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Badge do
     ''',
     '''
         """
-        <span class="a-badge u-h6 u-font-medium a-badge--gray extra-class" data-foo="bar">
+        <span class="a-badge u-h6 u-font-medium a-badge--text extra-class" data-foo="bar">
           published
         </span>
         """
@@ -113,7 +120,7 @@ defmodule BitstylesPhoenix.Component.Badge do
   )
 
   def ui_badge(assigns) do
-    variant = assigns[:variant] || "gray"
+    variant = assigns[:variant] || "text"
 
     class =
       classnames([
