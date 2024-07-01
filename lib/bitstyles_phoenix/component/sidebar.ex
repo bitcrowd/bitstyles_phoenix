@@ -72,7 +72,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                     </button>
                     <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a href="#" class="a-button a-button--menu">
+                        <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
                         </a>
                       </li>
@@ -109,7 +109,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                     </button>
                     <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a href="#" class="a-button a-button--menu">
+                        <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
                         </a>
                       </li>
