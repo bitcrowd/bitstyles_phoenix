@@ -40,6 +40,7 @@ defmodule BitstylesPhoenix.Bitstyles do
       case class do
         "u-list-none" -> "a-list-reset"
         "a-badge--text" -> "a-badge--gray"
+        "u-gap-l" -> "u-gap-m"
         class -> class
       end
 
