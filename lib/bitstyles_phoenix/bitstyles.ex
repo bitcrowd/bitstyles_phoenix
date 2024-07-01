@@ -41,9 +41,8 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-list-none" -> "a-list-reset"
         "a-badge--text" -> "a-badge--gray"
         "u-gap-l" -> "u-gap-m"
-        "u-fg-text-light" -> "u-fg-gray-30"
-        "u-fg-gray-light" -> "u-fg-gray-30"
-        "u-fg-text" -> "u-fg-gray-50"
+        "u-fg-text" -> "u-fg-gray-30"
+        "u-fg-text-darker" -> "u-fg-gray-50"
         "u-bg-gray-darker" -> "u-bg-gray-80"
         class -> class
       end

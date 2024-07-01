@@ -36,6 +36,11 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-margin-3xl-bottom", "5.0.0") == "u-margin-3xl-bottom"
       assert classname("u-margin-neg-3xl-bottom", "5.0.0") == "u-margin-neg-3xl-bottom"
       assert classname("u-list-none", "5.0.0") == "u-list-none"
+      assert classname("a-badge--text", "5.0.0") == "a-badge--text"
+      assert classname("u-gap-l", "5.0.0") == "u-gap-l"
+      assert classname("u-fg-text", "5.0.0") == "u-fg-text"
+      assert classname("u-fg-text-darker", "5.0.0") == "u-fg-text-darker"
+      assert classname("u-bg-gray-darker", "5.0.0") == "u-bg-gray-darker"
     end
 
     test "version 4.3.0" do
@@ -63,6 +68,11 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-margin-3xl-bottom", "4.3.0") == "u-margin-xxxl-bottom"
       assert classname("u-margin-neg-3xl-bottom", "4.3.0") == "u-margin-neg-xxxl-bottom"
       assert classname("u-list-none", "4.3.0") == "a-list-reset"
+      assert classname("a-badge--text", "4.3.0") == "a-badge--gray"
+      assert classname("u-gap-l", "4.3.0") == "u-gap-m"
+      assert classname("u-fg-text", "4.3.0") == "u-fg-gray-30"
+      assert classname("u-fg-text-darker", "4.3.0") == "u-fg-gray-50"
+      assert classname("u-bg-gray-darker", "4.3.0") == "u-bg-gray-80"
     end
 
     test "version 4.2.0" do
