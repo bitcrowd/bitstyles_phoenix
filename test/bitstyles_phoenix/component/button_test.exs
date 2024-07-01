@@ -26,5 +26,28 @@ defmodule BitstylesPhoenix.Component.ButtonTest do
 
       assert String.contains?(warning, "deprecated")
     end
+
+    test "deprecate :variant" do
+      warning =
+        ExUnit.CaptureIO.capture_io(:stderr, fn ->
+          assigns = %{}
+
+          result =
+            render(~H"""
+            <.ui_button variant="ui">
+              Show
+            </.ui_button>
+            """)
+
+          assert result ==
+                   """
+                   <button type="button" class="a-button a-button--secondary">
+                     Show
+                   </button>
+                   """
+        end)
+
+      assert String.contains?(warning, "deprecated")
+    end
   end
 end

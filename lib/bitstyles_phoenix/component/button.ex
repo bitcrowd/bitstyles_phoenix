@@ -1,5 +1,6 @@
 defmodule BitstylesPhoenix.Component.Button do
   use BitstylesPhoenix.Component
+  alias BitstylesPhoenix.Bitstyles
 
   @moduledoc """
   The button component.
@@ -12,7 +13,9 @@ defmodule BitstylesPhoenix.Component.Button do
   @doc """
   Renders anchor or button elements that look like a button — using the `a-button` classes.
   - `href`, `navigate`, `patch` - if there’s one of these, you’ll get an anchor element, otherwise a button element. (See Phoenix.Component.link/1)
-  - `variant` - specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`
+  - `color` - specifies the color of the button, e.g `secondary`, `transparent`. Leave empty for default color. Introduced in Bitstyles 5.0.0.
+  - `shape` - specifies the color of the button, e.g `square`, `small`. Leave empty for default color. Introduced in Bitstyles 5.0.0.
+  - `variant` - specifies which visual variant of button you want, from those available in the CSS classes e.g. `ui`, `danger`. Deprecated in favor of `color` and `shape` in Bitstyles 5.0.0.
   - `class` - Extra classes to pass to the badge. See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `icon` - An icon name as string or a tuple with `{icon_name, icon_opts}` which is passed to `BitstylesPhoenix.Component.Icon.ui_icon/1` as
     attributes. Additionally it is possible to pass `after: true` to the icon_opts, to make the icon appear after the button label instead of in
@@ -50,14 +53,14 @@ defmodule BitstylesPhoenix.Component.Button do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_button href="/" variant="ui">
+        ...> <.ui_button href="/">
         ...>   Publish
         ...> </.ui_button>
         ...> """
     ''',
     '''
         """
-        <a href="/" class="a-button a-button--ui">
+        <a href="/" class="a-button">
           Publish
         </a>
         """
@@ -69,14 +72,14 @@ defmodule BitstylesPhoenix.Component.Button do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_button href="/" variant="ui" disabled>
+        ...> <.ui_button href="/" disabled>
         ...>   Publish
         ...> </.ui_button>
         ...> """
     ''',
     '''
         """
-        <button type="button" class="a-button a-button--ui" disabled="disabled">
+        <button type="button" class="a-button" disabled="disabled">
           Publish
         </button>
         """
@@ -122,18 +125,37 @@ defmodule BitstylesPhoenix.Component.Button do
   )
 
   story(
-    "UI button",
+    "Secondary button",
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_button type="submit" variant={:ui}>
+        ...> <.ui_button type="submit" color={:secondary}>
         ...>   Save
         ...> </.ui_button>
         ...> """
     ''',
     '''
         """
-        <button type="submit" class="a-button a-button--ui">
+        <button type="submit" class="a-button a-button--secondary">
+          Save
+        </button>
+        """
+    '''
+  )
+
+  story(
+    "Small button",
+    '''
+        iex> assigns = %{}
+        ...> render ~H"""
+        ...> <.ui_button type="submit" shape={:small}>
+        ...>   Save
+        ...> </.ui_button>
+        ...> """
+    ''',
+    '''
+        """
+        <button type="submit" class="a-button a-button--small">
           Save
         </button>
         """
@@ -145,7 +167,7 @@ defmodule BitstylesPhoenix.Component.Button do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_button type="submit" variant={:danger}>
+        ...> <.ui_button type="submit" color={:danger}>
         ...>   Save
         ...> </.ui_button>
         ...> """
@@ -262,9 +284,27 @@ defmodule BitstylesPhoenix.Component.Button do
   )
 
   def ui_button(assigns) do
-    extra = assigns_to_attributes(assigns, [:icon, :class, :variant])
+    extra = assigns_to_attributes(assigns, [:icon, :class, :color, :shape, :variant])
 
-    class = classnames(["a-button"] ++ variant_classes(assigns[:variant]) ++ [assigns[:class]])
+    assigns =
+      if Bitstyles.version() >= "5.0.0" && assigns[:variant] do
+        IO.warn("Attribute `variant` is deprecated in ui_button/1! Change to `color` and `shape`")
+
+        assigns
+        |> assign(:color, variant_to_color(assigns[:variant]))
+        |> assign(:shape, variant_to_shape(assigns[:variant]))
+      else
+        assigns
+      end
+
+    classes =
+      if Bitstyles.version() >= "5.0.0" do
+        color_and_shape_classes(assigns[:color], assigns[:shape])
+      else
+        variant_classes(assigns[:variant])
+      end
+
+    class = classnames(["a-button"] ++ classes ++ [assigns[:class]])
 
     assigns =
       assigns
@@ -315,6 +355,27 @@ defmodule BitstylesPhoenix.Component.Button do
       </button>
     <% end %>
     """
+  end
+
+  defp variant_to_color("danger"), do: "danger"
+  defp variant_to_color("icon-reversed"), do: "transparent"
+  defp variant_to_color("icon"), do: "secondary"
+  defp variant_to_color("nav-large"), do: "transparent"
+  defp variant_to_color("nav"), do: "transparent"
+  defp variant_to_color("tab"), do: "tab"
+  defp variant_to_color("ui"), do: "secondary"
+  defp variant_to_color(_), do: ""
+
+  defp variant_to_shape("icon-reversed"), do: "square"
+  defp variant_to_shape("icon"), do: "square"
+  defp variant_to_shape("small"), do: "small"
+  defp variant_to_shape("tab"), do: "tab"
+  defp variant_to_shape(_), do: ""
+
+  defp color_and_shape_classes(color, shape) do
+    [color, shape]
+    |> Enum.filter(&(&1 not in ["", nil]))
+    |> Enum.map(&"a-button--#{&1}")
   end
 
   defp variant_classes(nil), do: []
@@ -368,19 +429,34 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
         ...> """
     ''',
-    '''
-        """
-        <a href="#" class="a-button a-button--icon" title="Add">
-          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-            <use xlink:href="#icon-plus">
-            </use>
-          </svg>
-          <span class="u-sr-only">
-            Add
-          </span>
-        </a>
-        """
-    ''',
+    [
+      "5.0.1": '''
+          """
+          <a href="#" class="a-button a-button--square" title="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Add
+            </span>
+          </a>
+          """
+      ''',
+      "4.3.0": '''
+          """
+          <a href="#" class="a-button a-button--icon" title="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Add
+            </span>
+          </a>
+          """
+      '''
+    ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-plus" viewBox="0 0 100 100">
@@ -400,7 +476,7 @@ defmodule BitstylesPhoenix.Component.Button do
     ''',
     '''
         """
-        <button type="button" class="a-button a-button--icon foo" title="Delete">
+        <button type="button" class="a-button a-button--square foo" title="Delete">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
             <use xlink:href="assets/icons.svg#icon-bin">
             </use>
@@ -421,19 +497,34 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
         ...> """
     ''',
-    '''
-        """
-        <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
-          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
-            <use xlink:href="#icon-plus">
-            </use>
-          </svg>
-          <span class="u-sr-only">
-            Show
-          </span>
-        </a>
-        """
-    ''',
+    [
+      "5.0.1": '''
+          """
+          <a href="#" class="a-button a-button--square" data-theme="dark" title="Show">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Show
+            </span>
+          </a>
+          """
+      ''',
+      "4.3.0": '''
+          """
+          <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Show
+            </span>
+          </a>
+          """
+      '''
+    ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-plus" viewBox="0 0 100 100">
@@ -444,7 +535,22 @@ defmodule BitstylesPhoenix.Component.Button do
   )
 
   def ui_icon_button(assigns) do
-    extra = assigns_to_attributes(assigns, [:icon, :label, :reversed, :variant, :title])
+    extra = assigns_to_attributes(assigns, [:icon, :label, :reversed, :color, :title])
+
+    extra =
+      if Bitstyles.version() >= "5.0.0" do
+        if assigns[:reversed] do
+          Keyword.put_new(extra, :"data-theme", "dark")
+        else
+          extra
+        end
+      else
+        if assigns[:reversed] do
+          Keyword.put_new(extra, :variant, ["icon", "icon-reversed"])
+        else
+          Keyword.put_new(extra, :variant, ["icon"])
+        end
+      end
 
     {icon, icon_opts} =
       case assigns.icon do
@@ -452,12 +558,17 @@ defmodule BitstylesPhoenix.Component.Button do
         icon -> {icon, []}
       end
 
-    icon_reversed = if assigns[:reversed], do: ["icon-reversed"], else: []
-    variant = [:icon] ++ icon_reversed ++ List.wrap(assigns[:variant])
-    assigns = assign(assigns, extra: extra, icon: icon, icon_opts: icon_opts, variant: variant)
+    assigns =
+      assign(assigns,
+        extra: extra,
+        icon: icon,
+        icon_opts: icon_opts,
+        color: assigns[:color],
+        icon_after: assigns[:reversed]
+      )
 
     ~H"""
-    <.ui_button variant={@variant} title={assigns[:title] || @label} {@extra}>
+    <.ui_button shape={:square} color={@color} title={assigns[:title] || @label} {@extra}>
       <.ui_icon name={@icon} {@icon_opts}/>
       <span class={classnames("u-sr-only")}><%= @label %></span>
     </.ui_button>
