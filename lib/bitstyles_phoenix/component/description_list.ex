@@ -20,7 +20,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         """
         <dl class="a-dl">
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-l u-padding-m-y u-padding-m@m u-items-baseline">
-            <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
+            <dt class="u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s">
               Length
             </dt>
             <dd class="u-col-span-2">
@@ -28,7 +28,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
             </dd>
           </div>
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-l u-padding-m-y u-padding-m@m u-items-baseline">
-            <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
+            <dt class="u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s">
               Inserted at
             </dt>
             <dd class="u-col-span-2">
@@ -64,7 +64,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         """
         <dl class="a-dl extra" data-foo="baz">
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-l u-padding-m-y u-padding-m@m u-items-baseline u-fg-brand-2">
-            <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
+            <dt class="u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s">
               Length
             </dt>
             <dd class="u-col-span-2">
@@ -72,7 +72,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
             </dd>
           </div>
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-l u-padding-m-y u-padding-m@m u-items-baseline">
-            <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s u-fg-brand-1" data-foo="bar">
+            <dt class="u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s u-fg-brand-1" data-foo="bar">
               Some
             </dt>
             <dd class="u-col-span-2 u-fg-brand-1" data-foo="bar">
@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
             </dd>
           </div>
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-gap-l u-padding-m-y u-padding-m@m u-items-baseline">
-            <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
+            <dt class="u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s">
               <pre>
                 Tag
               </pre>
@@ -162,7 +162,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
     assigns = assign(assigns, extra: extra)
 
     ~H"""
-    <dt class={classnames(["u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s", assigns[:class]])} {@extra}>
+    <dt class={classnames(["u-font-medium u-h6 u-fg-text u-margin-xs-bottom@s", assigns[:class]])} {@extra}>
       <%= render_slot(@inner_block) %>
     </dt>
     """

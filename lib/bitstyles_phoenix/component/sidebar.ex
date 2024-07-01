@@ -43,7 +43,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text-light">
                 Large header
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   </div>
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text-light">
                 Small header
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
@@ -207,13 +207,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text-light">
                 Large header
                 <div>
                   Sidebar
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text-light">
                 Small header
                 <div>
                   Sidebar
@@ -247,9 +247,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text-light">
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text-light">
               </div>
             </nav>
           </header>
@@ -264,8 +264,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     transparent: false
   )
 
-  @default_bg "gray-80"
-  @default_fg "gray-30"
+  @default_bg "gray-darker"
+  @default_fg "text-light"
   @large_classes "u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col"
   @small_classes "o-sidebar--small u-flex u-flex-col u-hidden@l"
 
