@@ -36,8 +36,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>   </:small_sidebar>
         ...>   <:sidebar_content>
         ...>     <.ui_sidebar_nav>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
         ...>   <:main :let={s} class="u-margin-s-top">
@@ -63,12 +63,12 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                 </a>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
@@ -83,7 +83,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </span>
                   </a>
                   <div>
-                    <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button a-button--icon a-button--icon-reversed" title="Close">
+                    <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = false" aria-controls="sidebar-small" class="a-button a-button--square" data-theme="dark" title="Close">
                       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                         <use xlink:href="#icon-cross">
                         </use>
@@ -96,12 +96,12 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
@@ -111,7 +111,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
           </header>
           <main class="u-flex-grow-1 u-overflow-y-auto u-margin-s-top">
             <div class="a-content flex">
-              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--icon u-hidden@l u-margin-s-right" title="Open sidebar">
+              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--square u-hidden@l u-margin-s-right" title="Open sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-hamburger">
                   </use>

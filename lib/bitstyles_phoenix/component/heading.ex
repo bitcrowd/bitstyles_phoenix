@@ -64,10 +64,10 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button>Edit</.ui_button>
         ...>   </:action>
         ...>   <:action>
-        ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>     <.ui_button color="danger">Delete</.ui_button>
         ...>   </:action>
         ...>   <:action show={false}>
-        ...>     <.ui_button variant="danger">Hide me</.ui_button>
+        ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_page_title>
         ...> """
@@ -218,10 +218,10 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button>Edit</.ui_button>
         ...>   </:action>
         ...>   <:action>
-        ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>     <.ui_button color="danger">Delete</.ui_button>
         ...>   </:action>
         ...>   <:action show={false}>
-        ...>     <.ui_button variant="danger">Hide me</.ui_button>
+        ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_section_title>
         ...> """

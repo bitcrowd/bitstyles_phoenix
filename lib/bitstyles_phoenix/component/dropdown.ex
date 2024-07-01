@@ -2,6 +2,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   use BitstylesPhoenix.Component
 
   import BitstylesPhoenix.Component.Button
+  alias BitstylesPhoenix.Bitstyles
 
   @moduledoc """
   The dropdown component without any JS.
@@ -69,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       "5.0.1": '''
           """
           <div class="u-relative">
-            <button type="button" class="a-button a-button--ui">
+            <button type="button" class="a-button a-button--secondary">
               <span class="a-button__label">
                 Select me
               </span>
@@ -80,12 +81,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
                 </a>
               </li>
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 2
                 </a>
               </li>
@@ -158,14 +159,14 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   )
 
   story(
-    "Dropdown with menu variant top",
+    "Dropdown with menu variant top, primary button",
     '''
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
         ...>   <div class="u-flex-grow-1"></div>
         ...>   <.ui_dropdown variant={:top}>
-        ...>     <:button label="Select me"/>
+        ...>     <:button color={} label="Select me"/>
         ...>     <:menu>
         ...>       <.ui_dropdown_option href="#" class="u-h6">
         ...>         Option 1
@@ -184,7 +185,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative">
-            <button type="button" class="a-button a-button--ui">
+            <button type="button" class="a-button">
               <span class="a-button__label">
                 Select me
               </span>
@@ -195,12 +196,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top u-margin-s-bottom">
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
                 </a>
               </li>
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 2
                 </a>
               </li>
@@ -239,7 +240,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     '''
         """
         <div class="u-relative u-flex u-justify-end">
-          <button type="button" class="a-button a-button--ui">
+          <button type="button" class="a-button a-button--secondary">
             <span class="a-button__label">
               Select me
             </span>
@@ -250,12 +251,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           </button>
           <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--right u-margin-s-top">
             <li>
-              <a href="#" class="a-button a-button--menu">
+              <a href="#" class="a-button a-button--transparent a-button--menu">
                 Option 1
               </a>
             </li>
             <li>
-              <a href="#" class="a-button a-button--menu">
+              <a href="#" class="a-button a-button--transparent a-button--menu">
                 Option 2
               </a>
             </li>
@@ -300,7 +301,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <div class="u-flex-grow-1">
           </div>
           <div class="u-relative u-flex u-justify-end">
-            <button type="button" class="a-button a-button--ui">
+            <button type="button" class="a-button a-button--secondary">
               <span class="a-button__label">
                 Select me
               </span>
@@ -311,12 +312,12 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--right u-margin-s-bottom">
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
                 </a>
               </li>
               <li>
-                <a href="#" class="a-button a-button--menu u-h6">
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 2
                 </a>
               </li>
@@ -356,17 +357,17 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     '''
         """
         <div class="u-relative">
-          <button type="button" class="a-button a-button--ui foo">
+          <button type="button" class="a-button a-button--secondary foo">
             Custom button content
           </button>
           <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
             <li>
-              <a href="#" class="a-button a-button--menu u-h6">
+              <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                 Option 1
               </a>
             </li>
             <li>
-              <a href="#" class="a-button a-button--menu u-h6">
+              <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                 Option 2
               </a>
             </li>
@@ -404,7 +405,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         """
         <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">
-            <button type="button" aria-controls="dropdown-1" class="a-button a-button--ui" onclick=\"toggle(&#39;dropdown-1&#39;)\">
+            <button type="button" aria-controls="dropdown-1" class="a-button a-button--secondary" onclick=\"toggle(&#39;dropdown-1&#39;)\">
               <span class="a-button__label">
                 Select me
               </span>
@@ -415,19 +416,19 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </button>
             <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
               <li>
-                <a href="#" class="a-button a-button--menu foo">
+                <a href="#" class="a-button a-button--transparent a-button--menu foo">
                   Option 1
                 </a>
               </li>
               <li>
-                <a href="#" class="a-button a-button--menu">
+                <a href="#" class="a-button a-button--transparent a-button--menu">
                   Option 2
                 </a>
               </li>
               <li role="separator">
               </li>
               <li>
-                <a href="#" class="a-button a-button--menu">
+                <a href="#" class="a-button a-button--transparent a-button--menu">
                   Option 3
                 </a>
               </li>
@@ -455,8 +456,16 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       assigns_from_single_slot(assigns, :button, exclude: [:label, :icon_file])
 
     button_extra =
+      if Bitstyles.version() >= "5.0.0" do
+        button_extra
+        |> Keyword.put_new(:color, :secondary)
+      else
+        button_extra
+        |> Keyword.put_new(:variant, :ui)
+      end
+
+    button_extra =
       button_extra
-      |> Keyword.put_new(:variant, :ui)
       |> maybe_put_icon(button[:label], button[:icon_file])
 
     {menu, menu_extra} = assigns_from_single_slot(assigns, :menu, exclude: [:class])
@@ -505,7 +514,16 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     extra =
       assigns
       |> assigns_to_attributes()
-      |> Keyword.put_new(:variant, "menu")
+
+    extra =
+      if Bitstyles.version() >= "5.0.0" do
+        extra
+        |> Keyword.put_new(:shape, "menu")
+        |> Keyword.put_new(:color, "transparent")
+      else
+        extra
+        |> Keyword.put_new(:variant, "menu")
+      end
 
     assigns = assign(assigns, extra: extra)
 

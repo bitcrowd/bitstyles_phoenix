@@ -17,12 +17,12 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       Menu
         ...>     </.ui_sidebar_section>
         ...>     <.ui_sidebar_nav>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>     <.ui_sidebar_section border="top">
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
-        ...>         <:button variant="nav-large">
+        ...>         <:button color="transparent">
         ...>           <div class="a-button__icon a-avatar">
         ...>             <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar" />
         ...>           </div>
@@ -50,19 +50,19 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button type="button" class="a-button a-button--nav-large">
+                    <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
                         <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
@@ -87,19 +87,19 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 </div>
                 <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button type="button" class="a-button a-button--nav-large">
+                    <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
                         <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>

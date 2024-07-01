@@ -193,7 +193,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     assigns = assign(assigns, extra: Keyword.merge(extra, active))
 
     ~H"""
-    <.ui_button {@extra} variant="tab">
+    <.ui_button {@extra} color="tab" shape="tab">
       <%= render_slot(@inner_block) %>
     </.ui_button>
     """
