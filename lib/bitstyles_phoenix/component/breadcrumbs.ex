@@ -41,6 +41,35 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         ...> """
     ''',
     [
+      "6.0.0": '''
+          """
+          <nav aria-label="breadcrumbs">
+            <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Foo
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Bar
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+              <li class="u-margin-xs-right u-flex u-items-center">
+                Baz
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                  <use xlink:href="#icon-caret-right">
+                  </use>
+                </svg>
+              </li>
+            </ol>
+          </nav>
+          """
+      ''',
       "5.0.1": '''
           """
           <nav aria-label="breadcrumbs">

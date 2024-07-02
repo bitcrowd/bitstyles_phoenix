@@ -430,6 +430,19 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> """
     ''',
     [
+      "6.0.0": '''
+          """
+          <a href="#" class="a-button a-button--square" title="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Add
+            </span>
+          </a>
+          """
+      ''',
       "5.0.1": '''
           """
           <a href="#" class="a-button a-button--square" title="Add">
@@ -498,6 +511,19 @@ defmodule BitstylesPhoenix.Component.Button do
         ...> """
     ''',
     [
+      "6.0.0": '''
+          """
+          <a href="#" class="a-button a-button--square" data-theme="dark" title="Show">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-plus">
+              </use>
+            </svg>
+            <span class="u-sr-only">
+              Show
+            </span>
+          </a>
+          """
+      ''',
       "5.0.1": '''
           """
           <a href="#" class="a-button a-button--square" data-theme="dark" title="Show">
