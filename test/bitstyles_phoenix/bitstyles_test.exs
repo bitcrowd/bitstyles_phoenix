@@ -41,6 +41,9 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-fg-text", "5.0.0") == "u-fg-text"
       assert classname("u-fg-text-darker", "5.0.0") == "u-fg-text-darker"
       assert classname("u-bg-gray-darker", "5.0.0") == "u-bg-gray-darker"
+      assert classname("u-border-gray-light", "5.0.0") == "u-border-gray-light"
+      assert classname("u-border-gray-light-bottom", "5.0.0") == "u-border-gray-light-bottom"
+      assert classname("u-border-gray-dark", "5.0.0") == "u-border-gray-dark"
     end
 
     test "version 4.3.0" do
@@ -73,6 +76,10 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-fg-text", "4.3.0") == "u-fg-gray-30"
       assert classname("u-fg-text-darker", "4.3.0") == "u-fg-gray-50"
       assert classname("u-bg-gray-darker", "4.3.0") == "u-bg-gray-80"
+      # TODO: top bottom
+      assert classname("u-border-gray-light", "4.3.0") == "u-border-gray-10"
+      assert classname("u-border-gray-light-bottom", "4.3.0") == "u-border-gray-10-bottom"
+      assert classname("u-border-gray-dark", "4.3.0") == "u-border-gray-70"
     end
 
     test "version 4.2.0" do

@@ -133,7 +133,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     """
   end
 
-  @section_default_border_color "gray-10"
+  @section_default_border_color "gray-light"
 
   @doc ~s"""
   Render a section header with optional `action`s and `title_extra`.
@@ -141,7 +141,7 @@ defmodule BitstylesPhoenix.Component.Heading do
   ## Attributes
   - `class` - Set CSS classes on the outer div.
   - `border` - Controls the bottom border and padding (default: true, boolean)
-  - `border_color` - The border color, defaults to `gray-10` resulting in `u-border-gray-10-bottom`.
+  - `border_color` - The border color, defaults to `gray-light` resulting in `u-border-gray-light-bottom`.
   - `tag` - the heading tag (defaults to h3)
   - `heading_class` - Extra classes on the heading
   - All other attributes are passed to the outer `div` tag.
@@ -168,7 +168,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-10-bottom">
+        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text">
               Section title
@@ -209,7 +209,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_section_title border_color="gray-70" heading_class="extra">
+        ...> <.ui_section_title border_color="gray-light" heading_class="extra">
         ...>   Section title
         ...>   <:title_extra>
         ...>     <.ui_badge>Published</.ui_badge>
@@ -228,7 +228,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-70-bottom">
+        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
               Section title

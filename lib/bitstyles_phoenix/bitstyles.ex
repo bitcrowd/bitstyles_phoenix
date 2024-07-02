@@ -36,6 +36,16 @@ defmodule BitstylesPhoenix.Bitstyles do
         String.replace(acc, "-#{new_size}", "-#{old_size}")
       end)
 
+    border_color_renaming = %{
+      "u-border-gray-light" => "u-border-gray-10",
+      "u-border-gray-dark" => "u-border-gray-70"
+    }
+
+    class =
+      Enum.reduce(border_color_renaming, class, fn {new_border_color, old_border_color}, acc ->
+        String.replace(acc, new_border_color, old_border_color)
+      end)
+
     class =
       case class do
         "u-list-none" -> "a-list-reset"
