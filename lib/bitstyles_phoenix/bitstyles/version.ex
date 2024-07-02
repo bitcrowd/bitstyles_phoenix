@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles.Version do
   @moduledoc false
 
-  @default_version "5.0.1"
+  @default_version "6.0.0"
 
   def version do
     to_tuple(version_string())
