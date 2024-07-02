@@ -2,6 +2,7 @@ defmodule BitstylesPhoenix.Component.Flash do
   use BitstylesPhoenix.Component
 
   import BitstylesPhoenix.Component.Content
+  alias BitstylesPhoenix.Bitstyles
 
   @moduledoc """
   Component for building flash messages.
@@ -36,15 +37,26 @@ defmodule BitstylesPhoenix.Component.Flash do
         ...>   </.ui_flash>
         ...> """)
     ''',
-    '''
-        """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--brand-1">
-          <div class="a-content u-flex u-items-center u-font-medium">
-            Something you may be interested to hear
+    [
+      "6.0.0": '''
+          """
+          <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="brand-1">
+            <div class="a-content u-flex u-items-center u-font-medium">
+              Something you may be interested to hear
+            </div>
           </div>
-        </div>
-        """
-    ''',
+          """
+      ''',
+      "5.0.1": '''
+          """
+          <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
+            <div class="a-content u-flex u-items-center u-font-medium">
+              Something you may be interested to hear
+            </div>
+          </div>
+          """
+      '''
+    ],
     width: "100%"
   )
 
@@ -60,7 +72,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--positive">
+        <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="positive">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved successfully
           </div>
@@ -82,7 +94,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--warning">
+        <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="warning">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved with errors
           </div>
@@ -104,7 +116,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--danger">
+        <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="danger">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saving failed
           </div>
@@ -126,7 +138,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--danger">
+        <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="danger">
           <div class="a-content a-content--full u-flex u-items-center u-font-medium">
             Saving failed
           </div>
@@ -148,7 +160,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--brand-1 extra-class" data-foo="bar">
+        <div aria-live="polite" class="u-padding-l1-y a-flash extra-class" data-theme="brand-1" data-foo="bar">
           <div class="a-content u-flex u-items-center u-font-medium extra-inner-class">
             Saving failed
           </div>
@@ -166,16 +178,23 @@ defmodule BitstylesPhoenix.Component.Flash do
     {content_variants, flash_variants} =
       Enum.split_with(variants, &Enum.member?(@content_variants, &1))
 
+    extra = assigns_to_attributes(assigns, [:class, :content_class, :variant])
+
+    {variant_class, extra} =
+      if Bitstyles.version() >= "6.0.0" do
+        {nil, Keyword.put_new(extra, :"data-theme", Enum.at(flash_variants, 0))}
+      else
+        {flash_variants |> Enum.map_join(" ", &"a-flash--#{&1}"), extra}
+      end
+
     class =
       classnames([
         "u-padding-l1-y a-flash",
-        flash_variants |> Enum.map_join(" ", &"a-flash--#{&1}"),
+        variant_class,
         assigns[:class]
       ])
 
     content_class = classnames(["u-flex u-items-center u-font-medium", assigns[:content_class]])
-
-    extra = assigns_to_attributes(assigns, [:class, :content_class, :variant])
 
     assigns =
       assign(assigns,
