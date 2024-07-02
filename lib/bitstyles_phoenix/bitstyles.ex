@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "5.0.1"
+  @default_version "6.0.0"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
@@ -14,13 +14,63 @@ defmodule BitstylesPhoenix.Bitstyles do
   """
   def classname(name), do: classname(name, version())
 
-  def classname(class, version) when version > "5.0.1" do
+  def classname(class, version) when version > "6.0.0" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
     class
   end
 
-  def classname(class, version) when version >= "5.0.0" do
+  def classname(class, version) when version >= "6.0.0" do
     class
+  end
+
+  def classname(class, version) when version >= "5.0.0" do
+    sizes_renaming = %{
+      "s7" => "4xs",
+      # 3xs has no size equivalent in new sizing
+      # exact match:
+      "s6" => "2xs",
+      "s5" => "2xs",
+      # exact match:
+      "s4" => "xs",
+      "s3" => "xs",
+      # exact match:
+      "s2" => "s",
+      "s1" => "s",
+      # exact match:
+      "m" => "m",
+      # exact match:
+      "l1" => "l",
+      "l2" => "l",
+      # exact match:
+      "l3" => "xl",
+      "l4" => "xl",
+      "l5" => "xl",
+      # exact match:
+      "l6" => "2xl",
+      # exact match:
+      "l7" => "3xl"
+      # 4xl has no size equivalent in new sizing
+    }
+
+    class =
+      Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+        acc
+        |> String.replace("margin-#{new_size}", "margin-#{old_size}")
+        |> String.replace("margin-neg-#{new_size}", "margin-neg-#{old_size}")
+        |> String.replace("padding-#{new_size}", "padding-#{old_size}")
+        |> String.replace("padding-neg-#{new_size}", "padding-neg-#{old_size}")
+        |> String.replace("gap-#{new_size}", "gap-#{old_size}")
+      end)
+
+    class =
+      case class do
+        "u-bg-grayscale-dark-2" -> "u-bg-text-darker"
+        "u-fg-grayscale-dark-2" -> "u-fg-text-darker"
+        "u-fg-grayscale" -> "u-fg-text"
+        class -> class
+      end
+
+    classname(class, "6.0.0")
   end
 
   def classname(class, version) when version >= "4.2.0" do

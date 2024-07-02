@@ -1,5 +1,6 @@
 defmodule BitstylesPhoenix.Component.Badge do
   use BitstylesPhoenix.Component
+  alias BitstylesPhoenix.Bitstyles
 
   @moduledoc """
   The Badge component.
@@ -27,6 +28,13 @@ defmodule BitstylesPhoenix.Component.Badge do
         ...> </.ui_badge>
         ...> """
     ''',
+    "6.0.0": '''
+        """
+        <span class="a-badge u-h6 u-font-medium" data-theme="grayscale">
+          published
+        </span>
+        """
+    ''',
     "5.0.1": '''
         """
         <span class="a-badge u-h6 u-font-medium a-badge--text">
@@ -53,7 +61,14 @@ defmodule BitstylesPhoenix.Component.Badge do
         ...> </.ui_badge>
         ...> """
     ''',
-    '''
+    "6.0.0": '''
+        """
+        <span class="a-badge u-h6 u-font-medium" data-theme="brand-1">
+          new
+        </span>
+        """
+    ''',
+    "5.0.1": '''
         """
         <span class="a-badge u-h6 u-font-medium a-badge--brand-1">
           new
@@ -74,7 +89,7 @@ defmodule BitstylesPhoenix.Component.Badge do
     ''',
     '''
         """
-        <span class="a-badge u-h6 u-font-medium a-badge--brand-2">
+        <span class="a-badge u-h6 u-font-medium" data-theme="brand-2">
           recommended
         </span>
         """
@@ -93,7 +108,7 @@ defmodule BitstylesPhoenix.Component.Badge do
     ''',
     '''
         """
-        <span class="a-badge u-h6 u-font-medium a-badge--danger">
+        <span class="a-badge u-h6 u-font-medium" data-theme="danger">
           deleted
         </span>
         """
@@ -112,7 +127,7 @@ defmodule BitstylesPhoenix.Component.Badge do
     ''',
     '''
         """
-        <span class="a-badge u-h6 u-font-medium a-badge--text extra-class" data-foo="bar">
+        <span class="a-badge u-h6 u-font-medium extra-class" data-theme="grayscale" data-foo="bar">
           published
         </span>
         """
@@ -120,15 +135,24 @@ defmodule BitstylesPhoenix.Component.Badge do
   )
 
   def ui_badge(assigns) do
-    variant = assigns[:variant] || "text"
+    extra = assigns_to_attributes(assigns, [:class, :variant])
+
+    {variant_class, extra} =
+      if Bitstyles.version() >= "6.0.0" do
+        theme = assigns[:variant] || "grayscale"
+        {nil, Keyword.put_new(extra, :"data-theme", theme)}
+      else
+        variant = assigns[:variant] || "text"
+        {"a-badge--#{variant}", extra}
+      end
 
     class =
       classnames([
-        "a-badge u-h6 u-font-medium a-badge--#{variant}",
+        "a-badge u-h6 u-font-medium",
+        variant_class,
         assigns[:class]
       ])
 
-    extra = assigns_to_attributes(assigns, [:class, :variant])
     assigns = assign(assigns, class: class, extra: extra)
     ~H"<span class={@class} {@extra}><%= render_slot(@inner_block) %></span>"
   end
