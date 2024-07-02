@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
+        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
             <button type="button" class="a-button a-button--tab">
               Foo
@@ -76,7 +76,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
+        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
             <button type="button" aria-selected="true" class="a-button a-button--tab">
               Foo
@@ -112,7 +112,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
+        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
           <li class="u-margin-s-right">
             <button type="button" aria-selected="true" class="a-button a-button--tab">
               Foo
@@ -137,7 +137,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
   def ui_tabs(assigns) do
     class =
       classnames([
-        "a-list-reset u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom",
+        "u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom",
         assigns[:class]
       ])
 

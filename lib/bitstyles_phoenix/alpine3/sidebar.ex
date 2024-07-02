@@ -61,7 +61,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     bitcrowd
                   </span>
                 </a>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
@@ -94,7 +94,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </button>
                   </div>
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1

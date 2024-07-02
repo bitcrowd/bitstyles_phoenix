@@ -79,7 +79,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s-top">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
@@ -194,7 +194,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top u-margin-s-bottom">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top u-margin-s-bottom">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
@@ -249,7 +249,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </use>
             </svg>
           </button>
-          <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--right u-margin-s-top">
+          <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--right u-margin-s-top">
             <li>
               <a href="#" class="a-button a-button--transparent a-button--menu">
                 Option 1
@@ -310,7 +310,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--right u-margin-s-bottom">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--right u-margin-s-bottom">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
@@ -360,7 +360,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <button type="button" class="a-button a-button--secondary foo">
             Custom button content
           </button>
-          <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s-top">
+          <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s-top">
             <li>
               <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                 Option 1
@@ -414,7 +414,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu foo">
                   Option 1
@@ -544,7 +544,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   defp maybe_put_icon(button_extra, _, _), do: button_extra
 
-  @menu_classes ~w(a-dropdown u-overflow-y-auto a-list-reset)
+  @menu_classes ~w(a-dropdown u-overflow-y-auto u-list-none)
   defp menu_class(variant, class) do
     classnames(@menu_classes ++ variant_classes(variant) ++ [margin(variant), class])
   end

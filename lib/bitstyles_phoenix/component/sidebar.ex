@@ -48,7 +48,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
@@ -70,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
                         <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
@@ -85,7 +85,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                 <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
@@ -107,7 +107,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
                         <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
@@ -360,7 +360,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
   You can add items `ui_sidebar_nav_item/1` to add items to the navigation.
   """
-  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex " <>
+  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex " <>
                          "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
     extra = assigns_to_attributes(assigns, [:class])

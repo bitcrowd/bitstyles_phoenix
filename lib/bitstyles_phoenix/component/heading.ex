@@ -85,7 +85,7 @@ defmodule BitstylesPhoenix.Component.Heading do
               </span>
             </div>
           </div>
-          <ul class="a-list-reset u-flex u-flex-wrap">
+          <ul class="u-list-none u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
@@ -237,7 +237,7 @@ defmodule BitstylesPhoenix.Component.Heading do
               Published
             </span>
           </div>
-          <ul class="a-list-reset u-flex u-flex-wrap">
+          <ul class="u-list-none u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
@@ -296,7 +296,7 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   defp ui_action_buttons(assigns) do
     ~H"""
-    <ul class={classnames("a-list-reset u-flex u-flex-wrap")}>
+    <ul class={classnames("u-list-none u-flex u-flex-wrap")}>
       <%= for action <- @action do %>
         <%= if Map.get(action, :show, true) do %>
           <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
