@@ -17,14 +17,14 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>       Menu
         ...>     </.ui_sidebar_section>
         ...>     <.ui_sidebar_nav>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #1</.ui_button></.ui_sidebar_nav_item>
-        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" variant="nav">Menu item #2</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #1</.ui_button></.ui_sidebar_nav_item>
+        ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>     <.ui_sidebar_section border="top">
         ...>       <.ui_dropdown variant={["top", "full-width"]}>
-        ...>         <:button variant="nav-large">
+        ...>         <:button color="transparent">
         ...>           <div class="a-button__icon a-avatar">
-        ...>             <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar" />
+        ...>             <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar" />
         ...>           </div>
         ...>           <span class="a-button__label">Jane Dobermann</span>
         ...>         </:button>
@@ -43,36 +43,36 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
                 Large header
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
+                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
+                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button type="button" class="a-button a-button--nav-large">
+                    <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
-                        <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
+                        <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
                       <span class="a-button__label">
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a href="#" class="a-button a-button--menu">
+                        <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
                         </a>
                       </li>
@@ -80,36 +80,36 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   </div>
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
                 Small header
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-bottom u-margin-xs-bottom">
+                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-xs-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
                   <li class="u-margin-xs-bottom u-flex">
-                    <a href="#" class="a-button a-button--nav u-flex-grow-1">
+                    <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-70-top u-margin-xs-top">
+                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-top u-margin-xs-top">
                   <div class="u-relative">
-                    <button type="button" class="a-button a-button--nav-large">
+                    <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
-                        <img src="https://placekitten.com/100/150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
+                        <img src="https://placehold.co/100x150" width="36" height="54" alt="Jane Dobermann’s avatar" class="a-avatar"/>
                       </div>
                       <span class="a-button__label">
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto a-list-reset a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
                       <li>
-                        <a href="#" class="a-button a-button--menu">
+                        <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
                         </a>
                       </li>
@@ -207,13 +207,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
                 Large header
                 <div>
                   Sidebar
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
                 Small header
                 <div>
                   Sidebar
@@ -247,9 +247,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-80 u-fg-gray-30">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-80 u-fg-gray-30">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
               </div>
             </nav>
           </header>
@@ -264,8 +264,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     transparent: false
   )
 
-  @default_bg "gray-80"
-  @default_fg "gray-30"
+  @default_bg "gray-darker"
+  @default_fg "text"
   @large_classes "u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col"
   @small_classes "o-sidebar--small u-flex u-flex-col u-hidden@l"
 
@@ -360,7 +360,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
   You can add items `ui_sidebar_nav_item/1` to add items to the navigation.
   """
-  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto a-list-reset u-flex " <>
+  @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex " <>
                          "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
   def ui_sidebar_nav(assigns) do
     extra = assigns_to_attributes(assigns, [:class])
@@ -406,13 +406,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   - `class` - Extra classes to pass to the outer `div`
     See `BitstylesPhoenix.Helper.classnames/1` for usage.
   - `border` - Either `:top` or `:bottom` (optional)
-  - `border_color` - The border color, defaults to `gray-70` resulting in
-     `u-border-gray-70-top` for a `:top` border.
+  - `border_color` - The border color, defaults to `gray-dark` resulting in
+     `u-border-gray-dark-top` for a `:top` border.
   - All other attributes are passed on to the outer `div`
   """
 
   @sidebar_section_classes "u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col"
-  @sidebar_section_default_border_color "gray-70"
+  @sidebar_section_default_border_color "gray-dark"
   def ui_sidebar_section(assigns) do
     border_color = Map.get(assigns, :border_color, @sidebar_section_default_border_color)
     border = Map.get(assigns, :border)

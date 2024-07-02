@@ -19,14 +19,14 @@ defmodule BitstylesPhoenix.Component.Avatar do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_avatar src="https://placekitten.com/100/100" alt="Username’s avatar"/>
+        ...> <.ui_avatar src="https://placehold.co/100x100" alt="Username’s avatar"/>
         ...> """
     ''',
     '''
         """
         <div class="u-flex u-items-center">
           <div class="a-avatar">
-            <img height="32" width="32" alt="Username’s avatar" src="https://placekitten.com/100/100"/>
+            <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
         </div>
         """
@@ -38,14 +38,14 @@ defmodule BitstylesPhoenix.Component.Avatar do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_avatar src="https://placekitten.com/100/100" class="foo bar" alt="Username’s avatar"/>
+        ...> <.ui_avatar src="https://placehold.co/100x100" class="foo bar" alt="Username’s avatar"/>
         ...> """
     ''',
     '''
         """
         <div class="u-flex u-items-center">
           <div class="a-avatar foo bar">
-            <img height="32" width="32" alt="Username’s avatar" src="https://placekitten.com/100/100"/>
+            <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
         </div>
         """
@@ -57,14 +57,14 @@ defmodule BitstylesPhoenix.Component.Avatar do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_avatar size="l" src="https://placekitten.com/100/100" alt="Username’s avatar" height="46" width="46"/>
+        ...> <.ui_avatar size="l" src="https://placehold.co/100x100" alt="Username’s avatar" height="46" width="46"/>
         ...> """
     ''',
     '''
         """
         <div class="u-flex u-items-center">
           <div class="a-avatar a-avatar--l">
-            <img alt="Username’s avatar" height="46" src="https://placekitten.com/100/100" width="46"/>
+            <img alt="Username’s avatar" height="46" src="https://placehold.co/100x100" width="46"/>
           </div>
         </div>
         """
@@ -76,14 +76,14 @@ defmodule BitstylesPhoenix.Component.Avatar do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_avatar src="https://placekitten.com/100/100" alt="Username’s avatar"> Username </.ui_avatar>
+        ...> <.ui_avatar src="https://placehold.co/100x100" alt="Username’s avatar"> Username </.ui_avatar>
         ...> """
     ''',
     '''
         """
         <div class="u-flex u-items-center">
           <div class="a-avatar">
-            <img height="32" width="32" alt="Username’s avatar" src="https://placekitten.com/100/100"/>
+            <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
           <span class="u-margin-s-left">
             Username

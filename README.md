@@ -10,7 +10,7 @@ Basic helpers for [bitstyles](https://github.com/bitcrowd/bitstyles) for elixir 
 
 Bitstyles must be installed separately into the asset generation. The helpers in this project just output classes for working with bitstyles.
 
-Bitstyles versions from 4.3.0 down to 1.3.0 are supported.
+Bitstyles versions from 5.0.1 down to 1.3.0 are supported.
 
 ## Installation
 

@@ -64,10 +64,10 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button>Edit</.ui_button>
         ...>   </:action>
         ...>   <:action>
-        ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>     <.ui_button color="danger">Delete</.ui_button>
         ...>   </:action>
         ...>   <:action show={false}>
-        ...>     <.ui_button variant="danger">Hide me</.ui_button>
+        ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_page_title>
         ...> """
@@ -80,12 +80,12 @@ defmodule BitstylesPhoenix.Component.Heading do
               Title
             </h1>
             <div class="u-flex-shrink-0 u-margin-m-bottom">
-              <span class="a-badge u-h6 u-font-medium a-badge--gray">
+              <span class="a-badge u-h6 u-font-medium a-badge--text">
                 Published
               </span>
             </div>
           </div>
-          <ul class="a-list-reset u-flex u-flex-wrap">
+          <ul class="u-list-none u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
@@ -133,7 +133,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     """
   end
 
-  @section_default_border_color "gray-10"
+  @section_default_border_color "gray-light"
 
   @doc ~s"""
   Render a section header with optional `action`s and `title_extra`.
@@ -141,7 +141,7 @@ defmodule BitstylesPhoenix.Component.Heading do
   ## Attributes
   - `class` - Set CSS classes on the outer div.
   - `border` - Controls the bottom border and padding (default: true, boolean)
-  - `border_color` - The border color, defaults to `gray-10` resulting in `u-border-gray-10-bottom`.
+  - `border_color` - The border color, defaults to `gray-light` resulting in `u-border-gray-light-bottom`.
   - `tag` - the heading tag (defaults to h3)
   - `heading_class` - Extra classes on the heading
   - All other attributes are passed to the outer `div` tag.
@@ -168,7 +168,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-10-bottom">
+        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text">
               Section title
@@ -209,7 +209,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     '''
         iex> assigns = %{}
         ...> render ~H"""
-        ...> <.ui_section_title border_color="gray-70" heading_class="extra">
+        ...> <.ui_section_title border_color="gray-light" heading_class="extra">
         ...>   Section title
         ...>   <:title_extra>
         ...>     <.ui_badge>Published</.ui_badge>
@@ -218,26 +218,26 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button>Edit</.ui_button>
         ...>   </:action>
         ...>   <:action>
-        ...>     <.ui_button variant="danger">Delete</.ui_button>
+        ...>     <.ui_button color="danger">Delete</.ui_button>
         ...>   </:action>
         ...>   <:action show={false}>
-        ...>     <.ui_button variant="danger">Hide me</.ui_button>
+        ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_section_title>
         ...> """
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-70-bottom">
+        <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
               Section title
             </h3>
-            <span class="a-badge u-h6 u-font-medium a-badge--gray">
+            <span class="a-badge u-h6 u-font-medium a-badge--text">
               Published
             </span>
           </div>
-          <ul class="a-list-reset u-flex u-flex-wrap">
+          <ul class="u-list-none u-flex u-flex-wrap">
             <li class="u-margin-s-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
@@ -296,7 +296,7 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   defp ui_action_buttons(assigns) do
     ~H"""
-    <ul class={classnames("a-list-reset u-flex u-flex-wrap")}>
+    <ul class={classnames("u-list-none u-flex u-flex-wrap")}>
       <%= for action <- @action do %>
         <%= if Map.get(action, :show, true) do %>
           <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
