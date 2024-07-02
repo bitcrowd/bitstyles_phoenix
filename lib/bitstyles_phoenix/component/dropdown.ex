@@ -79,7 +79,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto a-list-reset u-margin-s2-top">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s2-top">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
