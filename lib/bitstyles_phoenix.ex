@@ -109,7 +109,7 @@ defmodule BitstylesPhoenix do
 
   You can control how required labels are rendered. By default you will get this appended to your labels if the input is required:
   ```html
-    <span aria-hidden="true" class="u-fg-warning u-margin-xss-left">*</span>
+    <span aria-hidden="true" class="u-fg-warning u-margin-s4s-left">*</span>
   ```
 
   You can override it by specifying your own component to render the required labels. The component will get the form and the field as assigns, as well as any optional parameters you pass in the MFA as `@opts`.
