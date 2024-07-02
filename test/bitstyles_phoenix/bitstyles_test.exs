@@ -25,6 +25,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-content--l", "6.0.0") == "u-content--l"
 
       assert classname("u-fg-grayscale", "6.0.0") == "u-fg-grayscale"
+      assert classname("u-fg-grayscale-dark-2", "6.0.0") == "u-fg-grayscale-dark-2"
     end
 
     test "version 5.0.0" do
@@ -74,6 +75,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-content--l", "5.0.0") == "u-content--l"
 
       assert classname("u-fg-grayscale", "5.0.0") == "u-fg-text"
+      assert classname("u-fg-grayscale-dark-2", "5.0.0") == "u-fg-text-darker"
     end
 
     test "version 4.3.0" do
