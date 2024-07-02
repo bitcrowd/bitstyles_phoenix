@@ -79,6 +79,7 @@ defmodule BitstylesPhoenix.Bitstyles do
 
     class =
       case class do
+        "u-bg-grayscale-dark-2" -> "u-bg-text-darker"
         "u-fg-grayscale-dark-2" -> "u-fg-text-darker"
         "u-fg-grayscale" -> "u-fg-text"
         class -> class

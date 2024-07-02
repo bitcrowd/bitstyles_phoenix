@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         <div class="u-flex u-height-100vh" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 <a href="#" class="u-padding-l">
                   <img src="assets/logo.svg" aria-hidden="true" width="100"/>
                   <span class="u-sr-only">
@@ -74,7 +74,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                   </li>
                 </ul>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
                 <div class="u-flex">
                   <a href="#" class="u-flex-grow-1 u-padding-l">
                     <img src="assets/logo.svg" aria-hidden="true" width="100"/>
