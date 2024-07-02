@@ -76,7 +76,6 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-fg-text", "4.3.0") == "u-fg-gray-30"
       assert classname("u-fg-text-darker", "4.3.0") == "u-fg-gray-50"
       assert classname("u-bg-gray-darker", "4.3.0") == "u-bg-gray-80"
-      # TODO: top bottom
       assert classname("u-border-gray-light", "4.3.0") == "u-border-gray-10"
       assert classname("u-border-gray-light-bottom", "4.3.0") == "u-border-gray-10-bottom"
       assert classname("u-border-gray-dark", "4.3.0") == "u-border-gray-70"
