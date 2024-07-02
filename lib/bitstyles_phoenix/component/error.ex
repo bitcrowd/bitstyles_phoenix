@@ -71,7 +71,7 @@ defmodule BitstylesPhoenix.Component.Error do
     ''',
     '''
         """
-        <ul class="u-padding-xl-left">
+        <ul class="u-padding-l3-left">
           <li>
             <span class="u-fg-warning" phx-feedback-for="user[email]">
               is invalid
@@ -105,7 +105,7 @@ defmodule BitstylesPhoenix.Component.Error do
         """
 
       errors ->
-        class = classnames(["u-padding-xl-left", assigns[:class]])
+        class = classnames(["u-padding-l3-left", assigns[:class]])
         assigns = assign(assigns, class: class, errors: errors)
 
         ~H"""
