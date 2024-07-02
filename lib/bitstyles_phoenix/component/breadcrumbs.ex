@@ -45,23 +45,23 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
           """
           <nav aria-label="breadcrumbs">
             <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
-              <li class="u-margin-xs-right u-flex u-items-center">
+              <li class="u-margin-s4-right u-flex u-items-center">
                 Foo
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-caret-right">
                   </use>
                 </svg>
               </li>
-              <li class="u-margin-xs-right u-flex u-items-center">
+              <li class="u-margin-s4-right u-flex u-items-center">
                 Bar
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-caret-right">
                   </use>
                 </svg>
               </li>
-              <li class="u-margin-xs-right u-flex u-items-center">
+              <li class="u-margin-s4-right u-flex u-items-center">
                 Baz
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-caret-right">
                   </use>
                 </svg>
@@ -150,23 +150,23 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         """
         <nav aria-label="breadcrumbs">
           <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
-            <li class="u-margin-xs-right u-flex u-items-center">
+            <li class="u-margin-s4-right u-flex u-items-center">
               Foo
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
             </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
+            <li class="u-margin-s4-right u-flex u-items-center">
               Bar
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
             </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
+            <li class="u-margin-s4-right u-flex u-items-center">
               Baz
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
@@ -200,23 +200,23 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         """
         <nav aria-label="breadcrumbs" data-foo="bar">
           <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center u-fg-warning">
-            <li class="u-margin-xs-right u-flex u-items-center u-fg-brand-2" data-baz="foo">
+            <li class="u-margin-s4-right u-flex u-items-center u-fg-brand-2" data-baz="foo">
               Foo
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
             </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
+            <li class="u-margin-s4-right u-flex u-items-center">
               Bar
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
             </li>
-            <li class="u-margin-xs-right u-flex u-items-center">
+            <li class="u-margin-s4-right u-flex u-items-center">
               Baz
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-text u-margin-xs-left" focusable="false" height="16" width="16">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m u-fg-grayscale u-margin-s4-left" focusable="false" height="16" width="16">
                 <use xlink:href="#icon-caret-right">
                 </use>
               </svg>
@@ -244,11 +244,11 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
         <ol class={classnames(["u-h6 u-list-none u-flex u-flex-wrap u-items-center", assigns[:class]])}>
           <%= for item <- (assigns[:item] || assigns[:items]) do %>
             <li
-              class={classnames(["u-margin-xs-right u-flex u-items-center", assigns[:item] && item[:class]])}
+              class={classnames(["u-margin-s4-right u-flex u-items-center", assigns[:item] && item[:class]])}
               {assigns[:item] && assigns_to_attributes(item, [:class]) || []}
             >
               <%= if assigns[:item], do: render_slot(item), else: item %>
-              <.ui_icon name="caret-right" size="m" class={classnames("u-fg-text u-margin-xs-left")} {@icon_extra} />
+              <.ui_icon name="caret-right" size="m" class={classnames("u-fg-grayscale u-margin-s4-left")} {@icon_extra} />
             </li>
           <% end %>
         </ol>

@@ -80,18 +80,18 @@ defmodule BitstylesPhoenix.Component.Heading do
               Title
             </h1>
             <div class="u-flex-shrink-0 u-margin-m-bottom">
-              <span class="a-badge u-h6 u-font-medium a-badge--text">
+              <span class="a-badge u-h6 u-font-medium" data-theme="grayscale">
                 Published
               </span>
             </div>
           </div>
           <ul class="u-list-none u-flex u-flex-wrap">
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s2-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
               </button>
             </li>
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s2-right u-margin-m-bottom">
               <button type="button" class="a-button a-button--danger">
                 Delete
               </button>
@@ -233,17 +233,17 @@ defmodule BitstylesPhoenix.Component.Heading do
             <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
               Section title
             </h3>
-            <span class="a-badge u-h6 u-font-medium a-badge--text">
+            <span class="a-badge u-h6 u-font-medium" data-theme="grayscale">
               Published
             </span>
           </div>
           <ul class="u-list-none u-flex u-flex-wrap">
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s2-right u-margin-m-bottom">
               <button type="button" class="a-button">
                 Edit
               </button>
             </li>
-            <li class="u-margin-s-right u-margin-m-bottom">
+            <li class="u-margin-s2-right u-margin-m-bottom">
               <button type="button" class="a-button a-button--danger">
                 Delete
               </button>
@@ -299,7 +299,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     <ul class={classnames("u-list-none u-flex u-flex-wrap")}>
       <%= for action <- @action do %>
         <%= if Map.get(action, :show, true) do %>
-          <li class={classnames(["u-margin-s-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
+          <li class={classnames(["u-margin-s2-right u-margin-m-bottom", action[:class]])} {assigns_to_attributes(action, [:class, :show])}>
             <%= render_slot(action) %>
           </li>
         <% end %>

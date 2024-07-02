@@ -85,7 +85,7 @@ defmodule BitstylesPhoenix.Component.Avatar do
           <div class="a-avatar">
             <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
-          <span class="u-margin-s-left">
+          <span class="u-margin-s2-left">
             Username
           </span>
         </div>
@@ -114,7 +114,7 @@ defmodule BitstylesPhoenix.Component.Avatar do
         <img {@extra} />
       </div>
       <%= if assigns[:inner_block] do %>
-        <span class={classnames("u-margin-s-left")}>
+        <span class={classnames("u-margin-s2-left")}>
          <%= render_slot(@inner_block) %>
         </span>
       <% end %>

@@ -37,6 +37,55 @@ defmodule BitstylesPhoenix.Bitstyles do
     class
   end
 
+  defp downgrade_classname(class, target_version, {6, 0, 6}) do
+    # downgrading 6.0.0 -> 5.0.1
+    sizes_renaming = %{
+      "s7" => "4xs",
+      # 3xs has no size equivalent in new sizing
+      # exact match:
+      "s6" => "2xs",
+      "s5" => "2xs",
+      # exact match:
+      "s4" => "xs",
+      "s3" => "xs",
+      # exact match:
+      "s2" => "s",
+      "s1" => "s",
+      # exact match:
+      "m" => "m",
+      # exact match:
+      "l1" => "l",
+      "l2" => "l",
+      # exact match:
+      "l3" => "xl",
+      "l4" => "xl",
+      "l5" => "xl",
+      # exact match:
+      "l6" => "2xl",
+      # exact match:
+      "l7" => "3xl"
+      # 4xl has no size equivalent in new sizing
+    }
+
+    class =
+      Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+        acc
+        |> String.replace("margin-#{new_size}", "margin-#{old_size}")
+        |> String.replace("margin-neg-#{new_size}", "margin-neg-#{old_size}")
+        |> String.replace("padding-#{new_size}", "padding-#{old_size}")
+        |> String.replace("padding-neg-#{new_size}", "padding-neg-#{old_size}")
+        |> String.replace("gap-#{new_size}", "gap-#{old_size}")
+      end)
+
+    class =
+      case class do
+        "u-fg-grayscale" -> "u-fg-text"
+        class -> class
+      end
+
+    downgrade_classname(class, target_version, {5, 0, 1})
+  end
+
   defp downgrade_classname(class, target_version, {5, 0, 1}) do
     # no changes when downgrading 5.0.1 -> 5.0.0
     downgrade_classname(class, target_version, {5, 0, 0})

@@ -4,16 +4,17 @@ defmodule BitstylesPhoenix.BitstylesTest do
   import ExUnit.CaptureIO
 
   describe "classname/2" do
-    test "version 6.0.0" do
+    test "version 6.1.0" do
       assert Regex.match?(
-               ~r/6.0.0 of bitstyles is not yet supported/,
-               capture_io(:stderr, fn -> classname("u-flex", {6, 0, 0}) end)
+               ~r/6.1.0 of bitstyles is not yet supported/,
+               capture_io(:stderr, fn -> classname("u-flex", {6, 1, 0}) end)
              )
     end
 
     test "chained version downgrade" do
       # those class changes are only added in the test environment, to test that chaining works
       # and won't be available to the users of bitstyles_phoenix
+      assert classname("u-version-5-0-0", {6, 0, 0}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {5, 0, 1}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {5, 0, 0}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {4, 3, 0}) == "u-version-4"
@@ -26,6 +27,22 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-version-5-0-0", {1, 5, 0}) == "u-version-1-4"
       assert classname("u-version-5-0-0", {1, 4, 0}) == "u-version-1-4"
       assert classname("u-version-5-0-0", {1, 3, 0}) == "u-version-1-3"
+    end
+
+    test "version 6.0.0" do
+      assert classname("u-margin-s7", {6, 0, 0}) == "u-margin-s7"
+      assert classname("u-margin-s6\@m", {6, 0, 0}) == "u-margin-s6\@m"
+      assert classname("u-margin-s6-bottom", {6, 0, 0}) == "u-margin-s6-bottom"
+      assert classname("u-padding-l6", {6, 0, 0}) == "u-padding-l6"
+      assert classname("u-padding-l7\@l", {6, 0, 0}) == "u-padding-l7\@l"
+      assert classname("u-margin-l7-bottom", {6, 0, 0}) == "u-margin-l7-bottom"
+      assert classname("u-margin-neg-l7-bottom", {6, 0, 0}) == "u-margin-neg-l7-bottom"
+      assert classname("u-gap-l1", {6, 0, 0}) == "u-gap-l1"
+      assert classname("u-gap-s1", {6, 0, 0}) == "u-gap-s1"
+      assert classname("u-content--s", {6, 0, 0}) == "u-content--s"
+      assert classname("u-content--l", {6, 0, 0}) == "u-content--l"
+
+      assert classname("u-fg-grayscale", {6, 0, 0}) == "u-fg-grayscale"
     end
 
     test "version 5.0.0" do
@@ -60,6 +77,21 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-border-gray-light", {5, 0, 0}) == "u-border-gray-light"
       assert classname("u-border-gray-light-bottom", {5, 0, 0}) == "u-border-gray-light-bottom"
       assert classname("u-border-gray-dark", {5, 0, 0}) == "u-border-gray-dark"
+
+      assert classname("u-margin-s7", {5, 0, 0}) == "u-margin-4xs"
+      assert classname("u-margin-s6\@m", {5, 0, 0}) == "u-margin-2xs\@m"
+      assert classname("u-margin-s6-bottom", {5, 0, 0}) == "u-margin-2xs-bottom"
+      assert classname("u-padding-l6", {5, 0, 0}) == "u-padding-2xl"
+      assert classname("u-padding-l7\@l", {5, 0, 0}) == "u-padding-3xl\@l"
+      assert classname("u-margin-l7-bottom", {5, 0, 0}) == "u-margin-3xl-bottom"
+      assert classname("u-margin-neg-l7-bottom", {5, 0, 0}) == "u-margin-neg-3xl-bottom"
+      assert classname("u-gap-l1", {5, 0, 0}) == "u-gap-l"
+      assert classname("u-gap-s1", {5, 0, 0}) == "u-gap-s"
+      # content does not get changed
+      assert classname("u-content--s", {5, 0, 0}) == "u-content--s"
+      assert classname("u-content--l", {5, 0, 0}) == "u-content--l"
+
+      assert classname("u-fg-grayscale", {5, 0, 0}) == "u-fg-text"
     end
 
     test "version 4.3.0" do

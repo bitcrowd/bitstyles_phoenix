@@ -38,7 +38,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--brand-1">
           <div class="a-content u-flex u-items-center u-font-medium">
             Something you may be interested to hear
           </div>
@@ -60,7 +60,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--positive">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--positive">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved successfully
           </div>
@@ -82,7 +82,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--warning">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--warning">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved with errors
           </div>
@@ -104,7 +104,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--danger">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saving failed
           </div>
@@ -126,7 +126,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--danger">
           <div class="a-content a-content--full u-flex u-items-center u-font-medium">
             Saving failed
           </div>
@@ -148,7 +148,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     ''',
     '''
         """
-        <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1 extra-class" data-foo="bar">
+        <div aria-live="polite" class="u-padding-l1-y a-flash a-flash--brand-1 extra-class" data-foo="bar">
           <div class="a-content u-flex u-items-center u-font-medium extra-inner-class">
             Saving failed
           </div>
@@ -168,7 +168,7 @@ defmodule BitstylesPhoenix.Component.Flash do
 
     class =
       classnames([
-        "u-padding-l-y a-flash",
+        "u-padding-l1-y a-flash",
         flash_variants |> Enum.map_join(" ", &"a-flash--#{&1}"),
         assigns[:class]
       ])
