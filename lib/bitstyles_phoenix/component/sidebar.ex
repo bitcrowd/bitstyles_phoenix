@@ -12,7 +12,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> <.ui_sidebar_layout>
         ...>   <:large_sidebar>Large header</:large_sidebar>
         ...>   <:small_sidebar>Small header</:small_sidebar>
-        ...>   <:sidebar_content>
+        ...>   <:sidebar_content data-theme="dark">
         ...>     <.ui_sidebar_section border="bottom">
         ...>       Menu
         ...>     </.ui_sidebar_section>
@@ -43,7 +43,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2" data-theme="dark">
                 Large header
                 <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-s4-bottom">
                   Menu
@@ -80,7 +80,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   </div>
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2" data-theme="dark">
                 Small header
                 <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-s4-bottom">
                   Menu
@@ -207,13 +207,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 Large header
                 <div>
                   Sidebar
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 Small header
                 <div>
                   Sidebar
@@ -247,9 +247,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
               </div>
             </nav>
           </header>
@@ -264,8 +264,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     transparent: false
   )
 
-  @default_bg "gray-darker"
-  @default_fg "text"
+  @default_bg "grayscale-dark-2"
+  @default_fg "grayscale-light-2"
   @large_classes "u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col"
   @small_classes "o-sidebar--small u-flex u-flex-col u-hidden@l"
 
