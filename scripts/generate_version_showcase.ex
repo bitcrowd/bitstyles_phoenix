@@ -251,7 +251,7 @@ defmodule Scripts.GenerateVersionShowcase do
     full_file_path = Path.join(full_dir_path, file_name)
     iframe_src = "/#{relative_dir_path}/#{file_name}"
 
-    iframe_srcdoc = ~s(<html lang="en"><head><title>#{iframe_src}</title><style>#{style}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result]) |> String.replace("\n", "")}</body></html>)
+    iframe_srcdoc = ~s(<html lang="en"><head><title>#{iframe_src}</title><style>#{style}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result])}</body></html>)
 
     File.mkdir_p(full_dir_path)
     File.write!(full_file_path, iframe_srcdoc)
