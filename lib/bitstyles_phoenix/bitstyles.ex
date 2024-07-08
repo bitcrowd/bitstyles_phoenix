@@ -19,6 +19,12 @@ defmodule BitstylesPhoenix.Bitstyles do
     class
   end
 
+  # Note about class renaming:
+  # A renaming of "class-name-A" (newer) to "class-name-B" (older) can only be done via this module if
+  # the "class-name-A" does not also exist in older versions of bitstyles with a different meaning.
+  # If it does exist, then doing this renaming in the classname/2 function would make it impossible
+  # for users of older bitstyles to use the "class-name-A" classname.
+
   def classname(class, version) when version >= "5.0.0" do
     class
   end
@@ -54,7 +60,6 @@ defmodule BitstylesPhoenix.Bitstyles do
       case class do
         "u-list-none" -> "a-list-reset"
         "a-badge--text" -> "a-badge--gray"
-        "u-gap-l" -> "u-gap-m"
         "u-fg-text" -> "u-fg-gray-30"
         "u-fg-text-darker" -> "u-fg-gray-50"
         "u-bg-gray-darker" -> "u-bg-gray-80"
