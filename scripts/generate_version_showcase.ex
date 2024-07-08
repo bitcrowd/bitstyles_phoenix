@@ -124,7 +124,7 @@ defmodule Scripts.GenerateVersionShowcase do
 
     versions_links =
       Enum.map(versions, fn version ->
-        ~s(<li><a href="v#{slugify_version(version)}.html">#{version}</li>)
+        ~s(<li><a href="v#{slugify(version)}.html">#{version}</li>)
       end)
 
     body = """
@@ -139,12 +139,12 @@ defmodule Scripts.GenerateVersionShowcase do
   end
 
   defp write_version_html(version, components) do
-    path = Path.join(@dir_name, "v#{slugify_version(version)}.html")
+    path = Path.join(@dir_name, "v#{slugify(version)}.html")
     title = "BitstylesPhoenix with Bitstyles v#{version}"
 
     component_links =
       Enum.map(components, fn component ->
-        ~s(<li><a href="v#{slugify_version(version)}/c#{component.name}.html">#{component.name}</li>)
+        ~s(<li><a href="v#{slugify(version)}/c#{component.name}.html">#{component.name}</li>)
       end)
 
     body = """
@@ -160,9 +160,9 @@ defmodule Scripts.GenerateVersionShowcase do
   end
 
   defp write_component_html(versions, version, component) do
-    dir_path = Path.join(@dir_name, "v#{slugify_version(version)}")
+    dir_path = Path.join(@dir_name, "v#{slugify(version)}")
     File.mkdir_p(dir_path)
-    path = Path.join(@dir_name, "v#{slugify_version(version)}/c#{component.name}.html")
+    path = Path.join(@dir_name, "v#{slugify(version)}/c#{component.name}.html")
     title = "Bitstyles v#{version} #{component.name}"
 
     stories =
@@ -174,7 +174,7 @@ defmodule Scripts.GenerateVersionShowcase do
       end)
 
     body = """
-    <p><a href="../v#{slugify_version(version)}.html">Back</a></p>
+    <p><a href="../v#{slugify(version)}.html">Back</a></p>
     <p>#{version_select(versions, version)}</p>
     <h1>BitstylesPhoenix with Bitstyles v#{version}</h1>
     <h2>#{component.name}</h2>
@@ -202,8 +202,10 @@ defmodule Scripts.GenerateVersionShowcase do
     """
   end
 
-  defp slugify_version(version) do
-    String.replace(version, ".", "_")
+  defp slugify(string) do
+    string
+    |> String.replace(".", "_")
+    |> String.replace(" ", "-")
   end
 
   defp render_story_with_version(component, story, version) do
@@ -213,7 +215,7 @@ defmodule Scripts.GenerateVersionShowcase do
     transparent = Keyword.get(story.opts, :transparent, true)
 
     code = """
-    defmodule BitstylesPhoenix.Component.#{component.name}.Showcase.V#{slugify_version(version)}.L#{story.line} do
+    defmodule BitstylesPhoenix.Component.#{component.name}.Showcase.V#{slugify(version)}.L#{story.line} do
       use BitstylesPhoenix.Helper.ComponentRendering
       use BitstylesPhoenix.Component
 
@@ -222,7 +224,7 @@ defmodule Scripts.GenerateVersionShowcase do
       end
     end
 
-    BitstylesPhoenix.Component.#{component.name}.Showcase.V#{slugify_version(version)}.L#{story.line}.render_html()
+    BitstylesPhoenix.Component.#{component.name}.Showcase.V#{slugify(version)}.L#{story.line}.render_html()
     """
 
     {result, _} = Code.eval_string(code)
@@ -243,10 +245,20 @@ defmodule Scripts.GenerateVersionShowcase do
         ""
       end
 
+    file_name = "#{slugify(story.name)}.html"
+    relative_dir_path = "v#{slugify(version)}/c#{component.name}"
+    full_dir_path = Path.join(@dir_name, relative_dir_path)
+    full_file_path = Path.join(full_dir_path, file_name)
+    iframe_src = "/#{relative_dir_path}/#{file_name}"
+
+    iframe_srcdoc = ~s(<html lang="en"><head><title>#{iframe_src}</title><style>#{style}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result])}</body></html>)
+
+    File.mkdir_p(full_dir_path)
+    File.write!(full_file_path, iframe_srcdoc)
+
     iframe_opts =
       [
-        srcdoc:
-          ~s(<html><head><style>#{style}</style><link rel="stylesheet" href="#{dist}/build/bitstyles.css"></head><body>#{Enum.join([extra_html, result]) |> String.replace("\n", "")}</body></html>),
+        src: iframe_src,
         style: "",
         allowtransparency: if(transparent, do: "true", else: "false")
       ]
