@@ -70,11 +70,11 @@ defmodule BitstylesPhoenix.Bitstyles do
     class =
       Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
         acc
-        |> String.replace("margin-#{new_size}", "margin-#{old_size}")
-        |> String.replace("margin-neg-#{new_size}", "margin-neg-#{old_size}")
-        |> String.replace("padding-#{new_size}", "padding-#{old_size}")
-        |> String.replace("padding-neg-#{new_size}", "padding-neg-#{old_size}")
-        |> String.replace("gap-#{new_size}", "gap-#{old_size}")
+        |> String.replace("u-margin-#{new_size}", "u-margin-#{old_size}")
+        |> String.replace("u-margin-neg-#{new_size}", "u-margin-neg-#{old_size}")
+        |> String.replace("u-padding-#{new_size}", "u-padding-#{old_size}")
+        |> String.replace("u-padding-neg-#{new_size}", "u-padding-neg-#{old_size}")
+        |> String.replace("u-gap-#{new_size}", "u-gap-#{old_size}")
       end)
 
     class =
