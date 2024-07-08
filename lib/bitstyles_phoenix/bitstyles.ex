@@ -32,9 +32,13 @@ defmodule BitstylesPhoenix.Bitstyles do
     }
 
     class =
-      Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
-        String.replace(acc, "-#{new_size}", "-#{old_size}")
-      end)
+      if String.starts_with?(class, "u-") do
+        Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+          String.replace(acc, "-#{new_size}", "-#{old_size}")
+        end)
+      else
+        class
+      end
 
     border_color_renaming = %{
       "u-border-gray-light" => "u-border-gray-10",
