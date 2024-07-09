@@ -140,7 +140,7 @@ defmodule BitstylesPhoenix.Component.Form do
           Email
         </label>
         <input id="user_email" maxlength="255" name="user[email]" type="text"/>
-        <ul class=\"u-padding-xl-left\">
+        <ul class=\"u-padding-l3-left\">
           <li>
             <span class=\"u-fg-warning\" phx-feedback-for=\"user[email]\">
               is invalid

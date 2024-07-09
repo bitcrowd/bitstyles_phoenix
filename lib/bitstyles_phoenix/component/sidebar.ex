@@ -12,7 +12,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> <.ui_sidebar_layout>
         ...>   <:large_sidebar>Large header</:large_sidebar>
         ...>   <:small_sidebar>Small header</:small_sidebar>
-        ...>   <:sidebar_content>
+        ...>   <:sidebar_content data-theme="dark">
         ...>     <.ui_sidebar_section border="bottom">
         ...>       Menu
         ...>     </.ui_sidebar_section>
@@ -43,24 +43,24 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2" data-theme="dark">
                 Large header
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-xs-bottom">
+                <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-s4-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
-                  <li class="u-margin-xs-bottom u-flex">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-s4-right u-padding-s4-left">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
-                  <li class="u-margin-xs-bottom u-flex">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-top u-margin-xs-top">
+                <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-top u-margin-s4-top">
                   <div class="u-relative">
                     <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
@@ -70,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s2-bottom">
                       <li>
                         <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
@@ -80,24 +80,24 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                   </div>
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2" data-theme="dark">
                 Small header
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-xs-bottom">
+                <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-bottom u-margin-s4-bottom">
                   Menu
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
-                  <li class="u-margin-xs-bottom u-flex">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-s4-right u-padding-s4-left">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
-                  <li class="u-margin-xs-bottom u-flex">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
-                <div class="u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col u-border-gray-dark-top u-margin-xs-top">
+                <div class="u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col u-border-gray-dark-top u-margin-s4-top">
                   <div class="u-relative">
                     <button type="button" class="a-button a-button--transparent">
                       <div class="a-button__icon a-avatar">
@@ -107,7 +107,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
                         Jane Dobermann
                       </span>
                     </button>
-                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s-bottom">
+                    <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--full-width u-margin-s2-bottom">
                       <li>
                         <a href="#" class="a-button a-button--transparent a-button--menu">
                           Logout
@@ -207,13 +207,13 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 Large header
                 <div>
                   Sidebar
                 </div>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 Small header
                 <div>
                   Sidebar
@@ -247,9 +247,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
               </div>
             </nav>
           </header>
@@ -264,8 +264,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     transparent: false
   )
 
-  @default_bg "gray-darker"
-  @default_fg "text"
+  @default_bg "grayscale-dark-2"
+  @default_fg "grayscale-light-2"
   @large_classes "u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col"
   @small_classes "o-sidebar--small u-flex u-flex-col u-hidden@l"
 
@@ -361,7 +361,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   You can add items `ui_sidebar_nav_item/1` to add items to the navigation.
   """
   @sidebar_nav_classes "u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex " <>
-                         "u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left"
+                         "u-flex-col u-items-stretch u-padding-s4-right u-padding-s4-left"
   def ui_sidebar_nav(assigns) do
     extra = assigns_to_attributes(assigns, [:class])
     class = classnames([@sidebar_nav_classes, assigns[:class]])
@@ -387,7 +387,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   """
   def ui_sidebar_nav_item(assigns) do
     extra = assigns_to_attributes(assigns, [:class])
-    class = classnames(["u-margin-xs-bottom u-flex", assigns[:class]])
+    class = classnames(["u-margin-s4-bottom u-flex", assigns[:class]])
     assigns = assign(assigns, extra: extra, class: class)
 
     ~H"""
@@ -411,7 +411,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   - All other attributes are passed on to the outer `div`
   """
 
-  @sidebar_section_classes "u-flex-shrink-0 u-padding-xs-y u-margin-xs-left u-margin-xs-right u-flex u-flex-col"
+  @sidebar_section_classes "u-flex-shrink-0 u-padding-s4-y u-margin-s4-left u-margin-s4-right u-flex u-flex-col"
   @sidebar_section_default_border_color "gray-dark"
   def ui_sidebar_section(assigns) do
     border_color = Map.get(assigns, :border_color, @sidebar_section_default_border_color)
@@ -421,7 +421,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
       classnames([
         @sidebar_section_classes,
         assigns[:class],
-        {"u-border-#{border_color}-#{border} u-margin-xs-#{border}", !!border}
+        {"u-border-#{border_color}-#{border} u-margin-s4-#{border}", !!border}
       ])
 
     extra = assigns_to_attributes(assigns, [:class, :border, :border_color])

@@ -67,6 +67,33 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...> """
     ''',
     [
+      "6.0.0": '''
+          """
+          <div class="u-relative">
+            <button type="button" class="a-button a-button--secondary">
+              <span class="a-button__label">
+                Select me
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--m a-button__icon" focusable="false" height="16" width="16">
+                <use xlink:href="#icon-caret-down">
+                </use>
+              </svg>
+            </button>
+            <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s2-top">
+              <li>
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
+                  Option 1
+                </a>
+              </li>
+              <li>
+                <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
+                  Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+          """
+      ''',
       "5.0.1": '''
           """
           <div class="u-relative">
@@ -194,7 +221,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top u-margin-s-bottom">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top u-margin-s2-bottom">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
@@ -249,7 +276,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </use>
             </svg>
           </button>
-          <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--right u-margin-s-top">
+          <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--right u-margin-s2-top">
             <li>
               <a href="#" class="a-button a-button--transparent a-button--menu">
                 Option 1
@@ -310,7 +337,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--right u-margin-s-bottom">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--top a-dropdown--right u-margin-s2-bottom">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                   Option 1
@@ -360,7 +387,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
           <button type="button" class="a-button a-button--secondary foo">
             Custom button content
           </button>
-          <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s-top">
+          <ul class="a-dropdown u-overflow-y-auto u-list-none u-margin-s2-top">
             <li>
               <a href="#" class="a-button a-button--transparent a-button--menu u-h6">
                 Option 1
@@ -414,7 +441,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
                 </use>
               </svg>
             </button>
-            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--full-width u-margin-s-top" id="dropdown-1" style="display: none">
+            <ul class="a-dropdown u-overflow-y-auto u-list-none a-dropdown--full-width u-margin-s2-top" id="dropdown-1" style="display: none">
               <li>
                 <a href="#" class="a-button a-button--transparent a-button--menu foo">
                   Option 1
@@ -550,7 +577,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
   end
 
   defp margin(variant) do
-    if variant?(:top, variant), do: "u-margin-s-bottom", else: "u-margin-s-top"
+    if variant?(:top, variant), do: "u-margin-s2-bottom", else: "u-margin-s2-top"
   end
 
   defp variant_classes(nil), do: []
