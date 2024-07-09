@@ -1,7 +1,7 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "4.3.0"
+  @default_version "5.0.1"
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
@@ -14,12 +14,60 @@ defmodule BitstylesPhoenix.Bitstyles do
   """
   def classname(name), do: classname(name, version())
 
-  def classname(class, version) when version > "4.3.0" do
+  def classname(class, version) when version > "5.0.1" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
     class
   end
 
-  def classname(class, version) when version >= "4.2.0", do: class
+  # Note about class renaming:
+  # A renaming of "class-name-A" (newer) to "class-name-B" (older) can only be done via this module if
+  # the "class-name-A" does not also exist in older versions of bitstyles with a different meaning.
+  # If it does exist, then doing this renaming in the classname/2 function would make it impossible
+  # for users of older bitstyles to use the "class-name-A" classname.
+
+  def classname(class, version) when version >= "5.0.0" do
+    class
+  end
+
+  def classname(class, version) when version >= "4.2.0" do
+    sizes_renaming = %{
+      "3xs" => "xxxs",
+      "2xs" => "xxs",
+      "2xl" => "xxl",
+      "3xl" => "xxxl"
+    }
+
+    class =
+      if String.starts_with?(class, "u-") do
+        Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+          String.replace(acc, "-#{new_size}", "-#{old_size}")
+        end)
+      else
+        class
+      end
+
+    border_color_renaming = %{
+      "u-border-gray-light" => "u-border-gray-10",
+      "u-border-gray-dark" => "u-border-gray-70"
+    }
+
+    class =
+      Enum.reduce(border_color_renaming, class, fn {new_border_color, old_border_color}, acc ->
+        String.replace(acc, new_border_color, old_border_color)
+      end)
+
+    class =
+      case class do
+        "u-list-none" -> "a-list-reset"
+        "a-badge--text" -> "a-badge--gray"
+        "u-fg-text" -> "u-fg-gray-30"
+        "u-fg-text-darker" -> "u-fg-gray-50"
+        "u-bg-gray-darker" -> "u-bg-gray-80"
+        class -> class
+      end
+
+    classname(class, "5.0.0")
+  end
 
   def classname(class, version) when version >= "4.0.0" do
     mapping =
@@ -28,7 +76,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "4.2.0")
+    classname(mapping, "4.3.0")
   end
 
   def classname(class, version) when version >= "2.0.0" do

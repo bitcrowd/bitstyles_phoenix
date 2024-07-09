@@ -1,19 +1,31 @@
 # Changelog
 
+## Unreleased
+
+- Added support for bitstyles `v5.0.0`. You can continue using bitstyles_phoenix with a lower bitstyles version, or migrate your codebase to bitstyles `v5.0.0`.
+
+### How to migrate to bitstyles `v5.0.0`
+
+Follow the [bitstyles changelog](https://github.com/bitcrowd/bitstyles/blob/main/CHANGELOG.md#500---2023-01-03) for versions 5.0.0 and 5.0.0-alpha-1. Even if you're using the `BitstylesPhoenix.Helper.Classnames.classnames/1` helper to apply bitstyles classes in your own codebase, you will still need to migrate some of them yourself. For example, the class `u-gap-m` could not have been migrated via the helper because it exists in both bitstyles versions with different meanings (`u-gap-m` and `u-gap-l` in bitstyles 4.3.0 are equivalent to `u-gap-l` and `u-gap-xl` in bitstyles `v5.0.0`).
+
+The `variant` attribute of the `Button` component is deprecated in bitstyles `v5.0.0`. Use the attributes `shape` and `color` instead.
+
 ## v2.3.1 - 2023-10-23
-- Bump LiveView
+
+- Bump LiveView.
 
 ## v2.3.0 - 2023-05-15
-- Add `Modal` component
+
+- Add `Modal` component.
 
 ## v2.2.0 - 2023-03-20
 
-- Updated to LiveView 0.18.18
-- Add `Card` and `Avatar` components
+- Updated to LiveView 0.18.18.
+- Add `Card` and `Avatar` components.
 
 ## v2.1.1 - 2022-12-02
 
-- Fixed version backwards compatibility
+- Fixed version backwards compatibility.
 
 ## v2.1.0 - 2022-12-02
 
@@ -60,7 +72,7 @@ the support for the `ui_button` as helper is dropped completely in favor of comp
 
 ## v1.0.0 - 2022-01-04
 
-This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent develpments in Phoenix and LiveView.
+This version breaks with the existing API quite a lot 🔥, since we changed the library to take advantage of the recent developments in Phoenix and LiveView.
 
 ### Breaking
 

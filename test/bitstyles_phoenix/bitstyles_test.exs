@@ -4,11 +4,80 @@ defmodule BitstylesPhoenix.BitstylesTest do
   import ExUnit.CaptureIO
 
   describe "classname/2" do
-    test "version 5.0.0" do
+    test "version 6.0.0" do
       assert Regex.match?(
-               ~r/5.0.0 of bitstyles is not yet supported/,
-               capture_io(:stderr, fn -> classname("u-flex", "5.0.0") end)
+               ~r/6.0.0 of bitstyles is not yet supported/,
+               capture_io(:stderr, fn -> classname("u-flex", "6.0.0") end)
              )
+    end
+
+    test "version 5.0.0" do
+      assert classname("u-flex", "5.0.0") == "u-flex"
+      assert classname("u-border-radius-0", "5.0.0") == "u-border-radius-0"
+      assert classname("u-overflow-x-auto", "5.0.0") == "u-overflow-x-auto"
+      assert classname("u-overflow-y-auto", "5.0.0") == "u-overflow-y-auto"
+      assert classname("u-bg-gray-80", "5.0.0") == "u-bg-gray-80"
+      assert classname("u-fg-warning", "5.0.0") == "u-fg-warning"
+      assert classname("u-font-medium", "5.0.0") == "u-font-medium"
+      assert classname("u-line-height-min", "5.0.0") == "u-line-height-min"
+      assert classname("u-text-right", "5.0.0") == "u-text-right"
+      assert classname("u-flex-shrink-0", "5.0.0") == "u-flex-shrink-0"
+      assert classname("u-flex-grow-1", "5.0.0") == "u-flex-grow-1"
+      assert classname("u-flex-wrap", "5.0.0") == "u-flex-wrap"
+      assert classname("u-flex-col", "5.0.0") == "u-flex-col"
+      assert classname("u-grid-cols-3", "5.0.0") == "u-grid-cols-3"
+      assert classname("u-col-span-3", "5.0.0") == "u-col-span-3"
+      assert classname("u-col-start-1", "5.0.0") == "u-col-start-1"
+      assert classname("u-margin-2xs", "5.0.0") == "u-margin-2xs"
+      assert classname("u-margin-3xs\@m", "5.0.0") == "u-margin-3xs\@m"
+      assert classname("u-margin-3xs-bottom", "5.0.0") == "u-margin-3xs-bottom"
+      assert classname("u-padding-2xl", "5.0.0") == "u-padding-2xl"
+      assert classname("u-padding-3xl\@l", "5.0.0") == "u-padding-3xl\@l"
+      assert classname("u-margin-3xl-bottom", "5.0.0") == "u-margin-3xl-bottom"
+      assert classname("u-margin-neg-3xl-bottom", "5.0.0") == "u-margin-neg-3xl-bottom"
+      assert classname("u-list-none", "5.0.0") == "u-list-none"
+      assert classname("a-badge--text", "5.0.0") == "a-badge--text"
+      assert classname("u-fg-text", "5.0.0") == "u-fg-text"
+      assert classname("u-fg-text-darker", "5.0.0") == "u-fg-text-darker"
+      assert classname("u-bg-gray-darker", "5.0.0") == "u-bg-gray-darker"
+      assert classname("u-border-gray-light", "5.0.0") == "u-border-gray-light"
+      assert classname("u-border-gray-light-bottom", "5.0.0") == "u-border-gray-light-bottom"
+      assert classname("u-border-gray-dark", "5.0.0") == "u-border-gray-dark"
+    end
+
+    test "version 4.3.0" do
+      assert classname("u-flex", "4.3.0") == "u-flex"
+      assert classname("u-border-radius-0", "4.3.0") == "u-border-radius-0"
+      assert classname("u-overflow-x-auto", "4.3.0") == "u-overflow-x-auto"
+      assert classname("u-overflow-y-auto", "4.3.0") == "u-overflow-y-auto"
+      assert classname("u-bg-gray-80", "4.3.0") == "u-bg-gray-80"
+      assert classname("u-fg-warning", "4.3.0") == "u-fg-warning"
+      assert classname("u-font-medium", "4.3.0") == "u-font-medium"
+      assert classname("u-line-height-min", "4.3.0") == "u-line-height-min"
+      assert classname("u-text-right", "4.3.0") == "u-text-right"
+      assert classname("u-flex-shrink-0", "4.3.0") == "u-flex-shrink-0"
+      assert classname("u-flex-grow-1", "4.3.0") == "u-flex-grow-1"
+      assert classname("u-flex-wrap", "4.3.0") == "u-flex-wrap"
+      assert classname("u-flex-col", "4.3.0") == "u-flex-col"
+      assert classname("u-grid-cols-3", "4.3.0") == "u-grid-cols-3"
+      assert classname("u-col-span-3", "4.3.0") == "u-col-span-3"
+      assert classname("u-col-start-1", "4.3.0") == "u-col-start-1"
+      assert classname("u-margin-2xs", "4.3.0") == "u-margin-xxs"
+      assert classname("u-margin-3xs\@m", "4.3.0") == "u-margin-xxxs\@m"
+      assert classname("u-margin-3xs-bottom", "4.3.0") == "u-margin-xxxs-bottom"
+      assert classname("u-padding-2xl", "4.3.0") == "u-padding-xxl"
+      assert classname("u-padding-3xl\@l", "4.3.0") == "u-padding-xxxl\@l"
+      assert classname("u-margin-3xl-bottom", "4.3.0") == "u-margin-xxxl-bottom"
+      assert classname("u-margin-neg-3xl-bottom", "4.3.0") == "u-margin-neg-xxxl-bottom"
+      assert classname("u-list-none", "4.3.0") == "a-list-reset"
+      assert classname("a-badge--text", "4.3.0") == "a-badge--gray"
+      assert classname("u-gap-l", "4.3.0") == "u-gap-l"
+      assert classname("u-fg-text", "4.3.0") == "u-fg-gray-30"
+      assert classname("u-fg-text-darker", "4.3.0") == "u-fg-gray-50"
+      assert classname("u-bg-gray-darker", "4.3.0") == "u-bg-gray-80"
+      assert classname("u-border-gray-light", "4.3.0") == "u-border-gray-10"
+      assert classname("u-border-gray-light-bottom", "4.3.0") == "u-border-gray-10-bottom"
+      assert classname("u-border-gray-dark", "4.3.0") == "u-border-gray-70"
     end
 
     test "version 4.2.0" do
