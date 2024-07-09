@@ -52,7 +52,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
               </dd>
             </div>
             <div class="a-dl__item u-grid@m u-grid-cols-3 u-padding-m-y u-padding-m@m u-items-baseline u-gap-m">
-              <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-s4-bottom@s">
+              <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
                 Inserted at
               </dt>
               <dd class="u-col-span-2">
