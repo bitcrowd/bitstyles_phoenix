@@ -1,8 +1,8 @@
 defmodule BitstylesPhoenix.Showcase do
   @moduledoc false
 
-  import Phoenix.HTML, only: [safe_to_string: 1]
-  import Phoenix.HTML.Tag, only: [content_tag: 3]
+#  import Phoenix.HTML, only: [safe_to_string: 1]
+#  import Phoenix.HTML.Tag, only: [content_tag: 3]
 
   defmacro story(name, doctest_iex_code, doctest_expected_results, opts \\ []) do
     default_version = BitstylesPhoenix.Bitstyles.default_version() |> String.to_atom()
@@ -103,7 +103,7 @@ defmodule BitstylesPhoenix.Showcase do
       |> Keyword.merge(style_opts(opts))
 
     if dist do
-      safe_to_string(content_tag(:iframe, "", iframe_opts))
+      ""
     else
       ""
     end
