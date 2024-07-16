@@ -1,8 +1,7 @@
 defmodule BitstylesPhoenix.Showcase do
   @moduledoc false
 
-  import Phoenix.HTML, only: [safe_to_string: 1]
-  import Phoenix.HTML.Tag, only: [content_tag: 3]
+  import Phoenix.HTML, only: [safe_to_string: 1, attributes_escape: 1, html_escape: 1]
 
   defmacro story(name, doctest_iex_code, doctest_expected_results, opts \\ []) do
     default_version = BitstylesPhoenix.Bitstyles.default_version() |> String.to_atom()
@@ -153,5 +152,14 @@ defmodule BitstylesPhoenix.Showcase do
 
       """
     end
+  end
+
+  # copy-paste from phoenix_html_helpers because `content_tag` was removed in phoenix_html v4
+  # and we don't want to depend on phoenix_html_helpers
+  defp content_tag(name, content, attrs) when is_list(attrs) do
+    name = to_string(name)
+    {:safe, escaped} = html_escape(content)
+    sorted_attrs = attrs |> Enum.sort() |> attributes_escape() |> elem(1)
+    {:safe, [?<, name, sorted_attrs, ?>, escaped, ?<, ?/, name, ?>]}
   end
 end
