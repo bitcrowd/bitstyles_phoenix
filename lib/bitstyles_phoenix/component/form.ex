@@ -755,7 +755,18 @@ defmodule BitstylesPhoenix.Component.Form do
     """
   end
 
-  defp default_label(field), do: PhxForm.humanize(field)
+  defp default_label(field) when is_atom(field), do: default_label(Atom.to_string(field))
+
+  defp default_label(field) when is_binary(field) do
+    bin =
+      if String.ends_with?(field, "_id") do
+        binary_part(field, 0, byte_size(field) - 3)
+      else
+        field
+      end
+
+    bin |> String.replace("_", " ") |> :string.titlecase()
+  end
 
   defp required_label(%{required: value} = assigns)
        when value not in [nil, false, "false"] do
