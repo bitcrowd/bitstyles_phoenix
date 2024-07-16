@@ -85,6 +85,24 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   story(
+    "Text field with custom id with label",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.ui_input form={@form} id={"the_name"} field={:name} />
+        ...> """
+    ''',
+    '''
+        """
+        <label for="the_name">
+          Name
+        </label>
+        <input id="the_name" maxlength="255" name="user[name]" type="text"/>
+        """
+    '''
+  )
+
+  story(
     "Text required field with label",
     '''
         iex> assigns=%{form: form()}
@@ -243,7 +261,7 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   story(
-    "Search field with placholder",
+    "Search field with placeholder",
     '''
         iex> assigns=%{form: form()}
         ...> render ~H"""
@@ -346,6 +364,9 @@ defmodule BitstylesPhoenix.Component.Form do
         """
     '''
   )
+
+  # TODO: if exported Phoenix.HTML.FormField ... (v4)
+  # then id can be read from field.id
 
   def ui_input(assigns) do
     extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
@@ -651,7 +672,7 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   defp wrapper_assigns(assigns) do
-    Map.take(assigns, @wrapper_assigns_keys ++ [:required])
+    Map.take(assigns, @wrapper_assigns_keys ++ [:required, :id])
   end
 
   @doc """
@@ -700,13 +721,16 @@ defmodule BitstylesPhoenix.Component.Form do
         classnames([label_opts[:class], {"u-sr-only", assigns[:hidden_label]}])
       )
 
-    assigns = assign(assigns, label_text: label_text, label_opts: label_opts)
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> default_id(assigns.form, assigns.field) end)
+      |> assign(label_text: label_text, label_opts: label_opts)
 
     ~H"""
-    <%= PhxForm.label @form, @field, @label_opts do %>
+    <.label for={@id} {@label_opts} >
       <%= @label_text %>
       <.required_label {assigns_to_attributes(assigns)}/>
-    <% end %><%= render_slot(@inner_block) %>
+    </.label><%= render_slot(@inner_block) %>
     <.ui_errors form={@form} field={@field} />
     """
   end
@@ -742,17 +766,24 @@ defmodule BitstylesPhoenix.Component.Form do
   def ui_wrapped_input(assigns) do
     assigns =
       assigns
+      |> assign_new(:id, fn -> default_id(assigns.form, assigns.field) end)
       |> assign_new(:label, fn -> default_label(assigns.field) end)
       |> assign_new(:label_opts, fn -> [] end)
 
     ~H"""
-    <%= PhxForm.label @form, @field, @label_opts do %>
+    <.label for={@id} {@label_opts} >
       <%= render_slot(@inner_block) %>
       <%= @label %>
       <.required_label {assigns_to_attributes(assigns)} />
-    <% end %>
+    </.label>
     <.ui_errors form={@form} field={@field} />
     """
+  end
+
+  defp default_id(form, field) when is_atom(field), do: default_id(form, Atom.to_string(field))
+
+  defp default_id(form, field) when is_binary(field) do
+    Phoenix.HTML.Form.input_id(form, field)
   end
 
   defp default_label(field) when is_atom(field), do: default_label(Atom.to_string(field))
@@ -788,6 +819,44 @@ defmodule BitstylesPhoenix.Component.Form do
   def default_required_label(assigns) do
     ~H"""
     <span aria-hidden="true" class={classnames("u-fg-warning u-margin-xxs-left")}>*</span>
+    """
+  end
+
+  @doc """
+  Renders a label. Direct usage is discouraged in favor of `ui_input` that comes with a label.
+
+  ## Attributes
+
+  - `for` - id of the input the label belongs to.
+  """
+
+  story(
+    "Label",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.label for="user_address_city" class="foo bar">
+        ...>   City
+        ...> </.label>
+        ...> """
+    ''',
+    '''
+        """
+        <label class="foo bar" for="user_address_city">
+          City
+        </label>
+        """
+    '''
+  )
+
+  def label(assigns) do
+    extra = assigns_to_attributes(assigns, [:for])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <label {@extra} for={@for}>
+      <%= render_slot(@inner_block) %>
+    </label>
     """
   end
 end
