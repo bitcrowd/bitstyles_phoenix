@@ -2,7 +2,6 @@ defmodule BitstylesPhoenix.Component.Form do
   use BitstylesPhoenix.Component
 
   import BitstylesPhoenix.Component.Error
-  alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
   Components for rendering input elements.
@@ -503,7 +502,7 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   def ui_textarea(assigns) do
-    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys)
+    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
@@ -512,7 +511,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= PhxForm.textarea(@form, @field, @extra) %>
+      <%= render_input(:textarea, @form, @field, @extra) %>
     </.ui_unwrapped_input>
     """
   end
@@ -900,7 +899,7 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   def input(%{type: "textarea"} = assigns) do
-    extra = assigns_to_attributes(assigns, [:id, :name])
+    extra = assigns_to_attributes(assigns, [:id, :name, :type, :value])
     assigns = assign(assigns, extra: extra)
 
     ~H"""
