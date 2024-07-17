@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added support for phoenix_html `v4`. You can also continue using phoenix_html `v3`.
 - Added support for bitstyles `v5.0.0`. You can continue using bitstyles_phoenix with a lower bitstyles version, or migrate your codebase to bitstyles `v5.0.0`.
 
 ### How to migrate to bitstyles `v5.0.0`
