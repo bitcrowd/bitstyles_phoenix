@@ -388,7 +388,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed onto the input element.
+  - All other attributes will be passed onto the textarea element.
 
   See the [bitstyles textarea docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--textarea-and-label) for examples of textareas and labels in use.
   """
@@ -526,9 +526,9 @@ defmodule BitstylesPhoenix.Component.Form do
   - `options` - The options passed to `Phoenix.HTML.Form.options_for_select/2`.
   - `prompt` - Will be rendered as the first option with an empty value.
   - All options from above (see top level module doc).
-  - All other attributes will be passed onto the input element.
+  - All other attributes will be passed onto the select element.
 
-  See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of textareas and labels in use.
+  See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of selects and labels in use.
   """
 
   story(
