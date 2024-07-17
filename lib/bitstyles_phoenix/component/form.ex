@@ -172,7 +172,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_name">
+        <label for="user_name" class="u-sr-only">
           Name
         </label>
         <input id="user_name" name="user[name]" type="text" maxlength="255"/>
@@ -219,7 +219,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_totp">
+        <label for="user_totp" class="extra">
           Authentication code
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
             *
@@ -344,7 +344,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_accept">
+        <label for="user_accept" class="extra">
           <input name="user[accept]" type="hidden" value="false"/>
           <input id="user_accept" name="user[accept]" type="checkbox" value="true"/>
           Accept
@@ -451,7 +451,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_metadata">
+        <label for="user_metadata" class="extra">
           Metadata
         </label>
         <textarea id="user_metadata" name="user[metadata]" rows="10">
@@ -471,7 +471,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_address">
+        <label for="user_address" class="u-sr-only">
           Address
         </label>
         <textarea id="user_address" name="user[address]">
@@ -594,7 +594,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_week">
+        <label for="user_week" class="u-sr-only">
           Week
         </label>
         <select id="user_week" name="user[week]">
@@ -619,7 +619,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_preference">
+        <label for="user_preference" class="extra">
           What do you like best?
         </label>
         <select id="user_preference" name="user[preference]">
@@ -867,14 +867,14 @@ defmodule BitstylesPhoenix.Component.Form do
 
   ## Attributes
   - `field` - a `Phoenix.HTML.FormField` struct retrieved from the form, for example: @form[:email]
-  - `type` - string or atom, required
+  - `type` - string or atom, defaults to :text
   - `id` - string, required if `field` not passed
   - `name` - string, required if `field` not passed
   - `value` - any, required if `field` not passed
   - `checked` - boolean, required if `type="checkbox"`
   - `options` - list, required if `type="select"`
-  - `multiple` - boolean, required if `type="select"`
-  - `prompt` - string, required if `type="select"`
+  - `multiple` - boolean, used if `type="select"`
+  - `prompt` - string, used if `type="select"`
   - any other attributes, they will be passed to the input element
   """
 
@@ -883,7 +883,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{form: form()}
         ...> render ~H"""
-        ...> <.input field={@form[:name]} type="text"/>
+        ...> <.input field={@form[:name]} />
         ...> """
     ''',
     '''
@@ -929,7 +929,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} multiple={false} prompt={"On which day were you born?"} data-foo=""/>
+        ...> <.input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} prompt={"On which day were you born?"} data-foo=""/>
         ...> """
     ''',
     '''
@@ -953,6 +953,7 @@ defmodule BitstylesPhoenix.Component.Form do
     assigns
     |> assign(field: nil)
     |> assign_new(:id, fn -> field.id end)
+    |> assign_new(:type, fn -> :text end)
     |> assign_new(:name, fn -> if assigns[:multiple], do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
     |> input()
@@ -985,6 +986,11 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   def input(%{type: "select"} = assigns) do
+    assigns =
+      assigns
+      |> assign_new(:prompt, fn -> nil end)
+      |> assign_new(:multiple, fn -> false end)
+
     extra =
       assigns_to_attributes(assigns, [:id, :name, :type, :multiple, :prompt, :options, :value])
 
@@ -1052,19 +1058,44 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="foo bar" for="user_address_city">
+        <label for="user_address_city" class="foo bar">
           City
         </label>
         """
     '''
   )
 
+  story(
+    "Label (no for)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.label class="foo bar">
+        ...>   Note
+        ...>   <input type="text" name="note"/>
+        ...> </.label>
+        ...> """
+    ''',
+    '''
+        """
+        <label class="foo bar">
+          Note
+          <input type="text" name="note"/>
+        </label>
+        """
+    '''
+  )
+
   def label(assigns) do
+    assigns =
+      assigns
+      |> assign_new(:for, fn -> nil end)
+
     extra = assigns_to_attributes(assigns, [:for])
     assigns = assign(assigns, extra: extra)
 
     ~H"""
-    <label {@extra} for={@for}>
+    <label for={@for} {@extra}>
       <%= render_slot(@inner_block) %>
     </label>
     """
