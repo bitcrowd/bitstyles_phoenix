@@ -16,8 +16,8 @@ defmodule BitstylesPhoenix.Component.Form do
 
   - `form` *(required)* - The form to render the input form.
   - `field` *(required)* - The name of the field for the input.
-  - `label` - The text to be used as label. Defaults to `Phoenix.HTML.Form.humanize/1`.
-  - `label_opts` - The options passed to the label element generated with `Phoenix.HTML.Form.label/4`.
+  - `label` - The text to be used as label. Defaults to a title-cased name of the field.
+  - `label_opts` - The options passed to the label element generated with `BitstylesPhoenix.Component.Form.label/1`.
 
   For details on how to render a form, see:
   - `simple_form` core component in a freshly-generated Phoenix app, or
@@ -35,7 +35,7 @@ defmodule BitstylesPhoenix.Component.Form do
   - `type` - The type of the input. Defaults to `type="text"`.
   - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed onto the input element as attributes.
+  - All other attributes will be passed onto the input element.
     Defaults to `maxlength="255"` for `email`, `text` and `password` type.
     Set maxlength to `false` to prevent setting maxlength.
 
@@ -388,7 +388,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.textarea/3`.
+  - All other attributes will be passed onto the input element.
 
   See the [bitstyles textarea docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--textarea-and-label) for examples of textareas and labels in use.
   """
@@ -523,9 +523,10 @@ defmodule BitstylesPhoenix.Component.Form do
   ## Attributes
 
   - `hidden_label` - Only show the label for screen readers if set to `true`.
-  - `options` - The options passed to `Phoenix.HTML.Form.select/4`.
+  - `options` - The options passed to `Phoenix.HTML.Form.options_for_select/2`.
+  - `prompt` - Will be rendered as the first option with an empty value.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.select/4`.
+  - All other attributes will be passed onto the input element.
 
   See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of textareas and labels in use.
   """
@@ -627,6 +628,34 @@ defmodule BitstylesPhoenix.Component.Form do
           </option>
           <option value="cats">
             Cats
+          </option>
+        </select>
+        """
+    '''
+  )
+
+  story(
+    "Select box with prompt",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.ui_select form={@form} field={:week} options={1..2} prompt={"Choose a week number"}/>
+        ...> """
+    ''',
+    '''
+        """
+        <label for="user_week">
+          Week
+        </label>
+        <select id="user_week" name="user[week]">
+          <option value="">
+            Choose a week number
+          </option>
+          <option value="1">
+            1
+          </option>
+          <option value="2">
+            2
           </option>
         </select>
         """
@@ -842,8 +871,83 @@ defmodule BitstylesPhoenix.Component.Form do
   - `id` - string, required if `field` not passed
   - `name` - string, required if `field` not passed
   - `value` - any, required if `field` not passed
+  - `checked` - boolean, required if `type="checkbox"`
+  - `options` - list, required if `type="select"`
+  - `multiple` - boolean, required if `type="select"`
+  - `prompt` - string, required if `type="select"`
   - any other attributes, they will be passed to the input element
   """
+
+  story(
+    "Input (from field)",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.input field={@form[:name]} type="text"/>
+        ...> """
+    ''',
+    '''
+        """
+        <input id="user_name" name="user[name]" type="text"/>
+        """
+    '''
+  )
+
+  story(
+    "Input (email)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.input id="the_email" name="user[email]" type={:email} value="" class="foo bar"/>
+        ...> """
+    ''',
+    '''
+        """
+        <input id="the_email" name="user[email]" type="email" class="foo bar" value=""/>
+        """
+    '''
+  )
+
+  story(
+    "Input (checkbox)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.input id="the_newsletter" name="user[wants_newsletter]" type={:checkbox} checked={false} data-theme="pink"/>
+        ...> """
+    ''',
+    '''
+        """
+        <input name="user[wants_newsletter]" type="hidden" value="false"/>
+        <input id="the_newsletter" name="user[wants_newsletter]" type="checkbox" value="true" data-theme="pink"/>
+        """
+    '''
+  )
+
+  story(
+    "Input (select)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} multiple={false} prompt={"On which day were you born?"} data-foo=""/>
+        ...> """
+    ''',
+    '''
+        """
+        <select id="the_day" name="user[dob_day]" data-foo="">
+          <option value="">
+            On which day were you born?
+          </option>
+          <option value="1">
+            Monday
+          </option>
+          <option selected="selected" value="2">
+            Tuesday
+          </option>
+        </select>
+        """
+    '''
+  )
 
   def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
     assigns
