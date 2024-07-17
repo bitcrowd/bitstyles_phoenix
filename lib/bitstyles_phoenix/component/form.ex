@@ -2,6 +2,7 @@ defmodule BitstylesPhoenix.Component.Form do
   use BitstylesPhoenix.Component
 
   import BitstylesPhoenix.Component.Error
+  alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
   Components for rendering input elements.
@@ -776,7 +777,7 @@ defmodule BitstylesPhoenix.Component.Form do
   defp default_id(form, field) when is_atom(field), do: default_id(form, Atom.to_string(field))
 
   defp default_id(form, field) when is_binary(field) do
-    Phoenix.HTML.Form.input_id(form, field)
+    PhxForm.input_id(form, field)
   end
 
   defp default_label(field) when is_atom(field), do: default_label(Atom.to_string(field))
@@ -860,7 +861,7 @@ defmodule BitstylesPhoenix.Component.Form do
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
-        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+        PhxForm.normalize_value("checkbox", assigns[:value])
       end)
 
     extra = assigns_to_attributes(assigns, [:id, :name, :checked, :value, :type])
