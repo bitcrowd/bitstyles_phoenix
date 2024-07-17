@@ -375,18 +375,6 @@ defmodule BitstylesPhoenix.Component.Form do
     """
   end
 
-  defp render_input(type, form, field, opts) do
-    assigns = %{
-      type: type,
-      field: form[field],
-      extra: default_validations(opts, type)
-    }
-
-    ~H"""
-    <.input field={@field} type={@type} {@extra} />
-    """
-  end
-
   defp default_validations(extra, type) when type in [:email, :text, :password] do
     Keyword.put_new(extra, :maxlength, 255)
   end
@@ -646,7 +634,12 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   def ui_select(assigns) do
-    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:options])
+    assigns =
+      assigns
+      |> assign_new(:multiple, fn -> false end)
+      |> assign_new(:prompt, fn -> nil end)
+
+    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
@@ -655,8 +648,20 @@ defmodule BitstylesPhoenix.Component.Form do
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= PhxForm.select(@form, @field, @options, @extra) %>
+      <%= render_input(:select, @form, @field, @extra) %>
     </.ui_unwrapped_input>
+    """
+  end
+
+  defp render_input(type, form, field, opts) do
+    assigns = %{
+      type: type,
+      field: form[field],
+      extra: default_validations(opts, type)
+    }
+
+    ~H"""
+    <.input field={@field} type={@type} {@extra} />
     """
   end
 
@@ -876,7 +881,9 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   def input(%{type: "select"} = assigns) do
-    extra = assigns_to_attributes(assigns, [:id, :name, :multiple, :prompt, :options, :value])
+    extra =
+      assigns_to_attributes(assigns, [:id, :name, :type, :multiple, :prompt, :options, :value])
+
     assigns = assign(assigns, extra: extra)
 
     ~H"""
