@@ -154,7 +154,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   since typically they host the logo/header/brand name, while the main navigation is hosted in the
   `sidebar_content` slot and shown on all screens. The reason for this separation is that the sidebar
   in the small screen is meant to start out hidden and only be shown when needed and therefore needs
-  control buttons to close it again (ususally at the top of the screen).
+  control buttons to close it again (usually at the top of the screen).
   If you have different requirements you can simply omit the `sidebar_content` block and render the
   shared content twice yourself.
 
