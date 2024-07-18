@@ -8,7 +8,7 @@ defmodule BitstylesPhoenix.Component.Form do
   Components for rendering input elements.
 
   Use `ui_input`, `ui_select`, `ui_textarea` to render the respective inputs together with a label and errors.
-  Alternatively, this module also provides `input` and `label` functions that can be used to render only an input or only a label.
+  Alternatively, this module also provides `ui_raw_input` and `ui_raw_label` functions that can be used to render only an input or only a label.
 
   ## Common attributes
 
@@ -17,7 +17,7 @@ defmodule BitstylesPhoenix.Component.Form do
   - `form` *(required)* - The form to render the input form.
   - `field` *(required)* - The name of the field for the input.
   - `label` - The text to be used as label. Defaults to a title-cased name of the field.
-  - `label_opts` - The options passed to the label element generated with `BitstylesPhoenix.Component.Form.label/1`.
+  - `label_opts` - The options passed to the label element generated with `BitstylesPhoenix.Component.Form.ui_raw_label/1`.
 
   For details on how to render a form, see:
   - `simple_form` core component in a freshly-generated Phoenix app, or
