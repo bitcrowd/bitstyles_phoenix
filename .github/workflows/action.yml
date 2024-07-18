@@ -17,6 +17,20 @@ jobs:
       - run: mix docs
       - name: Check if versions showcase mix script finishes
         run: mix run scripts/generate_version_showcase.ex
+
+  test-unlocked-deps:
+    runs-on: ubuntu-latest
+    name: unit (unlocked deps)
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '25.1'
+          elixir-version: '1.14.5'
+      - run: mix deps.unlock --all
+      - run: mix deps.get
+      - run: mix test
+
   demo:
     runs-on: ubuntu-latest
     name: demo

@@ -282,9 +282,9 @@ defmodule BitstylesPhoenix.Component.Heading do
     ~H"""
       <div class={@class} {@extra}>
         <div class={classnames("u-flex u-items-center")}>
-          <%= Phoenix.HTML.Tag.content_tag @tag, class: classnames(["u-margin-0 u-margin-m-right u-break-text", assigns[:heading_class]]) do %>
+          <.dynamic_tag name={@tag} class={classnames(["u-margin-0 u-margin-m-right u-break-text", assigns[:heading_class]])}>
             <%= render_slot(@inner_block) %>
-          <% end %>
+          </.dynamic_tag>
           <%= assigns[:title_extra] && render_slot(@title_extra) %>
         </div>
         <%= if assigns[:action] do %>

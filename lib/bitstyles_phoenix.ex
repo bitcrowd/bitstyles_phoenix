@@ -59,7 +59,7 @@ defmodule BitstylesPhoenix do
 
   ### Translating error messages
 
-  Generated phoenix apps usally come with a helper for [translating error messages](https://github.com/phoenixframework/phoenix/blob/496123b66c03c9764be623d2c32b4af611837eb0/installer/templates/phx_web/views/error_helpers.ex#L23-L46)
+  Generated phoenix apps usually come with a helper for [translating error messages](https://github.com/phoenixframework/phoenix/blob/496123b66c03c9764be623d2c32b4af611837eb0/installer/templates/phx_web/views/error_helpers.ex#L23-L46)
   using `gettext`. This helper can be used to translate error messages rendered with `bitstyles_phoenix`.
 
   In order to do so you can configure the generated helper or write your own with the MFA configuration.

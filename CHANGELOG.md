@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added support for phoenix_html `v4`. You can also continue using phoenix_html `v3`. To replace `Phoenix.HTML.Form` input helpers removed in phoenix_html `v4`, new components `ui_raw_input` and `ui_raw_label` were added.
 - Added support for bitstyles `v5.0.0`. You can continue using bitstyles_phoenix with a lower bitstyles version, or migrate your codebase to bitstyles `v5.0.0`.
 
 ### How to migrate to bitstyles `v5.0.0`

@@ -7,60 +7,48 @@ defmodule BitstylesPhoenix.Component.Form do
   @moduledoc """
   Components for rendering input elements.
 
+  Use `ui_input`, `ui_select`, `ui_textarea` to render the respective inputs together with a label and errors.
+  Alternatively, this module also provides `input` and `label` functions that can be used to render only an input or only a label.
+
   ## Common attributes
 
-  All helpers in this module accept the following attributes.
+  All `ui_*` components in this module accept the following attributes.
 
   - `form` *(required)* - The form to render the input form.
   - `field` *(required)* - The name of the field for the input.
-  - `label` - The text to be used as label. Defaults to `Phoenix.HTML.Form.humanize/1`.
-  - `label_opts` - The options passed to the label element generated with `Phoenix.HTML.Form.label/4`.
+  - `label` - The text to be used as label. Defaults to a title-cased name of the field.
+  - `label_opts` - The options passed to the label element generated with `BitstylesPhoenix.Component.Form.label/1`.
 
-  See `Phoenix.HTML.Form.form_for/4` or LiveView `form` component for details on how to render a form.
+  For details on how to render a form, see:
+  - `simple_form` core component in a freshly-generated Phoenix app, or
+  - `Phoenix.Component.form/1`, or
+  - `Phoenix.HTML.Form.form_for/4` if using phoenix_html v3 or phoenix_html_helpers
   """
 
-  @input_mapping %{
-    color: :color_input,
-    checkbox: :checkbox,
-    date: :date_input,
-    datetime_local: :datetime_local_input,
-    email: :email_input,
-    file: :file_input,
-    number: :number_input,
-    password: :password_input,
-    range: :range_input,
-    search: :search_input,
-    telephone: :telephone_input,
-    text: :text_input,
-    time: :time_input,
-    url: :url_input
-  }
-
   @wrapper_assigns_keys [:field, :form, :label, :label_opts, :hidden_label]
-
-  @type_doc_table @input_mapping
-                  |> Enum.map(fn {type, helper} ->
-                    "| `:#{type}` | `Phoenix.HTML.Form.#{helper}/3` |\n"
-                  end)
 
   @doc """
   Renders various types of `<input>` element, with the associated `<label>`s, and any errors for that field.
 
   ## Attributes
 
-  - `type` - The type of the input (see table below for available types). Defaults to `type="text"`.
+  - `type` - The type of the input. Defaults to `type="text"`.
   - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to the underlying input
-    helpers from `Phoenix.HTML.Form` (see table below for used helpers).
+  - All other attributes will be passed onto the input element.
     Defaults to `maxlength="255"` for `email`, `text` and `password` type.
     Set maxlength to `false` to prevent setting maxlength.
 
-  For reference which input helper is used check out the following mapping:
+  ## Types
 
-  | type | Helper |
-  | :--: | ------ |
-  #{@type_doc_table}
+  This function accepts all HTML input types, considering that:
+
+  * `type="checkbox"` is used exclusively to render boolean values
+  * For live file uploads, see `Phoenix.Component.live_file_input/1`
+
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+  for more information. Unsupported types, such as hidden and radio,
+  are best written directly in your templates.
 
   See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--fieldset) for examples of inputs, selects, textareas, labels etc. in use.
   See the [bitstyles form docs](https://bitcrowd.github.io/bitstyles/?path=/docs/ui-data-forms--login-form) for examples of form layouts.
@@ -79,7 +67,25 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_name">
           Name
         </label>
-        <input id="user_name" maxlength="255" name="user[name]" type="text"/>
+        <input id="user_name" name="user[name]" type="text" maxlength="255"/>
+        """
+    '''
+  )
+
+  story(
+    "Text field with custom id with label",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.ui_input form={@form} id={"the_name"} field={:name} />
+        ...> """
+    ''',
+    '''
+        """
+        <label for="the_name">
+          Name
+        </label>
+        <input id="the_name" name="user[name]" type="text" maxlength="255"/>
         """
     '''
   )
@@ -100,7 +106,7 @@ defmodule BitstylesPhoenix.Component.Form do
             *
           </span>
         </label>
-        <input id="user_name" maxlength="255" name="user[name]" required="required" type="text"/>
+        <input id="user_name" name="user[name]" type="text" maxlength="255" required="required"/>
         """
     '''
   )
@@ -118,7 +124,7 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_name">
           Name
         </label>
-        <input id="user_name" maxlength="255" name="user[name]" type="text"/>
+        <input id="user_name" name="user[name]" type="text" maxlength="255"/>
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
@@ -139,7 +145,7 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_email">
           Email
         </label>
-        <input id="user_email" maxlength="255" name="user[email]" type="text"/>
+        <input id="user_email" name="user[email]" type="text" maxlength="255"/>
         <ul class=\"u-padding-xl-left\">
           <li>
             <span class=\"u-fg-warning\" phx-feedback-for=\"user[email]\">
@@ -166,10 +172,10 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_name">
+        <label for="user_name" class="u-sr-only">
           Name
         </label>
-        <input id="user_name" maxlength="255" name="user[name]" type="text"/>
+        <input id="user_name" name="user[name]" type="text" maxlength="255"/>
         """
     '''
   )
@@ -213,13 +219,13 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_totp">
+        <label for="user_totp" class="extra">
           Authentication code
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
             *
           </span>
         </label>
-        <input autocomplete="one-time-code" id="user_totp" inputmode="numeric" maxlength="6" name="user[totp]" pattern="[0-9]*" placeholder="6-digit code" required="required" type="text" value=""/>
+        <input id="user_totp" name="user[totp]" type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="[0-9]*" placeholder="6-digit code" required="required" value=""/>
         """
     '''
   )
@@ -237,13 +243,13 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_email">
           Email
         </label>
-        <input id="user_email" maxlength="255" name="user[email]" type="email"/>
+        <input id="user_email" name="user[email]" type="email" maxlength="255"/>
         """
     '''
   )
 
   story(
-    "Search field with placholder",
+    "Search field with placeholder",
     '''
         iex> assigns=%{form: form()}
         ...> render ~H"""
@@ -260,7 +266,7 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_email_or_name">
           Email or name
         </label>
-        <input autofocus="autofocus" id="user_email_or_name" name="user[email_or_name]" placeholder="Search by email or name" type="search"/>
+        <input id="user_email_or_name" name="user[email_or_name]" type="search" autofocus="autofocus" placeholder="Search by email or name"/>
         """
     '''
   )
@@ -281,7 +287,7 @@ defmodule BitstylesPhoenix.Component.Form do
           <label for="user_file">
             File
           </label>
-          <input accept="application/pdf" id="user_file" name="user[file]" type="file"/>
+          <input id="user_file" name="user[file]" type="file" accept="application/pdf"/>
         </form>
         """
     '''
@@ -318,7 +324,7 @@ defmodule BitstylesPhoenix.Component.Form do
         """
         <label for="user_accept">
           <input name="user[accept]" type="hidden" value="false"/>
-          <input id="user_accept" name="user[accept]" required="required" type="checkbox" value="true"/>
+          <input id="user_accept" name="user[accept]" type="checkbox" value="true" required="required"/>
           Accept
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
             *
@@ -338,7 +344,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_accept">
+        <label for="user_accept" class="extra">
           <input name="user[accept]" type="hidden" value="false"/>
           <input id="user_accept" name="user[accept]" type="checkbox" value="true"/>
           Accept
@@ -353,28 +359,23 @@ defmodule BitstylesPhoenix.Component.Form do
     assigns =
       assigns
       |> assign_new(:type, fn -> :text end)
-      |> assign(:extra, extra)
+
+    assigns =
+      assigns
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <%= if @type == :checkbox do %>
       <.ui_wrapped_input {@wrapper}>
-        <%= render_input(:checkbox, @form, @field, @extra) %>
+        <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
       </.ui_wrapped_input>
     <% else %>
       <.ui_unwrapped_input {@wrapper}>
-        <%= render_input(@type, @form, @field, @extra) %>
+        <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
       </.ui_unwrapped_input>
     <% end %>
     """
-  end
-
-  defp render_input(type, form, field, opts) do
-    apply(PhxForm, input_type(type), [form, field, default_validations(opts, type)])
-  end
-
-  defp input_type(type) do
-    Map.get(@input_mapping, type, :text_input)
   end
 
   defp default_validations(extra, type) when type in [:email, :text, :password] do
@@ -390,7 +391,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   - `hidden_label` - Only show the label for screen readers if set to `true`.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.textarea/3`.
+  - All other attributes will be passed onto the textarea element.
 
   See the [bitstyles textarea docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--textarea-and-label) for examples of textareas and labels in use.
   """
@@ -453,7 +454,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_metadata">
+        <label for="user_metadata" class="extra">
           Metadata
         </label>
         <textarea id="user_metadata" name="user[metadata]" rows="10">
@@ -473,7 +474,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_address">
+        <label for="user_address" class="u-sr-only">
           Address
         </label>
         <textarea id="user_address" name="user[address]">
@@ -505,16 +506,20 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   def ui_textarea(assigns) do
-    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys)
+    assigns =
+      assigns
+      |> assign(:type, :textarea)
+
+    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
-      |> assign(:extra, extra)
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= PhxForm.textarea(@form, @field, @extra) %>
+      <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
     </.ui_unwrapped_input>
     """
   end
@@ -525,11 +530,12 @@ defmodule BitstylesPhoenix.Component.Form do
   ## Attributes
 
   - `hidden_label` - Only show the label for screen readers if set to `true`.
-  - `options` - The options passed to `Phoenix.HTML.Form.select/4`.
+  - `options` - The options passed to `Phoenix.HTML.Form.options_for_select/2`.
+  - `prompt` - Will be rendered as the first option with an empty value.
   - All options from above (see top level module doc).
-  - All other attributes will be passed in as input options to `Phoenix.HTML.Form.select/4`.
+  - All other attributes will be passed onto the select element.
 
-  See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of textareas and labels in use.
+  See the [bitstyles select docs](https://bitcrowd.github.io/bitstyles/?path=/docs/base-forms--select-and-label) for examples of selects and labels in use.
   """
 
   story(
@@ -595,7 +601,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="u-sr-only" for="user_week">
+        <label for="user_week" class="u-sr-only">
           Week
         </label>
         <select id="user_week" name="user[week]">
@@ -620,7 +626,7 @@ defmodule BitstylesPhoenix.Component.Form do
     ''',
     '''
         """
-        <label class="extra" for="user_preference">
+        <label for="user_preference" class="extra">
           What do you like best?
         </label>
         <select id="user_preference" name="user[preference]">
@@ -635,23 +641,57 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
   )
 
+  story(
+    "Select box with prompt",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.ui_select form={@form} field={:week} options={1..2} prompt={"Choose a week number"}/>
+        ...> """
+    ''',
+    '''
+        """
+        <label for="user_week">
+          Week
+        </label>
+        <select id="user_week" name="user[week]">
+          <option value="">
+            Choose a week number
+          </option>
+          <option value="1">
+            1
+          </option>
+          <option value="2">
+            2
+          </option>
+        </select>
+        """
+    '''
+  )
+
   def ui_select(assigns) do
-    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:options])
+    assigns =
+      assigns
+      |> assign_new(:multiple, fn -> false end)
+      |> assign_new(:prompt, fn -> nil end)
+      |> assign(:type, :select)
+
+    extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
-      |> assign(:extra, extra)
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= PhxForm.select(@form, @field, @options, @extra) %>
+      <.ui_raw_input field={@form[@field]} type={:select} {@extra} />
     </.ui_unwrapped_input>
     """
   end
 
   defp wrapper_assigns(assigns) do
-    Map.take(assigns, @wrapper_assigns_keys ++ [:required])
+    Map.take(assigns, @wrapper_assigns_keys ++ [:required, :id])
   end
 
   @doc """
@@ -700,13 +740,16 @@ defmodule BitstylesPhoenix.Component.Form do
         classnames([label_opts[:class], {"u-sr-only", assigns[:hidden_label]}])
       )
 
-    assigns = assign(assigns, label_text: label_text, label_opts: label_opts)
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> default_id(assigns.form, assigns.field) end)
+      |> assign(label_text: label_text, label_opts: label_opts)
 
     ~H"""
-    <%= PhxForm.label @form, @field, @label_opts do %>
+    <.ui_raw_label for={@id} {@label_opts} >
       <%= @label_text %>
       <.required_label {assigns_to_attributes(assigns)}/>
-    <% end %><%= render_slot(@inner_block) %>
+    </.ui_raw_label><%= render_slot(@inner_block) %>
     <.ui_errors form={@form} field={@field} />
     """
   end
@@ -742,20 +785,38 @@ defmodule BitstylesPhoenix.Component.Form do
   def ui_wrapped_input(assigns) do
     assigns =
       assigns
+      |> assign_new(:id, fn -> default_id(assigns.form, assigns.field) end)
       |> assign_new(:label, fn -> default_label(assigns.field) end)
       |> assign_new(:label_opts, fn -> [] end)
 
     ~H"""
-    <%= PhxForm.label @form, @field, @label_opts do %>
+    <.ui_raw_label for={@id} {@label_opts} >
       <%= render_slot(@inner_block) %>
       <%= @label %>
       <.required_label {assigns_to_attributes(assigns)} />
-    <% end %>
+    </.ui_raw_label>
     <.ui_errors form={@form} field={@field} />
     """
   end
 
-  defp default_label(field), do: PhxForm.humanize(field)
+  defp default_id(form, field) when is_atom(field), do: default_id(form, Atom.to_string(field))
+
+  defp default_id(form, field) when is_binary(field) do
+    PhxForm.input_id(form, field)
+  end
+
+  defp default_label(field) when is_atom(field), do: default_label(Atom.to_string(field))
+
+  defp default_label(field) when is_binary(field) do
+    bin =
+      if String.ends_with?(field, "_id") do
+        binary_part(field, 0, byte_size(field) - 3)
+      else
+        field
+      end
+
+    bin |> String.replace("_", " ") |> :string.titlecase()
+  end
 
   defp required_label(%{required: value} = assigns)
        when value not in [nil, false, "false"] do
@@ -777,6 +838,262 @@ defmodule BitstylesPhoenix.Component.Form do
   def default_required_label(assigns) do
     ~H"""
     <span aria-hidden="true" class={classnames("u-fg-warning u-margin-xxs-left")}>*</span>
+    """
+  end
+
+  @doc """
+  Renders an input, select, or textarea.
+  Direct usage is discouraged. Use `ui_input` instead that comes with a label and errors.
+
+  A `Phoenix.HTML.FormField` may be passed as argument,
+  which is used to retrieve the input name, id, and values.
+  Otherwise all attributes may be passed explicitly.
+
+  ## Types
+
+  This function accepts all HTML input types, considering that:
+
+  * You may also set `type="select"` to render a `<select>` tag
+  * `type="checkbox"` is used exclusively to render boolean values
+  * For live file uploads, see `Phoenix.Component.live_file_input/1`
+
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+  for more information. Unsupported types, such as hidden and radio,
+  are best written directly in your templates.
+
+  ## Attributes
+  - `field` - a `Phoenix.HTML.FormField` struct retrieved from the form, for example: @form[:email]
+  - `type` - string or atom, defaults to :text
+  - `id` - string, required if `field` not passed
+  - `name` - string, required if `field` not passed
+  - `value` - any, required if `field` not passed
+  - `checked` - boolean, required if `type="checkbox"`
+  - `options` - list, required if `type="select"`
+  - `multiple` - boolean, used if `type="select"`
+  - `prompt` - string, used if `type="select"`
+  - any other attributes, they will be passed to the input element
+  """
+
+  story(
+    "Input (from field)",
+    '''
+        iex> assigns=%{form: form()}
+        ...> render ~H"""
+        ...> <.ui_raw_input field={@form[:name]} />
+        ...> """
+    ''',
+    '''
+        """
+        <input id="user_name" name="user[name]" type="text"/>
+        """
+    '''
+  )
+
+  story(
+    "Input (email)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.ui_raw_input id="the_email" name="user[email]" type={:email} value="" class="foo bar"/>
+        ...> """
+    ''',
+    '''
+        """
+        <input id="the_email" name="user[email]" type="email" class="foo bar" value=""/>
+        """
+    '''
+  )
+
+  story(
+    "Input (checkbox)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.ui_raw_input id="the_newsletter" name="user[wants_newsletter]" type={:checkbox} checked={false} data-theme="pink"/>
+        ...> """
+    ''',
+    '''
+        """
+        <input name="user[wants_newsletter]" type="hidden" value="false"/>
+        <input id="the_newsletter" name="user[wants_newsletter]" type="checkbox" value="true" data-theme="pink"/>
+        """
+    '''
+  )
+
+  story(
+    "Input (select)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.ui_raw_input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} prompt={"On which day were you born?"} data-foo=""/>
+        ...> """
+    ''',
+    '''
+        """
+        <select id="the_day" name="user[dob_day]" data-foo="">
+          <option value="">
+            On which day were you born?
+          </option>
+          <option value="1">
+            Monday
+          </option>
+          <option selected="selected" value="2">
+            Tuesday
+          </option>
+        </select>
+        """
+    '''
+  )
+
+  def ui_raw_input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    assigns
+    |> assign(field: nil)
+    |> assign_new(:id, fn -> field.id end)
+    |> assign_new(:type, fn -> :text end)
+    |> assign_new(:name, fn -> if assigns[:multiple], do: field.name <> "[]", else: field.name end)
+    |> assign_new(:value, fn -> field.value end)
+    |> ui_raw_input()
+  end
+
+  def ui_raw_input(%{type: type} = assigns) when is_atom(type) do
+    ui_raw_input(%{assigns | type: Atom.to_string(type)})
+  end
+
+  def ui_raw_input(%{type: "checkbox"} = assigns) do
+    assigns =
+      assign_new(assigns, :checked, fn ->
+        PhxForm.normalize_value("checkbox", assigns[:value])
+      end)
+
+    extra = assigns_to_attributes(assigns, [:id, :name, :checked, :value, :type])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <input name={@name} type="hidden" value="false" disabled={@extra[:disabled]} />
+    <input
+      id={@id}
+      name={@name}
+      type="checkbox"
+      value="true"
+      checked={@checked}
+      {@extra}
+    />
+    """
+  end
+
+  def ui_raw_input(%{type: "select"} = assigns) do
+    assigns =
+      assigns
+      |> assign_new(:prompt, fn -> nil end)
+      |> assign_new(:multiple, fn -> false end)
+
+    extra =
+      assigns_to_attributes(assigns, [:id, :name, :type, :multiple, :prompt, :options, :value])
+
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <select
+      id={@id}
+      name={@name}
+      multiple={@multiple}
+      {@extra}
+    >
+      <option :if={@prompt} value=""><%= @prompt %></option>
+      <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+    </select>
+    """
+  end
+
+  def ui_raw_input(%{type: "textarea"} = assigns) do
+    extra = assigns_to_attributes(assigns, [:id, :name, :type, :value])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <textarea
+      id={@id}
+      name={@name}
+      {@extra}
+    ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
+    """
+  end
+
+  # All other inputs text, datetime-local, url, password, etc. are handled here...
+  def ui_raw_input(assigns) do
+    extra = assigns_to_attributes(assigns, [:id, :name, :type, :value])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <input
+      id={@id}
+      name={@name}
+      type={@type}
+      {@extra}
+      value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+    />
+    """
+  end
+
+  @doc """
+  Renders a label. Direct usage is discouraged in favor of `ui_input` that comes with a label.
+
+  ## Attributes
+
+  - `for` - id of the input the label belongs to.
+  """
+
+  story(
+    "Label",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.ui_raw_label for="user_address_city" class="foo bar">
+        ...>   City
+        ...> </.ui_raw_label>
+        ...> """
+    ''',
+    '''
+        """
+        <label for="user_address_city" class="foo bar">
+          City
+        </label>
+        """
+    '''
+  )
+
+  story(
+    "Label (no for)",
+    '''
+        iex> assigns=%{}
+        ...> render ~H"""
+        ...> <.ui_raw_label class="foo bar">
+        ...>   Note
+        ...>   <input type="text" name="note"/>
+        ...> </.ui_raw_label>
+        ...> """
+    ''',
+    '''
+        """
+        <label class="foo bar">
+          Note
+          <input type="text" name="note"/>
+        </label>
+        """
+    '''
+  )
+
+  def ui_raw_label(assigns) do
+    assigns =
+      assigns
+      |> assign_new(:for, fn -> nil end)
+
+    extra = assigns_to_attributes(assigns, [:for])
+    assigns = assign(assigns, extra: extra)
+
+    ~H"""
+    <label for={@for} {@extra}>
+      <%= render_slot(@inner_block) %>
+    </label>
     """
   end
 end
