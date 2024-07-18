@@ -368,11 +368,11 @@ defmodule BitstylesPhoenix.Component.Form do
     ~H"""
     <%= if @type == :checkbox do %>
       <.ui_wrapped_input {@wrapper}>
-        <.input field={@form[@field]} type={@type} {@extra} />
+        <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
       </.ui_wrapped_input>
     <% else %>
       <.ui_unwrapped_input {@wrapper}>
-        <.input field={@form[@field]} type={@type} {@extra} />
+        <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
       </.ui_unwrapped_input>
     <% end %>
     """
@@ -519,7 +519,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <.input field={@form[@field]} type={@type} {@extra} />
+      <.ui_raw_input field={@form[@field]} type={@type} {@extra} />
     </.ui_unwrapped_input>
     """
   end
@@ -685,7 +685,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <.input field={@form[@field]} type={:select} {@extra} />
+      <.ui_raw_input field={@form[@field]} type={:select} {@extra} />
     </.ui_unwrapped_input>
     """
   end
@@ -746,10 +746,10 @@ defmodule BitstylesPhoenix.Component.Form do
       |> assign(label_text: label_text, label_opts: label_opts)
 
     ~H"""
-    <.label for={@id} {@label_opts} >
+    <.ui_raw_label for={@id} {@label_opts} >
       <%= @label_text %>
       <.required_label {assigns_to_attributes(assigns)}/>
-    </.label><%= render_slot(@inner_block) %>
+    </.ui_raw_label><%= render_slot(@inner_block) %>
     <.ui_errors form={@form} field={@field} />
     """
   end
@@ -790,11 +790,11 @@ defmodule BitstylesPhoenix.Component.Form do
       |> assign_new(:label_opts, fn -> [] end)
 
     ~H"""
-    <.label for={@id} {@label_opts} >
+    <.ui_raw_label for={@id} {@label_opts} >
       <%= render_slot(@inner_block) %>
       <%= @label %>
       <.required_label {assigns_to_attributes(assigns)} />
-    </.label>
+    </.ui_raw_label>
     <.ui_errors form={@form} field={@field} />
     """
   end
@@ -879,7 +879,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{form: form()}
         ...> render ~H"""
-        ...> <.input field={@form[:name]} />
+        ...> <.ui_raw_input field={@form[:name]} />
         ...> """
     ''',
     '''
@@ -894,7 +894,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.input id="the_email" name="user[email]" type={:email} value="" class="foo bar"/>
+        ...> <.ui_raw_input id="the_email" name="user[email]" type={:email} value="" class="foo bar"/>
         ...> """
     ''',
     '''
@@ -909,7 +909,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.input id="the_newsletter" name="user[wants_newsletter]" type={:checkbox} checked={false} data-theme="pink"/>
+        ...> <.ui_raw_input id="the_newsletter" name="user[wants_newsletter]" type={:checkbox} checked={false} data-theme="pink"/>
         ...> """
     ''',
     '''
@@ -925,7 +925,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} prompt={"On which day were you born?"} data-foo=""/>
+        ...> <.ui_raw_input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} prompt={"On which day were you born?"} data-foo=""/>
         ...> """
     ''',
     '''
@@ -945,21 +945,21 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
   )
 
-  def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+  def ui_raw_input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
     assigns
     |> assign(field: nil)
     |> assign_new(:id, fn -> field.id end)
     |> assign_new(:type, fn -> :text end)
     |> assign_new(:name, fn -> if assigns[:multiple], do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
-    |> input()
+    |> ui_raw_input()
   end
 
-  def input(%{type: type} = assigns) when is_atom(type) do
-    input(%{assigns | type: Atom.to_string(type)})
+  def ui_raw_input(%{type: type} = assigns) when is_atom(type) do
+    ui_raw_input(%{assigns | type: Atom.to_string(type)})
   end
 
-  def input(%{type: "checkbox"} = assigns) do
+  def ui_raw_input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
         PhxForm.normalize_value("checkbox", assigns[:value])
@@ -981,7 +981,7 @@ defmodule BitstylesPhoenix.Component.Form do
     """
   end
 
-  def input(%{type: "select"} = assigns) do
+  def ui_raw_input(%{type: "select"} = assigns) do
     assigns =
       assigns
       |> assign_new(:prompt, fn -> nil end)
@@ -1005,7 +1005,7 @@ defmodule BitstylesPhoenix.Component.Form do
     """
   end
 
-  def input(%{type: "textarea"} = assigns) do
+  def ui_raw_input(%{type: "textarea"} = assigns) do
     extra = assigns_to_attributes(assigns, [:id, :name, :type, :value])
     assigns = assign(assigns, extra: extra)
 
@@ -1019,7 +1019,7 @@ defmodule BitstylesPhoenix.Component.Form do
   end
 
   # All other inputs text, datetime-local, url, password, etc. are handled here...
-  def input(assigns) do
+  def ui_raw_input(assigns) do
     extra = assigns_to_attributes(assigns, [:id, :name, :type, :value])
     assigns = assign(assigns, extra: extra)
 
@@ -1047,9 +1047,9 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.label for="user_address_city" class="foo bar">
+        ...> <.ui_raw_label for="user_address_city" class="foo bar">
         ...>   City
-        ...> </.label>
+        ...> </.ui_raw_label>
         ...> """
     ''',
     '''
@@ -1066,10 +1066,10 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
         iex> assigns=%{}
         ...> render ~H"""
-        ...> <.label class="foo bar">
+        ...> <.ui_raw_label class="foo bar">
         ...>   Note
         ...>   <input type="text" name="note"/>
-        ...> </.label>
+        ...> </.ui_raw_label>
         ...> """
     ''',
     '''
@@ -1082,7 +1082,7 @@ defmodule BitstylesPhoenix.Component.Form do
     '''
   )
 
-  def label(assigns) do
+  def ui_raw_label(assigns) do
     assigns =
       assigns
       |> assign_new(:for, fn -> nil end)
