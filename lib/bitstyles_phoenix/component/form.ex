@@ -359,17 +359,20 @@ defmodule BitstylesPhoenix.Component.Form do
     assigns =
       assigns
       |> assign_new(:type, fn -> :text end)
-      |> assign(:extra, extra)
+
+    assigns =
+      assigns
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <%= if @type == :checkbox do %>
       <.ui_wrapped_input {@wrapper}>
-        <%= render_input(:checkbox, @form, @field, @extra) %>
+        <.input field={@form[@field]} type={@type} {@extra} />
       </.ui_wrapped_input>
     <% else %>
       <.ui_unwrapped_input {@wrapper}>
-        <%= render_input(@type, @form, @field, @extra) %>
+        <.input field={@form[@field]} type={@type} {@extra} />
       </.ui_unwrapped_input>
     <% end %>
     """
@@ -503,16 +506,20 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   def ui_textarea(assigns) do
+    assigns =
+      assigns
+      |> assign(:type, :textarea)
+
     extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
-      |> assign(:extra, extra)
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= render_input(:textarea, @form, @field, @extra) %>
+      <.input field={@form[@field]} type={@type} {@extra} />
     </.ui_unwrapped_input>
     """
   end
@@ -667,30 +674,19 @@ defmodule BitstylesPhoenix.Component.Form do
       assigns
       |> assign_new(:multiple, fn -> false end)
       |> assign_new(:prompt, fn -> nil end)
+      |> assign(:type, :select)
 
     extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
     assigns =
       assigns
-      |> assign(:extra, extra)
+      |> assign(:extra, default_validations(extra, assigns.type))
       |> assign(:wrapper, wrapper_assigns(assigns))
 
     ~H"""
     <.ui_unwrapped_input {@wrapper}>
-      <%= render_input(:select, @form, @field, @extra) %>
+      <.input field={@form[@field]} type={:select} {@extra} />
     </.ui_unwrapped_input>
-    """
-  end
-
-  defp render_input(type, form, field, opts) do
-    assigns = %{
-      type: type,
-      field: form[field],
-      extra: default_validations(opts, type)
-    }
-
-    ~H"""
-    <.input field={@field} type={@type} {@extra} />
     """
   end
 
