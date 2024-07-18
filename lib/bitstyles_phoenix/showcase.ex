@@ -1,7 +1,8 @@
 defmodule BitstylesPhoenix.Showcase do
   @moduledoc false
 
-  import Phoenix.HTML, only: [safe_to_string: 1, attributes_escape: 1, html_escape: 1]
+  import Phoenix.Component, only: [sigil_H: 2]
+  alias Phoenix.HTML.Safe
 
   defmacro story(name, doctest_iex_code, doctest_expected_results, opts \\ []) do
     default_version = BitstylesPhoenix.Bitstyles.default_version() |> String.to_atom()
@@ -101,11 +102,17 @@ defmodule BitstylesPhoenix.Showcase do
       ]
       |> Keyword.merge(style_opts(opts))
 
+    assigns = %{iframe_opts: iframe_opts}
+
     if dist do
-      safe_to_string(content_tag(:iframe, "", iframe_opts))
+      ~H"""
+      <iframe {@iframe_opts} />
+      """
     else
-      ""
+      ~H""
     end
+    |> Safe.to_iodata()
+    |> IO.iodata_to_binary()
   end
 
   defp style_opts(opts) do
@@ -152,14 +159,5 @@ defmodule BitstylesPhoenix.Showcase do
 
       """
     end
-  end
-
-  # copy-paste from phoenix_html_helpers because `content_tag` was removed in phoenix_html v4
-  # and we don't want to depend on phoenix_html_helpers
-  defp content_tag(name, content, attrs) when is_list(attrs) do
-    name = to_string(name)
-    {:safe, escaped} = html_escape(content)
-    sorted_attrs = attrs |> Enum.sort() |> attributes_escape() |> elem(1)
-    {:safe, [?<, name, sorted_attrs, ?>, escaped, ?<, ?/, name, ?>]}
   end
 end
