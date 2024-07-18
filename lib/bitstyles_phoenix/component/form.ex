@@ -843,7 +843,7 @@ defmodule BitstylesPhoenix.Component.Form do
 
   @doc """
   Renders an input, select, or textarea.
-  Direct usage is discouraged in favor of `ui_input` that comes with a label and errors.
+  Direct usage is discouraged. Use `ui_input` instead that comes with a label and errors.
 
   A `Phoenix.HTML.FormField` may be passed as argument,
   which is used to retrieve the input name, id, and values.
