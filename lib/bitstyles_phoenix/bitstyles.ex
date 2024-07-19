@@ -12,10 +12,10 @@ defmodule BitstylesPhoenix.Bitstyles do
   Returns the classnames for the configured version.
   Input classnames are assumed to be from the #{@default_version} version of bitstyles.
   """
-  def classname(name), do: classname(name, version(:string))
+  def classname(name), do: classname(name, version(:tuple))
 
-  def classname(class, version) when version > "5.0.1" do
-    IO.warn("Version #{version} of bitstyles is not yet supported")
+  def classname(class, version) when is_tuple(version) and version > {5, 0, 1} do
+    IO.warn("Version #{version_to_string(version)} of bitstyles is not yet supported")
     class
   end
 
@@ -25,11 +25,11 @@ defmodule BitstylesPhoenix.Bitstyles do
   # If it does exist, then doing this renaming in the classname/2 function would make it impossible
   # for users of older bitstyles to use the "class-name-A" classname.
 
-  def classname(class, version) when version >= "5.0.0" do
+  def classname(class, version) when is_tuple(version) and version >= {5, 0, 0} do
     class
   end
 
-  def classname(class, version) when version >= "4.2.0" do
+  def classname(class, version) when is_tuple(version) and version >= {4, 2, 0} do
     sizes_renaming = %{
       "3xs" => "xxxs",
       "2xs" => "xxs",
@@ -66,20 +66,20 @@ defmodule BitstylesPhoenix.Bitstyles do
         class -> class
       end
 
-    classname(class, "5.0.0")
+    classname(class, {5, 0, 0})
   end
 
-  def classname(class, version) when version >= "4.0.0" do
+  def classname(class, version) when is_tuple(version) and version >= {4, 0, 0} do
     mapping =
       case class do
         "u-border-radius-" <> variant -> "u-round-#{variant}"
         _ -> class
       end
 
-    classname(mapping, "4.3.0")
+    classname(mapping, {4, 3, 0})
   end
 
-  def classname(class, version) when version >= "2.0.0" do
+  def classname(class, version) when is_tuple(version) and version >= {2, 0, 0} do
     # credo:disable-for-previous-line Credo.Check.Refactor.CyclomaticComplexity
 
     mapping =
@@ -104,10 +104,10 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "4.0.0")
+    classname(mapping, {4, 0, 0})
   end
 
-  def classname(class, version) when version >= "1.5.0" do
+  def classname(class, version) when is_tuple(version) and version >= {1, 5, 0} do
     mapping =
       case class do
         "u-flex-shrink-" <> number -> "u-flex__shrink-#{number}"
@@ -117,10 +117,10 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "2.0.0")
+    classname(mapping, {2, 0, 0})
   end
 
-  def classname(class, version) when version >= "1.3.0" do
+  def classname(class, version) when is_tuple(version) and version >= {1, 3, 0} do
     mapping =
       case class do
         "u-grid-cols-" <> number -> "u-grid--#{number}-col"
@@ -129,12 +129,12 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    classname(mapping, "1.5.0")
+    classname(mapping, {1, 5, 0})
   end
 
-  def classname(_class, version) do
+  def classname(_class, version) when is_tuple(version) do
     raise("""
-    The version #{version} of bitstyles is not supported. The helpers will produce incorrect classes.
+    The version #{version_to_string(version)} of bitstyles is not supported. The helpers will produce incorrect classes.
     Please upgrade bitsyles and set the `bitsyles_version` to the updated version.
     """)
   end

@@ -161,7 +161,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
 
     # u-gap-l and u-gap-xl in 5.0.0 are equivalent to respectively u-gap-m and u-gap-l in 4.3.0
     gap_class =
-      if Bitstyles.version(:string) >= "5.0.0" do
+      if Bitstyles.version(:tuple) >= {5, 0, 0} do
         "u-gap-l"
       else
         "u-gap-m"
