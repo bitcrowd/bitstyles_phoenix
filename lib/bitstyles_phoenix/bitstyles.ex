@@ -5,14 +5,14 @@ defmodule BitstylesPhoenix.Bitstyles do
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   def cdn_url do
-    "#{@cdn_url}@#{version()}"
+    "#{@cdn_url}@#{version(:string)}"
   end
 
   @doc """
   Returns the classnames for the configured version.
   Input classnames are assumed to be from the #{@default_version} version of bitstyles.
   """
-  def classname(name), do: classname(name, version())
+  def classname(name), do: classname(name, version(:string))
 
   def classname(class, version) when version > "5.0.1" do
     IO.warn("Version #{version} of bitstyles is not yet supported")
@@ -139,14 +139,42 @@ defmodule BitstylesPhoenix.Bitstyles do
     """)
   end
 
-  def version do
+  def version(format \\ :tuple) do
     bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
 
-    bitstyles_version_override ||
-      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
+    version =
+      bitstyles_version_override ||
+        Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
+
+    get_version_in_format(version, format)
   end
 
-  def default_version do
-    @default_version
+  def default_version(format \\ :tuple) do
+    get_version_in_format(@default_version, format)
+  end
+
+  defp get_version_in_format(version, format) do
+    case format do
+      :tuple -> version_to_tuple(version)
+      :string -> version_to_string(version)
+    end
+  end
+
+  defp version_to_tuple(version) when is_tuple(version), do: version
+
+  defp version_to_tuple(version) when is_binary(version) do
+    version
+    |> String.split(".")
+    |> Enum.map(&String.to_integer/1)
+    |> List.to_tuple()
+  end
+
+  defp version_to_string(version) when is_binary(version), do: version
+
+  defp version_to_string(version) when is_tuple(version) do
+    version
+    |> Tuple.to_list()
+    |> Enum.map(&to_string/1)
+    |> Enum.join(".")
   end
 end

@@ -456,7 +456,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       assigns_from_single_slot(assigns, :button, exclude: [:label, :icon_file])
 
     button_extra =
-      if Bitstyles.version() >= "5.0.0" do
+      if Bitstyles.version(:string) >= "5.0.0" do
         button_extra
         |> Keyword.put_new(:color, :secondary)
       else
@@ -516,7 +516,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
       |> assigns_to_attributes()
 
     extra =
-      if Bitstyles.version() >= "5.0.0" do
+      if Bitstyles.version(:string) >= "5.0.0" do
         extra
         |> Keyword.put_new(:shape, "menu")
         |> Keyword.put_new(:color, "transparent")

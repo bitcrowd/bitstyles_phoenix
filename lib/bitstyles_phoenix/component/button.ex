@@ -287,7 +287,7 @@ defmodule BitstylesPhoenix.Component.Button do
     extra = assigns_to_attributes(assigns, [:icon, :class, :color, :shape, :variant])
 
     assigns =
-      if Bitstyles.version() >= "5.0.0" && assigns[:variant] do
+      if Bitstyles.version(:string) >= "5.0.0" && assigns[:variant] do
         IO.warn("Attribute `variant` is deprecated in ui_button/1! Change to `color` and `shape`")
 
         assigns
@@ -298,7 +298,7 @@ defmodule BitstylesPhoenix.Component.Button do
       end
 
     classes =
-      if Bitstyles.version() >= "5.0.0" do
+      if Bitstyles.version(:string) >= "5.0.0" do
         color_and_shape_classes(assigns[:color], assigns[:shape])
       else
         variant_classes(assigns[:variant])
@@ -538,7 +538,7 @@ defmodule BitstylesPhoenix.Component.Button do
     extra = assigns_to_attributes(assigns, [:icon, :label, :reversed, :color, :title])
 
     extra =
-      if Bitstyles.version() >= "5.0.0" do
+      if Bitstyles.version(:string) >= "5.0.0" do
         if assigns[:reversed] do
           Keyword.put_new(extra, :"data-theme", "dark")
         else

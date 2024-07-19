@@ -48,7 +48,7 @@ defmodule BitstylesPhoenix do
 
   ### Bitstyles version
 
-  BitstylesPhoenix will generate classes #{BitstylesPhoenix.Bitstyles.version()} of bitstyles.
+  BitstylesPhoenix will generate classes #{BitstylesPhoenix.Bitstyles.version(:string)} of bitstyles.
   You can set older versions with a configuration:
 
   ```elixir
