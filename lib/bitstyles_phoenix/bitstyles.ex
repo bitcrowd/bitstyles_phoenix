@@ -56,6 +56,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         String.replace(acc, new_border_color, old_border_color)
       end)
 
+    # class from version 5 getting renamed to work for < 5
     class =
       case class do
         "u-list-none" -> "a-list-reset"
@@ -63,6 +64,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-fg-text" -> "u-fg-gray-30"
         "u-fg-text-darker" -> "u-fg-gray-50"
         "u-bg-gray-darker" -> "u-bg-gray-80"
+        "u-version-5-0-0" -> "u-version-4"
         class -> class
       end
 
@@ -101,6 +103,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-border-radius-" <> variant -> "u-round--#{variant}"
         "u-overflow-x-auto" -> "u-overflow--x"
         "u-overflow-y-auto" -> "u-overflow--y"
+        "u-version-3" -> "u-version-1-5"
         _ -> class
       end
 
@@ -114,6 +117,7 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-flex-grow-" <> number -> "u-flex__grow-#{number}"
         "u-flex-wrap" -> "u-flex--wrap"
         "u-flex-col" -> "u-flex--col"
+        "u-version-1-5" -> "u-version-1-3"
         _ -> class
       end
 

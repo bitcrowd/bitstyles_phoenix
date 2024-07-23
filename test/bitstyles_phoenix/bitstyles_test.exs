@@ -11,6 +11,23 @@ defmodule BitstylesPhoenix.BitstylesTest do
              )
     end
 
+    test "chained version" do
+      assert classname("u-version-5-0-0", {5, 0, 0}) == "u-version-5-0-0"
+      assert classname("u-version-5-0-0", {4, 9, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {4, 4, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {4, 3, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {4, 2, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {4, 1, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {4, 0, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {3, 9, 9}) == "u-version-2"
+      assert classname("u-version-5-0-0", {3, 0, 0}) == "u-version-2"
+      assert classname("u-version-5-0-0", {2, 0, 0}) == "u-version-2"
+      assert classname("u-version-5-0-0", {1, 6, 0}) == "u-version-1-5"
+      assert classname("u-version-5-0-0", {1, 5, 0}) == "u-version-1-5"
+      assert classname("u-version-5-0-0", {1, 4, 0}) == "u-version-1-3"
+      assert classname("u-version-5-0-0", {1, 3, 0}) == "u-version-1-3"
+    end
+
     test "version 5.0.0" do
       assert classname("u-flex", {5, 0, 0}) == "u-flex"
       assert classname("u-border-radius-0", {5, 0, 0}) == "u-border-radius-0"
