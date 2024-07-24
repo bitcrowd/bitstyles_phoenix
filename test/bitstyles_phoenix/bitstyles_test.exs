@@ -11,7 +11,9 @@ defmodule BitstylesPhoenix.BitstylesTest do
              )
     end
 
+    # TODO: delete
     test "chained version" do
+      assert classname("u-version-5-0-0", {5, 0, 1}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {5, 0, 0}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {4, 9, 0}) == "u-version-4"
       assert classname("u-version-5-0-0", {4, 4, 0}) == "u-version-4"
