@@ -162,18 +162,18 @@ defmodule BitstylesPhoenix.Bitstyles do
     """)
   end
 
-  def version() do
+  def version do
     version_to_tuple(version_string())
   end
 
-  def version_string() do
+  def version_string do
     bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
 
     bitstyles_version_override ||
       Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
   end
 
-  def default_version() do
+  def default_version do
     version_to_tuple(@default_version)
   end
 
