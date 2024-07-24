@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Switched bitstyles version comparisons from string comparisons to tuple comparisons, which will ensure correct output if bitstyles version ever contains a number above 9.
+- Modified the process of downgrading classnames to the target bitstyles version by chaining renames. This is necessary preparation work to support bitstyles 6.0.0.
+
 ## v2.4.0 - 2024-07-18
 
 - Added support for phoenix_html `v4`. You can also continue using phoenix_html `v3`. To replace `Phoenix.HTML.Form` input helpers removed in phoenix_html `v4`, new components `ui_raw_input` and `ui_raw_label` were added.
