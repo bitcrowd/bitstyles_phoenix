@@ -8,17 +8,17 @@ defmodule BitstylesPhoenix.Bitstyles do
            when target_version < version and current_version >= version
 
   def cdn_url do
-    "#{@cdn_url}@#{version(:string)}"
+    "#{@cdn_url}@#{version_string()}"
   end
 
   @doc """
   Returns the classnames for the configured version.
   Input classnames are assumed to be from the #{@default_version} version of bitstyles.
   """
-  def classname(name), do: classname(name, version(:tuple))
+  def classname(name), do: classname(name, version())
 
   def classname(class, version) when is_tuple(version) do
-    downgrade_classname(class, version, default_version(:tuple))
+    downgrade_classname(class, version, default_version())
   end
 
   # Note about class renaming:
@@ -162,25 +162,23 @@ defmodule BitstylesPhoenix.Bitstyles do
     """)
   end
 
-  def version(format \\ :tuple) do
+  def version() do
+    version_to_tuple(version_string())
+  end
+
+  def version_string() do
     bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
 
-    version =
-      bitstyles_version_override ||
-        Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
-
-    get_version_in_format(version, format)
+    bitstyles_version_override ||
+      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
   end
 
-  def default_version(format \\ :tuple) do
-    get_version_in_format(@default_version, format)
+  def default_version() do
+    version_to_tuple(@default_version)
   end
 
-  defp get_version_in_format(version, format) do
-    case format do
-      :tuple -> version_to_tuple(version)
-      :string -> version_to_string(version)
-    end
+  def default_version_string do
+    @default_version
   end
 
   defp version_to_tuple(version) when is_tuple(version), do: version

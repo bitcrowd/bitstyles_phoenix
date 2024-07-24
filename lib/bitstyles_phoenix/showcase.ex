@@ -6,7 +6,7 @@ defmodule BitstylesPhoenix.Showcase do
 
   defmacro story(name, doctest_iex_code, doctest_expected_results, opts \\ []) do
     default_version =
-      BitstylesPhoenix.Bitstyles.default_version(:string)
+      BitstylesPhoenix.Bitstyles.default_version_string()
       |> String.to_atom()
 
     doctest_expected_results =
