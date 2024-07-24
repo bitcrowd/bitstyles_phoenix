@@ -96,10 +96,9 @@ defmodule BitstylesPhoenix.Bitstyles do
     downgrade_classname(mapping, target_version, {4, 0, 0})
   end
 
+  # credo:disable-for-next-line Credo.Check.Refactor.CyclomaticComplexity
   defp downgrade_classname(class, target_version, current_version)
        when should_downgrade_from({4, 0, 0}, target_version, current_version) do
-    # credo:disable-for-previous-line Credo.Check.Refactor.CyclomaticComplexity
-
     mapping =
       case class do
         # Make sure that we leave the classes in place that are old anyway (update compatibility)
@@ -198,7 +197,6 @@ defmodule BitstylesPhoenix.Bitstyles do
   defp version_to_string(version) when is_tuple(version) do
     version
     |> Tuple.to_list()
-    |> Enum.map(&to_string/1)
-    |> Enum.join(".")
+    |> Enum.map_join(".", &to_string/1)
   end
 end
