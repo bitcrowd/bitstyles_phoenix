@@ -1,24 +1,26 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "5.0.1"
+  require BitstylesPhoenix.Bitstyles.Version
+  alias BitstylesPhoenix.Bitstyles.Version
+
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
   defguard should_downgrade_from(version, target_version, current_version)
            when target_version < version and current_version >= version
 
   def cdn_url do
-    "#{@cdn_url}@#{version_string()}"
+    "#{@cdn_url}@#{Version.version_string()}"
   end
 
   @doc """
   Returns the classnames for the configured version.
-  Input classnames are assumed to be from the #{@default_version} version of bitstyles.
+  Input classnames are assumed to be from the #{Version.default_version_string()} version of bitstyles.
   """
-  def classname(name), do: classname(name, version())
+  def classname(name), do: classname(name, Version.version())
 
   def classname(class, version) when is_tuple(version) do
-    downgrade_classname(class, version, default_version())
+    downgrade_classname(class, version, Version.default_version())
   end
 
   # Note about class renaming:
@@ -29,7 +31,7 @@ defmodule BitstylesPhoenix.Bitstyles do
 
   defp downgrade_classname(class, target_version, _current_version)
        when target_version > {5, 0, 1} do
-    IO.warn("Version #{version_to_string(target_version)} of bitstyles is not yet supported")
+    IO.warn("Version #{Version.to_string(target_version)} of bitstyles is not yet supported")
     class
   end
 
@@ -157,44 +159,8 @@ defmodule BitstylesPhoenix.Bitstyles do
   defp downgrade_classname(_class, target_version, current_version)
        when should_downgrade_from({1, 3, 0}, target_version, current_version) do
     raise("""
-    The version #{version_to_string(target_version)} of bitstyles is not supported. The helpers will produce incorrect classes.
+    The version #{Version.to_string(target_version)} of bitstyles is not supported. The helpers will produce incorrect classes.
     Please upgrade bitsyles and set the `bitsyles_version` to the updated version.
     """)
-  end
-
-  def version do
-    version_to_tuple(version_string())
-  end
-
-  def version_string do
-    bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
-
-    bitstyles_version_override ||
-      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
-  end
-
-  def default_version do
-    version_to_tuple(@default_version)
-  end
-
-  def default_version_string do
-    @default_version
-  end
-
-  defp version_to_tuple(version) when is_tuple(version), do: version
-
-  defp version_to_tuple(version) when is_binary(version) do
-    version
-    |> String.split(".")
-    |> Enum.map(&String.to_integer/1)
-    |> List.to_tuple()
-  end
-
-  defp version_to_string(version) when is_binary(version), do: version
-
-  defp version_to_string(version) when is_tuple(version) do
-    version
-    |> Tuple.to_list()
-    |> Enum.map_join(".", &to_string/1)
   end
 end

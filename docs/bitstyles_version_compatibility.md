@@ -78,7 +78,7 @@ open version_showcase/index.html
 
 ```elixir
 def ui_tricky_component(assigns) do
-  version = BitstylesPhoenix.Bitstyles.version()
+  version = BitstylesPhoenix.Bitstyles.Version.version()
 
   if version >= {5,0,0} do
     ~H"""
