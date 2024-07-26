@@ -5,7 +5,9 @@ defmodule BitstylesPhoenix.Showcase do
   alias Phoenix.HTML.Safe
 
   defmacro story(name, doctest_iex_code, doctest_expected_results, opts \\ []) do
-    default_version = BitstylesPhoenix.Bitstyles.default_version() |> String.to_atom()
+    default_version =
+      BitstylesPhoenix.Bitstyles.Version.default_version_string()
+      |> String.to_atom()
 
     doctest_expected_results =
       if is_list(doctest_expected_results) && is_tuple(List.first(doctest_expected_results)) do

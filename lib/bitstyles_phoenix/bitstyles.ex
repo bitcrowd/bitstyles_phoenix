@@ -1,22 +1,26 @@
 defmodule BitstylesPhoenix.Bitstyles do
   @moduledoc false
 
-  @default_version "5.0.1"
+  require BitstylesPhoenix.Bitstyles.Version
+  alias BitstylesPhoenix.Bitstyles.Version
+
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
+  defguard should_downgrade_from(version, target_version, current_version)
+           when target_version < version and current_version >= version
+
   def cdn_url do
-    "#{@cdn_url}@#{version()}"
+    "#{@cdn_url}@#{Version.version_string()}"
   end
 
   @doc """
   Returns the classnames for the configured version.
-  Input classnames are assumed to be from the #{@default_version} version of bitstyles.
+  Input classnames are assumed to be from the #{Version.default_version_string()} version of bitstyles.
   """
-  def classname(name), do: classname(name, version())
+  def classname(name), do: classname(name, Version.version())
 
-  def classname(class, version) when version > "5.0.1" do
-    IO.warn("Version #{version} of bitstyles is not yet supported")
-    class
+  def classname(class, version) when is_tuple(version) do
+    downgrade_classname(class, version, Version.default_version())
   end
 
   # Note about class renaming:
@@ -25,11 +29,24 @@ defmodule BitstylesPhoenix.Bitstyles do
   # If it does exist, then doing this renaming in the classname/2 function would make it impossible
   # for users of older bitstyles to use the "class-name-A" classname.
 
-  def classname(class, version) when version >= "5.0.0" do
+  defp downgrade_classname(class, target_version, _current_version)
+       when target_version > {5, 0, 1} do
+    IO.warn("Version #{Version.to_string(target_version)} of bitstyles is not yet supported")
     class
   end
 
-  def classname(class, version) when version >= "4.2.0" do
+  defp downgrade_classname(class, target_version, _current_version)
+       when target_version >= {5, 0, 0} do
+    class
+  end
+
+  defp downgrade_classname(class, target_version, current_version)
+       when target_version >= current_version do
+    class
+  end
+
+  defp downgrade_classname(class, target_version, current_version)
+       when should_downgrade_from({5, 0, 0}, target_version, current_version) do
     sizes_renaming = %{
       "3xs" => "xxxs",
       "2xs" => "xxs",
@@ -63,25 +80,27 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-fg-text" -> "u-fg-gray-30"
         "u-fg-text-darker" -> "u-fg-gray-50"
         "u-bg-gray-darker" -> "u-bg-gray-80"
+        "u-version-5-0-0" -> "u-version-4"
         class -> class
       end
 
-    classname(class, "5.0.0")
+    downgrade_classname(class, target_version, {4, 2, 0})
   end
 
-  def classname(class, version) when version >= "4.0.0" do
+  defp downgrade_classname(class, target_version, current_version)
+       when should_downgrade_from({4, 2, 0}, target_version, current_version) do
     mapping =
       case class do
         "u-border-radius-" <> variant -> "u-round-#{variant}"
         _ -> class
       end
 
-    classname(mapping, "4.3.0")
+    downgrade_classname(mapping, target_version, {4, 0, 0})
   end
 
-  def classname(class, version) when version >= "2.0.0" do
-    # credo:disable-for-previous-line Credo.Check.Refactor.CyclomaticComplexity
-
+  # credo:disable-for-next-line Credo.Check.Refactor.CyclomaticComplexity
+  defp downgrade_classname(class, target_version, current_version)
+       when should_downgrade_from({4, 0, 0}, target_version, current_version) do
     mapping =
       case class do
         # Make sure that we leave the classes in place that are old anyway (update compatibility)
@@ -101,52 +120,47 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-border-radius-" <> variant -> "u-round--#{variant}"
         "u-overflow-x-auto" -> "u-overflow--x"
         "u-overflow-y-auto" -> "u-overflow--y"
+        "u-version-4" -> "u-version-2"
         _ -> class
       end
 
-    classname(mapping, "4.0.0")
+    downgrade_classname(mapping, target_version, {2, 0, 0})
   end
 
-  def classname(class, version) when version >= "1.5.0" do
+  defp downgrade_classname(class, target_version, current_version)
+       when should_downgrade_from({2, 0, 0}, target_version, current_version) do
     mapping =
       case class do
         "u-flex-shrink-" <> number -> "u-flex__shrink-#{number}"
         "u-flex-grow-" <> number -> "u-flex__grow-#{number}"
         "u-flex-wrap" -> "u-flex--wrap"
         "u-flex-col" -> "u-flex--col"
+        "u-version-2" -> "u-version-1-5"
         _ -> class
       end
 
-    classname(mapping, "2.0.0")
+    downgrade_classname(mapping, target_version, {1, 5, 0})
   end
 
-  def classname(class, version) when version >= "1.3.0" do
+  defp downgrade_classname(class, target_version, current_version)
+       when should_downgrade_from({1, 5, 0}, target_version, current_version) do
     mapping =
       case class do
         "u-grid-cols-" <> number -> "u-grid--#{number}-col"
         "u-col-span-" <> number -> "u-grid__col-span-#{number}"
         "u-col-start-" <> number -> "u-grid__col-#{number}"
+        "u-version-1-5" -> "u-version-1-3"
         _ -> class
       end
 
-    classname(mapping, "1.5.0")
+    downgrade_classname(mapping, target_version, {1, 3, 0})
   end
 
-  def classname(_class, version) do
+  defp downgrade_classname(_class, target_version, current_version)
+       when should_downgrade_from({1, 3, 0}, target_version, current_version) do
     raise("""
-    The version #{version} of bitstyles is not supported. The helpers will produce incorrect classes.
+    The version #{Version.to_string(target_version)} of bitstyles is not supported. The helpers will produce incorrect classes.
     Please upgrade bitsyles and set the `bitsyles_version` to the updated version.
     """)
-  end
-
-  def version do
-    bitstyles_version_override = Process.get(:bitstyles_phoenix_bistyles_version)
-
-    bitstyles_version_override ||
-      Application.get_env(:bitstyles_phoenix, :bitstyles_version, @default_version)
-  end
-
-  def default_version do
-    @default_version
   end
 end
