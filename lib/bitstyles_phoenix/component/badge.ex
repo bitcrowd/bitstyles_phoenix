@@ -138,7 +138,7 @@ defmodule BitstylesPhoenix.Component.Badge do
     extra = assigns_to_attributes(assigns, [:class, :variant])
 
     {variant_class, extra} =
-      if Bitstyles.version() >= "6.0.0" do
+      if Bitstyles.Version.version() >= {6, 0, 0} do
         theme = assigns[:variant] || "grayscale"
         {nil, Keyword.put_new(extra, :"data-theme", theme)}
       else

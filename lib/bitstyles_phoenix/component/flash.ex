@@ -181,7 +181,7 @@ defmodule BitstylesPhoenix.Component.Flash do
     extra = assigns_to_attributes(assigns, [:class, :content_class, :variant])
 
     {variant_class, extra} =
-      if Bitstyles.version() >= "6.0.0" do
+      if Bitstyles.Version.version() >= {6, 0, 0} do
         {nil, Keyword.put_new(extra, :"data-theme", Enum.at(flash_variants, 0))}
       else
         {flash_variants |> Enum.map_join(" ", &"a-flash--#{&1}"), extra}

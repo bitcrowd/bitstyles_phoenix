@@ -27,7 +27,7 @@ defmodule BitstylesPhoenix.Bitstyles do
   # for users of older bitstyles to use the "class-name-A" classname.
 
   defp downgrade_classname(class, target_version, _current_version)
-       when target_version > {5, 0, 1} do
+       when target_version > {6, 0, 0} do
     IO.warn("Version #{Version.to_string(target_version)} of bitstyles is not yet supported")
     class
   end
@@ -37,7 +37,7 @@ defmodule BitstylesPhoenix.Bitstyles do
     class
   end
 
-  defp downgrade_classname(class, target_version, {6, 0, 6}) do
+  defp downgrade_classname(class, target_version, {6, 0, 0}) do
     # downgrading 6.0.0 -> 5.0.1
     sizes_renaming = %{
       "s7" => "4xs",
