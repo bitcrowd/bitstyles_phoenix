@@ -133,6 +133,11 @@ defmodule BitstylesPhoenix.Bitstyles do
 
     class = test_only_downgrade(class, "u-version-4", "u-version-2")
 
+    downgrade_classname(class, target_version, {3, 1, 0})
+  end
+
+  defp downgrade_classname(class, target_version, {3, 1, 0}) do
+    # no changes when downgrading from 3.1.0 -> 3.0.0
     downgrade_classname(class, target_version, {3, 0, 0})
   end
 

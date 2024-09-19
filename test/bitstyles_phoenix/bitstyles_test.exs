@@ -20,6 +20,7 @@ defmodule BitstylesPhoenix.BitstylesTest do
       assert classname("u-version-5-0-0", {4, 2, 0}) == "u-version-4"
       assert classname("u-version-5-0-0", {4, 1, 0}) == "u-version-4"
       assert classname("u-version-5-0-0", {4, 0, 0}) == "u-version-4"
+      assert classname("u-version-5-0-0", {3, 1, 0}) == "u-version-2"
       assert classname("u-version-5-0-0", {3, 0, 0}) == "u-version-2"
       assert classname("u-version-5-0-0", {2, 0, 0}) == "u-version-2"
       assert classname("u-version-5-0-0", {1, 5, 0}) == "u-version-1-4"
