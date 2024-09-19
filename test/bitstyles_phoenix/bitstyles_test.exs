@@ -11,8 +11,9 @@ defmodule BitstylesPhoenix.BitstylesTest do
              )
     end
 
-    # TODO: delete
-    test "chained version" do
+    test "chained version downgrade" do
+      # those class changes are only added in the test environment, to test that chaining works
+      # and won't be available to the users of bitstyles_phoenix
       assert classname("u-version-5-0-0", {5, 0, 1}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {5, 0, 0}) == "u-version-5-0-0"
       assert classname("u-version-5-0-0", {4, 3, 0}) == "u-version-4"

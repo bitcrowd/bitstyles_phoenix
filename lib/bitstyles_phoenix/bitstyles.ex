@@ -77,9 +77,10 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-fg-text" -> "u-fg-gray-30"
         "u-fg-text-darker" -> "u-fg-gray-50"
         "u-bg-gray-darker" -> "u-bg-gray-80"
-        "u-version-5-0-0" -> "u-version-4"
         class -> class
       end
+
+    class = test_only_downgrade(class, "u-version-5-0-0", "u-version-4")
 
     downgrade_classname(class, target_version, {4, 3, 0})
   end
@@ -127,9 +128,10 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-border-radius-" <> variant -> "u-round--#{variant}"
         "u-overflow-x-auto" -> "u-overflow--x"
         "u-overflow-y-auto" -> "u-overflow--y"
-        "u-version-4" -> "u-version-2"
         _ -> class
       end
+
+    class = test_only_downgrade(class, "u-version-4", "u-version-2")
 
     downgrade_classname(class, target_version, {3, 0, 0})
   end
@@ -147,9 +149,10 @@ defmodule BitstylesPhoenix.Bitstyles do
         "u-flex-grow-" <> number -> "u-flex__grow-#{number}"
         "u-flex-wrap" -> "u-flex--wrap"
         "u-flex-col" -> "u-flex--col"
-        "u-version-2" -> "u-version-1-4"
         _ -> class
       end
+
+    class = test_only_downgrade(class, "u-version-2", "u-version-1-4")
 
     downgrade_classname(class, target_version, {1, 5, 0})
   end
@@ -161,16 +164,17 @@ defmodule BitstylesPhoenix.Bitstyles do
 
   defp downgrade_classname(class, target_version, {1, 4, 0}) do
     # downgrading 1.4.0 -> 1.3.0
-    mapping =
+    class =
       case class do
         "u-grid-cols-" <> number -> "u-grid--#{number}-col"
         "u-col-span-" <> number -> "u-grid__col-span-#{number}"
         "u-col-start-" <> number -> "u-grid__col-#{number}"
-        "u-version-1-4" -> "u-version-1-3"
         _ -> class
       end
 
-    downgrade_classname(mapping, target_version, {1, 3, 0})
+    class = test_only_downgrade(class, "u-version-1-4", "u-version-1-3")
+
+    downgrade_classname(class, target_version, {1, 3, 0})
   end
 
   defp downgrade_classname(class, target_version, {1, 3, 0}) do
@@ -183,5 +187,13 @@ defmodule BitstylesPhoenix.Bitstyles do
     The version #{Version.to_string(target_version)} of bitstyles is not supported. The helpers will produce incorrect classes.
     Please upgrade bitsyles and set the `bitsyles_version` to the updated version.
     """)
+  end
+
+  defp test_only_downgrade(class, from, to) do
+    if Application.get_env(:bitstyles_phoenix, :add_version_test_classes, false) do
+      if(class == from, do: to, else: class)
+    else
+      class
+    end
   end
 end
