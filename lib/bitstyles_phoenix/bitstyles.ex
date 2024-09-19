@@ -6,9 +6,6 @@ defmodule BitstylesPhoenix.Bitstyles do
 
   @cdn_url "https://cdn.jsdelivr.net/npm/bitstyles"
 
-  defguard should_downgrade_from(version, target_version, current_version)
-           when target_version < version and current_version >= version
-
   def cdn_url do
     "#{@cdn_url}@#{Version.version_string()}"
   end
@@ -35,18 +32,18 @@ defmodule BitstylesPhoenix.Bitstyles do
     class
   end
 
-  defp downgrade_classname(class, target_version, _current_version)
-       when target_version >= {5, 0, 0} do
+  defp downgrade_classname(class, target_version, current_version)
+       when target_version == current_version do
     class
   end
 
-  defp downgrade_classname(class, target_version, current_version)
-       when target_version >= current_version do
-    class
+  defp downgrade_classname(class, target_version, {5, 0, 1}) do
+    # no changes when downgrading 5.0.1 -> 5.0.0
+    downgrade_classname(class, target_version, {5, 0, 0})
   end
 
-  defp downgrade_classname(class, target_version, current_version)
-       when should_downgrade_from({5, 0, 0}, target_version, current_version) do
+  defp downgrade_classname(class, target_version, {5, 0, 0}) do
+    # downgrading 5.0.0 -> 4.3.0
     sizes_renaming = %{
       "3xs" => "xxxs",
       "2xs" => "xxs",
@@ -84,24 +81,34 @@ defmodule BitstylesPhoenix.Bitstyles do
         class -> class
       end
 
+    downgrade_classname(class, target_version, {4, 3, 0})
+  end
+
+  defp downgrade_classname(class, target_version, {4, 3, 0}) do
+    # no changes when downgrading from 4.3.0 -> 4.2.0
     downgrade_classname(class, target_version, {4, 2, 0})
   end
 
-  defp downgrade_classname(class, target_version, current_version)
-       when should_downgrade_from({4, 2, 0}, target_version, current_version) do
-    mapping =
+  defp downgrade_classname(class, target_version, {4, 2, 0}) do
+    # downgrading from 4.2.0 -> 4.1.0
+    class =
       case class do
         "u-border-radius-" <> variant -> "u-round-#{variant}"
         _ -> class
       end
 
-    downgrade_classname(mapping, target_version, {4, 0, 0})
+    downgrade_classname(class, target_version, {4, 1, 0})
+  end
+
+  defp downgrade_classname(class, target_version, {4, 1, 0}) do
+    # no changes when downgrading from 4.1.0 -> 4.0.0
+    downgrade_classname(class, target_version, {4, 0, 0})
   end
 
   # credo:disable-for-next-line Credo.Check.Refactor.CyclomaticComplexity
-  defp downgrade_classname(class, target_version, current_version)
-       when should_downgrade_from({4, 0, 0}, target_version, current_version) do
-    mapping =
+  defp downgrade_classname(class, target_version, {4, 0, 0}) do
+    # downgrading from 4.0.0 -> 3.0.0
+    class =
       case class do
         # Make sure that we leave the classes in place that are old anyway (update compatibility)
         "u-bg--" <> _ -> class
@@ -124,40 +131,54 @@ defmodule BitstylesPhoenix.Bitstyles do
         _ -> class
       end
 
-    downgrade_classname(mapping, target_version, {2, 0, 0})
+    downgrade_classname(class, target_version, {3, 0, 0})
   end
 
-  defp downgrade_classname(class, target_version, current_version)
-       when should_downgrade_from({2, 0, 0}, target_version, current_version) do
-    mapping =
+  defp downgrade_classname(class, target_version, {3, 0, 0}) do
+    # no changes when downgrading from 3.0.0 -> 2.0.0
+    downgrade_classname(class, target_version, {2, 0, 0})
+  end
+
+  defp downgrade_classname(class, target_version, {2, 0, 0}) do
+    # downgrading 2.0.0 -> 1.5.0
+    class =
       case class do
         "u-flex-shrink-" <> number -> "u-flex__shrink-#{number}"
         "u-flex-grow-" <> number -> "u-flex__grow-#{number}"
         "u-flex-wrap" -> "u-flex--wrap"
         "u-flex-col" -> "u-flex--col"
-        "u-version-2" -> "u-version-1-5"
+        "u-version-2" -> "u-version-1-4"
         _ -> class
       end
 
-    downgrade_classname(mapping, target_version, {1, 5, 0})
+    downgrade_classname(class, target_version, {1, 5, 0})
   end
 
-  defp downgrade_classname(class, target_version, current_version)
-       when should_downgrade_from({1, 5, 0}, target_version, current_version) do
+  defp downgrade_classname(class, target_version, {1, 5, 0}) do
+    # no changes when downgrading from 1.5.0 -> 1.4.0
+    downgrade_classname(class, target_version, {1, 4, 0})
+  end
+
+  defp downgrade_classname(class, target_version, {1, 4, 0}) do
+    # downgrading 1.4.0 -> 1.3.0
     mapping =
       case class do
         "u-grid-cols-" <> number -> "u-grid--#{number}-col"
         "u-col-span-" <> number -> "u-grid__col-span-#{number}"
         "u-col-start-" <> number -> "u-grid__col-#{number}"
-        "u-version-1-5" -> "u-version-1-3"
+        "u-version-1-4" -> "u-version-1-3"
         _ -> class
       end
 
     downgrade_classname(mapping, target_version, {1, 3, 0})
   end
 
-  defp downgrade_classname(_class, target_version, current_version)
-       when should_downgrade_from({1, 3, 0}, target_version, current_version) do
+  defp downgrade_classname(class, target_version, {1, 3, 0}) do
+    # no changes when downgrading from 1.3.0 -> 1.2.0
+    downgrade_classname(class, target_version, {1, 2, 0})
+  end
+
+  defp downgrade_classname(_class, target_version, {1, 2, 0}) do
     raise("""
     The version #{Version.to_string(target_version)} of bitstyles is not supported. The helpers will produce incorrect classes.
     Please upgrade bitsyles and set the `bitsyles_version` to the updated version.
