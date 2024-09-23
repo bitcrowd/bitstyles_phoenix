@@ -198,6 +198,6 @@ defmodule BitstylesPhoenix.Bitstyles do
     defp test_only_downgrade(from, from, to), do: to
     defp test_only_downgrade(class, _, _), do: class
   else
-     defp test_only_downgrade(class, _, _), do: class
+    defp test_only_downgrade(class, _, _), do: class
   end
 end
