@@ -194,11 +194,10 @@ defmodule BitstylesPhoenix.Bitstyles do
     """)
   end
 
-  defp test_only_downgrade(class, from, to) do
-    if Application.get_env(:bitstyles_phoenix, :add_version_test_classes, false) do
-      if(class == from, do: to, else: class)
-    else
-      class
-    end
+  if Application.compile_env(:bitstyles_phoenix, :add_version_test_classes, false) do
+    defp test_only_downgrade(from, from, to), do: to
+    defp test_only_downgrade(class, _, _), do: class
+  else
+     defp test_only_downgrade(class, _, _), do: class
   end
 end
