@@ -3,7 +3,14 @@
 ## Unreleased
 
 - Switched bitstyles version comparisons from string comparisons to tuple comparisons, which will ensure correct output if bitstyles version ever contains a number above 9.
-- Modified the process of downgrading classnames to the target bitstyles version by chaining renames. This is necessary preparation work to support bitstyles 6.0.0.
+- Modified the process of downgrading classnames to the target bitstyles version by chaining renames. This is necessary preparation work to support bitstyles `v6.0.0`.
+- Added support for bitstyles `v6.0.0`. You can continue using bitstyles_phoenix with a lower bitstyles version, or migrate your codebase to bitstyles `v6.0.0`.
+
+### How to migrate to bitstyles `v6.0.0`
+
+Follow the [bitstyles changelog](https://github.com/bitcrowd/bitstyles/blob/main/CHANGELOG.md#600---2023-06-08) for version 6.0.0.
+
+There are no changes to bitstyles_phoenix component APIs.
 
 ## v2.4.0 - 2024-07-18
 
