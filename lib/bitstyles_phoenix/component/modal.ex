@@ -49,7 +49,7 @@ defmodule BitstylesPhoenix.Component.Modal do
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay">
           </div>
-          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l u-flex u-flex-col" role="document">
+          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l1 u-flex u-flex-col" role="document">
             Content
           </div>
         </div>
@@ -77,7 +77,7 @@ defmodule BitstylesPhoenix.Component.Modal do
         <div class="o-modal foo" aria-modal="true" role="dialog" aria-labelledby="dialog-title">
           <div class="o-modal__overlay">
           </div>
-          <div class="a-content a-content--s o-modal__content a-card u-padding-xl@m u-padding-l u-flex u-flex-col bar" foo="bar" role="document">
+          <div class="a-content a-content--s o-modal__content a-card u-padding-xl@m u-padding-l1 u-flex u-flex-col bar" foo="bar" role="document">
             Content
           </div>
         </div>
@@ -104,7 +104,7 @@ defmodule BitstylesPhoenix.Component.Modal do
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay extra" data-foo="bar">
           </div>
-          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l u-flex u-flex-col" role="document">
+          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l1 u-flex u-flex-col" role="document">
             Content
           </div>
         </div>
@@ -136,7 +136,7 @@ defmodule BitstylesPhoenix.Component.Modal do
               Overlay content
             </span>
           </div>
-          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l u-flex u-flex-col" role="document">
+          <div class="a-content o-modal__content a-card u-padding-xl@m u-padding-l1 u-flex u-flex-col" role="document">
             Content
           </div>
         </div>
@@ -156,7 +156,7 @@ defmodule BitstylesPhoenix.Component.Modal do
 
     content_class =
       classnames([
-        "o-modal__content a-card u-padding-xl@m u-padding-l u-flex u-flex-col",
+        "o-modal__content a-card u-padding-xl@m u-padding-l1 u-flex u-flex-col",
         content_extra[:class]
       ])
 

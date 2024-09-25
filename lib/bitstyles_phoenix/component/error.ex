@@ -31,6 +31,13 @@ defmodule BitstylesPhoenix.Component.Error do
         ...> <.ui_errors form={@form} field={:name} />
         ...> """
     ''',
+    "6.0.0": '''
+        """
+        <span class="u-fg-warning" phx-feedback-for="user[name]">
+          is too short
+        </span>
+        """
+    ''',
     "5.0.1": '''
         """
         <span class="u-fg-warning" phx-feedback-for="user[name]">
@@ -64,7 +71,7 @@ defmodule BitstylesPhoenix.Component.Error do
     ''',
     '''
         """
-        <ul class="u-padding-xl-left">
+        <ul class="u-padding-l3-left">
           <li>
             <span class="u-fg-warning" phx-feedback-for="user[email]">
               is invalid
@@ -98,7 +105,7 @@ defmodule BitstylesPhoenix.Component.Error do
         """
 
       errors ->
-        class = classnames(["u-padding-xl-left", assigns[:class]])
+        class = classnames(["u-padding-l3-left", assigns[:class]])
         assigns = assign(assigns, class: class, errors: errors)
 
         ~H"""
@@ -137,6 +144,13 @@ defmodule BitstylesPhoenix.Component.Error do
         ...> render ~H"""
         ...> <.ui_error error={{"Foo error", []}} />
         ...> """
+    ''',
+    "6.0.0": '''
+        """
+        <span class="u-fg-warning">
+          Foo error
+        </span>
+        """
     ''',
     "5.0.1": '''
         """

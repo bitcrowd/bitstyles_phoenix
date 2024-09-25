@@ -63,7 +63,7 @@ defmodule BitstylesPhoenix.Component.Card do
     '''
         """
         <article class="a-card a-card-l">
-          <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger a-card-l__header">
+          <div aria-live="polite" class="u-padding-l1-y a-flash a-card-l__header" data-theme="danger">
             <div class="a-content u-flex u-items-center u-font-medium">
               Its me mario
             </div>
@@ -90,7 +90,7 @@ defmodule BitstylesPhoenix.Component.Card do
     '''
         """
         <article class="a-card">
-          <div aria-live="polite" class="u-padding-l-y a-flash a-flash--danger a-card__header">
+          <div aria-live="polite" class="u-padding-l1-y a-flash a-card__header" data-theme="danger">
             <div class="a-content u-flex u-items-center u-font-medium">
               Its me mario
             </div>

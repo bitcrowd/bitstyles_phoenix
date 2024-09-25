@@ -7,6 +7,7 @@ defmodule Scripts.GenerateVersionShowcase do
   @moduledoc "Generates static HTML pages in #{@dir_name} for manually testing bitstyles_phoenix with different bitstyles versions."
 
   @all_supported_bitstyles_versions [
+    "6.0.0",
     # do not use 5.0.0, it has an incorrect CSS build on the CDN
     "5.0.1",
     "4.3.0",

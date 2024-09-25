@@ -40,9 +40,9 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>       <.ui_sidebar_nav_item><.ui_button href="#" class="u-flex-grow-1" color="transparent">Menu item #2</.ui_button></.ui_sidebar_nav_item>
         ...>     </.ui_sidebar_nav>
         ...>   </:sidebar_content>
-        ...>   <:main :let={s} class="u-margin-s-top">
+        ...>   <:main :let={s} class="u-margin-s2-top">
         ...>     <.ui_content class="flex">
-        ...>       <.ui_js_sidebar_open sidebar={s} class="u-margin-s-right"/>
+        ...>       <.ui_js_sidebar_open sidebar={s} class="u-margin-s2-right"/>
         ...>       Main Content
         ...>     </.ui_content>
         ...>   </:main>
@@ -54,27 +54,27 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         <div class="u-flex u-height-100vh" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
-              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-gray-darker u-fg-text">
+              <div class="u-hidden o-sidebar--large u-flex-shrink-0 u-padding-m-top u-flex@l u-flex-col u-bg-grayscale-dark-2 u-fg-grayscale-light-2">
                 <a href="#" class="u-padding-l">
                   <img src="assets/logo.svg" aria-hidden="true" width="100"/>
                   <span class="u-sr-only">
                     bitcrowd
                   </span>
                 </a>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
-                  <li class="u-margin-xs-bottom u-flex">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-s4-right u-padding-s4-left">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
-                  <li class="u-margin-xs-bottom u-flex">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-gray-darker u-fg-text" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
+              <div class="o-sidebar--small u-flex u-flex-col u-hidden@l u-bg-grayscale-dark-2 u-fg-grayscale-light-2" @click.away="sidebarOpen = false" id="sidebar-small" x-cloak="x-cloak" x-show="sidebarOpen" x-transition:enter="is-transitioning" x-transition:enter-end="is-on-screen" x-transition:enter-start="is-off-screen" x-transition:leave="is-transitioning" x-transition:leave-end="is-off-screen" x-transition:leave-start="is-on-screen">
                 <div class="u-flex">
                   <a href="#" class="u-flex-grow-1 u-padding-l">
                     <img src="assets/logo.svg" aria-hidden="true" width="100"/>
@@ -94,13 +94,13 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
                     </button>
                   </div>
                 </div>
-                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-xs-right u-padding-xs-left">
-                  <li class="u-margin-xs-bottom u-flex">
+                <ul class="u-flex-grow-1 u-flex-shrink-1 u-overflow-y-auto u-list-none u-flex u-flex-col u-items-stretch u-padding-s4-right u-padding-s4-left">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #1
                     </a>
                   </li>
-                  <li class="u-margin-xs-bottom u-flex">
+                  <li class="u-margin-s4-bottom u-flex">
                     <a href="#" class="a-button a-button--transparent u-flex-grow-1">
                       Menu item #2
                     </a>
@@ -109,9 +109,9 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
               </div>
             </nav>
           </header>
-          <main class="u-flex-grow-1 u-overflow-y-auto u-margin-s-top">
+          <main class="u-flex-grow-1 u-overflow-y-auto u-margin-s2-top">
             <div class="a-content flex">
-              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--square u-hidden@l u-margin-s-right" title="Open sidebar">
+              <button type="button" :aria-expanded="sidebarOpen" @click="sidebarOpen = true" aria-controls="sidebar-small" class="a-button a-button--square u-hidden@l u-margin-s2-right" title="Open sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
                   <use xlink:href="#icon-hamburger">
                   </use>

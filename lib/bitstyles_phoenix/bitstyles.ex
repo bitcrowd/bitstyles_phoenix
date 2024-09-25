@@ -27,7 +27,7 @@ defmodule BitstylesPhoenix.Bitstyles do
   # for users of older bitstyles to use the "class-name-A" classname.
 
   defp downgrade_classname(class, target_version, _current_version)
-       when target_version > {5, 0, 1} do
+       when target_version > {6, 0, 0} do
     IO.warn("Version #{Version.to_string(target_version)} of bitstyles is not yet supported")
     class
   end
@@ -35,6 +35,57 @@ defmodule BitstylesPhoenix.Bitstyles do
   defp downgrade_classname(class, target_version, current_version)
        when target_version == current_version do
     class
+  end
+
+  defp downgrade_classname(class, target_version, {6, 0, 0}) do
+    # downgrading 6.0.0 -> 5.0.1
+    sizes_renaming = %{
+      "s7" => "4xs",
+      # 3xs has no size equivalent in new sizing
+      # exact match:
+      "s6" => "2xs",
+      "s5" => "2xs",
+      # exact match:
+      "s4" => "xs",
+      "s3" => "xs",
+      # exact match:
+      "s2" => "s",
+      "s1" => "s",
+      # exact match:
+      "m" => "m",
+      # exact match:
+      "l1" => "l",
+      "l2" => "l",
+      # exact match:
+      "l3" => "xl",
+      "l4" => "xl",
+      "l5" => "xl",
+      # exact match:
+      "l6" => "2xl",
+      # exact match:
+      "l7" => "3xl"
+      # 4xl has no size equivalent in new sizing
+    }
+
+    class =
+      Enum.reduce(sizes_renaming, class, fn {new_size, old_size}, acc ->
+        acc
+        |> String.replace("u-margin-#{new_size}", "u-margin-#{old_size}")
+        |> String.replace("u-margin-neg-#{new_size}", "u-margin-neg-#{old_size}")
+        |> String.replace("u-padding-#{new_size}", "u-padding-#{old_size}")
+        |> String.replace("u-padding-neg-#{new_size}", "u-padding-neg-#{old_size}")
+        |> String.replace("u-gap-#{new_size}", "u-gap-#{old_size}")
+      end)
+
+    class =
+      case class do
+        "u-bg-grayscale-dark-2" -> "u-bg-text-darker"
+        "u-fg-grayscale-dark-2" -> "u-fg-text-darker"
+        "u-fg-grayscale" -> "u-fg-text"
+        class -> class
+      end
+
+    downgrade_classname(class, target_version, {5, 0, 1})
   end
 
   defp downgrade_classname(class, target_version, {5, 0, 1}) do
