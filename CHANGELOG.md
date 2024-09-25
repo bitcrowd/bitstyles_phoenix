@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v2.5.0 - 2024-09-25
+
 - Switched bitstyles version comparisons from string comparisons to tuple comparisons, which will ensure correct output if bitstyles version ever contains a number above 9.
 - Modified the process of downgrading classnames to the target bitstyles version by chaining renames. This is necessary preparation work to support bitstyles `v6.0.0`.
 - Added support for bitstyles `v6.0.0`. You can continue using bitstyles_phoenix with a lower bitstyles version, or migrate your codebase to bitstyles `v6.0.0`.
