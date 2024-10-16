@@ -40,7 +40,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s2" role="tablist">
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" class="a-button a-button--tab" role="tab">
             Foo
           </button>
@@ -70,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s2" role="tablist">
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
             Foo
           </button>
@@ -100,7 +100,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s2" role="tablist">
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
             Foo
           </button>
@@ -119,7 +119,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
   def ui_tabs(assigns) do
     class =
       classnames([
-        "u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s2",
+        "u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3",
         assigns[:class]
       ])
 
