@@ -40,23 +40,17 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
-          <li class="u-margin-s2-right">
-            <button type="button" class="a-button a-button--tab">
-              Foo
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <button type="button" class="a-button a-button--tab">
-              Bar
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <button type="button" class="a-button a-button--tab">
-              Baz
-            </button>
-          </li>
-        </ul>
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
+          <button type="button" class="a-button a-button--tab" role="tab">
+            Foo
+          </button>
+          <button type="button" class="a-button a-button--tab" role="tab">
+            Bar
+          </button>
+          <button type="button" class="a-button a-button--tab" role="tab">
+            Baz
+          </button>
+        </div>
         """
     ''',
     transparent: false
@@ -76,23 +70,17 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
-          <li class="u-margin-s2-right">
-            <button type="button" aria-selected="true" class="a-button a-button--tab">
-              Foo
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <button type="button" aria-selected="false" class="a-button a-button--tab">
-              Bar
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <button type="button" aria-selected="false" class="a-button a-button--tab">
-              Baz
-            </button>
-          </li>
-        </ul>
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
+          <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
+            Foo
+          </button>
+          <button type="button" aria-selected="false" class="a-button a-button--tab" role="tab">
+            Bar
+          </button>
+          <button type="button" aria-selected="false" class="a-button a-button--tab" role="tab">
+            Baz
+          </button>
+        </div>
         """
     ''',
     transparent: false
@@ -112,23 +100,17 @@ defmodule BitstylesPhoenix.Component.Tabs do
     ''',
     '''
         """
-        <ul class="u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom" role="tablist">
-          <li class="u-margin-s2-right">
-            <button type="button" aria-selected="true" class="a-button a-button--tab">
-              Foo
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <button type="button" aria-selected="false" class="a-button a-button--tab">
-              Bar
-            </button>
-          </li>
-          <li class="u-margin-s2-right">
-            <a href="#" aria-selected="false" class="a-button a-button--tab extra">
-              Baz
-            </a>
-          </li>
-        </ul>
+        <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
+          <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
+            Foo
+          </button>
+          <button type="button" aria-selected="false" class="a-button a-button--tab" role="tab">
+            Bar
+          </button>
+          <a href="#" aria-selected="false" class="a-button a-button--tab extra" role="tab">
+            Baz
+          </a>
+        </div>
         """
     ''',
     transparent: false
@@ -137,7 +119,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
   def ui_tabs(assigns) do
     class =
       classnames([
-        "u-list-none u-flex u-flex-wrap u-items-end a-button--tab-container u-margin-m-bottom",
+        "u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3",
         assigns[:class]
       ])
 
@@ -145,19 +127,15 @@ defmodule BitstylesPhoenix.Component.Tabs do
     assigns = assign(assigns, class: class, extra: extra)
 
     ~H"""
-    <ul class={@class} role="tablist" {@extra}>
+    <div class={@class} role="tablist" {@extra}>
       <%= for tab <- @tab do %>
         <%= if Map.get(tab, :show, true) do %>
-          <li
-            class={classnames(["u-margin-s2-right"])}
-          >
             <.ui_tab_button {button_options(tab, assigns[:active])}>
               <%= render_slot(tab) %>
             </.ui_tab_button>
-          </li>
         <% end %>
       <% end %>
-    </ul>
+    </div>
     """
   end
 
@@ -193,7 +171,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
     assigns = assign(assigns, extra: Keyword.merge(extra, active))
 
     ~H"""
-    <.ui_button {@extra} color="tab" shape="tab">
+    <.ui_button {@extra} role="tab" color="tab" shape="tab">
       <%= render_slot(@inner_block) %>
     </.ui_button>
     """
