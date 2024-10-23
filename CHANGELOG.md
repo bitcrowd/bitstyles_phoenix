@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Changed `ui_tabs` and `ui_tab_button` to follow accessibility guidelines: replaced the `<ul>` with a `<div role="tablist">` and instead of nesting the buttons inside `<li>`s they are now the direct children of the `div` and have a `role="tab"` set. As a side effect the gap between the tabs is now a little smaller.
+
 ## v2.5.0 - 2024-09-25
 
 - Switched bitstyles version comparisons from string comparisons to tuple comparisons, which will ensure correct output if bitstyles version ever contains a number above 9.
@@ -48,9 +50,9 @@ The `variant` attribute of the `Button` component is deprecated in bitstyles `v5
 
 - Add `heading_class` option to `ui_section_title` to set classes on the heading
 - `ui_dl_items` now aligns the items to the baseline (following the Bitstyles examples)
-- Updated to bitstyles `v4.3.0`. 
+- Updated to bitstyles `v4.3.0`.
 
-### Added 
+### Added
 
 - Inputs now render a required label *. This can be configured via `required_label` config. If you do not want this new behaviour, define an empty component as required label.
 
