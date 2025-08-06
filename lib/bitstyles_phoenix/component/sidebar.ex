@@ -39,7 +39,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...> \"""
     """,
     """
-       \"""
+        \"""
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
