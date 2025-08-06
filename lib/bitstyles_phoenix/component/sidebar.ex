@@ -8,7 +8,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     "Sidebar with items",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_sidebar_layout>
         ...>   <:large_sidebar>Large header</:large_sidebar>
         ...>   <:small_sidebar>Small header</:small_sidebar>
@@ -36,7 +36,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   </:sidebar_content>
         ...>   Main Content
         ...> </.ui_sidebar_layout>
-        ...> """
+        ...> \"""
     """,
     """
        \"""
@@ -193,14 +193,14 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     "Bare sidebar",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_sidebar_layout>
         ...>   <:large_sidebar>Large header</:large_sidebar>
         ...>   <:small_sidebar>Small header</:small_sidebar>
         ...>   <:sidebar_content><div>Sidebar</div></:sidebar_content>
         ...>   <:main>Main Content</:main>
         ...> </.ui_sidebar_layout>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -236,11 +236,11 @@ defmodule BitstylesPhoenix.Component.Sidebar do
     "All slots are optional",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_sidebar_layout>
         ...>   Main Content
         ...> </.ui_sidebar_layout>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

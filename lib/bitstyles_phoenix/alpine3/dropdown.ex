@@ -30,7 +30,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
     "Dropdown with alpine",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_js_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:menu>
@@ -42,7 +42,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_js_dropdown>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -86,7 +86,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
     "Custom x-data name and icon file",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_js_dropdown x_name="myOwnDropDown">
         ...>   <:button label="Select me" icon_file="assets/icons.svg"/>
         ...>   <:menu>
@@ -98,7 +98,7 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_js_dropdown>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

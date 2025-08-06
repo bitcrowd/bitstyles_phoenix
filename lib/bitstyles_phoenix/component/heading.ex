@@ -30,11 +30,11 @@ defmodule BitstylesPhoenix.Component.Heading do
     "Page title",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_page_title>
         ...>   Title
         ...> </.ui_page_title>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     "Page title with actions and title extra",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_page_title>
         ...>   Title
         ...>   <:title_extra>
@@ -70,7 +70,7 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_page_title>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -160,11 +160,11 @@ defmodule BitstylesPhoenix.Component.Heading do
     "Section title with default border",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title>
         ...>   Section title
         ...> </.ui_section_title>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -184,11 +184,11 @@ defmodule BitstylesPhoenix.Component.Heading do
     "Section title without border and h2",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title border={false} tag={:h2}>
         ...>   Section title
         ...> </.ui_section_title>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -208,7 +208,7 @@ defmodule BitstylesPhoenix.Component.Heading do
     "Section title with actions and title extra and different border",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title border_color="gray-light" heading_class="extra">
         ...>   Section title
         ...>   <:title_extra>
@@ -224,7 +224,7 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_section_title>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

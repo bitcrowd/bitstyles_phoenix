@@ -52,7 +52,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Minimal dropdown with defaults without JS ",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:menu>
@@ -64,7 +64,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_dropdown>
-        ...> """
+        ...> \"""
     """,
     [
       "6.0.0": """
@@ -189,7 +189,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Dropdown with menu variant top, primary button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
         ...>   <div class="u-flex-grow-1"></div>
         ...>   <.ui_dropdown variant={:top}>
@@ -204,7 +204,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -250,7 +250,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Dropdown with menu variant right",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dropdown variant="right">
         ...>   <:button label="Select me"/>
         ...>   <:menu>
@@ -262,7 +262,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_dropdown>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -305,7 +305,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Dropdown with menu variant top right",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
         ...>   <div class="u-flex-grow-1"></div>
         ...>   <.ui_dropdown variant={[:top, :right]}>
@@ -320,7 +320,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -367,7 +367,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Custom button content",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dropdown>
         ...>   <:button class="foo">Custom button content</:button>
         ...>   <:menu>
@@ -379,7 +379,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_dropdown>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -408,7 +408,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
     "Drop down with some JS and full-width variant and icon file",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <div style="min-height: 200px; width: 500px;">
         ...>   <.ui_dropdown variant="full-width">
         ...>     <:button onclick="toggle('dropdown-1')" aria-controls={"dropdown-1"} label="Select me" icon_file="assets/icons.svg" />
@@ -426,7 +426,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>     </:menu>
         ...>   </.ui_dropdown>
         ...> </div>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

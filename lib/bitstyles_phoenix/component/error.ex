@@ -27,9 +27,9 @@ defmodule BitstylesPhoenix.Component.Error do
     "A single error",
     """
         iex> assigns = %{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_errors form={@form} field={:name} />
-        ...> """
+        ...> \"""
     """,
     "6.0.0": """
         \"""
@@ -65,9 +65,9 @@ defmodule BitstylesPhoenix.Component.Error do
     "Multiple errors",
     """
         iex> assigns = %{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_errors form={@form} field={:email} />
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -141,9 +141,9 @@ defmodule BitstylesPhoenix.Component.Error do
     "An error tag",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_error error={{"Foo error", []}} />
-        ...> """
+        ...> \"""
     """,
     "6.0.0": """
         \"""
@@ -179,9 +179,9 @@ defmodule BitstylesPhoenix.Component.Error do
     "An error tag extra options and classes",
     """
         iex> assigns = %{error: {"Foo error", []}}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
-        ...> """
+        ...> \"""
     """,
     """
         \"""

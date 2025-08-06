@@ -13,9 +13,9 @@ defmodule BitstylesPhoenix.Component.UseSVG do
     "A referenced SVG (inlined on the page)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_svg use="arrow"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -38,9 +38,9 @@ defmodule BitstylesPhoenix.Component.UseSVG do
     "A referenced SVG (external file)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_svg use="logo" file="assets/logo.svg" viewbox="0 0 400 280"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -57,9 +57,9 @@ defmodule BitstylesPhoenix.Component.UseSVG do
     "A referenced SVG (external file with symbols)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_svg file="assets/icons.svg" use="icon-bin"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

@@ -29,14 +29,14 @@ defmodule BitstylesPhoenix.Component.Tabs do
     "Tabs without active tab",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_tabs>
         ...>   <:tab>Foo</:tab>
         ...>   <:tab>Bar</:tab>
         ...>   <:tab>Baz</:tab>
         ...>   <:tab show={false}>Hidden</:tab>
         ...> </.ui_tabs>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -60,13 +60,13 @@ defmodule BitstylesPhoenix.Component.Tabs do
     "Tabs with active attribute references (string)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_tabs active="foo">
         ...>   <:tab ref="foo">Foo</:tab>
         ...>   <:tab ref="bar">Bar</:tab>
         ...>   <:tab ref="baz">Baz</:tab>
         ...> </.ui_tabs>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -90,13 +90,13 @@ defmodule BitstylesPhoenix.Component.Tabs do
     "Tabs with active attribute references (atom)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_tabs active={:foo}>
         ...>   <:tab ref={:foo}>Foo</:tab>
         ...>   <:tab ref={:bar}>Bar</:tab>
         ...>   <:tab ref={:baz} class="extra" href="#">Baz</:tab>
         ...> </.ui_tabs>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

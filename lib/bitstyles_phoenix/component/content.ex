@@ -21,11 +21,11 @@ defmodule BitstylesPhoenix.Component.Content do
     "Default content",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_content>
         ...>   Content
         ...> </.ui_content>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -41,11 +41,11 @@ defmodule BitstylesPhoenix.Component.Content do
     "Full content",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_content variant="full">
         ...>   Full Content
         ...> </.ui_content>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -61,11 +61,11 @@ defmodule BitstylesPhoenix.Component.Content do
     "Extra classes and attributes",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_content variant="full" class="u-h2" data-foo="bar">
         ...>   Content with extra
         ...> </.ui_content>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

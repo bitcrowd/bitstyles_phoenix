@@ -31,11 +31,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Flash brand 1",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="brand-1">
         ...>     Something you may be interested to hear
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     [
       "6.0.0": """
@@ -64,11 +64,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Flash success",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="positive">
         ...>     Saved successfully
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     """
         \"""
@@ -86,11 +86,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Flash warning",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="warning">
         ...>     Saved with errors
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     """
         \"""
@@ -108,11 +108,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Flash danger",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="danger">
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     """
         \"""
@@ -130,11 +130,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Flash with full content",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant={[:danger, :full]}>
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     """
         \"""
@@ -152,11 +152,11 @@ defmodule BitstylesPhoenix.Component.Flash do
     "Custom attributes and classes",
     """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="brand-1" data-foo="bar" class="extra-class" content_class="extra-inner-class">
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
+        ...> \""")
     """,
     """
         \"""

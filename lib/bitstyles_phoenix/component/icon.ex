@@ -28,9 +28,9 @@ defmodule BitstylesPhoenix.Component.Icon do
     "An icon (from inline svg)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon name="inline-arrow"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -53,9 +53,9 @@ defmodule BitstylesPhoenix.Component.Icon do
     "An icon with a size",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon name="hamburger" file="/assets/icons.svg" size="xl"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -71,9 +71,9 @@ defmodule BitstylesPhoenix.Component.Icon do
     "An icon with extra options",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon name="bin" file="/assets/icons.svg" class="foo bar"/>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

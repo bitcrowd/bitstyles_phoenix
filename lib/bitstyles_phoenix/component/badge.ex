@@ -22,11 +22,11 @@ defmodule BitstylesPhoenix.Component.Badge do
     "Default badge",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_badge>
         ...>   published
         ...> </.ui_badge>
-        ...> """
+        ...> \"""
     """,
     "6.0.0": """
         \"""
@@ -55,11 +55,11 @@ defmodule BitstylesPhoenix.Component.Badge do
     "Badge variant brand-1",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_badge variant="brand-1">
         ...>   new
         ...> </.ui_badge>
-        ...> """
+        ...> \"""
     """,
     "6.0.0": """
         \"""
@@ -81,11 +81,11 @@ defmodule BitstylesPhoenix.Component.Badge do
     "Badge variant brand-2",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_badge variant="brand-2">
         ...>   recommended
         ...> </.ui_badge>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -100,11 +100,11 @@ defmodule BitstylesPhoenix.Component.Badge do
     "Badge variant danger",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_badge variant="danger">
         ...>   deleted
         ...> </.ui_badge>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -119,11 +119,11 @@ defmodule BitstylesPhoenix.Component.Badge do
     "Extra options and classes",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_badge class="extra-class" data-foo="bar">
         ...>   published
         ...> </.ui_badge>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

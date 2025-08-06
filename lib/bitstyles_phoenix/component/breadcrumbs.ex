@@ -32,13 +32,13 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
     "Breadcrumbs",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs>
         ...>   <:item>Foo</:item>
         ...>   <:item>Bar</:item>
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
-        ...> """
+        ...> \"""
     """,
     [
       "6.0.0": """
@@ -142,9 +142,9 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
     "Breadcrumbs via array",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs items={["Foo", "Bar", "Baz"]} />
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -188,13 +188,13 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
     "Breadcrumbs with custom classes and properties",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs class="u-fg-warning" data-foo="bar">
         ...>   <:item class="u-fg-brand-2" data-baz="foo">Foo</:item>
         ...>   <:item>Bar</:item>
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

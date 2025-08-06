@@ -15,9 +15,9 @@ defmodule BitstylesPhoenix.Component.Card do
     "Default Card",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card><p>Hello world</p></.ui_card>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -34,9 +34,9 @@ defmodule BitstylesPhoenix.Component.Card do
     "Large Card",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card size="l"><p>Hello world</p></.ui_card>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -53,12 +53,12 @@ defmodule BitstylesPhoenix.Component.Card do
     "Large Card with header",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card size="l">
         ...>  <:card_header variant="danger">Its me mario</:card_header>
         ...>  <p>Hello world</p>
         ...> </.ui_card>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -80,12 +80,12 @@ defmodule BitstylesPhoenix.Component.Card do
     "Small Card with header",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card>
         ...>  <:card_header variant="danger">Its me mario</:card_header>
         ...>  <p>Hello world</p>
         ...> </.ui_card>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

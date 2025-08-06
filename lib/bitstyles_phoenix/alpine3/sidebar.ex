@@ -13,7 +13,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
     "Full example",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_js_sidebar_layout>
         ...>   <:large_sidebar>
         ...>     <a href="#" class="u-padding-l">
@@ -47,7 +47,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>     </.ui_content>
         ...>   </:main>
         ...> </.ui_js_sidebar_layout>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

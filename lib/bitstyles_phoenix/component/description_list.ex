@@ -10,12 +10,12 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
     "With items (short-cut form)",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dl>
         ...>   <.ui_dl_item label="Length" value="8" />
         ...>   <.ui_dl_item label="Inserted at">2007-01-02</.ui_dl_item>
         ...> </.ui_dl>
-        ...> """
+        ...> \"""
     """,
     [
       "6.0.0": """
@@ -71,7 +71,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
     "With items (short-cut and long form) and extra attributes",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dl class="extra" data-foo="baz">
         ...>   <.ui_dl_item label="Length" class="u-fg-brand-2">8</.ui_dl_item>
         ...>   <.ui_dl_item>
@@ -83,7 +83,7 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         ...>     <.ui_dd>Value</.ui_dd>
         ...>   </.ui_dl_item>
         ...> </.ui_dl>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

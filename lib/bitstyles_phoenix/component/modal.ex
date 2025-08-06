@@ -38,11 +38,11 @@ defmodule BitstylesPhoenix.Component.Modal do
     "Default modal",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   Content
         ...> </.ui_modal>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -64,13 +64,13 @@ defmodule BitstylesPhoenix.Component.Modal do
     "Small modal",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal aria-labelledby="dialog-title" variant="s" class="foo">
         ...>   <:content class="bar" foo="bar">
         ...>     Content
         ...>   </:content>
         ...> </.ui_modal>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -92,12 +92,12 @@ defmodule BitstylesPhoenix.Component.Modal do
     "Small modal with extra overlay",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   <:overlay class="extra" data-foo="bar" />
         ...>   Content
         ...> </.ui_modal>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -119,14 +119,14 @@ defmodule BitstylesPhoenix.Component.Modal do
     "Small modal with extra overlay content",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   <:overlay class="extra" data-foo="bar">
         ...>     <span class="u-hidden">Overlay content</span>
         ...>   </:overlay>
         ...>   Content
         ...> </.ui_modal>
-        ...> """
+        ...> \"""
     """,
     """
         \"""

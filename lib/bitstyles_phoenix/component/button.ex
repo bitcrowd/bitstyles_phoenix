@@ -33,11 +33,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Default button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button>
         ...>   Publish
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -52,11 +52,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Default link",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/">
         ...>   Publish
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -71,11 +71,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Default disabled link renders disabled button instead",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/" disabled>
         ...>   Publish
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -90,11 +90,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Default submit button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit">
         ...>   Save
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -109,11 +109,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Default submit button with custom classes",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" class="foo bar">
         ...>   Save
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -128,11 +128,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Secondary button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" color={:secondary}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -147,11 +147,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Small button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" shape={:small}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -166,11 +166,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Dangerous button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" color={:danger}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -185,11 +185,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Button with an icon",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" icon="plus">
         ...>   Add
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -217,11 +217,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Button with an icon after",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/" icon={{"plus", after: true}}>
         ...>   Add
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -249,11 +249,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Pass along attributes to Phoenix helpers",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/admin/admin_accounts/id" data-confirm="Are you sure?">
         ...>   Add
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -268,11 +268,11 @@ defmodule BitstylesPhoenix.Component.Button do
     "Button with LiveView patch",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button patch="/foo">
         ...>   Add
         ...> </.ui_button>
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -425,9 +425,9 @@ defmodule BitstylesPhoenix.Component.Button do
     "Icon button",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
-        ...> """
+        ...> \"""
     """,
     [
       "6.0.0": """
@@ -483,9 +483,9 @@ defmodule BitstylesPhoenix.Component.Button do
     "Icon button with some options",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
-        ...> """
+        ...> \"""
     """,
     """
         \"""
@@ -506,9 +506,9 @@ defmodule BitstylesPhoenix.Component.Button do
     "Icon button reversed",
     """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
-        ...> """
+        ...> \"""
     """,
     [
       "6.0.0": """
