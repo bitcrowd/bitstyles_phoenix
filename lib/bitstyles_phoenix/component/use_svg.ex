@@ -11,20 +11,20 @@ defmodule BitstylesPhoenix.Component.UseSVG do
 
   story(
     "A referenced SVG (inlined on the page)",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_svg use="arrow"/>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="#arrow">
           </use>
         </svg>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="arrow" viewBox="0 0 100 100">
@@ -36,39 +36,39 @@ defmodule BitstylesPhoenix.Component.UseSVG do
 
   story(
     "A referenced SVG (external file)",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_svg use="logo" file="assets/logo.svg" viewbox="0 0 400 280"/>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 280">
           <use xlink:href="assets/logo.svg#logo">
           </use>
         </svg>
-        """
-    ''',
+        \"""
+    """,
     background: "white"
   )
 
   story(
     "A referenced SVG (external file with symbols)",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_svg file="assets/icons.svg" use="icon-bin"/>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="assets/icons.svg#icon-bin">
           </use>
         </svg>
-        """
-    ''',
+        \"""
+    """,
     background: "white"
   )
 

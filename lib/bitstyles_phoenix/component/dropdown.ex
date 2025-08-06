@@ -50,7 +50,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   story(
     "Minimal dropdown with defaults without JS ",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dropdown>
@@ -65,10 +65,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
-    ''',
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <div class="u-relative">
             <button type="button" class="a-button a-button--secondary">
               <span class="a-button__label">
@@ -92,10 +92,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </li>
             </ul>
           </div>
-          """
-      ''',
-      "5.0.1": '''
-          """
+          \"""
+      """,
+      "5.0.1": """
+          \"""
           <div class="u-relative">
             <button type="button" class="a-button a-button--secondary">
               <span class="a-button__label">
@@ -119,10 +119,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </li>
             </ul>
           </div>
-          """
-      ''',
-      "4.3.0": '''
-          """
+          \"""
+      """,
+      "4.3.0": """
+          \"""
           <div class="u-relative">
             <button type="button" class="a-button a-button--ui">
               <span class="a-button__label">
@@ -146,10 +146,10 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </li>
             </ul>
           </div>
-          """
-      ''',
-      "3.0.0": '''
-          """
+          \"""
+      """,
+      "3.0.0": """
+          \"""
           <div class="u-relative">
             <button type="button" class="a-button a-button--ui">
               <span class="a-button__label">
@@ -173,8 +173,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
               </li>
             </ul>
           </div>
-          """
-      '''
+          \"""
+      """
     ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -187,7 +187,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   story(
     "Dropdown with menu variant top, primary button",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
@@ -205,9 +205,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div style="min-height: 150px;" class="u-flex u-flex-col">
           <div class="u-flex-grow-1">
           </div>
@@ -235,8 +235,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </ul>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-down" viewBox="0 0 100 100">
@@ -248,7 +248,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   story(
     "Dropdown with menu variant right",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dropdown variant="right">
@@ -263,9 +263,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-relative u-flex u-justify-end">
           <button type="button" class="a-button a-button--secondary">
             <span class="a-button__label">
@@ -289,8 +289,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </li>
           </ul>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -303,7 +303,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   story(
     "Dropdown with menu variant top right",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 150px;" class="u-flex u-flex-col">
@@ -321,9 +321,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div style="min-height: 150px;" class="u-flex u-flex-col">
           <div class="u-flex-grow-1">
           </div>
@@ -351,8 +351,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </ul>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -365,7 +365,7 @@ defmodule BitstylesPhoenix.Component.Dropdown do
 
   story(
     "Custom button content",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_dropdown>
@@ -380,9 +380,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </:menu>
         ...> </.ui_dropdown>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-relative">
           <button type="button" class="a-button a-button--secondary foo">
             Custom button content
@@ -400,13 +400,13 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </li>
           </ul>
         </div>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Drop down with some JS and full-width variant and icon file",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <div style="min-height: 200px; width: 500px;">
@@ -427,9 +427,9 @@ defmodule BitstylesPhoenix.Component.Dropdown do
         ...>   </.ui_dropdown>
         ...> </div>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div style="min-height: 200px; width: 500px;">
           <div class="u-relative">
             <button type="button" aria-controls="dropdown-1" class="a-button a-button--secondary" onclick=\"toggle(&#39;dropdown-1&#39;)\">
@@ -462,8 +462,8 @@ defmodule BitstylesPhoenix.Component.Dropdown do
             </ul>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <script>
       function toggle(element) {

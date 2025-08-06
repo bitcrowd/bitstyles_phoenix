@@ -6,7 +6,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
   """
   story(
     "Sidebar with items",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_sidebar_layout>
@@ -37,9 +37,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   Main Content
         ...> </.ui_sidebar_layout>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+       \"""
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
@@ -123,8 +123,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
             Main Content
           </main>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     height: "500px",
     transparent: false,
@@ -191,7 +191,7 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
   story(
     "Bare sidebar",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_sidebar_layout>
@@ -201,9 +201,9 @@ defmodule BitstylesPhoenix.Component.Sidebar do
         ...>   <:main>Main Content</:main>
         ...> </.ui_sidebar_layout>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
@@ -225,8 +225,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
             Main Content
           </main>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     height: "300px",
     transparent: false
@@ -234,16 +234,16 @@ defmodule BitstylesPhoenix.Component.Sidebar do
 
   story(
     "All slots are optional",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_sidebar_layout>
         ...>   Main Content
         ...> </.ui_sidebar_layout>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-height-100vh">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
@@ -257,8 +257,8 @@ defmodule BitstylesPhoenix.Component.Sidebar do
             Main Content
           </main>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     height: "300px",
     transparent: false

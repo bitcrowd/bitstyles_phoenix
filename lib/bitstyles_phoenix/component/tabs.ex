@@ -27,7 +27,7 @@ defmodule BitstylesPhoenix.Component.Tabs do
 
   story(
     "Tabs without active tab",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_tabs>
@@ -37,9 +37,9 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab show={false}>Hidden</:tab>
         ...> </.ui_tabs>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" class="a-button a-button--tab" role="tab">
             Foo
@@ -51,14 +51,14 @@ defmodule BitstylesPhoenix.Component.Tabs do
             Baz
           </button>
         </div>
-        """
-    ''',
+        \"""
+    """,
     transparent: false
   )
 
   story(
     "Tabs with active attribute references (string)",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_tabs active="foo">
@@ -67,9 +67,9 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab ref="baz">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
             Foo
@@ -81,14 +81,14 @@ defmodule BitstylesPhoenix.Component.Tabs do
             Baz
           </button>
         </div>
-        """
-    ''',
+        \"""
+    """,
     transparent: false
   )
 
   story(
     "Tabs with active attribute references (atom)",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_tabs active={:foo}>
@@ -97,9 +97,9 @@ defmodule BitstylesPhoenix.Component.Tabs do
         ...>   <:tab ref={:baz} class="extra" href="#">Baz</:tab>
         ...> </.ui_tabs>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-end u-margin-m-bottom u-gap-s3" role="tablist">
           <button type="button" aria-selected="true" class="a-button a-button--tab" role="tab">
             Foo
@@ -111,8 +111,8 @@ defmodule BitstylesPhoenix.Component.Tabs do
             Baz
           </a>
         </div>
-        """
-    ''',
+        \"""
+    """,
     transparent: false
   )
 

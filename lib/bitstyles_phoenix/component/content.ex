@@ -19,61 +19,61 @@ defmodule BitstylesPhoenix.Component.Content do
 
   story(
     "Default content",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_content>
         ...>   Content
         ...> </.ui_content>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="a-content">
           Content
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Full content",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_content variant="full">
         ...>   Full Content
         ...> </.ui_content>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="a-content a-content--full">
           Full Content
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Extra classes and attributes",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_content variant="full" class="u-h2" data-foo="bar">
         ...>   Content with extra
         ...> </.ui_content>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="a-content a-content--full u-h2" data-foo="bar">
           Content with extra
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 

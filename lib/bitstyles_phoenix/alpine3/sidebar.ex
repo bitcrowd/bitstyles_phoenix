@@ -11,7 +11,7 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
 
   story(
     "Full example",
-    '''
+    """
         iex> assigns = %{}
         ...> render ~H"""
         ...> <.ui_js_sidebar_layout>
@@ -48,9 +48,9 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
         ...>   </:main>
         ...> </.ui_js_sidebar_layout>
         ...> """
-    ''',
-    '''
-        """
+    """,
+    """
+        \"""
         <div class="u-flex u-height-100vh" x-data="{ sidebarOpen: false }">
           <header role="banner" class="u-flex">
             <nav class="u-flex">
@@ -124,8 +124,8 @@ defmodule BitstylesPhoenix.Alpine3.Sidebar do
             </div>
           </main>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     height: "300px",
     transparent: false,
