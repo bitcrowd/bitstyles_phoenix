@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## v2.5.1 - 2025-08-11
 
 - Changed `ui_tabs` and `ui_tab_button` to follow accessibility guidelines: replaced the `<ul>` with a `<div role="tablist">` and instead of nesting the buttons inside `<li>`s they are now the direct children of the `div` and have a `role="tab"` set. As a side effect the gap between the tabs is now a little smaller.
+- Fix compiler warnings for elixir 17+ and upgrade dependencies.
 
 ## v2.5.0 - 2024-09-25
 
