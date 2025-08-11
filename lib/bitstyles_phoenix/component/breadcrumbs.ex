@@ -30,19 +30,19 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
 
   story(
     "Breadcrumbs",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs>
         ...>   <:item>Foo</:item>
         ...>   <:item>Bar</:item>
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
-        ...> """
-    ''',
+        ...> \"""
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <nav aria-label="breadcrumbs">
             <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
               <li class="u-margin-s4-right u-flex u-items-center">
@@ -68,10 +68,10 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
               </li>
             </ol>
           </nav>
-          """
-      ''',
-      "5.0.1": '''
-          """
+          \"""
+      """,
+      "5.0.1": """
+          \"""
           <nav aria-label="breadcrumbs">
             <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
               <li class="u-margin-xs-right u-flex u-items-center">
@@ -97,10 +97,10 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
               </li>
             </ol>
           </nav>
-          """
-      ''',
-      "4.3.0": '''
-          """
+          \"""
+      """,
+      "4.3.0": """
+          \"""
           <nav aria-label="breadcrumbs">
             <ol class="u-h6 a-list-reset u-flex u-flex-wrap u-items-center">
               <li class="u-margin-xs-right u-flex u-items-center">
@@ -126,8 +126,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
               </li>
             </ol>
           </nav>
-          """
-      '''
+          \"""
+      """
     ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -140,14 +140,14 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
 
   story(
     "Breadcrumbs via array",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs items={["Foo", "Bar", "Baz"]} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <nav aria-label="breadcrumbs">
           <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center">
             <li class="u-margin-s4-right u-flex u-items-center">
@@ -173,8 +173,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
             </li>
           </ol>
         </nav>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-right" viewBox="0 0 100 100">
@@ -186,18 +186,18 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
 
   story(
     "Breadcrumbs with custom classes and properties",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_breadcrumbs class="u-fg-warning" data-foo="bar">
         ...>   <:item class="u-fg-brand-2" data-baz="foo">Foo</:item>
         ...>   <:item>Bar</:item>
         ...>   <:item>Baz</:item>
         ...> </.ui_breadcrumbs>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <nav aria-label="breadcrumbs" data-foo="bar">
           <ol class="u-h6 u-list-none u-flex u-flex-wrap u-items-center u-fg-warning">
             <li class="u-margin-s4-right u-flex u-items-center u-fg-brand-2" data-baz="foo">
@@ -223,8 +223,8 @@ defmodule BitstylesPhoenix.Component.Breadcrumbs do
             </li>
           </ol>
         </nav>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-caret-right" viewBox="0 0 100 100">

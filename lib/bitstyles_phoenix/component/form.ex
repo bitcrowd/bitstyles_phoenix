@@ -56,50 +56,50 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Text field with label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:name} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Name
         </label>
         <input id="user_name" name="user[name]" type="text" maxlength="255"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with custom id with label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} id={"the_name"} field={:name} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="the_name">
           Name
         </label>
         <input id="the_name" name="user[name]" type="text" maxlength="255"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text required field with label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:name} required/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Name
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
@@ -107,20 +107,20 @@ defmodule BitstylesPhoenix.Component.Form do
           </span>
         </label>
         <input id="user_name" name="user[name]" type="text" maxlength="255" required="required"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with error",
-    '''
+    """
         iex> assigns=%{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:name} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Name
         </label>
@@ -128,20 +128,20 @@ defmodule BitstylesPhoenix.Component.Form do
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with multiple errors",
-    '''
+    """
         iex> assigns=%{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:email} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_email">
           Email
         </label>
@@ -158,51 +158,51 @@ defmodule BitstylesPhoenix.Component.Form do
             </span>
           </li>
         </ul>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with hidden label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:name} hidden_label={true} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name" class="u-sr-only">
           Name
         </label>
         <input id="user_name" name="user[name]" type="text" maxlength="255"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with label (without maxlength)",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:name} maxlength={false}/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Name
         </label>
         <input id="user_name" name="user[name]" type="text"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Text field with options",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input
         ...>   form={@form}
         ...>   field={:totp}
@@ -215,10 +215,10 @@ defmodule BitstylesPhoenix.Component.Form do
         ...>   pattern="[0-9]*"
         ...>   autocomplete="one-time-code"
         ...>   maxlength={6} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_totp" class="extra">
           Authentication code
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
@@ -226,102 +226,102 @@ defmodule BitstylesPhoenix.Component.Form do
           </span>
         </label>
         <input id="user_totp" name="user[totp]" type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="[0-9]*" placeholder="6-digit code" required="required" value=""/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Email field with label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:email} type={:email} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_email">
           Email
         </label>
         <input id="user_email" name="user[email]" type="email" maxlength="255"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Search field with placeholder",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input
         ...>    form={@form}
         ...>    field={:email_or_name}
         ...>    type={:search}
         ...>    placeholder="Search by email or name"
         ...>    autofocus={true} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_email_or_name">
           Email or name
         </label>
         <input id="user_email_or_name" name="user[email_or_name]" type="search" autofocus="autofocus" placeholder="Search by email or name"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "File field for pdfs",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <Phoenix.Component.form :let={form} for={@form} multipart>
         ...>   <.ui_input form={form} field={:file} type={:file} accept="application/pdf" />
         ...> </Phoenix.Component.form>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <form enctype=\"multipart/form-data\">
           <label for="user_file">
             File
           </label>
           <input id="user_file" name="user[file]" type="file" accept="application/pdf"/>
         </form>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Checkbox",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:accept} type={:checkbox} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_accept">
           <input name="user[accept]" type="hidden" value="false"/>
           <input id="user_accept" name="user[accept]" type="checkbox" value="true"/>
           Accept
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Checkbox required",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:accept} type={:checkbox} required/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_accept">
           <input name="user[accept]" type="hidden" value="false"/>
           <input id="user_accept" name="user[accept]" type="checkbox" value="true" required="required"/>
@@ -330,27 +330,27 @@ defmodule BitstylesPhoenix.Component.Form do
             *
           </span>
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Checkbox with label class",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_opts={[class: "extra"]}/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_accept" class="extra">
           <input name="user[accept]" type="hidden" value="false"/>
           <input id="user_accept" name="user[accept]" type="checkbox" value="true"/>
           Accept
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_input(assigns) do
@@ -398,33 +398,33 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Textarea",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_textarea form={@form} field={:about_me} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_about_me">
           About me
         </label>
         <textarea id="user_about_me" name="user[about_me]">
         </textarea>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Textarea",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_textarea form={@form} field={:about_me} required/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_about_me">
           About me
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
@@ -433,15 +433,15 @@ defmodule BitstylesPhoenix.Component.Form do
         </label>
         <textarea id="user_about_me" name="user[about_me]" required="required">
         </textarea>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Textarea with options",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_textarea
         ...>   form={@form}
         ...>   field={:metadata}
@@ -450,49 +450,49 @@ defmodule BitstylesPhoenix.Component.Form do
         ...>   value="Value here"
         ...>   rows={10}
         ...> />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_metadata" class="extra">
           Metadata
         </label>
         <textarea id="user_metadata" name="user[metadata]" rows="10">
           Value here
         </textarea>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Textarea with hidden label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_textarea form={@form} field={:address} hidden_label/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_address" class="u-sr-only">
           Address
         </label>
         <textarea id="user_address" name="user[address]">
         </textarea>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Textarea with error",
-    '''
+    """
         iex> assigns=%{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_textarea form={@form} field={:name} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Name
         </label>
@@ -501,8 +501,8 @@ defmodule BitstylesPhoenix.Component.Form do
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_textarea(assigns) do
@@ -540,14 +540,14 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Select box",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_select form={@form} field={:week} options={1..2} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_week">
           Week
         </label>
@@ -559,20 +559,20 @@ defmodule BitstylesPhoenix.Component.Form do
             2
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Select box required",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_select form={@form} field={:week} options={1..2} required />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_week">
           Week
           <span aria-hidden="true" class="u-fg-warning u-margin-xxs-left">
@@ -587,20 +587,20 @@ defmodule BitstylesPhoenix.Component.Form do
             2
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Select box without label",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_select form={@form} field={:week} options={1..2} hidden_label/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_week" class="u-sr-only">
           Week
         </label>
@@ -612,20 +612,20 @@ defmodule BitstylesPhoenix.Component.Form do
             2
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Select box with options",
-    '''
+    """
         iex> assigns=%{form: form(), options: [{"Ducks", "ducks"}, {"Cats", "cats"}]}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_select form={@form} field={:preference} options={@options} label="What do you like best?" label_opts={[class: "extra"]}/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_preference" class="extra">
           What do you like best?
         </label>
@@ -637,20 +637,20 @@ defmodule BitstylesPhoenix.Component.Form do
             Cats
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Select box with prompt",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_select form={@form} field={:week} options={1..2} prompt={"Choose a week number"}/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_week">
           Week
         </label>
@@ -665,8 +665,8 @@ defmodule BitstylesPhoenix.Component.Form do
             2
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_select(assigns) do
@@ -705,17 +705,17 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Custom inputs",
-    '''
+    """
         iex> assigns=%{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_unwrapped_input form={@form} field={:name} label="Custom">
         ...>   Custom content
         ...>   <input type="text" whatever="foo" />
         ...> </.ui_unwrapped_input>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           Custom
         </label>
@@ -724,8 +724,8 @@ defmodule BitstylesPhoenix.Component.Form do
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_unwrapped_input(assigns) do
@@ -764,22 +764,22 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Custom wrapped inputs",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_wrapped_input form={@form} field={:name} label="Current name">
         ...>   <input type="checkbox" id="user_name" whatever="foo" />
         ...> </.ui_wrapped_input>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_name">
           <input type="checkbox" id="user_name" whatever="foo"/>
           Current name
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_wrapped_input(assigns) do
@@ -876,60 +876,60 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Input (from field)",
-    '''
+    """
         iex> assigns=%{form: form()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_input field={@form[:name]} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <input id="user_name" name="user[name]" type="text"/>
-        """
-    '''
+       \ \"""
+    """
   )
 
   story(
     "Input (email)",
-    '''
+    """
         iex> assigns=%{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_input id="the_email" name="user[email]" type={:email} value="" class="foo bar"/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <input id="the_email" name="user[email]" type="email" class="foo bar" value=""/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Input (checkbox)",
-    '''
+    """
         iex> assigns=%{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_input id="the_newsletter" name="user[wants_newsletter]" type={:checkbox} checked={false} data-theme="pink"/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <input name="user[wants_newsletter]" type="hidden" value="false"/>
         <input id="the_newsletter" name="user[wants_newsletter]" type="checkbox" value="true" data-theme="pink"/>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Input (select)",
-    '''
+    """
         iex> assigns=%{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_input id="the_day" name="user[dob_day]" type={:select} options={[{"Monday", 1},{"Tuesday", 2}]} value={2} prompt={"On which day were you born?"} data-foo=""/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <select id="the_day" name="user[dob_day]" data-foo="">
           <option value="">
             On which day were you born?
@@ -941,8 +941,8 @@ defmodule BitstylesPhoenix.Component.Form do
             Tuesday
           </option>
         </select>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_raw_input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
@@ -1044,42 +1044,42 @@ defmodule BitstylesPhoenix.Component.Form do
 
   story(
     "Label",
-    '''
+    """
         iex> assigns=%{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_label for="user_address_city" class="foo bar">
         ...>   City
         ...> </.ui_raw_label>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label for="user_address_city" class="foo bar">
           City
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Label (no for)",
-    '''
+    """
         iex> assigns=%{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_raw_label class="foo bar">
         ...>   Note
         ...>   <input type="text" name="note"/>
         ...> </.ui_raw_label>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <label class="foo bar">
           Note
           <input type="text" name="note"/>
         </label>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_raw_label(assigns) do

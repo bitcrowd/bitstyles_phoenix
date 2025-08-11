@@ -28,9 +28,9 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
 
   story(
     "Dropdown with alpine",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_js_dropdown>
         ...>   <:button label="Select me"/>
         ...>   <:menu>
@@ -42,10 +42,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_js_dropdown>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-relative" x-data="{ dropdownOpen: false }">
           <button type="button" @click="dropdownOpen = true" class="a-button a-button--secondary">
             <span class="a-button__label">
@@ -69,8 +69,8 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
             </li>
           </ul>
         </div>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.5.1/cdn.min.js" defer></script>
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -84,9 +84,9 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
 
   story(
     "Custom x-data name and icon file",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_js_dropdown x_name="myOwnDropDown">
         ...>   <:button label="Select me" icon_file="assets/icons.svg"/>
         ...>   <:menu>
@@ -98,10 +98,10 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
         ...>     </.ui_dropdown_option>
         ...>   </:menu>
         ...> </.ui_js_dropdown>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-relative" x-data="{ myOwnDropDown: false }">
           <button type="button" @click="myOwnDropDown = true" class="a-button a-button--secondary">
             <span class="a-button__label">
@@ -125,8 +125,8 @@ defmodule BitstylesPhoenix.Alpine3.Dropdown do
             </li>
           </ul>
         </div>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.5.1/cdn.min.js" defer></script>
     """,

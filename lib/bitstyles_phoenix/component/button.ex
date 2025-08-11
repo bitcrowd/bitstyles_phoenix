@@ -31,168 +31,168 @@ defmodule BitstylesPhoenix.Component.Button do
 
   story(
     "Default button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button>
         ...>   Publish
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="button" class="a-button">
           Publish
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Default link",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/">
         ...>   Publish
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <a href="/" class="a-button">
           Publish
         </a>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Default disabled link renders disabled button instead",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/" disabled>
         ...>   Publish
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="button" class="a-button" disabled="disabled">
           Publish
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Default submit button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit">
         ...>   Save
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button">
           Save
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Default submit button with custom classes",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" class="foo bar">
         ...>   Save
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button foo bar">
           Save
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Secondary button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" color={:secondary}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button a-button--secondary">
           Save
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Small button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" shape={:small}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button a-button--small">
           Save
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Dangerous button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" color={:danger}>
         ...>   Save
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button a-button--danger">
           Save
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Button with an icon",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button type="submit" icon="plus">
         ...>   Add
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="submit" class="a-button">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-button__icon" focusable="false" height="16" width="16">
             <use xlink:href="#icon-plus">
@@ -202,8 +202,8 @@ defmodule BitstylesPhoenix.Component.Button do
             Add
           </span>
         </button>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-plus" viewBox="0 0 100 100">
@@ -215,16 +215,16 @@ defmodule BitstylesPhoenix.Component.Button do
 
   story(
     "Button with an icon after",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/" icon={{"plus", after: true}}>
         ...>   Add
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <a href="/" class="a-button">
           <span class="a-button__label">
             Add
@@ -234,8 +234,8 @@ defmodule BitstylesPhoenix.Component.Button do
             </use>
           </svg>
         </a>
-        """
-    ''',
+        \"""
+    """,
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
       <symbol id="icon-plus" viewBox="0 0 100 100">
@@ -247,40 +247,40 @@ defmodule BitstylesPhoenix.Component.Button do
 
   story(
     "Pass along attributes to Phoenix helpers",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button href="/admin/admin_accounts/id" data-confirm="Are you sure?">
         ...>   Add
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <a href="/admin/admin_accounts/id" class="a-button" data-confirm="Are you sure?">
           Add
         </a>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Button with LiveView patch",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_button patch="/foo">
         ...>   Add
         ...> </.ui_button>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <a href="/foo" data-phx-link=\"patch\" data-phx-link-state=\"push\" class="a-button">
           Add
         </a>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_button(assigns) do
@@ -423,15 +423,15 @@ defmodule BitstylesPhoenix.Component.Button do
 
   story(
     "Icon button",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon="plus" label="Add" href="#"/>
-        ...> """
-    ''',
+        ...> \"""
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <a href="#" class="a-button a-button--square" title="Add">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -441,10 +441,10 @@ defmodule BitstylesPhoenix.Component.Button do
               Add
             </span>
           </a>
-          """
-      ''',
-      "5.0.1": '''
-          """
+          \"""
+      """,
+      "5.0.1": """
+          \"""
           <a href="#" class="a-button a-button--square" title="Add">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -454,10 +454,10 @@ defmodule BitstylesPhoenix.Component.Button do
               Add
             </span>
           </a>
-          """
-      ''',
-      "4.3.0": '''
-          """
+          \"""
+      """,
+      "4.3.0": """
+          \"""
           <a href="#" class="a-button a-button--icon" title="Add">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -467,8 +467,8 @@ defmodule BitstylesPhoenix.Component.Button do
               Add
             </span>
           </a>
-          """
-      '''
+          \"""
+      """
     ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -481,14 +481,14 @@ defmodule BitstylesPhoenix.Component.Button do
 
   story(
     "Icon button with some options",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon={{"bin", file: "assets/icons.svg", size: "xl"}} label="Delete" class="foo" />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <button type="button" class="a-button a-button--square foo" title="Delete">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon a-icon--xl" focusable="false" height="16" width="16">
             <use xlink:href="assets/icons.svg#icon-bin">
@@ -498,21 +498,21 @@ defmodule BitstylesPhoenix.Component.Button do
             Delete
           </span>
         </button>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Icon button reversed",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_icon_button icon="plus" label="Show" href="#" reversed />
-        ...> """
-    ''',
+        ...> \"""
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <a href="#" class="a-button a-button--square" data-theme="dark" title="Show">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -522,10 +522,10 @@ defmodule BitstylesPhoenix.Component.Button do
               Show
             </span>
           </a>
-          """
-      ''',
-      "5.0.1": '''
-          """
+          \"""
+      """,
+      "5.0.1": """
+          \"""
           <a href="#" class="a-button a-button--square" data-theme="dark" title="Show">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -535,10 +535,10 @@ defmodule BitstylesPhoenix.Component.Button do
               Show
             </span>
           </a>
-          """
-      ''',
-      "4.3.0": '''
-          """
+          \"""
+      """,
+      "4.3.0": """
+          \"""
           <a href="#" class="a-button a-button--icon a-button--icon-reversed" title="Show">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="a-icon" focusable="false" height="16" width="16">
               <use xlink:href="#icon-plus">
@@ -548,8 +548,8 @@ defmodule BitstylesPhoenix.Component.Button do
               Show
             </span>
           </a>
-          """
-      '''
+          \"""
+      """
     ],
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">

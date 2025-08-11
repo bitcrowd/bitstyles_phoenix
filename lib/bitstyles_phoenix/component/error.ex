@@ -25,52 +25,52 @@ defmodule BitstylesPhoenix.Component.Error do
 
   story(
     "A single error",
-    '''
+    """
         iex> assigns = %{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_errors form={@form} field={:name} />
-        ...> """
-    ''',
-    "6.0.0": '''
-        """
+        ...> \"""
+    """,
+    "6.0.0": """
+        \"""
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    ''',
-    "5.0.1": '''
-        """
+        \"""
+    """,
+    "5.0.1": """
+        \"""
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    ''',
-    "4.3.0": '''
-        """
+        \"""
+    """,
+    "4.3.0": """
+        \"""
         <span class="u-fg-warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    ''',
-    "3.0.0": '''
-        """
+        \"""
+    """,
+    "3.0.0": """
+        \"""
         <span class="u-fg--warning" phx-feedback-for="user[name]">
           is too short
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Multiple errors",
-    '''
+    """
         iex> assigns = %{form: form_with_errors()}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_errors form={@form} field={:email} />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <ul class="u-padding-l3-left">
           <li>
             <span class="u-fg-warning" phx-feedback-for="user[email]">
@@ -83,8 +83,8 @@ defmodule BitstylesPhoenix.Component.Error do
             </span>
           </li>
         </ul>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_errors(assigns) do
@@ -139,57 +139,57 @@ defmodule BitstylesPhoenix.Component.Error do
 
   story(
     "An error tag",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_error error={{"Foo error", []}} />
-        ...> """
-    ''',
-    "6.0.0": '''
-        """
+        ...> \"""
+    """,
+    "6.0.0": """
+        \"""
         <span class="u-fg-warning">
           Foo error
         </span>
-        """
-    ''',
-    "5.0.1": '''
-        """
+        \"""
+    """,
+    "5.0.1": """
+        \"""
         <span class="u-fg-warning">
           Foo error
         </span>
-        """
-    ''',
-    "4.3.0": '''
-        """
+        \"""
+    """,
+    "4.3.0": """
+        \"""
         <span class="u-fg-warning">
           Foo error
         </span>
-        """
-    ''',
-    "3.0.0": '''
-        """
+        \"""
+    """,
+    "3.0.0": """
+        \"""
         <span class="u-fg--warning">
           Foo error
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "An error tag extra options and classes",
-    '''
+    """
         iex> assigns = %{error: {"Foo error", []}}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <span class="u-fg-warning bar" phx-feedback-for="foo">
           Foo error
         </span>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_error(assigns) do

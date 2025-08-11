@@ -13,55 +13,55 @@ defmodule BitstylesPhoenix.Component.Card do
 
   story(
     "Default Card",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card><p>Hello world</p></.ui_card>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <article class="a-card">
           <p>
             Hello world
           </p>
         </article>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Large Card",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card size="l"><p>Hello world</p></.ui_card>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <article class="a-card a-card-l">
           <p>
             Hello world
           </p>
         </article>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Large Card with header",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card size="l">
         ...>  <:card_header variant="danger">Its me mario</:card_header>
         ...>  <p>Hello world</p>
         ...> </.ui_card>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <article class="a-card a-card-l">
           <div aria-live="polite" class="u-padding-l1-y a-flash a-card-l__header" data-theme="danger">
             <div class="a-content u-flex u-items-center u-font-medium">
@@ -72,23 +72,23 @@ defmodule BitstylesPhoenix.Component.Card do
             Hello world
           </p>
         </article>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Small Card with header",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_card>
         ...>  <:card_header variant="danger">Its me mario</:card_header>
         ...>  <p>Hello world</p>
         ...> </.ui_card>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <article class="a-card">
           <div aria-live="polite" class="u-padding-l1-y a-flash a-card__header" data-theme="danger">
             <div class="a-content u-flex u-items-center u-font-medium">
@@ -99,8 +99,8 @@ defmodule BitstylesPhoenix.Component.Card do
             Hello world
           </p>
         </article>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_card(assigns) do

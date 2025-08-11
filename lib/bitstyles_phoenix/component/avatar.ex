@@ -16,71 +16,71 @@ defmodule BitstylesPhoenix.Component.Avatar do
 
   story(
     "Default avatar",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_avatar src="https://placehold.co/100x100" alt="Username’s avatar"/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-items-center">
           <div class="a-avatar">
             <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
         </div>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "With extra class",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_avatar src="https://placehold.co/100x100" class="foo bar" alt="Username’s avatar"/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-items-center">
           <div class="a-avatar foo bar">
             <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
           </div>
         </div>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Large avatar",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_avatar size="l" src="https://placehold.co/100x100" alt="Username’s avatar" height="46" width="46"/>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-items-center">
           <div class="a-avatar a-avatar--l">
             <img alt="Username’s avatar" height="46" src="https://placehold.co/100x100" width="46"/>
           </div>
         </div>
-        """
-    '''
+        \"""
+    """
   )
 
   story(
     "Avatar with a text",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_avatar src="https://placehold.co/100x100" alt="Username’s avatar"> Username </.ui_avatar>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-items-center">
           <div class="a-avatar">
             <img height="32" width="32" alt="Username’s avatar" src="https://placehold.co/100x100"/>
@@ -89,8 +89,8 @@ defmodule BitstylesPhoenix.Component.Avatar do
             Username
           </span>
         </div>
-        """
-    '''
+        \"""
+    """
   )
 
   def ui_avatar(assigns) do

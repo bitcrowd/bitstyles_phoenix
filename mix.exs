@@ -14,7 +14,7 @@ defmodule BitstylesPhoenix.MixProject do
       source_url: "https://github.com/bitcrowd/bitstyles_phoenix",
       docs: [
         main: "BitstylesPhoenix",
-        assets: "assets",
+        assets: %{"assets" => "assets"},
         logo: "assets/logo.svg",
         extras: ["CHANGELOG.md", "README.md", "LICENSE.txt"],
         groups_for_modules: [
@@ -54,7 +54,7 @@ defmodule BitstylesPhoenix.MixProject do
       {:jason, "~> 1.0"},
       {:phoenix_live_view, "~> 0.18.12 or ~> 0.19.0 or ~> 0.20.0"},
       {:phoenix_html, "~> 3.3 or ~> 4.0"},
-      {:floki, "~> 0.32.0", only: [:test, :dev]},
+      {:floki, "~> 0.38", only: [:test, :dev]},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:credo, ">= 0.0.0", only: :dev, runtime: false}
     ]

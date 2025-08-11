@@ -29,144 +29,144 @@ defmodule BitstylesPhoenix.Component.Flash do
 
   story(
     "Flash brand 1",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="brand-1">
         ...>     Something you may be interested to hear
         ...>   </.ui_flash>
-        ...> """)
-    ''',
+        ...> \""")
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="brand-1">
             <div class="a-content u-flex u-items-center u-font-medium">
               Something you may be interested to hear
             </div>
           </div>
-          """
-      ''',
-      "5.0.1": '''
-          """
+          \"""
+      """,
+      "5.0.1": """
+          \"""
           <div aria-live="polite" class="u-padding-l-y a-flash a-flash--brand-1">
             <div class="a-content u-flex u-items-center u-font-medium">
               Something you may be interested to hear
             </div>
           </div>
-          """
-      '''
+          \"""
+      """
     ],
     width: "100%"
   )
 
   story(
     "Flash success",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="positive">
         ...>     Saved successfully
         ...>   </.ui_flash>
-        ...> """)
-    ''',
-    '''
-        """
+        ...> \""")
+    """,
+    """
+        \"""
         <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="positive">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved successfully
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Flash warning",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="warning">
         ...>     Saved with errors
         ...>   </.ui_flash>
-        ...> """)
-    ''',
-    '''
-        """
+        ...> \""")
+    """,
+    """
+        \"""
         <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="warning">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saved with errors
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Flash danger",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="danger">
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
-    ''',
-    '''
-        """
+        ...> \""")
+    """,
+    """
+        \"""
         <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="danger">
           <div class="a-content u-flex u-items-center u-font-medium">
             Saving failed
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Flash with full content",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant={[:danger, :full]}>
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
-    ''',
-    '''
-        """
+        ...> \""")
+    """,
+    """
+        \"""
         <div aria-live="polite" class="u-padding-l1-y a-flash" data-theme="danger">
           <div class="a-content a-content--full u-flex u-items-center u-font-medium">
             Saving failed
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Custom attributes and classes",
-    '''
+    """
         iex> assigns = %{}
-        iex> render(~H"""
+        iex> render(~H\"""
         ...>   <.ui_flash variant="brand-1" data-foo="bar" class="extra-class" content_class="extra-inner-class">
         ...>     Saving failed
         ...>   </.ui_flash>
-        ...> """)
-    ''',
-    '''
-        """
+        ...> \""")
+    """,
+    """
+        \"""
         <div aria-live="polite" class="u-padding-l1-y a-flash extra-class" data-theme="brand-1" data-foo="bar">
           <div class="a-content u-flex u-items-center u-font-medium extra-inner-class">
             Saving failed
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 

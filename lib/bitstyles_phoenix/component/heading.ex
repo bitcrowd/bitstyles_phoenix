@@ -28,16 +28,16 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   story(
     "Page title",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_page_title>
         ...>   Title
         ...> </.ui_page_title>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-justify-between u-flex-wrap u-items-center">
           <div class="u-flex u-flex-wrap u-items-center">
             <h1 class="u-margin-m-right u-break-text">
@@ -45,16 +45,16 @@ defmodule BitstylesPhoenix.Component.Heading do
             </h1>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Page title with actions and title extra",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_page_title>
         ...>   Title
         ...>   <:title_extra>
@@ -70,10 +70,10 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_page_title>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-justify-between u-flex-wrap u-items-center">
           <div class="u-flex u-flex-wrap u-items-center">
             <h1 class="u-margin-m-right u-break-text">
@@ -98,8 +98,8 @@ defmodule BitstylesPhoenix.Component.Heading do
             </li>
           </ul>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%",
     extra_html: """
     <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
@@ -158,16 +158,16 @@ defmodule BitstylesPhoenix.Component.Heading do
 
   story(
     "Section title with default border",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title>
         ...>   Section title
         ...> </.ui_section_title>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text">
@@ -175,23 +175,23 @@ defmodule BitstylesPhoenix.Component.Heading do
             </h3>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Section title without border and h2",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title border={false} tag={:h2}>
         ...>   Section title
         ...> </.ui_section_title>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-center u-justify-between">
           <div class="u-flex u-items-center">
             <h2 class="u-margin-0 u-margin-m-right u-break-text">
@@ -199,16 +199,16 @@ defmodule BitstylesPhoenix.Component.Heading do
             </h2>
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 
   story(
     "Section title with actions and title extra and different border",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_section_title border_color="gray-light" heading_class="extra">
         ...>   Section title
         ...>   <:title_extra>
@@ -224,10 +224,10 @@ defmodule BitstylesPhoenix.Component.Heading do
         ...>     <.ui_button color="danger">Hide me</.ui_button>
         ...>   </:action>
         ...> </.ui_section_title>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="u-flex u-flex-wrap u-items-center u-justify-between u-padding-m-bottom u-border-gray-light-bottom">
           <div class="u-flex u-items-center">
             <h3 class="u-margin-0 u-margin-m-right u-break-text extra">
@@ -250,8 +250,8 @@ defmodule BitstylesPhoenix.Component.Heading do
             </li>
           </ul>
         </div>
-        """
-    ''',
+        \"""
+    """,
     width: "100%"
   )
 

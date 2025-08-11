@@ -36,16 +36,16 @@ defmodule BitstylesPhoenix.Component.Modal do
 
   story(
     "Default modal",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   Content
         ...> </.ui_modal>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay">
           </div>
@@ -53,8 +53,8 @@ defmodule BitstylesPhoenix.Component.Modal do
             Content
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     height: "400px",
     width: "100%",
     transparent: false
@@ -62,18 +62,18 @@ defmodule BitstylesPhoenix.Component.Modal do
 
   story(
     "Small modal",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal aria-labelledby="dialog-title" variant="s" class="foo">
         ...>   <:content class="bar" foo="bar">
         ...>     Content
         ...>   </:content>
         ...> </.ui_modal>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="o-modal foo" aria-modal="true" role="dialog" aria-labelledby="dialog-title">
           <div class="o-modal__overlay">
           </div>
@@ -81,8 +81,8 @@ defmodule BitstylesPhoenix.Component.Modal do
             Content
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     height: "400px",
     width: "100%",
     transparent: false
@@ -90,17 +90,17 @@ defmodule BitstylesPhoenix.Component.Modal do
 
   story(
     "Small modal with extra overlay",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   <:overlay class="extra" data-foo="bar" />
         ...>   Content
         ...> </.ui_modal>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay extra" data-foo="bar">
           </div>
@@ -108,8 +108,8 @@ defmodule BitstylesPhoenix.Component.Modal do
             Content
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     height: "400px",
     width: "100%",
     transparent: false
@@ -117,19 +117,19 @@ defmodule BitstylesPhoenix.Component.Modal do
 
   story(
     "Small modal with extra overlay content",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_modal>
         ...>   <:overlay class="extra" data-foo="bar">
         ...>     <span class="u-hidden">Overlay content</span>
         ...>   </:overlay>
         ...>   Content
         ...> </.ui_modal>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <div class="o-modal" aria-modal="true" role="dialog">
           <div class="o-modal__overlay extra" data-foo="bar">
             <span class="u-hidden">
@@ -140,8 +140,8 @@ defmodule BitstylesPhoenix.Component.Modal do
             Content
           </div>
         </div>
-        """
-    ''',
+        \"""
+    """,
     height: "400px",
     width: "100%",
     transparent: false

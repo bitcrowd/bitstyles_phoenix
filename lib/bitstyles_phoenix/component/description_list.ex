@@ -8,18 +8,18 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
 
   story(
     "With items (short-cut form)",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dl>
         ...>   <.ui_dl_item label="Length" value="8" />
         ...>   <.ui_dl_item label="Inserted at">2007-01-02</.ui_dl_item>
         ...> </.ui_dl>
-        ...> """
-    ''',
+        ...> \"""
+    """,
     [
-      "6.0.0": '''
-          """
+      "6.0.0": """
+          \"""
           <dl class="a-dl">
             <div class="a-dl__item u-grid@m u-grid-cols-3 u-padding-m-y u-padding-m@m u-items-baseline u-gap-l">
               <dt class="u-font-medium u-h6 u-fg-grayscale-dark-2 u-margin-s4-bottom@s">
@@ -38,10 +38,10 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
               </dd>
             </div>
           </dl>
-          """
-      ''',
-      "4.3.0": '''
-          """
+          \"""
+      """,
+      "4.3.0": """
+          \"""
           <dl class="a-dl">
             <div class="a-dl__item u-grid@m u-grid-cols-3 u-padding-m-y u-padding-m@m u-items-baseline u-gap-m">
               <dt class="u-font-medium u-h6 u-fg-gray-50 u-margin-xs-bottom@s">
@@ -60,8 +60,8 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
               </dd>
             </div>
           </dl>
-          """
-      '''
+          \"""
+      """
     ],
     module: true,
     width: "100%"
@@ -69,9 +69,9 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
 
   story(
     "With items (short-cut and long form) and extra attributes",
-    '''
+    """
         iex> assigns = %{}
-        ...> render ~H"""
+        ...> render ~H\"""
         ...> <.ui_dl class="extra" data-foo="baz">
         ...>   <.ui_dl_item label="Length" class="u-fg-brand-2">8</.ui_dl_item>
         ...>   <.ui_dl_item>
@@ -83,10 +83,10 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
         ...>     <.ui_dd>Value</.ui_dd>
         ...>   </.ui_dl_item>
         ...> </.ui_dl>
-        ...> """
-    ''',
-    '''
-        """
+        ...> \"""
+    """,
+    """
+        \"""
         <dl class="a-dl extra" data-foo="baz">
           <div class="a-dl__item u-grid@m u-grid-cols-3 u-padding-m-y u-padding-m@m u-items-baseline u-gap-l u-fg-brand-2">
             <dt class="u-font-medium u-h6 u-fg-grayscale-dark-2 u-margin-s4-bottom@s">
@@ -115,8 +115,8 @@ defmodule BitstylesPhoenix.Component.DescriptionList do
             </dd>
           </div>
         </dl>
-        """
-    ''',
+        \"""
+    """,
     module: true,
     width: "100%"
   )
