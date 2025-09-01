@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.5.2 - 2025-08-11
+- Brought back `unchecked_value` & `checked_value` for checkboxes in `ui_input` and `ui_raw_input`.
+
 ## v2.5.1 - 2025-08-11
 
 - Changed `ui_tabs` and `ui_tab_button` to follow accessibility guidelines: replaced the `<ul>` with a `<div role="tablist">` and instead of nesting the buttons inside `<li>`s they are now the direct children of the `div` and have a `role="tab"` set. As a side effect the gap between the tabs is now a little smaller.
