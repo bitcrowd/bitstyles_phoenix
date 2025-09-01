@@ -354,7 +354,7 @@ defmodule BitstylesPhoenix.Component.Form do
   )
 
   story(
-    "Checkbox with label class",
+    "Checkbox with custom value",
     """
         iex> assigns=%{form: form()}
         ...> render ~H\"""
