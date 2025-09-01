@@ -353,6 +353,25 @@ defmodule BitstylesPhoenix.Component.Form do
     """
   )
 
+  story(
+    "Checkbox with label class",
+    """
+        iex> assigns=%{form: form()}
+        ...> render ~H\"""
+        ...> <.ui_input form={@form} field={:accept} type={:checkbox} label_opts={[class: "extra"]} checked_value="123" unchecked_value="" />
+        ...> \"""
+    """,
+    """
+        \"""
+        <label for="user_accept" class="extra">
+          <input name="user[accept]" type="hidden" value=""/>
+          <input id="user_accept" name="user[accept]" type="checkbox" value="123"/>
+          Accept
+        </label>
+        \"""
+    """
+  )
+
   def ui_input(assigns) do
     extra = assigns_to_attributes(assigns, @wrapper_assigns_keys ++ [:type])
 
@@ -961,20 +980,33 @@ defmodule BitstylesPhoenix.Component.Form do
 
   def ui_raw_input(%{type: "checkbox"} = assigns) do
     assigns =
-      assign_new(assigns, :checked, fn ->
+      assigns
+      |> assign_new(:checked, fn ->
         PhxForm.normalize_value("checkbox", assigns[:value])
       end)
+      |> assign_new(:checked_value, fn -> "true" end)
+      |> assign_new(:unchecked_value, fn -> "false" end)
 
-    extra = assigns_to_attributes(assigns, [:id, :name, :checked, :value, :type])
+    extra =
+      assigns_to_attributes(assigns, [
+        :id,
+        :name,
+        :checked,
+        :value,
+        :type,
+        :checked_value,
+        :unchecked_value
+      ])
+
     assigns = assign(assigns, extra: extra)
 
     ~H"""
-    <input name={@name} type="hidden" value="false" disabled={@extra[:disabled]} />
+    <input name={@name} type="hidden" value={@unchecked_value} disabled={@extra[:disabled]} />
     <input
       id={@id}
       name={@name}
       type="checkbox"
-      value="true"
+      value={@checked_value}
       checked={@checked}
       {@extra}
     />
