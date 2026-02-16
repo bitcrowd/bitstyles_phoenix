@@ -3,10 +3,10 @@ defmodule BitstylesPhoenixDemoWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: BitstylesPhoenixDemoWeb
+      use Phoenix.Controller, formats: [:html]
 
       import Plug.Conn
-      import BitstylesPhoenixDemoWeb.Gettext
+      use Gettext, backend: BitstylesPhoenixDemoWeb.Gettext
       alias BitstylesPhoenixDemoWeb.Router.Helpers, as: Routes
     end
   end
@@ -15,11 +15,12 @@ defmodule BitstylesPhoenixDemoWeb do
     quote do
       use Phoenix.View,
         root: "lib/bitstyles_phoenix_demo_web/templates",
-        namespace: BitstylesPhoenixDemoWeb
+        namespace: BitstylesPhoenixDemoWeb,
+        pattern: "**/*"
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
+        only: [get_csrf_token: 0, get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
       use BitstylesPhoenix.Alpine3
 
@@ -62,24 +63,24 @@ defmodule BitstylesPhoenixDemoWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import BitstylesPhoenixDemoWeb.Gettext
+      use Gettext, backend: BitstylesPhoenixDemoWeb.Gettext
     end
   end
 
   defp view_helpers do
     quote do
+      # Import basic rendering functionality (render, render_layout, etc)
+      import Phoenix.View
+      import Phoenix.Component
       # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
 
       use BitstylesPhoenix
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
-      import Phoenix.Component
-
-      # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
 
       import BitstylesPhoenixDemoWeb.ErrorHelpers
-      import BitstylesPhoenixDemoWeb.Gettext
+      use Gettext, backend: BitstylesPhoenixDemoWeb.Gettext
       alias BitstylesPhoenixDemoWeb.Router.Helpers, as: Routes
     end
   end

@@ -10,10 +10,16 @@ defmodule BitstylesPhoenix.Helper.TestFixtures do
   end
 
   def form_with_errors do
-    Phoenix.Component.to_form(%{},
+    Phoenix.Component.to_form(
+      %{
+        "name" => "funky",
+        "email" => "foo@bar",
+        "_unused_password" => ""
+      },
       as: :user,
       errors: [
         name: {"is too short", []},
+        password: {"too short", []},
         email: {"is invalid", []},
         email: "must end with @bitcrowd.net"
       ]

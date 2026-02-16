@@ -124,8 +124,8 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_name">
           Name
         </label>
-        <input id="user_name" name="user[name]" type="text" maxlength="255"/>
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <input id="user_name" name="user[name]" type="text" maxlength="255" value="funky"/>
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""
@@ -145,15 +145,15 @@ defmodule BitstylesPhoenix.Component.Form do
         <label for="user_email">
           Email
         </label>
-        <input id="user_email" name="user[email]" type="text" maxlength="255"/>
+        <input id="user_email" name="user[email]" type="text" maxlength="255" value="foo@bar"/>
         <ul class=\"u-padding-l3-left\">
           <li>
-            <span class=\"u-fg-warning\" phx-feedback-for=\"user[email]\">
+            <span class=\"u-fg-warning\">
               is invalid
             </span>
           </li>
           <li>
-            <span class=\"u-fg-warning\" phx-feedback-for=\"user[email]\">
+            <span class=\"u-fg-warning\">
               must end with @bitcrowd.net
             </span>
           </li>
@@ -516,8 +516,9 @@ defmodule BitstylesPhoenix.Component.Form do
           Name
         </label>
         <textarea id="user_name" name="user[name]">
+          funky
         </textarea>
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""
@@ -740,7 +741,7 @@ defmodule BitstylesPhoenix.Component.Form do
         </label>
         Custom content
         <input type="text" whatever="foo"/>
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""

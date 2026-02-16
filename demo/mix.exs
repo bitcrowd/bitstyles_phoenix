@@ -7,7 +7,7 @@ defmodule BitstylesPhoenixDemo.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,23 +33,24 @@ defmodule BitstylesPhoenixDemo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bitstyles_phoenix, path: '..'},
+      {:bitstyles_phoenix, path: ~c".."},
       {:faker, "~> 0.17"},
-      {:ecto, "~> 3.7.1"},
+      {:ecto, "~> 3.7"},
       {:dart_sass, "~> 0.3", runtime: Mix.env() == :dev},
-      {:phoenix, "~> 1.6.2"},
+      {:phoenix, "~> 1.8"},
       {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix_html, "~> 4.0"},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.18.0"},
+      {:phoenix_live_view, "~> 1.1"},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
-      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.18"},
+      {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:wallaby, "~> 0.29.0", runtime: false, only: :test}
+      {:wallaby, "~> 0.30", runtime: false, only: :test}
     ]
   end
 
