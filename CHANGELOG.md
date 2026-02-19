@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v3.0.0 - 2026-02-19
 
 ### Breaking 
 - Update for liveview > 1.0
