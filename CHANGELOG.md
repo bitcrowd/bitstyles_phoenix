@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Breaking 
+- Update for liveview > 1.0
+- Stop generating phx-feedback-for in favour of `Phoenix.Component.used_input?`
+- Require Elixir 1.15
+- Require Phoenix HTML 4.0
+https://github.com/phoenixframework/phoenix_live_view/blob/v1.0/CHANGELOG.md#core-components
+
 ## v2.5.2 - 2025-08-11
 - Brought back `unchecked_value` & `checked_value` for checkboxes in `ui_input` and `ui_raw_input`.
 

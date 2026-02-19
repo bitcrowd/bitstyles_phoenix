@@ -18,23 +18,23 @@
   </:small_sidebar>
   <:sidebar_content>
     <.ui_sidebar_nav>
-      <.ui_sidebar_nav_item><.ui_button href={Routes.page_path(@socket, :index)} class="u-flex-grow-1 e2e-sidebar-alpine" variant="nav">Alpine 3</.ui_button></.ui_sidebar_nav_item>
-      <.ui_sidebar_nav_item><.ui_button href={Routes.live_path(@socket, BitstylesPhoenixDemoWeb.DemoLive)} class="u-flex-grow-1 e2e-sidebar-live" variant="nav">Live</.ui_button></.ui_sidebar_nav_item>
+      <.ui_sidebar_nav_item><.ui_button href={Routes.page_path(@socket, :index)} class="u-flex-grow-1 e2e-sidebar-alpine" shape="nav">Alpine 3</.ui_button></.ui_sidebar_nav_item>
+      <.ui_sidebar_nav_item><.ui_button href={Routes.live_path(@socket, BitstylesPhoenixDemoWeb.DemoLive)} class="u-flex-grow-1 e2e-sidebar-live" shape="nav">Live</.ui_button></.ui_sidebar_nav_item>
     </.ui_sidebar_nav>
   </:sidebar_content>
   <:main :let={s}>
-    <%= if content = live_flash(@flash, :info) do %>
+    <%= if content = Phoenix.Flash.get(@flash, :info) do %>
       <.ui_flash variant="positive" phx-click="lv:clear-flash" phx-value-key="info">
         <%= content %>
       </.ui_flash>
     <% end %>
-    <%= if content = live_flash(@flash, :warning) do %>
+    <%= if content = Phoenix.Flash.get(@flash, :warning) do %>
       <.ui_flash variant="warning" phx-click="lv:clear-flash" phx-value-key="warning">
         <.ui_icon name="exclamation" class= "u-flex-shrink-0 u-margin-m-right" />
         <%= content %>
       </.ui_flash>
     <% end %>
-    <%= if content = live_flash(@flash, :error) do %>
+    <%= if content = Phoenix.Flash.get(@flash, :error) do %>
       <.ui_flash variant="danger" phx-click="lv:clear-flash" phx-value-key="error">
         <.ui_icon name="exclamation" class= "u-flex-shrink-0 u-margin-m-right" />
         <%= content %>

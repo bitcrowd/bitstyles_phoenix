@@ -1,6 +1,5 @@
 defmodule BitstylesPhoenix.Component.Error do
   use BitstylesPhoenix.Component
-  alias Phoenix.HTML.Form, as: PhxForm
 
   @moduledoc """
   Component for showing UI errors.
@@ -33,28 +32,28 @@ defmodule BitstylesPhoenix.Component.Error do
     """,
     "6.0.0": """
         \"""
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""
     """,
     "5.0.1": """
         \"""
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""
     """,
     "4.3.0": """
         \"""
-        <span class="u-fg-warning" phx-feedback-for="user[name]">
+        <span class="u-fg-warning">
           is too short
         </span>
         \"""
     """,
     "3.0.0": """
         \"""
-        <span class="u-fg--warning" phx-feedback-for="user[name]">
+        <span class="u-fg--warning">
           is too short
         </span>
         \"""
@@ -73,12 +72,12 @@ defmodule BitstylesPhoenix.Component.Error do
         \"""
         <ul class="u-padding-l3-left">
           <li>
-            <span class="u-fg-warning" phx-feedback-for="user[email]">
+            <span class="u-fg-warning">
               is invalid
             </span>
           </li>
           <li>
-            <span class="u-fg-warning" phx-feedback-for="user[email]">
+            <span class="u-fg-warning">
               must end with @bitcrowd.net
             </span>
           </li>
@@ -87,9 +86,10 @@ defmodule BitstylesPhoenix.Component.Error do
     """
   )
 
-  def ui_errors(assigns) do
-    assigns.form.errors
-    |> Keyword.get_values(assigns.field)
+  def ui_errors(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    errors = if Phoenix.Component.used_input?(field), do: field.errors, else: []
+
+    errors
     |> case do
       [] ->
         ~H""
@@ -100,7 +100,6 @@ defmodule BitstylesPhoenix.Component.Error do
         ~H"""
           <.ui_error
             error={@error}
-            phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)}
             class={assigns[:error_class]} />
         """
 
@@ -114,13 +113,16 @@ defmodule BitstylesPhoenix.Component.Error do
               <li>
                 <.ui_error
                   error={error}
-                  phx-feedback-for={PhxForm.input_name(assigns.form, assigns.field)}
                   class={assigns[:error_class]} />
               </li>
             <% end %>
           </ul>
         """
     end
+  end
+
+  def ui_errors(%{field: field, form: form} = assigns) do
+    assigns |> assign(:field, form[field]) |> ui_errors()
   end
 
   @doc """
@@ -180,12 +182,12 @@ defmodule BitstylesPhoenix.Component.Error do
     """
         iex> assigns = %{error: {"Foo error", []}}
         ...> render ~H\"""
-        ...> <.ui_error error={@error} phx-feedback-for="foo" class="bar" />
+        ...> <.ui_error error={@error} class="bar" />
         ...> \"""
     """,
     """
         \"""
-        <span class="u-fg-warning bar" phx-feedback-for="foo">
+        <span class="u-fg-warning bar">
           Foo error
         </span>
         \"""

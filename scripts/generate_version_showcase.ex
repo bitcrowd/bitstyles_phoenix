@@ -1,7 +1,4 @@
 defmodule Scripts.GenerateVersionShowcase do
-  import Phoenix.HTML, only: [safe_to_string: 1]
-  import Phoenix.HTML.Tag, only: [content_tag: 3]
-
   @dir_name "version_showcase"
 
   @moduledoc "Generates static HTML pages in #{@dir_name} for manually testing bitstyles_phoenix with different bitstyles versions."
@@ -259,31 +256,24 @@ defmodule Scripts.GenerateVersionShowcase do
     File.mkdir_p(full_dir_path)
     File.write!(full_file_path, iframe_srcdoc)
 
-    iframe_opts =
-      [
-        src: iframe_src,
-        style: "",
-        allowtransparency: if(transparent, do: "true", else: "false")
-      ]
-      |> Keyword.merge(iframe_style_opts(story.opts))
-
+    transparency = if(transparent, do: "true", else: "false")
     iframe =
       if dist do
-        safe_to_string(content_tag(:iframe, "", iframe_opts))
+        """
+        <iframe src="#{iframe_src}" allowtransparency="#{transparency}" #{iframe_style_opts(story.opts)} />
+        """
       else
         ""
       end
-
-    html_code = safe_to_string(content_tag(:code, result, []))
 
     """
     <h4>Source</h4>
     <pre>#{component.path}:#{story.line}</pre>
     <h4>Output</h4>
-    <pre style="border: 1px solid lightgray;">#{html_code}</pre>
+    <pre style="border: 1px solid lightgray;"><code>#{result}</code></pre>
     <h4>Preview</h4>
     <div style="border: 1px solid lightgray; padding: 20px; margin-bottom: 60px">
-    #{iframe}
+      #{iframe}
     </div>
     """
   end
@@ -301,18 +291,15 @@ defmodule Scripts.GenerateVersionShowcase do
     Keyword.get(opts, :height)
     |> case do
       nil ->
-        [
-          style: "#{@default_iframe_style}width: #{width}",
-          # https://stackoverflow.com/questions/819416/adjust-width-and-height-of-iframe-to-fit-with-content-in-it
-          onload: """
-          javascript:(function(o) { \
-           o.style.height=(o.contentWindow.document.body.scrollHeight)+"px"; \
-          }(this)); \
-          """
-        ]
+        """
+        style="#{@default_iframe_style}width: #{width}"
+        onload="javascript:(function(o) { o.style.height=(o.contentWindow.document.body.scrollHeight)+'px'; }(this));"
+        """
 
       height ->
-        [style: "#{@default_iframe_style}height: #{height}; width: #{width};"]
+        """
+        style="#{@default_iframe_style}height: #{height}; width: #{width};"
+        """
     end
   end
 

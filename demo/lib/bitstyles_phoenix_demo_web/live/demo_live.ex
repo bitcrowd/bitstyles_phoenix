@@ -8,6 +8,6 @@ defmodule BitstylesPhoenixDemoWeb.DemoLive do
       |> put_flash(:warning, "Let's pretend we have a warning.")
       |> put_flash(:error, "Let's pretend we have an error.")
 
-    {:noreply, push_redirect(socket, to: "/live")}
+    {:noreply, push_navigate(socket, to: "/live")}
   end
 end

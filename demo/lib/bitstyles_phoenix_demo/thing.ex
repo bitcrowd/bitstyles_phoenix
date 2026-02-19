@@ -7,8 +7,8 @@ defmodule BitstylesPhoenixDemo.Thing do
     field(:name, :string)
   end
 
-  def changeset(schema \\ %__MODULE__{}, params \\ %{}) do
-    schema
+  def changeset(params) do
+    %__MODULE__{}
     |> cast(params, [:name])
     |> validate_required([:name])
   end

@@ -1,3 +1,3 @@
 defmodule BitstylesPhoenixDemoWeb.Gettext do
-  use Gettext, otp_app: :bitstyles_phoenix_demo
+  use Gettext.Backend, otp_app: :bitstyles_phoenix_demo
 end

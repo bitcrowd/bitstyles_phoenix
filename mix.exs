@@ -52,8 +52,8 @@ defmodule BitstylesPhoenix.MixProject do
   defp deps do
     [
       {:jason, "~> 1.0"},
-      {:phoenix_live_view, "~> 0.18.12 or ~> 0.19.0 or ~> 0.20.0"},
-      {:phoenix_html, "~> 3.3 or ~> 4.0"},
+      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_html, "~> 4.0"},
       {:floki, "~> 0.38", only: [:test, :dev]},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:credo, ">= 0.0.0", only: :dev, runtime: false}
